@@ -1,23 +1,218 @@
 aid: tradeshift
 name: Tradeshift
-description: 'Tradeshift is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Tradeshift is a cloud-based business commerce network for accounts payable automation, e-invoicing compliance,
+  procure-to-pay, supplier management, and B2B marketplace commerce, connecting buyers and sellers across more than
+  190 countries. The Tradeshift External API is a REST/JSON+XML interface over the same platform its own apps use,
+  covering company accounts and branches, legal entities and tax identifiers, network connections and connection
+  properties, business documents (invoices, orders, credit notes, quotes, requisitions, receipt advices) in the
+  OASIS UBL / TSUBL format, document files and attachments, users and memberships, assignments and workflow, and
+  document validation and clearance for country e-invoicing mandates. Authentication is OAuth (OAuth 1.0a two-legged
+  for account-scoped integrations, OAuth 2.0 three-legged for apps acting on behalf of users), every call carries an
+  X-Tradeshift-TenantId header, and apps can subscribe to platform webhooks for document, network, and user events.
+  Tradeshift also runs a production MCP server exposing platform capability to AI agents under the same
+  authentication, RBAC, and audit model as human sessions.
+image: https://tradeshift.com/wp-content/uploads/2021/01/Logo-symbol-white-on-blue-bg-@10x.png
 url: https://raw.githubusercontent.com/api-evangelist/tradeshift/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
-specificationVersion: '0.20'
+specificationVersion: '0.21'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
-- Company
-apis: []
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
-- FN: APIs.json
-  email: info@apis.io
+  - e-invoicing
+  - accounts-payable
+  - ap-automation
+  - procure-to-pay
+  - supply-chain
+  - b2b-commerce
+  - invoicing
+  - ubl
+  - peppol
+  - e-invoicing-compliance
+  - supplier-network
+  - business-documents
+  - fintech
+  - mcp
+  - agent-native
+apis:
+  - name: Tradeshift External API
+    description: >-
+      REST API over the Tradeshift business commerce platform. 172 operations across accounts and branches, legal
+      entities, taxes and validations, network connections and connection properties, document profiles, business
+      documents and document files, attachments, quotes, requisitions, receipt advices, users and memberships,
+      assignments, buyer-sourced documents, and document validation and clearance. JSON and XML (OASIS UBL / TSUBL)
+      representations; OAuth 1.0a two-legged or OAuth 2.0 three-legged auth plus a required X-Tradeshift-TenantId
+      header.
+    humanURL: https://developers.tradeshift.com/docs/api
+    baseURL: https://api.tradeshift.com/tradeshift
+    tags:
+      - e-invoicing
+      - accounts-payable
+      - business-documents
+      - ubl
+      - supplier-network
+      - procure-to-pay
+      - invoicing
+    properties:
+      - type: OpenAPI
+        url: openapi/tradeshift-external-api-openapi.yml
+      - type: Documentation
+        url: https://developers.tradeshift.com/docs/api
+      - type: APIReference
+        url: https://developers.tradeshift.com/docs/api
+      - type: Authentication
+        url: authentication/tradeshift-authentication.yml
+      - type: Conventions
+        url: conventions/tradeshift-conventions.yml
+      - type: ErrorCatalog
+        url: errors/tradeshift-problem-types.yml
+      - type: DataModel
+        url: data-model/tradeshift-data-model.yml
+      - type: Overlay
+        url: overlays/tradeshift-external-api-overlay.yaml
+      - type: Webhooks
+        url: asyncapi/tradeshift-webhooks.yml
+      - type: Sandbox
+        url: sandbox/tradeshift-sandbox.yml
+      - type: JSONSchema
+        url: json-schema/_index.yml
+      - type: GettingStarted
+        url: https://developers.tradeshift.com/docs/guides/get-started
+  - name: Tradeshift MCP Server
+    description: >-
+      Production Model Context Protocol server that exposes Tradeshift platform capability to AI agents, described by
+      Tradeshift as 95 tools across six domains (core services, supplier network, documents, company data, the
+      Business Firewall, and the AskAda AI assistant / Ada AI document intelligence layer). Built on FastAPI with
+      stdio and HTTP+SSE transports, OAuth 2.0 client-credentials with per-domain scopes, tenant isolation, and a
+      PostgreSQL audit log of every tool execution. The MCP endpoint and the tools/list surface require
+      authentication; anonymous discovery is limited to the RFC 8414 / RFC 9728 metadata documents and the HTTP
+      bridge OpenAPI.
+    humanURL: https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+    baseURL: https://mcp.tradeshift.com/mcp
+    tags:
+      - mcp
+      - agent-native
+      - accounts-payable
+      - e-invoicing
+      - business-documents
+    properties:
+      - type: MCPServer
+        url: mcp/tradeshift-mcp.yml
+      - type: MCP
+        url: https://mcp.tradeshift.com/mcp
+      - type: ToolCrosswalk
+        url: mcp/tradeshift-tool-crosswalk.yml
+      - type: OpenAPI
+        url: openapi/tradeshift-mcp-bridge-openapi.yml
+      - type: OAuthScopes
+        url: scopes/tradeshift-scopes.yml
+      - type: Authentication
+        url: authentication/tradeshift-authentication.yml
+      - type: Overlay
+        url: overlays/tradeshift-mcp-bridge-overlay.yaml
+      - type: Documentation
+        url: https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
 common:
-- type: Website
-  url: https://forgeglobal.com/tradeshift_stock/
+  - type: TrustCenter
+    url: security/tradeshift-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/tradeshift-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/tradeshift-domain-security.yml
+  - type: Website
+    url: https://tradeshift.com/
+  - type: DeveloperPortal
+    url: https://developers.tradeshift.com/
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: Support
+    url: https://support.tradeshift.com/
+  - type: HelpCenter
+    url: https://support.tradeshift.com/knowledgebase
+  - type: Blog
+    url: https://tradeshift.com/resources/
+  - type: BlogRSS
+    url: https://tradeshift.com/feed/
+  - type: GitHubOrganization
+    url: https://github.com/Tradeshift
+  - type: Pricing
+    url: https://tradeshift.com/seller-pricing/
+  - type: SignUp
+    url: https://go.tradeshift.com/register
+  - type: Login
+    url: https://go.tradeshift.com/
+  - type: TermsOfService
+    url: https://tradeshift.com/terms-of-service/
+  - type: PrivacyPolicy
+    url: https://tradeshift.com/privacy-policy/
+  - type: StatusPage
+    url: https://status.tradeshift.com/
+  - type: Deprecation
+    url: https://developers.tradeshift.com/docs/deprecation-process
+  - type: ChangeLog
+    url: https://developers.tradeshift.com/announcements/
+  - type: Security
+    url: https://tradeshift.com/security/
+  - type: Compliance
+    url: https://tradeshift.com/security/
+  - type: Idempotency
+    url: conventions/tradeshift-conventions.yml
+  - type: SDKs
+    url: packages/tradeshift-packages.yml
+  - type: Packages
+    url: packages/tradeshift-packages.yml
+  - type: Components
+    url: components/tradeshift-components.yml
+  - type: MCPServer
+    url: mcp/tradeshift-mcp.yml
+  - type: LLMsTxt
+    url: llms/tradeshift-llms.txt
+  - type: WellKnown
+    url: well-known/tradeshift-well-known.yml
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/tradeshift-lifecycle.yml
+  - type: Conformance
+    url: conformance/tradeshift-conformance.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: ChangeLog
+    url: changelog/tradeshift-changelog.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Overlay
+    url: overlays/tradeshift-external-api-overlay.yaml
+  - type: SourceCode
+    url: https://github.com/Tradeshift
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+  - FN: APIs.json
+    email: info@apis.io
+  - FN: Tradeshift
+    url: https://tradeshift.com/
+x-enrichment:
+  date: '2026-08-02'
+  status: enriched
+  artifacts_added: 45
+  pass: local-v1

@@ -1,0 +1,98 @@
+generated: '2026-08-02'
+method: searched
+source: openapi/tradeshift-mcp-bridge-openapi.yml
+docs: https://developers.tradeshift.com/docs/guides/oauth
+note: >-
+  The Tradeshift External API OpenAPI (openapi/tradeshift-external-api-openapi.yml) declares NO securitySchemes and
+  NO security requirements — the auth contract lives only in prose, on the API root, in the developer-center guides,
+  and in the RFC 8414 metadata. This profile therefore upgrades the mechanically derived result (which saw only the
+  MCP bridge's X-API-Key scheme) with what Tradeshift actually documents.
+summary:
+  types: [oauth1, oauth2, apiKey]
+  api_key_in: [header]
+  oauth2_flows: [implicit, clientCredentials]
+  required_headers: [X-Tradeshift-TenantId]
+schemes:
+  - name: TradeshiftOAuth1
+    type: oauth1
+    signature_method: HMAC-SHA1
+    legs: two-legged
+    credentials:
+      - consumer key
+      - consumer secret
+      - token
+      - token secret
+    obtain_via: >-
+      Activate the "API Access to Own Account" app in the Tradeshift App Store; the app displays the four values.
+    status: >-
+      Supported for backward compatibility. Tradeshift's own key-concepts documentation marks OAuth1 as deprecated:
+      "Tradeshift supports OAuth1 (deprecated, backward compatibility only) and OAuth2".
+    sources:
+      - https://developers.tradeshift.com/docs/api
+      - https://api.tradeshift.com/
+  - name: TradeshiftOAuth2
+    type: oauth2
+    legs: three-legged
+    flows:
+      - flow: implicit
+        authorizationUrl: https://go.tradeshift.com/oauth2/authorize
+        tokenUrl: https://api.tradeshift.com/tradeshift/auth/token
+        response_types_supported: [token]
+    jwks_uri: https://api.tradeshift.com/tradeshift/auth/jwks
+    userinfo_endpoint: https://api.tradeshift.com/tradeshift/auth/userinfo
+    issuer: https://api.tradeshift.com/tradeshift/
+    credentials:
+      - OAuth2 Client Id
+      - OAuth2 Client Secret
+      - OAuth2 Redirect URI
+    obtain_via: >-
+      Install the Developer App on Tradeshift, create a Vendor Id, then CREATE APP to be issued a Client Id and
+      Client Secret and to configure the redirect URI, permissions and webhooks.
+    token_types: [Access Token, Refresh Token, JWT]
+    semantics: >-
+      The app acts on behalf of the logged-in Tradeshift user; API calls carry that user's permissions.
+    sources:
+      - https://developers.tradeshift.com/docs/guides/oauth
+      - https://api.tradeshift.com/tradeshift/.well-known/oauth-authorization-server
+  - name: TradeshiftMCPOAuth2
+    type: oauth2
+    flows:
+      - flow: clientCredentials
+        tokenUrl: https://mcp.tradeshift.com/oauth/token
+        token_endpoint_auth_methods_supported: [client_secret_post]
+    scopes: [core, network, documents, company, bfr, askada, all]
+    applies_to: https://mcp.tradeshift.com/mcp
+    sources:
+      - https://mcp.tradeshift.com/.well-known/oauth-authorization-server
+      - https://mcp.tradeshift.com/.well-known/oauth-protected-resource
+  - name: APIKeyHeader
+    type: apiKey
+    in: header
+    parameter: X-API-Key
+    applies_to: https://mcp.tradeshift.com (MCP HTTP Bridge & Management)
+    sources:
+      - openapi/tradeshift-mcp-bridge-openapi.yml
+tenancy:
+  header: X-Tradeshift-TenantId
+  required: true
+  value: The UUID of the Tradeshift company account (tenant) being accessed.
+  quote: >-
+    "All OAuth requests MUST also include a X-Tradeshift-TenantId header, containing the TenantId (a UUID) to be
+    accessed." — https://api.tradeshift.com/
+  additional_headers_seen_in_spec:
+    - X-Tradeshift-ActorId
+    - X-Tradeshift-SecurityGroup
+verification:
+  smoke_test: GET https://api-sandbox.tradeshift.com/tradeshift/rest/external/account/info
+  expected: Information about your own company account.
+  source: https://developers.tradeshift.com/docs/api
+x-evidence:
+  - url: https://api.tradeshift.com/
+    http_status: 200
+    fetched: '2026-08-02'
+  - url: https://api.tradeshift.com/tradeshift/.well-known/oauth-authorization-server
+    http_status: 200
+    fetched: '2026-08-02'
+  - url: https://developers.tradeshift.com/rest/docs/api
+    http_status: 200
+    fetched: '2026-08-02'

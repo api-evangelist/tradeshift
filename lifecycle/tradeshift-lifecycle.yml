@@ -1,0 +1,84 @@
+generated: '2026-08-02'
+method: searched
+source: https://developers.tradeshift.com/docs/deprecation-process
+versioning:
+  scheme: uri-path
+  current: rest/external
+  spec_version: 1.0.0
+  docs: https://developers.tradeshift.com/docs/api
+  note: >-
+    The External API is not URL-versioned beyond the /rest/external prefix; breaking change is managed by the
+    published deprecation process rather than by cutting a new major version.
+deprecation:
+  policy_url: https://developers.tradeshift.com/docs/deprecation-process
+  published: true
+  sunset_header: false
+  deprecation_header: false
+  announced_via:
+    - https://developers.tradeshift.com/announcements/
+    - monthly release notes
+  milestones:
+    - id: M1
+      name: Deprecation announced
+      commitment: At least 9 months before decommission.
+      description: >-
+        Tradeshift announces on the deprecation page and notifies in monthly release notes, specifying the timetable.
+        Clients should start planning migration work.
+    - id: M2
+      name: Alternative available
+      commitment: At least 6 months before decommission.
+      description: >-
+        APIs that are alternatives to the deprecated API are made available, including documentation and usage
+        samples.
+    - id: M3
+      name: Feature freeze / active deprecation
+      commitment: At least 3 months before decommission.
+      description: >-
+        The API stops receiving regular updates (bug fixes, functionality enhancements); critical issues and security
+        vulnerabilities are still fixed. Usage is monitored and clients are notified.
+    - id: M4
+      name: Decommission
+      description: >-
+        The API is decommissioned and no longer available; clients still calling it will experience errors.
+  quote: >-
+    "Tradeshift will strive to give at least 9 months notice before decommision."
+deprecated_operations:
+  from_openapi: []
+  note: >-
+    No operation in openapi/tradeshift-external-api-openapi.yml carries `deprecated: true`. The deprecations
+    Tradeshift has actually announced are tracked on the announcements site, not flagged in the spec — see below.
+  announced:
+    - endpoint: /tradeshift/rest/external/documents/{documentID}/processed
+      announced: '2023-02-01'
+      m4_advised: '2023-03-01'
+      migrate_to: /tradeshift/rest/external/documents/{documentID}/codingInformation
+      status: >-
+        Announced as prematurely in the deprecation process — M1, M2 and M3 all past at announcement time. Neither
+        endpoint appears in the currently published OpenAPI.
+      source: https://developers.tradeshift.com/announcements/2023-02-01-deprecation-document-processed/
+status_page:
+  url: https://status.tradeshift.com/
+  platform: Atlassian Statuspage
+  subscriptions: [email, sms, rss]
+  http_status: 200
+sla:
+  url: null
+  published: false
+  note: >-
+    No public SLA document for the External API. Tradeshift states a 99.9% uptime objective for the MCP server in its
+    engineering write-up; that is a stated objective, not a contractual SLA.
+support:
+  url: https://support.tradeshift.com/
+  knowledge_base: https://support.tradeshift.com/knowledgebase
+  ticket: https://support.tradeshift.com/requests/new
+changelog: changelog/tradeshift-changelog.yml
+x-evidence:
+  - url: https://developers.tradeshift.com/docs/deprecation-process
+    http_status: 200
+    fetched: '2026-08-02'
+  - url: https://status.tradeshift.com/
+    http_status: 200
+    fetched: '2026-08-02'
+  - url: https://developers.tradeshift.com/announcements/
+    http_status: 200
+    fetched: '2026-08-02'

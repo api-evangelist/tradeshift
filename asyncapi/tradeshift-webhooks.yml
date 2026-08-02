@@ -1,0 +1,81 @@
+generated: '2026-08-02'
+method: searched
+source: https://developers.tradeshift.com/docs/guides/webhooks
+spec_type: Webhooks
+asyncapi_published: false
+note: >-
+  Tradeshift publishes no AsyncAPI document. It does publish a complete webhook event catalog in the developer-center
+  webhooks guide; that catalog is captured verbatim below. Events are subscribed to per app, and the app must be
+  activated on a company account for its webhooks to fire for that account. No AsyncAPI is fabricated here.
+delivery:
+  transport: HTTP
+  method: POST
+  target: A URL configured per webhook in the Developer App
+  payload: >-
+    "The body of the request will contain additional information about the event, depending on the type of event."
+    Tradeshift does not publish per-event payload schemas.
+  signing: not documented
+  retries: not documented
+  ordering: not documented
+configuration:
+  where:
+    sandbox: https://sandbox.tradeshift.com/#/Tradeshift.Developer
+    production: https://go.tradeshift.com/#/Tradeshift.Developer
+  steps:
+    - Create an app on Tradeshift (see the Getting Started guide).
+    - Edit the app in the Developer App and add a webhook at the bottom of the app configuration.
+    - Give the webhook a name without spaces and a URL to receive the HTTP POST.
+    - Select the events that should send payloads, then Apply and Update App.
+    - Log out and back in so the company account picks up the latest version of the app.
+  activation_note: >-
+    "The app with webhooks defined must be activated on a company account for the webhooks to run for that company
+    account."
+channels:
+  - group: Document Events
+    events:
+      - name: AFTER_DOCUMENT_RECEIVE
+        description: Triggered after a document has been received successfully.
+      - name: BEFORE_DOCUMENT_RECEIVE
+        description: Triggered when a document is received, before anything has been written to the database.
+      - name: DOCUMENT_SAVED
+        description: Triggered when a document is saved.
+      - name: DOCUMENT_SENDING
+        description: Triggered when a document is dispatched and before it has been received on the receiver account.
+      - name: DOCUMENT_SENT
+        description: Triggered when the dispatch is completed for a document.
+      - name: DOCUMENT_VALIDATING
+        description: >-
+          Triggered when a document is being sent, after normal validation; depending on the connection status, the
+          document will either be sent or queued until the connection is mutual.
+  - group: Network Events
+    events:
+      - name: NETWORK_CONNECTION_BROKEN
+        description: Triggered when the other side has deleted a mutual connection.
+      - name: NETWORK_CONNECTION_DELETED
+        description: Triggered when a network connection has been deleted.
+      - name: NETWORK_REQUEST_ACCEPTED
+        description: Triggered when a network request has been accepted.
+      - name: NETWORK_REQUEST_RECEIVED
+        description: Triggered when a network request has been received, even if the connection already exists.
+      - name: NETWORK_RESPONSE_RECEIVED
+        description: Triggered when a response to a sent network request comes back.
+  - group: User Events
+    events:
+      - name: USER_STATE_CHANGED
+        description: Triggered when a user changes state.
+coverage:
+  event_count: 12
+  groups: 3
+related_rest_operations:
+  - get-rest-external-documents-dispatches
+  - get-rest-external-documents-documentid-dispatches-latest
+  - put-rest-external-documents-documentid-statechange
+  - get-rest-external-network-requests
+  - put-rest-external-account-users-userid-state
+x-evidence:
+  fetched: '2026-08-02'
+  url: https://developers.tradeshift.com/docs/guides/webhooks
+  http_status: 200
+  note: >-
+    The developer center is a single-page app; the guide content was read from the site's own JavaScript bundle
+    (/assets/index-CZJUNx9C.js), which is what the /docs/guides/webhooks route renders.

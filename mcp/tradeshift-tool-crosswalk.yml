@@ -1,0 +1,176 @@
+generated: '2026-08-02'
+method: derived
+source:
+  - mcp/tradeshift-mcp.yml
+  - openapi/tradeshift-external-api-openapi.yml
+  - openapi/tradeshift-mcp-bridge-openapi.yml
+  - https://mcp.tradeshift.com/.well-known/oauth-protected-resource
+note: >-
+  Tradeshift's MCP tools/list is auth-gated (401 invalid_token) and Tradeshift publishes no tool names, so this
+  crosswalk deliberately does NOT invent tool rows. What CAN be bound honestly is the level above the tool: the six
+  MCP capability domains, each of which is a published OAuth scope on the MCP protected-resource metadata, mapped to
+  the REST operation groups in the External API OpenAPI that cover the same capability. Every operationId listed
+  below was grepped out of openapi/tradeshift-external-api-openapi.yml. Confidence is scoped accordingly — the
+  domain-to-REST binding is evidenced, the per-tool binding is unavailable until an authenticated introspection.
+surfaces:
+  openapi:
+    - file: openapi/tradeshift-external-api-openapi.yml
+      title: Tradeshift External API
+      version: 1.0.0
+      server: https://api.tradeshift.com/tradeshift
+      operations: 172
+      gated: false
+    - file: openapi/tradeshift-mcp-bridge-openapi.yml
+      title: MCP HTTP Bridge & Management
+      version: 0.1.0
+      server: https://mcp.tradeshift.com
+      operations: 23
+      gated: false
+      note: The spec is anonymous; every operation it describes requires X-API-Key or a bearer token.
+  mcp:
+    url: https://mcp.tradeshift.com/mcp
+    tools_list_gated: true
+    tools_list_status: 401
+    tools_claimed: 95
+  graphql:
+    present: false
+crosswalk:
+  - tool: null
+    domain: core
+    category: Core services
+    mcp_scope: core
+    rest:
+      - get-rest-external-account
+      - get-rest-external-account-info
+      - get-rest-external-account-info-user
+      - get-rest-external-account-users
+      - get-rest-external-account-users-userid
+      - get-rest-external-accesslist-operation-operationid-type-typeid-object-objectid
+      - get-rest-external-usergroups
+      - get-rest-external-users-userid-branches
+    binding: rest
+    confidence: medium
+    note: >-
+      Domain-level binding only. "core services" maps to the account/user/access-list operations that every other
+      Tradeshift call depends on. Individual tool names are not published.
+  - tool: null
+    domain: network
+    category: Supplier network
+    mcp_scope: network
+    rest:
+      - get-rest-external-network
+      - get-rest-external-network-companies
+      - get-rest-external-network-connections
+      - get-rest-external-network-connections-connectionid
+      - get-rest-external-network-connections-connectionid-detail
+      - get-rest-external-network-connections-connectionid-properties
+      - put-rest-external-network-connections-connectionid-properties-key
+      - post-rest-external-network-connect-companyid
+      - post-rest-external-network-requests-connectionid-accept
+      - get-rest-external-network-suggest
+    binding: rest
+    confidence: medium
+    note: >-
+      Tradeshift names "Read a supplier connection" and "Update a property, only when the user is allowed to do so"
+      as example capabilities; both have direct REST counterparts above.
+  - tool: null
+    domain: documents
+    category: Documents
+    mcp_scope: documents
+    rest:
+      - get-rest-external-documents
+      - get-rest-external-documents-documentid
+      - put-rest-external-documents-documentid
+      - get-rest-external-documents-documentid-metadata
+      - get-rest-external-documents-documentid-original
+      - get-rest-external-documents-documentid-attachments
+      - get-rest-external-documents-documentid-properties
+      - post-rest-external-documents-validate
+      - put-rest-external-document-validation-validation-validate-document
+      - post-rest-external-documents-dispatcher
+      - get-rest-external-documents-dispatches
+    binding: rest
+    confidence: medium
+    note: >-
+      Tradeshift names "Search for a document" and "Validate a UBL invoice" as example capabilities; both map to
+      operations above (get-rest-external-documents and post-rest-external-documents-validate /
+      put-rest-external-document-validation-validation-validate-document).
+  - tool: null
+    domain: company
+    category: Company data
+    mcp_scope: company
+    rest:
+      - get-rest-external-account-branches
+      - get-rest-external-account-branches-companyid
+      - get-rest-external-account-taxes
+      - get-rest-external-account-validations
+      - get-rest-external-companies-companyaccountid-identifiers
+      - put-rest-external-legalentities-id
+      - put-rest-external-legalentities-id-identifiers-identifier
+      - get-rest-external-gliprefixes-companyid
+    binding: rest
+    confidence: medium
+    note: >-
+      Tradeshift names "Look up a tax identifier" as an example capability; get-rest-external-account-taxes and the
+      legal-entity identifier operations are its REST counterparts.
+  - tool: null
+    domain: bfr
+    category: Business Firewall
+    mcp_scope: bfr
+    rest: []
+    binding: mcp-only
+    confidence: low
+    note: >-
+      The Business Firewall has no operation group in the public External API OpenAPI. Treated as MCP-only until
+      Tradeshift documents a REST surface for it.
+  - tool: null
+    domain: askada
+    category: AskAda AI assistant / Ada AI document intelligence
+    mcp_scope: askada
+    rest: []
+    binding: mcp-only
+    confidence: low
+    note: >-
+      AskAda and the Ada AI coding/document-intelligence layer have no operation group in the public External API
+      OpenAPI. The retired /documents/{documentID}/processed coding endpoint and its successor
+      /documents/{documentID}/codingInformation are documented in the announcements changelog but are not present in
+      the published spec.
+mcp_only:
+  - domain: bfr
+    reason: Business Firewall has no public REST operation group in the External API OpenAPI.
+  - domain: askada
+    reason: AskAda / Ada AI document intelligence has no public REST operation group in the External API OpenAPI.
+rest_only:
+  - capability: Document files (VAN dispatch, directories, file errors)
+    operations: 10
+    example_operation: get-rest-external-documentfiles
+    note: No MCP domain advertised for the document-file/VAN transfer surface.
+  - capability: Assignments and workflow
+    operations: 10
+    example_operation: get-rest-external-assignments
+  - capability: Buyer-sourced documents (supplier management)
+    operations: 9
+    example_operation: get-rest-external-suppliermanagement-documents
+  - capability: Requisitions, quotes and receipt advices
+    operations: 12
+    example_operation: post-rest-external-documents-requisitions-spawn
+  - capability: User memberships, roles, state and profile images
+    operations: 11
+    example_operation: put-rest-external-account-users-userid-role
+  - capability: MCP bridge administration (API keys, OAuth clients, tenant credentials, logs)
+    operations: 14
+    example_operation: create_key_api_admin_keys_post
+    source: openapi/tradeshift-mcp-bridge-openapi.yml
+coverage:
+  tools_claimed_by_provider: 95
+  tools_named_publicly: 0
+  tools_bound: 0
+  domains_advertised: 6
+  domains_bound_to_rest: 4
+  domains_mcp_only: 2
+  rest_operations_total: 172
+  rest_operations_cited_in_crosswalk: 42
+  binding_level: domain
+  reason_not_tool_level: >-
+    tools/list at https://mcp.tradeshift.com/mcp returns 401 invalid_token and no tool manifest is published; a
+    tool-level crosswalk would have to be invented.

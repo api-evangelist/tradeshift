@@ -1,0 +1,1 @@
+{"resource":"https://mcp.tradeshift.com/mcp","authorization_servers":["https://mcp.tradeshift.com"],"scopes_supported":["core","network","documents","company","bfr","askada","all"],"bearer_methods_supported":["header"]}

@@ -1,0 +1,122 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/tradeshift-external-api-openapi.yml
+docs: https://developers.tradeshift.com/docs/api
+format: proprietary
+rfc9457: false
+note: >-
+  Tradeshift does not use RFC 9457 / RFC 7807 problem+json. Errors are returned as a proprietary JSON (or text/xml)
+  envelope with ErrorCode, Message and an ErrorDetail array of {Key, Value} pairs. This catalog is derived from every
+  4xx/5xx and default response declared across the 172 operations in the External API OpenAPI; the ErrorCode values
+  are the ones that actually appear in the spec's response examples. Titles are the provider's own response
+  descriptions, not paraphrases.
+envelope:
+  media_types:
+    - application/json
+    - text/xml
+  fields:
+    - name: ErrorCode
+      type: string
+      description: Machine-readable error identifier.
+    - name: Message
+      type: string
+      description: Human-readable message, often interpolating the offending identifiers.
+    - name: ErrorDetail
+      type: array
+      items: '{Key: string, Value: string}'
+      description: Structured detail pairs (e.g. userUuid, documentId).
+error_codes_observed:
+  - code: BadRequest
+    occurrences_in_spec: 14
+    typical_status: 400
+  - code: AbsentDefaultAssignee
+    occurrences_in_spec: 4
+    typical_status: 500
+    remediation: Configure a valid, active default assignee on the branch before creating assignments.
+  - code: InvalidDefaultAssignee
+    typical_status: 500
+    remediation: The configured default assignee is invalid or inactive; correct the assignee configuration.
+  - code: Unauthorized
+    occurrences_in_spec: 2
+    typical_status: 401
+  - code: ObjectNotFound
+    occurrences_in_spec: 2
+    typical_status: 503
+    note: >-
+      Returned when an expired custom document profile is being refreshed asynchronously. Temporary — the client
+      should retry the same request later.
+  - code: ResourceNotFound
+    occurrences_in_spec: 1
+    typical_status: 404
+problems:
+  - status: 400
+    title: Bad Request due to invalid input. More details in body.
+    operations_declaring: 54
+    error_code: BadRequest
+    remediation: Correct the request body or query parameters; the body names the invalid or blank parameters.
+    example_operation: put-rest-external-account-branches-new
+  - status: 401
+    title: The user was not authorized to perform the operation.
+    operations_declaring: 28
+    error_code: Unauthorized
+    remediation: >-
+      Re-check the OAuth credentials and the X-Tradeshift-TenantId header; the acting user must have access to the
+      referenced object in the referenced tenant.
+    example_operation: get-rest-external-accesslist-operation-operationid-type-typeid-object-objectid
+  - status: 403
+    title: Current user does not have access / the feature is not available for this account.
+    operations_declaring: 14
+    remediation: >-
+      The call is authenticated but the account lacks the feature or the user lacks the role. Enable the feature on
+      the account or grant the role.
+    example_operation: get-rest-external-assignments-id
+  - status: 404
+    title: Resource not found (document, user, connection, validator group or event).
+    operations_declaring: 65
+    error_code: ResourceNotFound
+    remediation: Verify the UUID and that the object is visible to the acting tenant and not deleted.
+    example_operation: get-rest-external-documents-documentid
+  - status: 406
+    title: The request uses Accept headers that the server is unable to fulfill.
+    operations_declaring: 3
+    remediation: >-
+      Request one of the supported representations (application/xml UBL, application/json, Oasis JSON, or
+      application/pdf on document retrieval).
+    example_operation: get-rest-external-documents-documentid
+  - status: 409
+    title: Document already exists.
+    operations_declaring: 1
+    remediation: >-
+      The externalDocumentId is already in use. Treat as the idempotent outcome of a replayed create, or choose a new
+      identifier.
+    example_operation: post-rest-external-suppliermanagement-documents
+  - status: 412
+    title: No active connection exists between the client and the specified company.
+    operations_declaring: 1
+    remediation: Establish and have the counterparty accept a network connection before dispatching.
+    example_operation: post-rest-external-network-connections-connectionid-verify
+  - status: 423
+    title: The document is in locked state and order has been spawned from the given requisition.
+    operations_declaring: 1
+    remediation: The requisition is locked once an order has been spawned; act on the spawned order instead.
+    example_operation: put-rest-external-documents-requisitions-documentid-state
+  - status: 500
+    title: Internal error — commonly an absent, invalid or inactive default assignee.
+    operations_declaring: 5
+    error_code: AbsentDefaultAssignee | InvalidDefaultAssignee
+    remediation: Inspect ErrorCode in the body; assignee-configuration errors are actionable by the customer.
+    example_operation: post-rest-external-assignments
+  - status: 502
+    title: Upstream failure.
+    operations_declaring: 1
+  - status: 503
+    title: Temporary unavailability while a custom document profile is refreshed asynchronously.
+    operations_declaring: 2
+    error_code: ObjectNotFound
+    remediation: Retry the same request after a short delay.
+    example_operation: post-rest-external-documents-validate
+coverage:
+  operations_scanned: 172
+  operations_with_4xx: 137
+  distinct_status_codes: [400, 401, 403, 404, 406, 409, 412, 423, 500, 502, 503]
+  default_responses: 4

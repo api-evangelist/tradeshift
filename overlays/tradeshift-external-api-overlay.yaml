@@ -1,0 +1,100 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Tradeshift External API
+  version: 1.0.0
+extends: openapi/tradeshift-external-api-openapi.yml
+x-generated: '2026-08-02'
+x-method: generated
+x-source: >-
+  Derived from the harvested spec plus Tradeshift's own published documentation (developer center guides, API root,
+  RFC 8414 metadata). Applies our enhancements without mutating openapi/_original/tradeshift-openapi.json.
+actions:
+  - target: $.info
+    description: Fill in the metadata the harvested spec omits.
+    update:
+      description: >-
+        REST API over the Tradeshift business commerce platform — company accounts and branches, legal entities,
+        taxes and dynamic validations, network connections and connection properties, document profiles, UBL/TSUBL
+        business documents, document files, attachments, requisitions, quotes, receipt advices, users, assignments,
+        buyer-sourced documents, and document validation and clearance.
+      contact:
+        name: Tradeshift Developer Center
+        url: https://developers.tradeshift.com/
+      termsOfService: https://tradeshift.com/terms-of-service/
+      x-apievangelist-rating-source: https://apis.io/providers/tradeshift
+      x-logo:
+        url: https://tradeshift.com/wp-content/uploads/2021/01/Logo-symbol-white-on-blue-bg-@10x.png
+  - target: $.servers
+    description: Add the sandbox server alongside production; the harvested spec lists production only.
+    update:
+      - url: https://api-sandbox.tradeshift.com/tradeshift
+        description: Sandbox environment.
+  - target: $
+    description: >-
+      Add the security schemes Tradeshift documents in prose but never declares in the spec, and apply them globally.
+    update:
+      components:
+        securitySchemes:
+          TradeshiftOAuth2:
+            type: oauth2
+            description: >-
+              Three-legged OAuth 2.0 for apps acting on behalf of a Tradeshift user. Client Id and Client Secret are
+              issued by the Developer App.
+            flows:
+              implicit:
+                authorizationUrl: https://go.tradeshift.com/oauth2/authorize
+                scopes: {}
+          TradeshiftOAuth1:
+            type: http
+            scheme: oauth
+            description: >-
+              Two-legged OAuth 1.0a with HMAC-SHA1 signing, using the consumer key/secret and token/token secret from
+              the "API Access to Own Account" app. Marked deprecated by Tradeshift — backward compatibility only.
+        parameters:
+          TradeshiftTenantId:
+            name: X-Tradeshift-TenantId
+            in: header
+            required: true
+            description: UUID of the Tradeshift company account (tenant) the request acts on.
+            schema:
+              type: string
+              pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
+      security:
+        - TradeshiftOAuth2: []
+        - TradeshiftOAuth1: []
+      x-apievangelist-artifacts:
+        authentication: authentication/tradeshift-authentication.yml
+        conventions: conventions/tradeshift-conventions.yml
+        errors: errors/tradeshift-problem-types.yml
+        lifecycle: lifecycle/tradeshift-lifecycle.yml
+        webhooks: asyncapi/tradeshift-webhooks.yml
+        data_model: data-model/tradeshift-data-model.yml
+        sandbox: sandbox/tradeshift-sandbox.yml
+        json_schema: json-schema/
+      x-apievangelist-conventions:
+        idempotency:
+          mechanism: client-assigned-resource-uuid
+          note: PUT with a client-chosen UUID makes document/tag/property/branch writes replay-safe.
+        pagination:
+          style: page-number
+          request: [page, limit, count]
+          response: [itemsPerPage, itemCount, numPages, pageId]
+        errors:
+          envelope: '{ErrorCode, Message, ErrorDetail[{Key, Value}]}'
+          rfc9457: false
+        rate_limits:
+          documented: false
+  - target: $.paths['/rest/external/documents/{documentId}'].put
+    description: Record the idempotency semantics Tradeshift describes in prose.
+    update:
+      x-idempotent: true
+      x-idempotency-mechanism: client-assigned-resource-uuid
+      x-idempotency-key-parameter: documentId
+  - target: $.paths['/rest/external/documents/{documentId}'].get
+    description: Record the supported representations for document retrieval.
+    update:
+      x-representations:
+        - application/xml (UBL / TSUBL, default)
+        - application/json
+        - Oasis JSON
+        - application/pdf

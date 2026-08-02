@@ -1,0 +1,302 @@
+generated: '2026-08-02'
+method: derived
+source:
+  - openapi/tradeshift-external-api-openapi.yml
+  - https://developers.tradeshift.com/docs/api
+note: >-
+  Derived from the path structure, path/query parameters and response examples of the 172 operations in the External
+  API OpenAPI, cross-checked against Tradeshift's own "Building blocks" documentation. The spec declares no
+  components.schemas (every schema is inlined), so entities are identified by their URL segments and by the object
+  keys in the published response examples.
+identifiers:
+  format: RFC 4122 UUID, canonical hyphenated hex
+  business_identifiers:
+    shape: '{scheme, value}'
+    example_scheme: 'TS:ID'
+    note: Company accounts and legal entities also carry scheme-qualified business identifiers (tax IDs, GLN, etc.).
+entities:
+  - name: CompanyAccount
+    aliases: [Account, Company, Tenant]
+    id_field: companyAccountId
+    description: >-
+      A company that can exchange business documents. The tenant boundary — every API call names one via the
+      X-Tradeshift-TenantId header.
+    operations: [get-rest-external-account, get-rest-external-account-info, get-rest-external-account-companyid]
+  - name: Branch
+    description: >-
+      A child company account under a master account. Tradeshift supports a two-level hierarchy; an account is either
+      a master branch or a child branch, never both.
+    operations:
+      - get-rest-external-account-branches
+      - put-rest-external-account-branches-new
+      - get-rest-external-account-parent
+  - name: User
+    id_field: userId
+    description: A person inside a company account, with a role, a state, memberships and profile images.
+    operations:
+      - get-rest-external-account-users
+      - get-rest-external-account-users-userid
+      - put-rest-external-account-users-userid-role
+      - put-rest-external-account-users-userid-state
+  - name: UserGroup
+    description: An account's own group used for memberships and assignment routing.
+    operations: [get-rest-external-usergroups, delete-rest-external-users-userid-memberships-groupid]
+  - name: LegalEntity
+    id_field: id
+    description: The legal identity behind an account, with identifiers and locations.
+    operations:
+      - put-rest-external-legalentities-id
+      - put-rest-external-legalentities-id-identifiers-identifier
+      - put-rest-external-legalentities-id-locations-locationid
+  - name: Tax
+    description: Tax registrations/settings on a company account.
+    operations: [get-rest-external-account-taxes, put-rest-external-account-taxes]
+  - name: GLIPrefix
+    description: GLI prefixes registered for a company account.
+    operations: [get-rest-external-gliprefixes-companyid, post-rest-external-gliprefixes-companyid]
+  - name: Connection
+    id_field: connectionId
+    description: >-
+      A link between two company accounts. Must be active (mutual) before documents can be exchanged. Types observed
+      in examples: TradeshiftConnection (active) and external/manual placeholder connections. States include
+      ACCEPTED.
+    operations:
+      - get-rest-external-network-connections
+      - get-rest-external-network-connections-connectionid
+      - post-rest-external-network-connect-companyid
+      - delete-rest-external-network-connections-connectionid
+  - name: ConnectionProperty
+    id_field: key
+    description: Self-defined key/value property on a connection — the documented home for an integrator's own vendor or customer ID.
+    operations:
+      - get-rest-external-network-connections-connectionid-properties
+      - put-rest-external-network-connections-connectionid-properties-key
+  - name: NetworkRequest
+    description: A connection request sent to another account, and the response that comes back.
+    operations: [get-rest-external-network-requests, post-rest-external-network-requests-connectionid-accept]
+  - name: DocumentProfile
+    id_field: documentProfileId
+    description: >-
+      The inbound/outbound document profile negotiated for a document type on a connection (e.g.
+      nes.p5.order.ubl.2.1.dk).
+    operations:
+      - get-rest-external-network-connections-connectionid-documentprofiles-documenttype-inbound
+      - get-rest-external-network-connections-connectionid-documentprofiles-documenttype-outbound
+  - name: Document
+    id_field: documentId
+    description: >-
+      A business document in UBL/TSUBL — invoice, credit note, order, quotation, requisition, receipt advice and
+      more. Client-assigned UUID; carries State, DocumentType, Actor, sender/receiver company, LastEdit.
+    schemas: json-schema/
+    operations:
+      - get-rest-external-documents
+      - get-rest-external-documents-documentid
+      - put-rest-external-documents-documentid
+      - delete-rest-external-documents-documentid
+  - name: DocumentProperty
+    id_field: property_key
+    description: Key/value metadata attached to a document.
+    operations:
+      - get-rest-external-documents-documentid-properties
+      - put-rest-external-documents-documentid-properties-property_key
+  - name: DocumentTag
+    id_field: tag
+    description: Named tag on a document, used for filtering (tag/withouttag/stag).
+    operations: [get-rest-external-documents-documentid-tags, put-rest-external-documents-documentid-tags-tag]
+  - name: Attachment
+    id_field: name
+    description: A file attached to a document.
+    operations:
+      - get-rest-external-documents-documentid-attachments
+      - put-rest-external-documents-documentid-attachments-name-content
+  - name: Dispatch
+    id_field: dispatchId
+    description: A delivery attempt of a document to a receiver, with first/latest lookups and state transitions.
+    operations:
+      - get-rest-external-documents-dispatches
+      - get-rest-external-documents-documentid-dispatches-latest
+      - put-rest-external-documents-documentid-dispatches-dispatchid
+  - name: DocumentFile
+    id_field: filename
+    description: >-
+      A raw file in the account's document-file store, dispatchable to the platform or to a VAN, organised into
+      directories.
+    operations:
+      - get-rest-external-documentfiles
+      - post-rest-external-documentfiles-filename-dispatcher
+      - post-rest-external-documentfiles-filename-dispatcher-van-vanid
+  - name: Requisition
+    description: A requisition document with its own line collection, spawnable into an order.
+    operations:
+      - post-rest-external-documents-requisitions-spawn
+      - post-rest-external-documents-requisitions-documentid-requisitionline
+      - put-rest-external-documents-requisitions-documentid-state
+  - name: RequisitionLine
+    id_field: lineId
+    description: A line on a requisition.
+    operations:
+      - get-rest-external-documents-requisitions-documentid-requisitionlines-lineid
+      - put-rest-external-documents-requisitions-documentid-requisitionlines-lineid
+  - name: Quote
+    description: Quotation document, with a template endpoint and requisition-from-quote creation.
+    operations:
+      - get-rest-external-documents-quotes-template
+      - put-rest-external-documents-requisitions-create-fromquote
+  - name: ReceiptAdvice
+    description: Receipt advice document, with a next-number allocator.
+    operations: [get-rest-external-documents-receiptadvices-nextnumber]
+  - name: Assignment
+    id_field: id
+    description: >-
+      A work item assigned to a user or group against a subject (typically a document), with comments, close,
+      reassign and an audit log.
+    operations:
+      - get-rest-external-assignments
+      - post-rest-external-assignments
+      - patch-rest-external-assignments-id
+      - post-rest-external-assignments-id-reassign-assigneeid
+  - name: AssignmentLog
+    description: Audit trail of assignment activity, by assignment or by subject.
+    operations: [get-rest-external-assignments-id-logs, get-rest-external-assignments-subjects-subjectid-logs]
+  - name: AutoAssignment
+    description: Rules that automatically route documents to a user or group.
+    operations:
+      - get-rest-external-documents-assignments-users-userid-autoassign
+      - put-rest-external-documents-assignments-users-userid-autoassign-autoassigneeid-delegationtype-delegationtype
+  - name: BuyerSourcedDocument
+    id_field: externalDocumentId
+    description: >-
+      Supplier-management document sourced by the buyer, keyed on the buyer's own external document id, with content,
+      states, references and redispatch.
+    operations:
+      - get-rest-external-suppliermanagement-documents
+      - post-rest-external-suppliermanagement-documents
+      - post-rest-external-suppliermanagement-documents-externaldocumentid-redispatch
+  - name: ValidatorGroup
+    id_field: groupId
+    description: A named group of document validators, with change history, used to validate documents.
+    operations:
+      - get-rest-external-document-validation-validation-groups
+      - put-rest-external-document-validation-validation-groups-groupid
+      - get-rest-external-document-validation-validation-groups-groupid-history
+  - name: DynamicValidation
+    description: >-
+      Account-level dynamic validations with value sets, used values and a change log — the coding/validation
+      configuration surface.
+    operations:
+      - get-rest-external-account-validations
+      - get-rest-external-account-validations-valuesets
+      - get-rest-external-account-validations-log
+relationships:
+  - from: CompanyAccount
+    to: Branch
+    kind: has_many
+    via: ParentCompanyAccountId
+  - from: Branch
+    to: CompanyAccount
+    kind: belongs_to
+    via: ParentCompanyAccountId
+  - from: CompanyAccount
+    to: User
+    kind: has_many
+    via: companyAccountId
+  - from: User
+    to: UserGroup
+    kind: has_many
+    via: groupId
+  - from: CompanyAccount
+    to: LegalEntity
+    kind: has_one
+  - from: CompanyAccount
+    to: Tax
+    kind: has_many
+  - from: CompanyAccount
+    to: GLIPrefix
+    kind: has_many
+    via: companyId
+  - from: CompanyAccount
+    to: Connection
+    kind: has_many
+    via: FromCompanyAccountId
+  - from: Connection
+    to: CompanyAccount
+    kind: belongs_to
+    via: ToCompanyAccountId
+  - from: Connection
+    to: ConnectionProperty
+    kind: has_many
+    via: key
+  - from: Connection
+    to: DocumentProfile
+    kind: has_many
+    via: documentProfileId
+  - from: Connection
+    to: NetworkRequest
+    kind: has_many
+    via: connectionId
+  - from: Document
+    to: CompanyAccount
+    kind: belongs_to
+    via: senderCompany / receiverCompany
+  - from: Document
+    to: DocumentProperty
+    kind: has_many
+    via: property_key
+  - from: Document
+    to: DocumentTag
+    kind: has_many
+    via: tag
+  - from: Document
+    to: Attachment
+    kind: has_many
+    via: name
+  - from: Document
+    to: Dispatch
+    kind: has_many
+    via: dispatchId
+  - from: Document
+    to: DocumentProfile
+    kind: belongs_to
+    via: documentProfileId
+  - from: Document
+    to: Assignment
+    kind: has_many
+    via: subjectId
+  - from: Requisition
+    to: RequisitionLine
+    kind: has_many
+    via: lineId
+  - from: Quote
+    to: Requisition
+    kind: has_one
+    via: quoteId
+  - from: Requisition
+    to: Document
+    kind: has_one
+    via: spawn (order)
+  - from: Assignment
+    to: User
+    kind: belongs_to
+    via: assigneeid
+  - from: Assignment
+    to: AssignmentLog
+    kind: has_many
+    via: id
+  - from: DocumentFile
+    to: Document
+    kind: has_one
+    via: dispatcher
+  - from: BuyerSourcedDocument
+    to: Document
+    kind: has_one
+    via: externalDocumentId
+  - from: CompanyAccount
+    to: DynamicValidation
+    kind: has_many
+  - from: ValidatorGroup
+    to: Document
+    kind: validates
+coverage:
+  entities: 27
+  relationships: 27
+  operations_scanned: 172

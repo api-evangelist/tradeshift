@@ -1,0 +1,66 @@
+generated: '2026-08-02'
+method: searched
+source: https://developers.tradeshift.com/docs/api
+note: >-
+  Tradeshift separates test from live by ENVIRONMENT, not by key prefix. There is a full sandbox platform with its
+  own UI, its own API host and its own app store; credentials are per-environment. Tradeshift publishes no magic test
+  card numbers, test IBANs or fixture triggers — none are invented here.
+environments:
+  - name: sandbox
+    ui: https://sandbox.tradeshift.com/
+    api: https://api-sandbox.tradeshift.com/tradeshift
+    developer_app: https://sandbox.tradeshift.com/#/Tradeshift.Developer
+    api_access_app: https://sandbox.tradeshift.com/#/apps/Tradeshift.AppStore/apps/Tradeshift.APIAccessToOwnAccount
+    http_status: 200
+  - name: production
+    ui: https://go.tradeshift.com/
+    api: https://api.tradeshift.com/tradeshift
+    developer_app: https://go.tradeshift.com/#/Tradeshift.Developer
+    http_status: 200
+credentials:
+  model: per-environment OAuth credentials, no test/live key prefixes
+  oauth1:
+    obtain_via: Activate the "API Access to Own Account" app in the sandbox App Store.
+    values_returned: [consumer key, consumer secret, token, token secret]
+    signature_method: HMAC-SHA1
+  oauth2:
+    obtain_via: Install the Developer App, create a Vendor Id, then CREATE APP.
+    values_returned: [OAuth2 Client Id, OAuth2 Client Secret]
+    warning: The client secret is shown once at creation — "Copy this now".
+smoke_test:
+  request: GET https://api-sandbox.tradeshift.com/tradeshift/rest/external/account/info
+  headers:
+    Accept: application/json
+    X-Tradeshift-TenantId: '<your company account UUID>'
+  expected: Information about your own company.
+  source: https://developers.tradeshift.com/docs/api
+tooling:
+  - name: Postman
+    note: >-
+      Tradeshift's own getting-started documentation recommends Postman for exploring the API and gives step-by-step
+      OAuth 1.0 setup (Type = OAuth 1.0, add to Request Headers, HMAC-SHA1, plus an Accept: application/json header).
+      Tradeshift does not publish a public Postman collection or workspace.
+  - name: Hookbin
+    note: Used in Tradeshift's webhooks guide as the endpoint for capturing and inspecting webhook POSTs.
+  - name: http-mockserver
+    url: https://github.com/Tradeshift/http-mockserver
+    note: Tradeshift's own open-source HTTP mocking library for development and testing.
+  - name: UBL example documents
+    url: https://github.com/Tradeshift/tradeshift-ubl-examples
+    note: OASIS UBL example documents usable as sample payloads for the document APIs.
+  - name: TSUBL specifications and sample files
+    url: http://tradeshift.com/wp-content/uploads/TSUBL_20190213.zip
+test_values:
+  published: false
+  note: >-
+    No magic test identifiers, test card numbers, test bank accounts, test clocks or simulated-decline values are
+    published. Testing is done with real objects inside the sandbox tenant (e.g. create a second sandbox company,
+    connect the two, then send an invoice to trigger DOCUMENT_SENT).
+x-evidence:
+  fetched: '2026-08-02'
+  urls:
+    - url: https://api-sandbox.tradeshift.com/
+      http_status: 200
+      redirect: https://api-sandbox.tradeshift.com/tradeshift/
+    - url: https://sandbox.tradeshift.com/
+      http_status: 200

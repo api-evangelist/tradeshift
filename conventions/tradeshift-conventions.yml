@@ -1,0 +1,149 @@
+generated: '2026-08-02'
+method: searched
+source:
+  - https://developers.tradeshift.com/docs/api
+  - openapi/tradeshift-external-api-openapi.yml
+  - https://api.tradeshift.com/
+authentication:
+  style: OAuth 1.0a two-legged (HMAC-SHA1) or OAuth 2.0 three-legged bearer
+  tenancy_header: X-Tradeshift-TenantId
+  profile: authentication/tradeshift-authentication.yml
+  note: Every OAuth request must carry X-Tradeshift-TenantId with the company account UUID.
+idempotency:
+  supported: true
+  mechanism: client-assigned-resource-uuid
+  header: null
+  description: >-
+    Tradeshift makes writes idempotent by having the CLIENT choose the resource identifier rather than by an
+    Idempotency-Key header. Documents, tags, properties, connections properties, branches and legal-entity
+    identifiers are all created and updated with PUT to a URL containing a client-generated UUID or key, so replaying
+    the same request produces the same resource instead of a duplicate.
+  evidence:
+    - operation: put-rest-external-documents-documentid
+      quote: >-
+        "The client can decide on the UUID for the new element defined by the 'documentId' parameter."
+      source: openapi/tradeshift-external-api-openapi.yml
+    - operation: put-rest-external-account-branches-new
+      note: >-
+        Returns 400 when "the tenant identifier proposed does already exist on the platform" — the identifier is the
+        idempotency key and the platform refuses to create a second tenant for it.
+    - operation: put-rest-external-documents-documentid-tags-tag
+      note: PUT of a named tag on a document; repeating it is a no-op.
+    - operation: put-rest-external-documents-documentid-properties-property_key
+      note: PUT of a named document property; repeating it is a no-op.
+    - operation: put-rest-external-network-connections-connectionid-properties-key
+      note: PUT of a named connection property; repeating it is a no-op.
+  conflict_signal:
+    status: 409
+    example_operation: post-rest-external-suppliermanagement-documents
+    description: Document already exists.
+  guidance: >-
+    Generate a version-4/5 UUID per business document before the first attempt and reuse it on every retry. Do not
+    generate a fresh UUID on retry — that creates a second document.
+  caveat: >-
+    POST operations that spawn derived documents (post-rest-external-documents-requisitions-spawn,
+    post-rest-external-documents-dispatcher) are NOT idempotent; retrying them can produce duplicates.
+pagination:
+  style: page-number
+  request_params:
+    - name: page
+      description: Zero- or one-based page index, depending on the collection (responses echo pageId).
+    - name: limit
+      description: Page size on most collections.
+    - name: count
+      description: Page size on some collections (e.g. document files, network suggest).
+    - name: noPaging
+      description: Disable paging on collections that support it.
+  response_fields:
+    - itemsPerPage
+    - itemCount
+    - numPages
+    - pageId
+  envelope: >-
+    A list response is a JSON object with the paging fields above plus one array keyed on the singular resource name
+    (e.g. "Document", "Connection"), not a bare array.
+  example:
+    operation: get-rest-external-documents
+    body: '{"itemsPerPage": 25, "itemCount": 14, "indexing": false, "numPages": 1, "pageId": 0, "Document": [...]}'
+  sorting:
+    params: [orderBy, sortby, ordering, ascending, direction]
+    documents_sortable_on: [DueDate, LastEdit, Number, Amount, Date, Type]
+  filtering:
+    note: >-
+      Collections take rich query filters that combine as logical AND unless stated otherwise (e.g. documentType,
+      stag, state, processState, tag/withouttag, minissuedate/maxissuedate, createdAfter/createdBefore, q/query).
+content_negotiation:
+  supported: true
+  formats:
+    - media_type: application/xml
+      note: OASIS UBL / TSUBL — the default representation for business documents.
+    - media_type: application/json
+      note: JSON representation; Oasis JSON variant available on documents.
+    - media_type: application/pdf
+      note: Rendered representation of a document via Accept on get-rest-external-documents-documentid.
+  mechanism: Accept header; some operations also expose an acceptAs / accept query parameter.
+  failure:
+    status: 406
+    description: The request uses Accept headers that the server is unable to fulfill.
+identifiers:
+  scheme: UUID (RFC 4122), canonical hyphenated hex
+  pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
+  note: >-
+    Tradeshift identifies documents, companies, users, connections, dispatches and conversations with UUIDs, and the
+    spec enforces the pattern on request bodies. Company accounts additionally carry scheme-qualified business
+    identifiers (e.g. {"scheme": "TS:ID", "value": "..."}, plus GLN/VAT/DUNS style schemes).
+metadata:
+  mechanism: key/value properties and tags on the resource
+  document_properties: get/put/delete-rest-external-documents-documentid-properties-property_key
+  document_tags: put/delete-rest-external-documents-documentid-tags-tag
+  connection_properties: get/put/post/delete-rest-external-network-connections-connectionid-properties
+  note: >-
+    Connection properties are the documented place to store an integrator's own vendor/customer IDs against a
+    trading partner.
+error_envelope:
+  format: proprietary JSON (not RFC 9457)
+  media_types: [application/json, text/xml]
+  shape:
+    ErrorCode: string
+    Message: string
+    ErrorDetail: array of {Key, Value}
+  example: >-
+    {"ErrorCode":"Unauthorized","Message":"The user was not authorized to perform the operation: ...",
+    "ErrorDetail":[{"Key":"userUuid","Value":"37617bf8-4e04-41f2-bd27-9ad9153419ee"}]}
+  catalog: errors/tradeshift-problem-types.yml
+versioning:
+  scheme: uri-path
+  current: rest/external (v1 semantics; info.version 1.0.0)
+  note: >-
+    Tradeshift does not version the External API in the URL beyond the /rest/external prefix; breaking change is
+    managed through the published deprecation process rather than a version bump. A small number of endpoints carry
+    an explicit version in the path (e.g. the v1 coding-validation category).
+  deprecation: lifecycle/tradeshift-lifecycle.yml
+rate_limits:
+  documented: false
+  note: >-
+    Tradeshift publishes no rate-limit policy and the OpenAPI declares no 429 response or RateLimit headers on any of
+    its 172 operations. Absence recorded as observed, not assumed.
+tracing:
+  request_id_header: null
+  note: No request-id / correlation header is documented for the External API.
+events:
+  webhooks: asyncapi/tradeshift-webhooks.yml
+  mechanism: HTTP POST to a URL configured per app in the Developer App
+document_standards:
+  ubl: OASIS UBL 2.0/2.1 (TSUBL profile)
+  json_schema: json-schema/
+  code_lists:
+    currency: ISO 4217
+    country: ISO 3166
+    tax_category: UN/ECE 5305
+    tax_scheme: UN/ECE 5153 subset
+    unit_of_measure: UN/ECE rec 20
+  source: https://developers.tradeshift.com/docs/api
+cross_links:
+  authentication: authentication/tradeshift-authentication.yml
+  scopes: scopes/tradeshift-scopes.yml
+  errors: errors/tradeshift-problem-types.yml
+  lifecycle: lifecycle/tradeshift-lifecycle.yml
+  sandbox: sandbox/tradeshift-sandbox.yml
+  data_model: data-model/tradeshift-data-model.yml

@@ -1,0 +1,65 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Tradeshift MCP HTTP Bridge
+  version: 1.0.0
+extends: openapi/tradeshift-mcp-bridge-openapi.yml
+x-generated: '2026-08-02'
+x-method: generated
+x-source: >-
+  Derived from the harvested FastAPI-generated spec plus the RFC 8414 / RFC 9728 metadata Tradeshift publishes
+  anonymously at mcp.tradeshift.com.
+actions:
+  - target: $.info
+    description: The FastAPI-generated spec carries no description, contact or server list.
+    update:
+      description: >-
+        HTTP bridge and management API in front of the Tradeshift MCP server. Exposes the MCP tool surface over plain
+        HTTP (GET /tools/list, GET /{category}/tools/list, POST /{category}/tools/execute) alongside administration
+        of API keys, OAuth clients, tenant credentials, execution logs and admin action logs. Every operation
+        requires an X-API-Key header or an OAuth 2.0 bearer token.
+      contact:
+        name: Tradeshift
+        url: https://tradeshift.com/
+  - target: $
+    description: Add the server and the OAuth 2.0 client-credentials scheme the metadata documents.
+    update:
+      servers:
+        - url: https://mcp.tradeshift.com
+          description: Tradeshift MCP server and HTTP bridge.
+      x-apievangelist-artifacts:
+        mcp: mcp/tradeshift-mcp.yml
+        crosswalk: mcp/tradeshift-tool-crosswalk.yml
+        scopes: scopes/tradeshift-scopes.yml
+        authentication: authentication/tradeshift-authentication.yml
+      x-mcp-endpoint: https://mcp.tradeshift.com/mcp
+      x-mcp-transports: [http, sse, stdio]
+  - target: $.components.securitySchemes
+    description: Add the OAuth 2.0 client-credentials scheme advertised in the authorization-server metadata.
+    update:
+      TradeshiftMCPOAuth2:
+        type: oauth2
+        description: >-
+          OAuth 2.0 client credentials issued per MCP client. Scopes map one-to-one to the MCP capability domains.
+        flows:
+          clientCredentials:
+            tokenUrl: https://mcp.tradeshift.com/oauth/token
+            scopes:
+              core: Core services domain.
+              network: Supplier network domain.
+              documents: Documents domain.
+              company: Company data domain.
+              bfr: Business Firewall domain.
+              askada: AskAda AI assistant / Ada AI document intelligence domain.
+              all: All MCP capability domains.
+  - target: $.paths['/{category}/tools/list'].get
+    description: Record the category values Tradeshift advertises as OAuth scopes.
+    update:
+      x-category-values: [core, network, documents, company, bfr, askada]
+  - target: $.paths['/{category}/tools/execute'].post
+    description: Flag the consequence class of tool execution for agentic governance.
+    update:
+      x-agentic-action-class: acting
+      x-audit: required
+      x-note: >-
+        Tradeshift states write access was not yet enabled in production as of 2026-05-22; every execution is
+        recorded with full request correlation in an audit log.

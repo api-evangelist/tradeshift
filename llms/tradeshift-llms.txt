@@ -1,0 +1,33 @@
+# tradeshift.com llms.txt
+
+- [AP KPIs and Automation](https://tradeshift.com/solutions/ap-automation-software/reports/ardent-report-kpis): Provide insights and benchmarks on accounts payable KPIs and promote AP automation solutions.
+- [Tradeshift Contact Sales](https://tradeshift.com/contact): Provide sales contact information and global office locations for Tradeshift.
+- [Tradeshift Procure to Pay](https://tradeshift.com/products/procure-to-pay): Automate and streamline procure-to-pay processes to improve efficiency, compliance, and supplier collaboration for growing businesses.
+- [French e-Invoicing Mandate](https://tradeshift.com/e-invoicing-mandate-france): Inform businesses about the French mandatory e-Invoicing mandate, PDP selection, compliance solutions, and Tradeshift services.
+- [Tradeshift Supplier Subscriptions](https://tradeshift.com/seller-e-invoicing-subscriptions-with-tradeshift): Explain Tradeshift's supplier subscription plans for automated e-invoicing and related services.
+- [AP Automation Software](https://tradeshift.com/solutions/ap-automation-software): Promote and explain Tradeshift's cloud-based accounts payable automation software to improve financial processes and efficiency.
+- [E-Invoicing Compliance Resources](https://tradeshift.com/resources/?_resource_cats=compliance): Offers resources and webinars to help businesses comply with global e-invoicing and tax regulations.
+- [Tradeshift Go Virtual Cards](https://tradeshift.com/products/corporate-virtual-credit-cards): Promote Tradeshift Go virtual corporate credit cards for secure, approved business spending and simplified expense management.
+- [Peppol Webinar Overview](https://tradeshift.com/resources/compliance/7-crucial-things-to-know-about-peppol-webinar): Promote and provide registration for a webinar explaining the Peppol e-invoicing framework and compliance essentials.
+- [Global E-Invoicing Compliance](https://tradeshift.com/solutions/e-invoicing-compliance): Explain and support global e-invoicing and tax compliance for businesses through Tradeshift’s platform and solutions.
+- [Tradeshift Integration Guide](https://tradeshift.com/integrate): Guide integration of business document workflows with Tradeshift using various protocols and formats.
+- [B2B Marketplace Platform](https://tradeshift.com/products/b2b-ecommerce-marketplace): Provide a cloud-based B2B marketplace platform to optimize procurement, supplier management, and e-commerce processes.
+- [منصة أتمتة الحسابات الدائنة](https://tradeshift.com/ar): توفير منصة أتمتة الحسابات الدائنة والامتثال للفوترة الإلكترونية لتحسين العمليات المالية بين الشركات.
+- [France 2026 E-Invoicing Webinar](https://tradeshift.com/resources/compliance/france-e-invoicing-2026-compliance-webinar-recap): Summarizes key insights from Tradeshift’s webinar on France’s 2026 mandatory e-invoicing compliance and readiness.
+- [Customer Success Stories](https://tradeshift.com/resources/customer-stories): Showcase customer success stories highlighting Tradeshift's impact on digital invoicing and AP automation.
+- [E-invoicing Platform Solutions](https://tradeshift.com/solutions/e-invoicing-platform): Provide comprehensive information and solutions for automating and optimizing e-invoicing processes for businesses.
+- [Tradeshift Careers](https://tradeshift.com/careers): Showcases Tradeshift's company culture, values, job openings, and benefits to attract potential employees.
+- [Request a Demo](https://tradeshift.com/request-demo): Provide a form to request a sales demo of Tradeshift's AP automation and e-invoicing platform.
+- [AI Resources and Insights](https://tradeshift.com/resources/?_resource_cats=ai): Provide AI-focused resources and insights on Tradeshift's AP automation and e-invoicing solutions.
+- [Global e-Invoicing & AP Automation](https://tradeshift.com): Provide global e-Invoicing compliance and AP automation solutions with AI-powered tools and extensive country coverage.
+- [AP Automation Software](https://tradeshift.com/products/ap-automation-software): Provides AP automation software to reduce invoice processing costs, integrate with ERP, automate workflows, and ensure compliance.
+- [Sustainable Supply Chain](https://tradeshift.com/sustainable-supply-chain): Enable enterprises to build sustainable supply chains through digital tools for transparency, e-invoicing, and ESG compliance.
+- [Tradeshift Spring 2025 Webinar](https://tradeshift.com/resources/ap-automation/tradeshift-spring-release-webinar-2025): Showcase and provide access to the Tradeshift Spring 2025 product release webinar featuring compliance and AI updates.
+- [Tradeshift Elite Partner Programme](https://tradeshift.com/partner): Promote and recruit for Tradeshift's Elite Partner Programme enhancing digital transformation and procurement innovation.
+- [ビジネス取引自動化プラットフォーム](https://tradeshift.com/ja): 企業間取引の請求書処理と支払い業務をデジタル化・自動化し効率化するプラットフォーム提供。
+- [Global Invoice Automation](https://tradeshift.com/about): Automate global invoice processing and e-invoicing compliance to streamline business payments and procurement.
+- [Global E-invoicing Solution](https://tradeshift.com/products/globally-compliant-e-invoicing-solution): Provide a globally compliant e-invoicing solution that automates invoice processing and ensures regulatory adherence.
+- [France e-Invoicing Webinar](https://tradeshift.com/resources/compliance/get-ready-now-for-e-invoicing-in-france): Inform about France's 2026 e-invoicing mandate and offer a webinar on Tradeshift's compliant PDP solution.
+- [AP Automation Resources](https://tradeshift.com/resources/?_resource_cats=ap-automation-e-invoicing): Provide resources and insights on accounts payable automation and e-invoicing solutions for businesses.
+- [E-Invoicing Platform for Sellers](https://tradeshift.com/e-invoicing-platform-for-sellers): Provide an e-invoicing platform for sellers to automate invoice submission, ensure compliance, and improve payment speed.
+- [Facturation électronique Tradeshift](https://tradeshift.com/fr): Offrir des solutions de facturation électronique conforme et automatisée pour les entreprises en France et à l'international.

@@ -1,0 +1,50 @@
+generated: '2026-08-02'
+method: searched
+source: https://developers.tradeshift.com/announcements/
+feed: https://developers.tradeshift.com/announcements/index.xml
+scheme: dated-announcements
+current_version: '1.0.0'
+note: >-
+  Tradeshift runs a dedicated developer announcements site (a Hugo build under the developer center) with an RSS
+  feed, intended for platform changes and deprecations. It has not been updated since February 2023 — the three
+  entries below are the complete published set as observed on 2026-08-02. Product-level release notes live in the
+  Tradeshift Knowledge Base and in seasonal release posts on tradeshift.com/resources, which are marketing/product
+  notes rather than an API changelog.
+entries:
+  - date: '2023-02-01'
+    title: 'Document processed: Notice of Deprecation'
+    url: https://developers.tradeshift.com/announcements/2023-02-01-deprecation-document-processed/
+    breaking: true
+    summary: >-
+      tradeshift/rest/external/documents/{documentID}/processed entered the deprecation process prematurely and had
+      stopped reliably returning coding information for business documents. M1, M2 and M3 were all past; M4 advised
+      for 2023-03-01. Clients advised to migrate to
+      tradeshift/rest/external/documents/{documentID}/codingInformation. Applies to all environments and accounts.
+  - date: '2023-01-30'
+    title: Announcing Tradeshift API deprecation process
+    url: https://developers.tradeshift.com/announcements/2023-01-30-deprecation-process/
+    breaking: false
+    summary: >-
+      Publication of the official API deprecation policy at developers.tradeshift.com/docs/deprecation-process, with
+      the policy also on the Tradeshift Knowledgebase.
+  - date: '2023-01-29'
+    title: Announcing Tradeshift announcements
+    url: https://developers.tradeshift.com/announcements/2023-01-29-announcements/
+    breaking: false
+    summary: >-
+      Launch of the announcements site on the developer center for new features and developer-experience changes.
+other_release_channels:
+  - name: Seasonal product release posts
+    url: https://tradeshift.com/resources/
+    example: Fall 2025 product release — e-Invoicing compliance and AI updates.
+    note: Product-level, not API-contract-level.
+  - name: Knowledge Base
+    url: https://support.tradeshift.com/knowledgebase
+    note: Tradeshift points to the Knowledge Base for the comprehensive overview of new platform features.
+x-evidence:
+  fetched: '2026-08-02'
+  url: https://developers.tradeshift.com/announcements/
+  http_status: 200
+  feed_status: 200
+  entries_published: 3
+  most_recent_entry: '2023-02-01'

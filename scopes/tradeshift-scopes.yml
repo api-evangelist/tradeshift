@@ -1,0 +1,76 @@
+generated: '2026-08-02'
+method: searched
+source: https://mcp.tradeshift.com/.well-known/oauth-protected-resource
+docs: https://developers.tradeshift.com/docs/guides/oauth
+note: >-
+  The Tradeshift External API OpenAPI declares no securitySchemes, so no scopes can be derived from it — the
+  derive-oauth-scopes.py pass found zero oauth2 schemes. The scopes below are the ones Tradeshift actually publishes,
+  anonymously, on the MCP server's RFC 8414 authorization-server metadata and RFC 9728 protected-resource metadata.
+  They correspond one-to-one with the six MCP capability domains. Descriptions are the Tradeshift-published domain
+  labels, not invented scope prose.
+schemes:
+  - name: TradeshiftMCPOAuth2
+    type: oauth2
+    source: https://mcp.tradeshift.com/.well-known/oauth-authorization-server
+    issuer: https://mcp.tradeshift.com
+    resource: https://mcp.tradeshift.com/mcp
+    flows:
+      - flow: clientCredentials
+        tokenUrl: https://mcp.tradeshift.com/oauth/token
+        token_endpoint_auth_methods_supported:
+          - client_secret_post
+        response_types_supported:
+          - token
+    bearer_methods_supported:
+      - header
+  - name: TradeshiftPlatformOAuth2
+    type: oauth2
+    source: https://api.tradeshift.com/tradeshift/.well-known/oauth-authorization-server
+    issuer: https://api.tradeshift.com/tradeshift/
+    flows:
+      - flow: implicit
+        authorizationUrl: https://go.tradeshift.com/oauth2/authorize
+        tokenUrl: https://api.tradeshift.com/tradeshift/auth/token
+        response_types_supported:
+          - token
+    jwks_uri: https://api.tradeshift.com/tradeshift/auth/jwks
+    userinfo_endpoint: https://api.tradeshift.com/tradeshift/auth/userinfo
+    scopes_published: false
+    note: >-
+      The platform authorization-server metadata advertises no scopes_supported. App permissions on the Tradeshift
+      platform are configured per app in the Developer App (the "Permissions" field on app registration) rather than
+      declared as OAuth scope strings in a public document.
+scopes:
+  - scope: core
+    description: Core services domain of the Tradeshift MCP server.
+    flows: [clientCredentials]
+    sources: [https://mcp.tradeshift.com/.well-known/oauth-protected-resource]
+  - scope: network
+    description: Supplier network domain — connections, connection properties, network requests.
+    flows: [clientCredentials]
+    sources: [https://mcp.tradeshift.com/.well-known/oauth-protected-resource]
+  - scope: documents
+    description: Documents domain — business documents, search, validation.
+    flows: [clientCredentials]
+    sources: [https://mcp.tradeshift.com/.well-known/oauth-protected-resource]
+  - scope: company
+    description: Company data domain — accounts, branches, legal entities, tax identifiers.
+    flows: [clientCredentials]
+    sources: [https://mcp.tradeshift.com/.well-known/oauth-protected-resource]
+  - scope: bfr
+    description: Business Firewall domain.
+    flows: [clientCredentials]
+    sources: [https://mcp.tradeshift.com/.well-known/oauth-protected-resource]
+  - scope: askada
+    description: AskAda AI assistant / Ada AI document intelligence domain.
+    flows: [clientCredentials]
+    sources: [https://mcp.tradeshift.com/.well-known/oauth-protected-resource]
+  - scope: all
+    description: All MCP capability domains.
+    flows: [clientCredentials]
+    sources: [https://mcp.tradeshift.com/.well-known/oauth-protected-resource]
+x-evidence:
+  fetched: '2026-08-02'
+  url: https://mcp.tradeshift.com/.well-known/oauth-protected-resource
+  http_status: 200
+  content_type: application/json

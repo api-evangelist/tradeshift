@@ -1,0 +1,9 @@
+
+{
+  "issuer": "https://api.tradeshift.com/tradeshift/",
+  "jwks_uri": "https://api.tradeshift.com/tradeshift/auth/jwks",
+  "userinfo_endpoint": "https://api.tradeshift.com/tradeshift/auth/userinfo",
+  "authorization_endpoint": "https://go.tradeshift.com/oauth2/authorize",
+  "token_endpoint": "https://api.tradeshift.com/tradeshift/auth/token",
+  "response_types_supported": [ "token" ]
+}

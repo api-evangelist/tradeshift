@@ -1,0 +1,149 @@
+generated: '2026-08-02'
+method: searched
+source: >-
+  Maven Central (search.maven.org), npm registry search, github.com/Tradeshift; PyPI, Packagist, NuGet, RubyGems,
+  crates.io and pkg.go.dev returned no first-party Tradeshift client library.
+note: >-
+  Tradeshift's only first-party server-side client library for the External API is the Java SDK published under the
+  com.tradeshift.sdk group on Maven Central, split into one artifact per platform domain. The npm @tradeshift scope
+  is front-end: the Tradeshift UI framework, the Elements web-component library, and the app-messaging library used
+  by apps embedded in the Tradeshift platform — those are catalogued here and in components/. The UBL schema
+  artifacts (XSD and JSON Schema) are the document contracts the API exchanges, not API clients.
+packages:
+  - language: java
+    registry: maven-central
+    name: com.tradeshift.sdk:tradeshift-sdk
+    url: https://central.sonatype.com/artifact/com.tradeshift.sdk/tradeshift-sdk
+    version: 0.2.0
+    official: true
+    kind: sdk
+    description: Aggregate Tradeshift Java SDK for the Tradeshift External API.
+    modules:
+      - com.tradeshift.sdk:tradeshift-sdk-core
+      - com.tradeshift.sdk:tradeshift-sdk-accounts
+      - com.tradeshift.sdk:tradeshift-sdk-documents
+      - com.tradeshift.sdk:tradeshift-sdk-documentfiles
+      - com.tradeshift.sdk:tradeshift-sdk-network
+      - com.tradeshift.sdk:tradeshift-sdk-workflow
+      - com.tradeshift.sdk:tradeshift-sdk-assignments
+      - com.tradeshift.sdk:tradeshift-sdk-coding
+      - com.tradeshift.sdk:tradeshift-sdk-notifications
+      - com.tradeshift.sdk:tradeshift-sdk-campaign
+      - com.tradeshift.sdk:tradeshift-sdk-apps
+      - com.tradeshift.sdk:tradeshift-sdk-linelinker
+      - com.tradeshift.sdk:tradeshift-sdk-test
+      - com.tradeshift.sdk:tradeshift-sdk-codestyle
+  - language: javascript
+    registry: npm
+    name: '@tradeshift/tradeshift-ui'
+    url: https://www.npmjs.com/package/@tradeshift/tradeshift-ui
+    version: 12.9.1
+    install: npm install @tradeshift/tradeshift-ui
+    official: true
+    kind: ui-framework
+    source: https://github.com/Tradeshift/tradeshift-ui
+    description: The Tradeshift UI Library & Framework used to build apps that run inside the Tradeshift platform.
+  - language: typescript
+    registry: npm
+    name: '@tradeshift/tradeshift-ui-types'
+    url: https://www.npmjs.com/package/@tradeshift/tradeshift-ui-types
+    version: 3.6.2
+    install: npm install @tradeshift/tradeshift-ui-types
+    official: true
+    kind: types
+    description: TypeScript definitions for the Tradeshift UI components.
+  - language: javascript
+    registry: npm
+    name: '@tradeshift/elements'
+    url: https://www.npmjs.com/package/@tradeshift/elements
+    version: 0.40.2
+    install: npm install @tradeshift/elements
+    official: true
+    kind: web-components
+    source: https://github.com/Tradeshift/elements
+    description: >-
+      Tradeshift Elements — the Tradeshift UI components as framework-agnostic Web Components, published as ~45
+      individually installable @tradeshift/elements.* packages (see components/tradeshift-components.yml).
+  - language: javascript
+    registry: npm
+    name: '@tradeshift/io'
+    url: https://www.npmjs.com/package/@tradeshift/io
+    version: 4.0.0
+    install: npm install @tradeshift/io
+    official: true
+    kind: library
+    source: https://github.com/Tradeshift/io
+    description: ts.io — the Tradeshift App Messaging Library for cross-frame messaging between apps on the platform.
+  - language: javascript
+    registry: npm
+    name: '@tradeshift/g11n-langneg'
+    url: https://www.npmjs.com/package/@tradeshift/g11n-langneg
+    version: 1.3.2
+    install: npm install @tradeshift/g11n-langneg
+    official: true
+    kind: library
+    source: https://github.com/Tradeshift/g11n-langneg
+    description: Language negotiation helpers used by Tradeshift front ends.
+  - language: javascript
+    registry: npm
+    name: react-tradeshift-ui
+    url: https://www.npmjs.com/package/react-tradeshift-ui
+    version: 3.3.5
+    install: npm install react-tradeshift-ui
+    official: false
+    kind: ui-wrapper
+    description: React wrappers for the Tradeshift UI components (community-published, not under the @tradeshift scope).
+  - language: javascript
+    registry: npm
+    name: eslint-config-tradeshift
+    url: https://www.npmjs.com/package/eslint-config-tradeshift
+    version: 9.1.0
+    install: npm install --save-dev eslint-config-tradeshift
+    official: true
+    kind: tooling
+    source: https://github.com/Tradeshift/eslint-config-tradeshift
+    description: Tradeshift JavaScript style as a shareable ESLint config.
+schemas:
+  - language: java
+    registry: maven-central
+    name: com.tradeshift:tradeshift-ubl-jsonschema
+    url: https://central.sonatype.com/artifact/com.tradeshift/tradeshift-ubl-jsonschema
+    version: 2.1.0-cnd02
+    official: true
+    kind: json-schema
+    source: https://github.com/Tradeshift/tradeshift-ubl-jsonschema
+    description: JSON Schema for OASIS UBL, as published by Tradeshift (harvested subset in json-schema/).
+  - language: java
+    registry: maven-central
+    name: com.tradeshift:tradeshift-ubl-xsd
+    url: https://central.sonatype.com/artifact/com.tradeshift/tradeshift-ubl-xsd
+    version: 2.2.0
+    official: true
+    kind: xsd
+    source: https://github.com/Tradeshift/tradeshift-ubl-xsd
+    description: XSDs for OASIS UBL, with 2.0 / 2.1 / 2.2 and backport variants.
+  - language: java
+    registry: maven-central
+    name: com.tradeshift:tradeshift-ubl-examples
+    url: https://central.sonatype.com/artifact/com.tradeshift/tradeshift-ubl-examples
+    version: 2.2.0
+    official: true
+    kind: examples
+    source: https://github.com/Tradeshift/tradeshift-ubl-examples
+    description: OASIS UBL example documents used as reference payloads for the Tradeshift document APIs.
+not_found:
+  - registry: pypi
+    query: tradeshift, python-tradeshift, tradeshift-api
+    result: 404
+  - registry: packagist
+    query: tradeshift
+    result: no first-party package
+  - registry: nuget
+    query: tradeshift
+    result: no results
+  - registry: rubygems
+    result: no first-party package
+  - registry: crates.io
+    result: no first-party package
+  - registry: pkg.go.dev
+    result: no first-party package

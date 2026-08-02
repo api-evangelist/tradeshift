@@ -1,0 +1,49 @@
+generated: '2026-08-02'
+method: searched
+probe: true
+source: https://tradeshift.com/security/
+url: https://tradeshift.com/security/
+kind: security-and-compliance-whitepaper
+note: >-
+  Tradeshift does not run a hosted trust-center portal (trust.tradeshift.com does not resolve). It publishes a
+  security and compliance whitepaper page instead, which names its third-party audit standards explicitly. Audit
+  reports are described as available to customers on request, not published.
+certifications:
+  - SOC 1 Type II
+  - SOC 2 Type II
+  - ISAE 3402 Type II
+  - PCI DSS Level 1
+  - ISO 27001
+quote: >-
+  "Our rigorous and ever-expanding compliance program includes 3rd party audits that enable us to provide our
+  customers reports validating the security of the platform with standards such as SOC 1 Type II, SOC 2 Type II,
+  ISAE 3402 Type II, Payment Card Industry (PCI-DSS) Level 1 and ISO 27001."
+topics_covered:
+  - Governance and risk assessment
+  - Access control
+  - Secure software development life cycle
+  - Data classification and data security
+  - Physical security (cloud provider certified to ISO 27001 and SOC 1/2)
+  - Configuration and patch management
+  - Vulnerability management and incident response
+  - Monitoring and logging
+  - Data backup and restore
+  - Business continuity and disaster recovery
+  - Awareness and training
+  - Compliance management
+regulatory:
+  - GDPR
+  - e-invoicing compliance across 69 countries
+  - French e-invoicing mandate — registered PDP (Plateforme de Dématérialisation Partenaire)
+probes:
+  - url: https://trust.tradeshift.com/
+    result: NXDOMAIN
+  - url: https://tradeshift.com/trust/
+    http_status: 404
+  - url: https://tradeshift.com/security/
+    http_status: 200
+evidence:
+  - source: https://tradeshift.com/security/
+    keywords: [soc 1 type ii, soc 2 type ii, isae 3402 type ii, pci-dss level 1, iso 27001, gdpr]
+x-evidence:
+  fetched: '2026-08-02'

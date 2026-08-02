@@ -1,0 +1,47 @@
+generated: '2026-08-02'
+method: searched
+source: https://github.com/Tradeshift/tradeshift-ubl-jsonschema
+package: com.tradeshift:tradeshift-ubl-jsonschema:2.1.0-cnd02
+license: See LICENSE in the upstream repository (OASIS UBL, republished by Tradeshift).
+note: >-
+  Tradeshift publishes JSON Schema for OASIS UBL itself, and its API exchanges business documents in exactly these
+  shapes (TSUBL is a subset of UBL 2.0/2.1). Harvested here is the maindoc subset covering the document types the
+  Tradeshift External API handles. The full set — including the ~1MB
+  UBL-CommonAggregateComponents-2.1.json that these documents $ref — lives upstream; resolve $refs against
+  https://raw.githubusercontent.com/Tradeshift/tradeshift-ubl-jsonschema/master/src/main/resources/org/oasis-open/ubl/schemas/common/
+draft: http://json-schema.org/draft-04/schema#
+schemas:
+  - file: tradeshift-ubl-invoice-2.1.json
+    document_type: Invoice
+    upstream: UBL-Invoice-2.1.json
+  - file: tradeshift-ubl-creditnote-2.1.json
+    document_type: CreditNote
+    upstream: UBL-CreditNote-2.1.json
+  - file: tradeshift-ubl-order-2.1.json
+    document_type: Order
+    upstream: UBL-Order-2.1.json
+  - file: tradeshift-ubl-orderresponse-2.1.json
+    document_type: OrderResponse
+    upstream: UBL-OrderResponse-2.1.json
+  - file: tradeshift-ubl-quotation-2.1.json
+    document_type: Quotation
+    upstream: UBL-Quotation-2.1.json
+  - file: tradeshift-ubl-requestforquotation-2.1.json
+    document_type: RequestForQuotation
+    upstream: UBL-RequestForQuotation-2.1.json
+  - file: tradeshift-ubl-receiptadvice-2.1.json
+    document_type: ReceiptAdvice
+    upstream: UBL-ReceiptAdvice-2.1.json
+  - file: tradeshift-ubl-despatchadvice-2.1.json
+    document_type: DespatchAdvice
+    upstream: UBL-DespatchAdvice-2.1.json
+  - file: tradeshift-ubl-applicationresponse-2.1.json
+    document_type: ApplicationResponse
+    upstream: UBL-ApplicationResponse-2.1.json
+related:
+  xsd: https://github.com/Tradeshift/tradeshift-ubl-xsd
+  examples: https://github.com/Tradeshift/tradeshift-ubl-examples
+  tsubl_spec: http://tradeshift.com/wp-content/uploads/TSUBL_20190213.zip
+x-evidence:
+  fetched: '2026-08-02'
+  http_status: 200

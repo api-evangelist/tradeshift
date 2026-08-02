@@ -1,0 +1,90 @@
+generated: '2026-08-02'
+method: generated
+source: openapi/tradeshift-external-api-openapi.yml
+note: >-
+  Packaged agent operating instructions for the marquee Tradeshift flows. Every operationId cited in these skills was
+  grepped out of openapi/tradeshift-external-api-openapi.yml and verified to exist. Tradeshift publishes no AGENTS.md
+  or first-party skill files; these are generated, not harvested.
+skills:
+  - file: tradeshift-send-an-invoice.md
+    name: Send an invoice on Tradeshift
+    api: openapi/tradeshift-external-api-openapi.yml
+    operations:
+      - get-rest-external-account-info
+      - get-rest-external-network-connections
+      - put-rest-external-documents-documentid
+      - post-rest-external-documents-dispatcher
+      - get-rest-external-documents-documentid-dispatches-latest
+      - get-rest-external-documents-documentid
+  - file: tradeshift-connect-with-a-trading-partner.md
+    name: Connect with a trading partner on Tradeshift
+    api: openapi/tradeshift-external-api-openapi.yml
+    operations:
+      - get-rest-external-network-companies
+      - get-rest-external-network-suggest
+      - get-rest-external-network-connections
+      - post-rest-external-network-connect-companyid
+      - get-rest-external-network-requests
+      - post-rest-external-network-requests-connectionid-accept
+      - get-rest-external-network-connections-connectionid
+      - put-rest-external-network-connections-connectionid-properties-key
+      - post-rest-external-network-connections-connectionid-verify
+  - file: tradeshift-sync-documents-to-an-erp.md
+    name: Sync Tradeshift documents into an ERP
+    api: openapi/tradeshift-external-api-openapi.yml
+    operations:
+      - get-rest-external-documents
+      - get-rest-external-documents-documentid
+      - get-rest-external-documents-documentid-original
+      - get-rest-external-documents-documentid-metadata
+      - get-rest-external-documents-documentid-sendercompany
+      - put-rest-external-documents-documentid-tags-tag
+      - put-rest-external-documents-documentid-properties-property_key
+      - get-rest-external-documents-csv
+  - file: tradeshift-validate-a-document.md
+    name: Validate a document before sending on Tradeshift
+    api: openapi/tradeshift-external-api-openapi.yml
+    operations:
+      - post-rest-external-documents-validate
+      - put-rest-external-document-validation-validation-validate-document
+      - get-rest-external-document-validation-validation-groups
+      - get-rest-external-document-validation-validation-groups-groupid
+      - put-rest-external-document-validation-validation-groups-groupid
+      - get-rest-external-document-validation-validation-groups-groupid-history
+      - get-rest-external-account-validations
+      - get-rest-external-account-validations-valuesets
+      - get-rest-external-account-validations-values
+  - file: tradeshift-route-a-document-for-approval.md
+    name: Route a document for approval on Tradeshift
+    api: openapi/tradeshift-external-api-openapi.yml
+    operations:
+      - get-rest-external-account-users
+      - get-rest-external-usergroups
+      - post-rest-external-assignments
+      - get-rest-external-assignments
+      - get-rest-external-assignments-id
+      - patch-rest-external-assignments-id
+      - put-rest-external-assignments-id-comment
+      - post-rest-external-assignments-id-reassign-assigneeid
+      - put-rest-external-assignments-id-close
+      - get-rest-external-assignments-id-logs
+      - get-rest-external-assignments-subjects-subjectid-logs
+  - file: tradeshift-onboard-a-branch-and-users.md
+    name: Onboard a branch account and its users on Tradeshift
+    api: openapi/tradeshift-external-api-openapi.yml
+    operations:
+      - get-rest-external-account
+      - get-rest-external-account-branches
+      - put-rest-external-account-branches-new
+      - get-rest-external-account-branches-companyid
+      - get-rest-external-account-users
+      - put-rest-external-account-users-userid
+      - put-rest-external-account-users-userid-role
+      - put-rest-external-account-users-userid-state
+      - get-rest-external-account-taxes
+      - put-rest-external-account-taxes
+      - put-rest-external-legalentities-id
+      - put-rest-external-legalentities-id-identifiers-identifier
+      - put-rest-external-companies-companyaccountid-identifiers
+      - get-rest-external-users-userid-branches
+      - put-rest-external-users-userid-primarybranch-newgroupid

@@ -1,0 +1,94 @@
+generated: '2026-08-02'
+method: searched
+source:
+  - https://github.com/Tradeshift/elements
+  - https://github.com/Tradeshift/tradeshift-ui
+  - https://ui.tradeshift.com
+  - npm registry (@tradeshift scope)
+note: >-
+  Tradeshift ships client-side UI components for apps that run embedded inside the Tradeshift platform. Two families:
+  the older Tradeshift UI library/framework, and Tradeshift Elements — the same design system as framework-agnostic
+  Web Components, published as individually installable npm packages. These are distinct from the server-side SDKs in
+  packages/.
+families:
+  - name: Tradeshift UI
+    kind: ui-framework
+    loader: '@tradeshift/tradeshift-ui'
+    version: 12.9.1
+    npm: https://www.npmjs.com/package/@tradeshift/tradeshift-ui
+    source: https://github.com/Tradeshift/tradeshift-ui
+    docs: https://ui.tradeshift.com
+    types: '@tradeshift/tradeshift-ui-types'
+    description: The Tradeshift UI Library & Framework used to build apps hosted on the Tradeshift platform.
+  - name: Tradeshift Elements
+    kind: web-components
+    loader: '@tradeshift/elements'
+    version: 0.40.2
+    npm: https://www.npmjs.com/package/@tradeshift/elements
+    source: https://github.com/Tradeshift/elements
+    description: >-
+      Reusable Tradeshift UI components as Web Components. The umbrella package pulls in the set; each component is
+      also installable on its own as @tradeshift/elements.<name>.
+    components:
+      - action-select
+      - app-icon
+      - aside
+      - basic-table
+      - board
+      - button
+      - button-group
+      - card
+      - checkbox
+      - confirmation-prompt
+      - cover
+      - date-picker
+      - date-picker-overlay
+      - dialog
+      - document-card
+      - file-card
+      - file-size
+      - file-uploader-input
+      - header
+      - help-text
+      - icon
+      - input
+      - label
+      - list-item
+      - modal
+      - note
+      - overlay
+      - pager
+      - popover
+      - progress-bar
+      - radio
+      - radio-group
+      - root
+      - search
+      - select
+      - select-menu
+      - spinner
+      - status
+      - tab
+      - table
+      - tabs
+      - tag
+      - text-field
+      - tooltip
+      - typography
+  - name: ts.io (App Messaging)
+    kind: library
+    loader: '@tradeshift/io'
+    version: 4.0.0
+    npm: https://www.npmjs.com/package/@tradeshift/io
+    source: https://github.com/Tradeshift/io
+    description: >-
+      The Tradeshift App Messaging Library — cross-frame messaging between an embedded app and the Tradeshift
+      platform shell. Required plumbing for any app that renders inside Tradeshift.
+community:
+  - name: react-tradeshift-ui
+    npm: https://www.npmjs.com/package/react-tradeshift-ui
+    official: false
+    description: React wrappers for the Tradeshift UI components.
+x-evidence:
+  fetched: '2026-08-02'
+  npm_scope_packages_observed: 50

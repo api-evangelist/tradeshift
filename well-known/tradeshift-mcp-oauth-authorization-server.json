@@ -1,0 +1,1 @@
+{"issuer":"https://mcp.tradeshift.com","token_endpoint":"https://mcp.tradeshift.com/oauth/token","grant_types_supported":["client_credentials"],"token_endpoint_auth_methods_supported":["client_secret_post"],"response_types_supported":["token"],"scopes_supported":["core","network","documents","company","bfr","askada","all"]}

@@ -1,0 +1,95 @@
+generated: '2026-08-02'
+method: searched
+source: live probes of every Tradeshift host in apis.yml
+note: >-
+  developers.tradeshift.com is a single-page application whose catch-all returns HTTP 200 with an HTML shell for
+  every /.well-known/* path; those responses are recorded as false positives, not as documents. api.tradeshift.com
+  answers 405 (OPTIONS only) for every unrecognised path, so a 405 there means "no document", not "blocked".
+hosts:
+  - host: https://api.tradeshift.com
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        redirect: https://api.tradeshift.com/tradeshift/.well-known/oauth-authorization-server
+        content_type: application/json
+        file: tradeshift-api-oauth-authorization-server.json
+        spec: RFC 8414
+      - path: /.well-known/oauth-protected-resource
+        status: 405
+      - path: /.well-known/openid-configuration
+        status: 405
+      - path: /.well-known/security.txt
+        status: 405
+      - path: /.well-known/api-catalog
+        status: 405
+      - path: /.well-known/ai-plugin.json
+        status: 405
+      - path: /.well-known/agent-card.json
+        status: 405
+      - path: /.well-known/agent.json
+        status: 405
+  - host: https://mcp.tradeshift.com
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        file: tradeshift-mcp-oauth-authorization-server.json
+        spec: RFC 8414
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        content_type: application/json
+        file: tradeshift-mcp-oauth-protected-resource.json
+        spec: RFC 9728
+      - path: /.well-known/openid-configuration
+        status: 404
+        body: '{"detail":"Not an OpenID Connect provider"}'
+      - path: /.well-known/security.txt
+        status: 401
+      - path: /.well-known/agent-card.json
+        status: 401
+      - path: /.well-known/agent.json
+        status: 401
+  - host: https://tradeshift.com
+    documents:
+      - path: /llms.txt
+        status: 200
+        content_type: text/plain
+        file: ../llms/tradeshift-llms.txt
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://developers.tradeshift.com
+    documents:
+      - path: /.well-known/*
+        status: 200
+        content_type: text/html
+        rejected: true
+        reason: SPA catch-all returns the same 1,165-byte HTML shell for every path
+  - host: https://go.tradeshift.com
+    documents:
+      - path: /.well-known/*
+        status: 404
+  - host: https://support.tradeshift.com
+    documents:
+      - path: /.well-known/*
+        status: 404
+security_txt:
+  published: false
+  probed:
+    - https://tradeshift.com/.well-known/security.txt
+    - https://api.tradeshift.com/.well-known/security.txt
+    - https://developers.tradeshift.com/.well-known/security.txt
+    - https://mcp.tradeshift.com/.well-known/security.txt
+x-evidence:
+  fetched: '2026-08-02'
