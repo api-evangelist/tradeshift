@@ -99,7 +99,7 @@ apis:
     properties:
       - type: MCPServer
         url: mcp/tradeshift-mcp.yml
-      - type: MCP
+      - type: MCPServer
         url: https://mcp.tradeshift.com/mcp
       - type: ToolCrosswalk
         url: mcp/tradeshift-tool-crosswalk.yml

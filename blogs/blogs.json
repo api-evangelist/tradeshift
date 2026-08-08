@@ -1,0 +1,21 @@
+{
+  "repo": "tradeshift",
+  "feeds": [
+    {
+      "source": "https://support.tradeshift.com/knowledgebase",
+      "feed_url": "https://support.tradeshift.com/knowledgebase",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://tradeshift.com/resources/",
+      "feed_url": "https://tradeshift.com/feed/",
+      "title": "",
+      "saved": 2,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 2,
+  "fetched": "2026-08-06T14:08:46Z"
+}
