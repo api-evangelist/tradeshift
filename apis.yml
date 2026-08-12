@@ -36,83 +36,1447 @@ tags:
   - mcp
   - agent-native
 apis:
-  - name: Tradeshift External API
-    description: >-
-      REST API over the Tradeshift business commerce platform. 172 operations across accounts and branches, legal
-      entities, taxes and validations, network connections and connection properties, document profiles, business
-      documents and document files, attachments, quotes, requisitions, receipt advices, users and memberships,
-      assignments, buyer-sourced documents, and document validation and clearance. JSON and XML (OASIS UBL / TSUBL)
-      representations; OAuth 1.0a two-legged or OAuth 2.0 three-legged auth plus a required X-Tradeshift-TenantId
-      header.
-    humanURL: https://developers.tradeshift.com/docs/api
-    baseURL: https://api.tradeshift.com/tradeshift
-    tags:
-      - e-invoicing
-      - accounts-payable
-      - business-documents
-      - ubl
-      - supplier-network
-      - procure-to-pay
-      - invoicing
-    properties:
-      - type: OpenAPI
-        url: openapi/tradeshift-external-api-openapi.yml
-      - type: Documentation
-        url: https://developers.tradeshift.com/docs/api
-      - type: APIReference
-        url: https://developers.tradeshift.com/docs/api
-      - type: Authentication
-        url: authentication/tradeshift-authentication.yml
-      - type: Conventions
-        url: conventions/tradeshift-conventions.yml
-      - type: ErrorCatalog
-        url: errors/tradeshift-problem-types.yml
-      - type: DataModel
-        url: data-model/tradeshift-data-model.yml
-      - type: Overlay
-        url: overlays/tradeshift-external-api-overlay.yaml
-      - type: Webhooks
-        url: asyncapi/tradeshift-webhooks.yml
-      - type: Sandbox
-        url: sandbox/tradeshift-sandbox.yml
-      - type: JSONSchema
-        url: json-schema/_index.yml
-      - type: GettingStarted
-        url: https://developers.tradeshift.com/docs/guides/get-started
-  - name: Tradeshift MCP Server
-    description: >-
-      Production Model Context Protocol server that exposes Tradeshift platform capability to AI agents, described by
-      Tradeshift as 95 tools across six domains (core services, supplier network, documents, company data, the
-      Business Firewall, and the AskAda AI assistant / Ada AI document intelligence layer). Built on FastAPI with
-      stdio and HTTP+SSE transports, OAuth 2.0 client-credentials with per-domain scopes, tenant isolation, and a
-      PostgreSQL audit log of every tool execution. The MCP endpoint and the tools/list surface require
-      authentication; anonymous discovery is limited to the RFC 8414 / RFC 9728 metadata documents and the HTTP
-      bridge OpenAPI.
-    humanURL: https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
-    baseURL: https://mcp.tradeshift.com/mcp
-    tags:
-      - mcp
-      - agent-native
-      - accounts-payable
-      - e-invoicing
-      - business-documents
-    properties:
-      - type: MCPServer
-        url: mcp/tradeshift-mcp.yml
-      - type: MCPServer
-        url: https://mcp.tradeshift.com/mcp
-      - type: ToolCrosswalk
-        url: mcp/tradeshift-tool-crosswalk.yml
-      - type: OpenAPI
-        url: openapi/tradeshift-mcp-bridge-openapi.yml
-      - type: OAuthScopes
-        url: scopes/tradeshift-scopes.yml
-      - type: Authentication
-        url: authentication/tradeshift-authentication.yml
-      - type: Overlay
-        url: overlays/tradeshift-mcp-bridge-overlay.yaml
-      - type: Documentation
-        url: https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-admin-api
+  name: Tradeshift Admin API
+  description: The Admin API from Tradeshift — 11 operation(s) for admin.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-admin-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-document-validation-api
+  name: Tradeshift Document Validation API
+  description: Manages document validators
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - Document Validation
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-document-validation-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-accounts-branches-api
+  name: Tradeshift Dx Category Accounts Branches API
+  description: >-
+    The dx-category--accounts-branches API from Tradeshift — 4 operation(s) for dx-category--accounts-branches.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--accounts-branches
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-accounts-branches-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-accounts-company-api
+  name: Tradeshift Dx Category Accounts Company API
+  description: >-
+    The dx-category--accounts-company API from Tradeshift — 5 operation(s) for dx-category--accounts-company.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--accounts-company
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-accounts-company-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-accounts-gli-prefixes-api
+  name: Tradeshift Dx Category Accounts Gli Prefixes API
+  description: >-
+    The dx-category--accounts-gli_prefixes API from Tradeshift — 2 operation(s) for dx-category--accounts-gli_prefixes.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--accounts-gli_prefixes
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-accounts-gli-prefixes-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-accounts-legal-entities-api
+  name: Tradeshift Dx Category Accounts Legal Entities API
+  description: >-
+    The dx-category--accounts-legal_entities API from Tradeshift — 4 operation(s) for dx-category--accounts-legal_entities.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--accounts-legal_entities
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-accounts-legal-entities-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-accounts-taxes-api
+  name: Tradeshift Dx Category Accounts Taxes API
+  description: >-
+    The dx-category--accounts-taxes API from Tradeshift — 1 operation(s) for dx-category--accounts-taxes.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--accounts-taxes
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-accounts-taxes-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-accounts-validations-api
+  name: Tradeshift Dx Category Accounts Validations API
+  description: >-
+    The dx-category--accounts-validations API from Tradeshift — 8 operation(s) for dx-category--accounts-validations.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--accounts-validations
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-accounts-validations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-assignments-create-api
+  name: Tradeshift Dx Category Assignments Create API
+  description: >-
+    The dx-category--assignments-create API from Tradeshift — 1 operation(s) for dx-category--assignments-create.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--assignments-create
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-assignments-create-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-assignments-find-api
+  name: Tradeshift Dx Category Assignments Find API
+  description: >-
+    The dx-category--assignments-find API from Tradeshift — 2 operation(s) for dx-category--assignments-find.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--assignments-find
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-assignments-find-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-assignments-logs-api
+  name: Tradeshift Dx Category Assignments Logs API
+  description: >-
+    The dx-category--assignments-logs API from Tradeshift — 2 operation(s) for dx-category--assignments-logs.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--assignments-logs
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-assignments-logs-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-assignments-reassign-api
+  name: Tradeshift Dx Category Assignments Reassign API
+  description: >-
+    The dx-category--assignments-reassign API from Tradeshift — 2 operation(s) for dx-category--assignments-reassign.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--assignments-reassign
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-assignments-reassign-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-assignments-update-api
+  name: Tradeshift Dx Category Assignments Update API
+  description: >-
+    The dx-category--assignments-update API from Tradeshift — 3 operation(s) for dx-category--assignments-update.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--assignments-update
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-assignments-update-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-bsd-documents-api
+  name: Tradeshift Dx Category Bsd Documents API
+  description: >-
+    The dx-category--bsd-documents API from Tradeshift — 6 operation(s) for dx-category--bsd-documents.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--bsd-documents
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-bsd-documents-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-document-validation-validate-document-api
+  name: Tradeshift Dx Category Document Validation Validate Document API
+  description: >-
+    The dx-category--document-validation-validate_document API from Tradeshift — 1 operation(s) for dx-category--document-validation-validate_document.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--document-validation-validate_document
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-document-validation-validate-document-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-document-validation-validators-delete-api
+  name: Tradeshift Dx Category Document Validation Validators Delete API
+  description: >-
+    The dx-category--document-validation-validators_delete API from Tradeshift — 1 operation(s) for dx-category--document-validation-validators_delete.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--document-validation-validators_delete
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-document-validation-validators-delete-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-document-validation-validators-find-all-api
+  name: Tradeshift Dx Category Document Validation Validators Find All API
+  description: >-
+    The dx-category--document-validation-validators_find_all API from Tradeshift — 1 operation(s) for
+    dx-category--document-validation-validators_find_all.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--document-validation-validators_find_all
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-document-validation-validators-find-all-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-document-validation-validators-find-api
+  name: Tradeshift Dx Category Document Validation Validators Find API
+  description: >-
+    The dx-category--document-validation-validators_find API from Tradeshift — 1 operation(s) for dx-category--document-validation-validators_find.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--document-validation-validators_find
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-document-validation-validators-find-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-document-validation-validators-history-api
+  name: Tradeshift Dx Category Document Validation Validators History API
+  description: >-
+    The dx-category--document-validation-validators_history API from Tradeshift — 1 operation(s) for dx-category--document-validation-validators_history.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--document-validation-validators_history
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-document-validation-validators-history-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-document-validation-validators-save-api
+  name: Tradeshift Dx Category Document Validation Validators Save API
+  description: >-
+    The dx-category--document-validation-validators_save API from Tradeshift — 1 operation(s) for dx-category--document-validation-validators_save.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--document-validation-validators_save
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-document-validation-validators-save-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-documents-assignments-api
+  name: Tradeshift Dx Category Documents Assignments API
+  description: >-
+    The dx-category--documents-assignments API from Tradeshift — 9 operation(s) for dx-category--documents-assignments.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--documents-assignments
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-documents-assignments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-documents-attachments-api
+  name: Tradeshift Dx Category Documents Attachments API
+  description: >-
+    The dx-category--documents-attachments API from Tradeshift — 2 operation(s) for dx-category--documents-attachments.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--documents-attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-documents-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-documents-document-api
+  name: Tradeshift Dx Category Documents Document API
+  description: >-
+    The dx-category--documents-document API from Tradeshift — 28 operation(s) for dx-category--documents-document.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--documents-document
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-documents-document-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-documents-document-files-api
+  name: Tradeshift Dx Category Documents Document Files API
+  description: >-
+    The dx-category--documents-document_files API from Tradeshift — 8 operation(s) for dx-category--documents-document_files.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--documents-document_files
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-documents-document-files-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-documents-quotes-api
+  name: Tradeshift Dx Category Documents Quotes API
+  description: >-
+    The dx-category--documents-quotes API from Tradeshift — 1 operation(s) for dx-category--documents-quotes.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--documents-quotes
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-documents-quotes-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-documents-receipt-advices-api
+  name: Tradeshift Dx Category Documents Receipt Advices API
+  description: >-
+    The dx-category--documents-receipt_advices API from Tradeshift — 2 operation(s) for dx-category--documents-receipt_advices.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--documents-receipt_advices
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-documents-receipt-advices-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-documents-requisitions-api
+  name: Tradeshift Dx Category Documents Requisitions API
+  description: >-
+    The dx-category--documents-requisitions API from Tradeshift — 9 operation(s) for dx-category--documents-requisitions.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--documents-requisitions
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-documents-requisitions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-network-connection-properties-api
+  name: Tradeshift Dx Category Network Connection Properties API
+  description: >-
+    The dx-category--network-connection_properties API from Tradeshift — 3 operation(s) for dx-category--network-connection_properties.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--network-connection_properties
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-network-connection-properties-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-network-connections-api
+  name: Tradeshift Dx Category Network Connections API
+  description: >-
+    The dx-category--network-connections API from Tradeshift — 4 operation(s) for dx-category--network-connections.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--network-connections
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-network-connections-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-network-document-profiles-api
+  name: Tradeshift Dx Category Network Document Profiles API
+  description: >-
+    The dx-category--network-document_profiles API from Tradeshift — 2 operation(s) for dx-category--network-document_profiles.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--network-document_profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-network-document-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-network-requests-api
+  name: Tradeshift Dx Category Network Requests API
+  description: >-
+    The dx-category--network-requests API from Tradeshift — 4 operation(s) for dx-category--network-requests.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--network-requests
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-network-requests-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-network-search-api
+  name: Tradeshift Dx Category Network Search API
+  description: >-
+    The dx-category--network-search API from Tradeshift — 7 operation(s) for dx-category--network-search.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--network-search
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-network-search-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-users-accounts-api
+  name: Tradeshift Dx Category Users Accounts API
+  description: >-
+    The dx-category--users-accounts API from Tradeshift — 6 operation(s) for dx-category--users-accounts.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--users-accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-users-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-users-memberships-api
+  name: Tradeshift Dx Category Users Memberships API
+  description: >-
+    The dx-category--users-memberships API from Tradeshift — 9 operation(s) for dx-category--users-memberships.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--users-memberships
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-users-memberships-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-dx-category-users-profile-images-api
+  name: Tradeshift Dx Category Users Profile Images API
+  description: >-
+    The dx-category--users-profile_images API from Tradeshift — 1 operation(s) for dx-category--users-profile_images.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - dx-category--users-profile_images
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-dx-category-users-profile-images-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-health-api
+  name: Tradeshift Health API
+  description: The Health API from Tradeshift — 2 operation(s) for health.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-health-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-mcp-http-bridge-management-api
+  name: Tradeshift MCP HTTP Bridge & Management API
+  description: >-
+    The MCP HTTP Bridge & Management API from Tradeshift — 1 operation(s) for mcp http bridge & management.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - MCP HTTP Bridge & Management
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-mcp-http-bridge-management-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+- aid: tradeshift:tradeshift-tools-api
+  name: Tradeshift Tools API
+  description: The Tools API from Tradeshift — 3 operation(s) for tools.
+  humanURL: https://developers.tradeshift.com/docs/api
+  baseURL: https://api.tradeshift.com/tradeshift
+  tags:
+  - Tools
+  properties:
+  - type: OpenAPI
+    url: openapi/tradeshift-tools-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tradeshift.com/docs/api
+  - type: APIReference
+    url: https://developers.tradeshift.com/docs/api
+  - type: Authentication
+    url: authentication/tradeshift-authentication.yml
+  - type: Conventions
+    url: conventions/tradeshift-conventions.yml
+  - type: ErrorCatalog
+    url: errors/tradeshift-problem-types.yml
+  - type: DataModel
+    url: data-model/tradeshift-data-model.yml
+  - type: Webhooks
+    url: asyncapi/tradeshift-webhooks.yml
+  - type: Sandbox
+    url: sandbox/tradeshift-sandbox.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: GettingStarted
+    url: https://developers.tradeshift.com/docs/guides/get-started
+  - type: ToolCrosswalk
+    url: mcp/tradeshift-tool-crosswalk.yml
+  - type: OAuthScopes
+    url: scopes/tradeshift-scopes.yml
+  - type: Documentation
+    url: >-
+      https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
 common:
   - type: TrustCenter
     url: security/tradeshift-trust-center.yml
