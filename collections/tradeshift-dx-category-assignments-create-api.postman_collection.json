@@ -1,0 +1,299 @@
+{
+  "item": [
+    {
+      "id": "22428478-f974-4f04-a5e0-a6ab1dd9869c",
+      "name": "dx-category--assignments-create",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a285597e-4b51-43c3-a87a-7f3f9f10125d",
+          "name": "create assignment",
+          "request": {
+            "name": "create assignment",
+            "description": {
+              "content": "Creates a new assignment. <br> It must have the following mandatory JSON nodes in the request body: <ul> <li>type</li> <li>subjectId</li> </ul> The list of assigneeIds, if provided, must contain at least one valid user or user group. <br/> If no assignees are provided or all provided are missing/invalid/are not members of the current branch, the API will return an error(no default assignee logic is used).The assignees can be users or teams.<br> Also, for the provided assignees, auto-assignees and delegations will be added to the assignment, if any. <br/>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "assignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"subjectId\": \"<string>\",\n  \"assigneeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalId\": \"<string>\",\n  \"app\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"assignerId\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"context\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4faaa2a5-d80c-43c0-8d0a-c41ff6c95127",
+              "name": "&nbsp; The assignment was successfully saved. <br> &nbsp; The companyId for the new assignment is X-Tradeshift-TenantId header. <br> &nbsp; The createdBy property is the user in X-Tradeshift-ActorId header. <br> &nbsp; If the assignee list has some invalid assignees or some that are not members of the current branch, those will be ignored and only the valid users (active or inactive) will be saved. <br> &nbsp; Furthermore, if there is any auto-assignment available for the provided assignees, these will be added as delegates or assignees. <br/>\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"DOCUMENT\",\n  \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n  \"externalId\": \"External-Id\",\n  \"assigneeIds\": [\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n    \"ef9725fc-bc4e-4b6c-aa87-26d3a0f334e4\"\n  ],\n  \"app\": \"APVerification\",\n  \"assignerId\": \"6b380d88-050a-4274-a8a4-de815e36c3cf\",\n  \"tags\": [\n    \"A tag\",\n    \"Another tag\"\n  ],\n  \"context\": {\n    \"format\": \"App.Tradeshift\",\n    \"context\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a60b2008-8872-4620-8ed2-410ce5640fb9\",\n  \"externalId\": \"External-Id\",\n  \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n  \"app\": \"APVerification\",\n  \"createdBy\": \"260b2008-8872-4620-8ed2-410ce5640fb3\",\n  \"assigneeIds\": [\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n  ],\n  \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n  \"tags\": [\n    \"A tag\",\n    \"Another tag\"\n  ],\n  \"type\": \"A type\",\n  \"createdAt\": \"2018-10-25T16:40:31.795+03:00\",\n  \"modifiedAt\": \"2018-10-25T16:40:31.795+03:00\",\n  \"outcome\": \"An outcome\",\n  \"status\": \"CLOSED\",\n  \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n  \"comment\": \"A comment\",\n  \"context\": {\n    \"format\": \"App.Tradeshift\",\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e41b26fe-c8b4-451e-b47c-8e997fdac24d",
+              "name": "Invalid input. The response will contain a list of one or more validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"DOCUMENT\",\n  \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n  \"externalId\": \"External-Id\",\n  \"assigneeIds\": [\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n    \"ef9725fc-bc4e-4b6c-aa87-26d3a0f334e4\"\n  ],\n  \"app\": \"APVerification\",\n  \"assignerId\": \"6b380d88-050a-4274-a8a4-de815e36c3cf\",\n  \"tags\": [\n    \"A tag\",\n    \"Another tag\"\n  ],\n  \"context\": {\n    \"format\": \"App.Tradeshift\",\n    \"context\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07fec114-ff53-4921-821a-72a14d7f12bb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"DOCUMENT\",\n  \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n  \"externalId\": \"External-Id\",\n  \"assigneeIds\": [\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n    \"ef9725fc-bc4e-4b6c-aa87-26d3a0f334e4\"\n  ],\n  \"app\": \"APVerification\",\n  \"assignerId\": \"6b380d88-050a-4274-a8a4-de815e36c3cf\",\n  \"tags\": [\n    \"A tag\",\n    \"Another tag\"\n  ],\n  \"context\": {\n    \"format\": \"App.Tradeshift\",\n    \"context\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1423c1e-19a1-4d60-ab04-1a7267cdfcfd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"DOCUMENT\",\n  \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n  \"externalId\": \"External-Id\",\n  \"assigneeIds\": [\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n    \"ef9725fc-bc4e-4b6c-aa87-26d3a0f334e4\"\n  ],\n  \"app\": \"APVerification\",\n  \"assignerId\": \"6b380d88-050a-4274-a8a4-de815e36c3cf\",\n  \"tags\": [\n    \"A tag\",\n    \"Another tag\"\n  ],\n  \"context\": {\n    \"format\": \"App.Tradeshift\",\n    \"context\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "cdd68879-316a-433b-bcdf-46cb0cafed1f",
+              "name": "&nbsp; A default assignee is absent, invalid or inactive or problems have occurred while saving in the DB.<br> &nbsp; When it indicates problems regarding default assignee, it returns a response body with the ErrorCode \"AbsentDefaultAssignee\" or \"InvalidDefaultAssignee\" when the default assignee is invalid or inactive. This error occurs only when no assignee is provided or none of the provided assignees one are valid and members of the current branch.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"DOCUMENT\",\n  \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n  \"externalId\": \"External-Id\",\n  \"assigneeIds\": [\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n    \"ef9725fc-bc4e-4b6c-aa87-26d3a0f334e4\"\n  ],\n  \"app\": \"APVerification\",\n  \"assignerId\": \"6b380d88-050a-4274-a8a4-de815e36c3cf\",\n  \"tags\": [\n    \"A tag\",\n    \"Another tag\"\n  ],\n  \"context\": {\n    \"format\": \"App.Tradeshift\",\n    \"context\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": \"AbsentDefaultAssignee\",\n  \"Message\": \"Default assignee is absent. - Default assignee is absent.\",\n  \"ErrorDetail\": [],\n  \"ValidationError\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "91a55894-3129-449d-9beb-e5bc5d378d4d",
+    "name": "Tradeshift External Dx Category Assignments Create API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

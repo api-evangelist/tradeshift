@@ -1,0 +1,865 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Bsd Documents API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--bsd-documents
+paths:
+  /rest/external/suppliermanagement/documents:
+    get:
+      responses:
+        '200':
+          description: A (possibly empty) page of document meta-data. The total count may be an estimate.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        documentId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          example: da8fffc5-1738-49f4-b882-e0f7c19a4175
+                          type: string
+                        accountingSystemId:
+                          type: string
+                        branchId:
+                          type: string
+                        documentProfileId:
+                          enum:
+                          - nes.p5.creditnote.ubl.2.1.dk
+                          - nes.p5.creditnote.ubl.2.1.gb
+                          - nes.p5.creditnote.ubl.2.1.ie
+                          - nes.p5.invoice.ubl.2.1.dk
+                          - nes.p5.invoice.ubl.2.1.gb
+                          - nes.p5.invoice.ubl.2.1.ie
+                          - tradeshift.creditnote.1.0
+                          - tradeshift.creditnote.ubl.1.0
+                          - tradeshift.invoice.1.0
+                          - tradeshift.invoice.ubl.1.0
+                          - tradeshift.remittanceadvice.1.0
+                          - tradeshift.remittanceadvice.ubl.1.0
+                          - tradeshift.status.1.0
+                          - tradeshift.status.ubl.1.0
+                          - ubl.creditnote.2.1.at
+                          - ubl.creditnote.2.1.ch
+                          - ubl.creditnote.2.1.de
+                          - ubl.creditnote.2.1.fi
+                          - ubl.creditnote.2.1.fr
+                          - ubl.creditnote.2.1.nl
+                          - ubl.creditnote.2.1.pl
+                          - ubl.creditnote.2.1.pr
+                          - ubl.creditnote.2.1.sg
+                          - ubl.creditnote.2.1.us
+                          - ubl.invoice.2.1.at
+                          - ubl.invoice.2.1.ch
+                          - ubl.invoice.2.1.cn
+                          - ubl.invoice.2.1.de
+                          - ubl.invoice.2.1.fi
+                          - ubl.invoice.2.1.fr
+                          - ubl.invoice.2.1.jp
+                          - ubl.invoice.2.1.nl
+                          - ubl.invoice.2.1.pl
+                          - ubl.invoice.2.1.pr
+                          - ubl.invoice.2.1.sg
+                          - ubl.invoice.2.1.us
+                          type: string
+                        externalDocumentId:
+                          type: string
+                        created:
+                          type: integer
+                        state:
+                          enum:
+                          - IMPORTED
+                          - DRAFT
+                          - DISPATCHING
+                          - DISPATCHED
+                          - FAILED
+                          type: string
+                        receivedDocumentId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          example: da8fffc5-1738-49f4-b882-e0f7c19a4175
+                          type: string
+                        documentType:
+                          enum:
+                          - CREDITNOTE
+                          - INVOICE
+                          - REMITTANCEADVICE
+                          - STATUS
+                          type: string
+                        dispatched:
+                          type: integer
+                        documentReferences:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              documentReference:
+                                type: string
+                            required:
+                            - documentReference
+                        sourceRef:
+                          type: string
+                      required:
+                      - documentId
+                      - accountingSystemId
+                      - branchId
+                      - documentProfileId
+                      - externalDocumentId
+                      - created
+                      - state
+                      - receivedDocumentId
+                      - documentType
+                      - dispatched
+                      - documentReferences
+                      - sourceRef
+                  total:
+                    type: integer
+                required:
+                - items
+                - total
+      description: 'Get an overview of all the documents the buyer has staged for its suppliers -
+
+        optionally filtered to match the chosen parameters.
+
+        Since there can be millions of documents, the results can be paginated. If the
+
+        total number of rows matching the filter parameters is large, the total count
+
+        in the result is an estimate and may deviate significantly from the actual value.
+
+        '
+      operationId: get-rest-external-suppliermanagement-documents
+      parameters:
+      - name: accountingSystemId
+        in: query
+        description: Identifier of the supplier, which this document relates to, as it was used in the SMD.
+        schema:
+          type: string
+      - name: branchId
+        in: query
+        description: 'Internal identifier of the buyer branch, which this document relates to,
+
+          as it has been configured on the platform.
+
+          '
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: The state of the document in Buyer Sourced Documents
+        schema:
+          enum:
+          - IMPORTED
+          - DRAFT
+          - DISPATCHING
+          - DISPATCHED
+          - FAILED
+          type: string
+      - name: documentType
+        in: query
+        description: The type of the document
+        schema:
+          enum:
+          - CREDITNOTE
+          - INVOICE
+          - REMITTANCEADVICE
+          - STATUS
+          type: string
+      - name: externalDocumentId
+        in: query
+        description: 'Unique identifier to the customer. It can be a customer-generated UUID, an ERP document ID,
+
+          or an ID from a scanning solution. The external ID must also be present in the actual UBL
+
+          of invoices and credit notes in the file ID reference.
+
+          '
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: The page of responses to get
+        schema:
+          default: 0
+          minimum: 0
+          type: integer
+      - name: size
+        in: query
+        description: The size of the page
+        schema:
+          default: 100
+          minimum: 1
+          maximum: 100000
+          type: integer
+      - name: orderBy
+        in: query
+        description: 'We currently only support ordering the documents by `created`, but that might change in the future.
+
+          The ordering is specified after a colon `:`. By default, we order ascending (`asc`).
+
+          '
+        schema:
+          default: created
+          pattern: ^(created)(\:(asc|desc))?$
+          type: string
+      x-annotation-dx-category: bsd-documents
+      summary: Search documents
+      tags:
+      - dx-category--bsd-documents
+    post:
+      responses:
+        '201':
+          description: ''
+        '400':
+          description: Document validation has failed.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                  message:
+                    type: string
+                  errorDetail:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        value:
+                          type: string
+                      required:
+                      - key
+                      - value
+                  validationError:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorCode:
+                          type: string
+                        subErrorCode:
+                          type: string
+                        errorDetail:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - key
+                            - value
+                        index:
+                          type: integer
+                        message:
+                          type: string
+                      required:
+                      - errorCode
+                      - subErrorCode
+                      - errorDetail
+                      - index
+                      - message
+                required:
+                - errorCode
+                - message
+                - errorDetail
+                - validationError
+        '409':
+          description: Document already exists.
+      description: Stage a new historical document for being loaded into a suppliers history, when they onboard.
+      operationId: post-rest-external-suppliermanagement-documents
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+        required: true
+      parameters:
+      - name: accountingSystemId
+        in: query
+        required: true
+        description: Identifier of the supplier, which this document relates to, as it was used in the SMD.
+        schema:
+          type: string
+      - name: branchId
+        in: query
+        required: true
+        description: 'Internal identifier of the buyer branch, which this document relates to, as it has been configured on the
+
+          platform.
+
+          '
+        schema:
+          type: string
+      - name: documentProfileId
+        in: query
+        required: true
+        description: The UBL document profile of the posted document.
+        schema:
+          enum:
+          - nes.p5.creditnote.ubl.2.1.dk
+          - nes.p5.creditnote.ubl.2.1.gb
+          - nes.p5.creditnote.ubl.2.1.ie
+          - nes.p5.invoice.ubl.2.1.dk
+          - nes.p5.invoice.ubl.2.1.gb
+          - nes.p5.invoice.ubl.2.1.ie
+          - tradeshift.creditnote.1.0
+          - tradeshift.creditnote.ubl.1.0
+          - tradeshift.invoice.1.0
+          - tradeshift.invoice.ubl.1.0
+          - tradeshift.remittanceadvice.1.0
+          - tradeshift.remittanceadvice.ubl.1.0
+          - tradeshift.status.1.0
+          - tradeshift.status.ubl.1.0
+          - ubl.creditnote.2.1.at
+          - ubl.creditnote.2.1.ch
+          - ubl.creditnote.2.1.de
+          - ubl.creditnote.2.1.fi
+          - ubl.creditnote.2.1.fr
+          - ubl.creditnote.2.1.nl
+          - ubl.creditnote.2.1.pl
+          - ubl.creditnote.2.1.pr
+          - ubl.creditnote.2.1.sg
+          - ubl.creditnote.2.1.us
+          - ubl.invoice.2.1.at
+          - ubl.invoice.2.1.ch
+          - ubl.invoice.2.1.cn
+          - ubl.invoice.2.1.de
+          - ubl.invoice.2.1.fi
+          - ubl.invoice.2.1.fr
+          - ubl.invoice.2.1.jp
+          - ubl.invoice.2.1.nl
+          - ubl.invoice.2.1.pl
+          - ubl.invoice.2.1.pr
+          - ubl.invoice.2.1.sg
+          - ubl.invoice.2.1.us
+          type: string
+      - name: externalDocumentId
+        in: query
+        required: true
+        description: 'Identifier of the invoice the document relates to. I.e. if the document is an invoice, then it can be
+
+          its own invoice number.
+
+          '
+        schema:
+          type: string
+      - name: documentReferenceId
+        in: query
+        description: 'Identifier (externalDocumentId) of a document that current document refers to. I.e. if the document is
+
+          an application response, then it can have a documentReferenceId that points to an invoice.
+
+          Staging an application response without supplying a documentReferenceId is considered an error.
+
+          '
+        schema:
+          type: string
+      - name: sourceRef
+        in: query
+        description: 'Customer reference to where the documents were sourced from.
+
+          '
+        schema:
+          type: string
+      x-annotation-dx-category: bsd-documents
+      summary: Load document
+      tags:
+      - dx-category--bsd-documents
+  /rest/external/suppliermanagement/documents/{externalDocumentId}:
+    parameters:
+    - name: externalDocumentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: 'The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice
+
+        number.
+
+        '
+    get:
+      responses:
+        '200':
+          description: Document metadata succesfully retrieved.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  documentId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    example: da8fffc5-1738-49f4-b882-e0f7c19a4175
+                    type: string
+                  accountingSystemId:
+                    type: string
+                  branchId:
+                    type: string
+                  documentProfileId:
+                    enum:
+                    - nes.p5.creditnote.ubl.2.1.dk
+                    - nes.p5.creditnote.ubl.2.1.gb
+                    - nes.p5.creditnote.ubl.2.1.ie
+                    - nes.p5.invoice.ubl.2.1.dk
+                    - nes.p5.invoice.ubl.2.1.gb
+                    - nes.p5.invoice.ubl.2.1.ie
+                    - tradeshift.creditnote.1.0
+                    - tradeshift.creditnote.ubl.1.0
+                    - tradeshift.invoice.1.0
+                    - tradeshift.invoice.ubl.1.0
+                    - tradeshift.remittanceadvice.1.0
+                    - tradeshift.remittanceadvice.ubl.1.0
+                    - tradeshift.status.1.0
+                    - tradeshift.status.ubl.1.0
+                    - ubl.creditnote.2.1.at
+                    - ubl.creditnote.2.1.ch
+                    - ubl.creditnote.2.1.de
+                    - ubl.creditnote.2.1.fi
+                    - ubl.creditnote.2.1.fr
+                    - ubl.creditnote.2.1.nl
+                    - ubl.creditnote.2.1.pl
+                    - ubl.creditnote.2.1.pr
+                    - ubl.creditnote.2.1.sg
+                    - ubl.creditnote.2.1.us
+                    - ubl.invoice.2.1.at
+                    - ubl.invoice.2.1.ch
+                    - ubl.invoice.2.1.cn
+                    - ubl.invoice.2.1.de
+                    - ubl.invoice.2.1.fi
+                    - ubl.invoice.2.1.fr
+                    - ubl.invoice.2.1.jp
+                    - ubl.invoice.2.1.nl
+                    - ubl.invoice.2.1.pl
+                    - ubl.invoice.2.1.pr
+                    - ubl.invoice.2.1.sg
+                    - ubl.invoice.2.1.us
+                    type: string
+                  externalDocumentId:
+                    type: string
+                  created:
+                    type: integer
+                  state:
+                    enum:
+                    - IMPORTED
+                    - DRAFT
+                    - DISPATCHING
+                    - DISPATCHED
+                    - FAILED
+                    type: string
+                  receivedDocumentId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    example: da8fffc5-1738-49f4-b882-e0f7c19a4175
+                    type: string
+                  documentType:
+                    enum:
+                    - CREDITNOTE
+                    - INVOICE
+                    - REMITTANCEADVICE
+                    - STATUS
+                    type: string
+                  dispatched:
+                    type: integer
+                  documentReferences:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        documentReference:
+                          type: string
+                      required:
+                      - documentReference
+                  sourceRef:
+                    type: string
+                required:
+                - documentId
+                - accountingSystemId
+                - branchId
+                - documentProfileId
+                - externalDocumentId
+                - created
+                - state
+                - receivedDocumentId
+                - documentType
+                - dispatched
+                - documentReferences
+                - sourceRef
+        '404':
+          description: Document does not exist.
+      description: 'Get one document''s metadata
+
+        '
+      operationId: get-rest-external-suppliermanagement-documents-externaldocumentid
+      x-annotation-dx-category: bsd-documents
+      summary: Get Document Metadata
+      tags:
+      - dx-category--bsd-documents
+    put:
+      responses:
+        '201':
+          description: ''
+        '400':
+          description: Document validation has failed.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                  message:
+                    type: string
+                  errorDetail:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        value:
+                          type: string
+                      required:
+                      - key
+                      - value
+                  validationError:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorCode:
+                          type: string
+                        subErrorCode:
+                          type: string
+                        errorDetail:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - key
+                            - value
+                        index:
+                          type: integer
+                        message:
+                          type: string
+                      required:
+                      - errorCode
+                      - subErrorCode
+                      - errorDetail
+                      - index
+                      - message
+                required:
+                - errorCode
+                - message
+                - errorDetail
+                - validationError
+      description: 'Stage a new historical document for being loaded into a suppliers history, when they onboard.
+
+        Already existing invoice or credit note with the same externalDocumentId and state IMPORTED will be archived.
+
+        '
+      operationId: put-rest-external-suppliermanagement-documents-externaldocumentid
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: string
+        required: true
+      parameters:
+      - name: accountingSystemId
+        in: query
+        required: true
+        description: Identifier of the supplier, which this document relates to, as it was used in the SMD.
+        schema:
+          type: string
+      - name: branchId
+        in: query
+        required: true
+        description: 'Internal identifier of the buyer branch, which this document relates to, as it has been configured on the
+
+          platform.
+
+          '
+        schema:
+          type: string
+      - name: documentProfileId
+        in: query
+        required: true
+        description: The UBL document profile of the posted document.
+        schema:
+          enum:
+          - nes.p5.creditnote.ubl.2.1.dk
+          - nes.p5.creditnote.ubl.2.1.gb
+          - nes.p5.creditnote.ubl.2.1.ie
+          - nes.p5.invoice.ubl.2.1.dk
+          - nes.p5.invoice.ubl.2.1.gb
+          - nes.p5.invoice.ubl.2.1.ie
+          - tradeshift.creditnote.1.0
+          - tradeshift.creditnote.ubl.1.0
+          - tradeshift.invoice.1.0
+          - tradeshift.invoice.ubl.1.0
+          - tradeshift.remittanceadvice.1.0
+          - tradeshift.remittanceadvice.ubl.1.0
+          - tradeshift.status.1.0
+          - tradeshift.status.ubl.1.0
+          - ubl.creditnote.2.1.at
+          - ubl.creditnote.2.1.ch
+          - ubl.creditnote.2.1.de
+          - ubl.creditnote.2.1.fi
+          - ubl.creditnote.2.1.fr
+          - ubl.creditnote.2.1.nl
+          - ubl.creditnote.2.1.pl
+          - ubl.creditnote.2.1.pr
+          - ubl.creditnote.2.1.sg
+          - ubl.creditnote.2.1.us
+          - ubl.invoice.2.1.at
+          - ubl.invoice.2.1.ch
+          - ubl.invoice.2.1.cn
+          - ubl.invoice.2.1.de
+          - ubl.invoice.2.1.fi
+          - ubl.invoice.2.1.fr
+          - ubl.invoice.2.1.jp
+          - ubl.invoice.2.1.nl
+          - ubl.invoice.2.1.pl
+          - ubl.invoice.2.1.pr
+          - ubl.invoice.2.1.sg
+          - ubl.invoice.2.1.us
+          type: string
+      - name: documentReferenceId
+        in: query
+        description: 'Identifier (externalDocumentId) of a document that current document refers to. I.e. if the document is
+
+          an application response, then it can have a documentReferenceId that points to an invoice.
+
+          Staging an application response without supplying a documentReferenceId is considered an error.
+
+          '
+        schema:
+          type: string
+      - name: sourceRef
+        in: query
+        description: 'Customer reference to where the documents were sourced from.
+
+          '
+        schema:
+          type: string
+      x-annotation-dx-category: bsd-documents
+      summary: Load/Override Document
+      tags:
+      - dx-category--bsd-documents
+    delete:
+      responses:
+        '204':
+          description: Document was permanently archived.
+        '400':
+          description: Document was not successfully archived.
+      description: 'Permanently archives the document.
+
+        '
+      operationId: delete-rest-external-suppliermanagement-documents-externaldocumentid
+      x-annotation-dx-category: bsd-documents
+      summary: Archive Document
+      tags:
+      - dx-category--bsd-documents
+  /rest/external/suppliermanagement/documents/{externalDocumentId}/redispatch:
+    parameters:
+    - name: externalDocumentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: 'The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice
+
+        number.
+
+        '
+    post:
+      responses:
+        '204':
+          description: Document state successfully set to IMPORTED
+        '400':
+          description: Document is either not in state FAILED or does not exist
+      description: 'Retry the dispatch of a failed document by setting its state to IMPORTED.
+
+        The document will the asynchronously be picked up for dispatch again.
+
+        '
+      operationId: post-rest-external-suppliermanagement-documents-externaldocumentid-redispatch
+      x-annotation-dx-category: bsd-documents
+      summary: Redispatch Document
+      tags:
+      - dx-category--bsd-documents
+  /rest/external/suppliermanagement/documents/{externalDocumentId}/content:
+    parameters:
+    - name: externalDocumentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: 'The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice
+
+        number.
+
+        '
+    get:
+      responses:
+        '200':
+          description: Document content successfully retrieved.
+        '400':
+          description: Document does not exist.
+      description: 'Retrieve document content.
+
+        '
+      operationId: get-rest-external-suppliermanagement-documents-externaldocumentid-content
+      x-annotation-dx-category: bsd-documents
+      summary: Get Document Content
+      tags:
+      - dx-category--bsd-documents
+  /rest/external/suppliermanagement/documents/{externalDocumentId}/states:
+    parameters:
+    - name: externalDocumentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: 'The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice
+
+        number.
+
+        '
+    get:
+      responses:
+        '200':
+          description: Document state changes successfully retrieved.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        state:
+                          enum:
+                          - IMPORTED
+                          - DRAFT
+                          - DISPATCHING
+                          - DISPATCHED
+                          - FAILED
+                          type: string
+                        created:
+                          type: string
+                          format: date-time
+                        error:
+                          type: object
+                          properties:
+                            errorCode:
+                              type: string
+                            message:
+                              type: string
+                            errorDetail:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                required:
+                                - key
+                                - value
+                            validationError:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  errorCode:
+                                    type: string
+                                  subErrorCode:
+                                    type: string
+                                  errorDetail:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        key:
+                                          type: string
+                                        value:
+                                          type: string
+                                      required:
+                                      - key
+                                      - value
+                                  index:
+                                    type: integer
+                                  message:
+                                    type: string
+                                required:
+                                - errorCode
+                                - subErrorCode
+                                - errorDetail
+                                - index
+                                - message
+                          required:
+                          - errorCode
+                          - message
+                          - errorDetail
+                          - validationError
+                      required:
+                      - state
+                      - created
+                      - error
+                required:
+                - items
+        '400':
+          description: Document does not exist.
+      description: 'Retrieve information about document states changes.
+
+        '
+      operationId: get-rest-external-suppliermanagement-documents-externaldocumentid-states
+      x-annotation-dx-category: bsd-documents
+      summary: Get Document State Changes
+      tags:
+      - dx-category--bsd-documents
+  /rest/external/suppliermanagement/documents/{externalDocumentId}/references:
+    parameters:
+    - name: externalDocumentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: 'The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice
+
+        number.
+
+        '
+    get:
+      responses:
+        '200':
+          description: Document References successfully retrieved.
+        '404':
+          description: Document does not exist.
+      description: 'Retrieve List Of Document References
+
+        '
+      operationId: get-rest-external-suppliermanagement-documents-externaldocumentid-references
+      x-annotation-dx-category: bsd-documents
+      summary: Get Document References
+      tags:
+      - dx-category--bsd-documents

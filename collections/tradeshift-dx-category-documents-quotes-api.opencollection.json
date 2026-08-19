@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Documents Quotes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--documents-quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get quote template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/quotes/template",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "query",
+                "description": "The receiving connection id. It is used to preset data in template."
+              },
+              {
+                "name": "companyAccountId",
+                "value": "",
+                "type": "query",
+                "description": "The receiver company id. It is used to preset data in template."
+              },
+              {
+                "name": "quoteId",
+                "value": "",
+                "type": "query",
+                "description": "The receiver company id. It is used to preset data in template."
+              }
+            ]
+          },
+          "docs": "Get a quote template."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

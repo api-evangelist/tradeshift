@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Network Connections API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--network-connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "find network connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ]
+          },
+          "docs": "Retrieves an existing tradeshift or external connection. The returned structure depends on the kind of connection.\n"
+        },
+        {
+          "info": {
+            "name": "update network connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new connection or update an existing one. The connection is either an internal Tradeshift connection or an external connection.\n"
+        },
+        {
+          "info": {
+            "name": "delete network connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ]
+          },
+          "docs": "Rejects an existing connection, deleting it and makes it as not accepted with the applicable reverse connection.\n"
+        },
+        {
+          "info": {
+            "name": "get connection detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId/detail",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ]
+          },
+          "docs": "Get the details for a connection. Contains the full information on the connection, including names, identifiers, etc. The same structure is returned for both tradeshift and external connections. However, only fields relevant to the connection kind are filled.\n"
+        },
+        {
+          "info": {
+            "name": "verify connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId/verify",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ]
+          },
+          "docs": "Approves an \"unverified\" connection created by another party. \"Unverified\" connections are created in order to interact with companies that may not be active on Tradeshift.\n"
+        },
+        {
+          "info": {
+            "name": "get favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/favorites",
+            "params": [
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return"
+              }
+            ]
+          },
+          "docs": "Get last used connections."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

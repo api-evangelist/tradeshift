@@ -1,0 +1,1437 @@
+{
+  "item": [
+    {
+      "id": "d5f6b74e-497c-4978-a14a-46887bdae746",
+      "name": "dx-category--documents-requisitions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "33bfc8f7-949a-40a3-8696-feececde03ab",
+          "name": "create requisition",
+          "request": {
+            "name": "create requisition",
+            "description": {
+              "content": "Create a new Requisition from the requisition template containing the provided line",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "requisitions",
+                "RequisitionLine"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.oasis.ubl+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.oasis.ubl+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8f4a491a-7572-4d56-a4d9-a873dbaac62e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    "RequisitionLine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.oasis.ubl+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"_B\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\",\n  \"_S\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\",\n  \"_D\": \"http://tradeshift.com/api/public/1.0\",\n  \"RequisitionLine\": [\n    {\n      \"RequisitionPurposeCode\": [\n        {\n          \"CodeListIdentifier\": \"urn:tradeshift.com:api:1.0:requisitionlinepurposecode\",\n          \"CodeContent\": \"BLANKET_PURCHASE_ORDER\"\n        }\n      ],\n      \"SupplierSharedPrice\": [\n        {\n          \"PriceAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 100\n            }\n          ]\n        }\n      ],\n      \"LineItem\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"1\"\n            }\n          ],\n          \"Note\": [\n            {\n              \"TextContent\": \"Freetext note on line 1\"\n            }\n          ],\n          \"Quantity\": [\n            {\n              \"QuantityUnitCode\": \"EA\",\n              \"QuantityContent\": 1\n            }\n          ],\n          \"LineExtensionAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 1200\n            }\n          ],\n          \"AccountingCostCode\": [\n            {\n              \"CodeContent\": \"ProjectID123\"\n            }\n          ],\n          \"Price\": [\n            {\n              \"PriceAmount\": [\n                {\n                  \"AmountCurrencyIdentifier\": \"USD\",\n                  \"AmountContent\": 1200\n                }\n              ],\n              \"BaseQuantity\": [\n                {\n                  \"QuantityUnitCode\": \"EA\",\n                  \"QuantityContent\": 1\n                }\n              ],\n              \"ValidityPeriod\": [\n                {\n                  \"StartDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                },\n                {\n                  \"EndDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"Item\": [\n            {\n              \"Description\": [\n                {\n                  \"TextContent\": \"I want a brown sofa\"\n                }\n              ],\n              \"SellersItemIdentification\": [\n                {\n                  \"IssuerParty\": [\n                    {\n                      \"PartyIdentification\": [\n                        {\n                          \"ID\": [\n                            {\n                              \"IdentifierContent\": \"444666777\"\n                            }\n                          ]\n                        }\n                      ],\n                      \"PartyName\": [\n                        {\n                          \"Name\": [\n                            {\n                              \"TextContent\": \"Sofastore\"\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ],\n              \"CommodityClassification\": [\n                {\n                  \"ItemClassificationCode\": [\n                    {\n                      \"CodeListIdentifier\": \"UNSPSC\",\n                      \"CodeListAgencyIdentifier\": \"113\",\n                      \"CodeContent\": \"56101502\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ]\n        }\n      ],\n      \"DocumentReference\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"order-01\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.oasis.ubl+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4995a31-d1e6-4d64-a6e6-06e13c896474",
+          "name": "get requisition line template",
+          "request": {
+            "name": "get requisition line template",
+            "description": {
+              "content": "Get a requisition line template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "requisitions",
+                "RequisitionLine",
+                "template"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.oasis.ubl+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4cd0ecc-fe2e-4509-8fec-985a6c0a0552",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    "RequisitionLine",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.oasis.ubl+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.oasis.ubl+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe22f8dd-478d-41b5-a466-a1787fd75419",
+          "name": "create requisition from quote",
+          "request": {
+            "name": "create requisition from quote",
+            "description": {
+              "content": "Create a new requisition from given quote and save it as a draft",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "requisitions",
+                "create",
+                "fromquote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "0bf57816-e47f-4402-bd5d-759bd257aa18",
+              "name": "UUID of the requisition document, that was created from given quote",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    "create",
+                    "fromquote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "a7e78a06-81da-4221-8432-84a10012da7b"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f519d79a-c685-4b89-bb8f-babf142abe0f",
+              "name": "Bad request error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    "create",
+                    "fromquote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "a7e78a06-81da-4221-8432-84a10012da7b"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": \"BadRequest\",\n  \"Message\": \"Could not resolve type nonExistentType\",\n  \"ErrorDetail\": [\n    {\n      \"Key\": \"message\",\n      \"Value\": \"Could not resolve type nonExistentType\"\n    },\n    {\n      \"Key\": \"stacktrace\",\n      \"Value\": \"com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\\n\\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\\n\\t\"\n    }\n  ],\n  \"ValidationError\": [],\n  \"RequestId\": \"2c941598-489c-4fac-8543-03cb921feaf7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bf1fbc1-648b-4d9c-bfa2-6f8934fd17e2",
+          "name": "spawn requisition",
+          "request": {
+            "name": "spawn requisition",
+            "description": {
+              "content": "Spawn purchase orders based upon the received spawning command",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "requisitions",
+                "spawn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"DocumentId\": \"<string>\",\n  \"Orders\": [\n    {\n      \"DocumentId\": \"<string>\",\n      \"isSpawned\": \"<boolean>\",\n      \"DocumentProfile\": \"<string>\",\n      \"Lines\": [\n        {\n          \"value\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"DocumentId\": \"<string>\",\n      \"isSpawned\": \"<boolean>\",\n      \"DocumentProfile\": \"<string>\",\n      \"Lines\": [\n        {\n          \"value\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68b90632-158d-4a42-bba9-7602e5f2ea37",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    "spawn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DocumentId\": \"2b962986-7788-409e-b0ed-dfff61193b19\",\n  \"Orders\": [\n    {\n      \"isSpawned\": false,\n      \"DocumentId\": \"65ef21fc-99e0-44b1-9c6e-214514d6b161\",\n      \"Lines\": [\n        {\n          \"value\": \"1\"\n        }\n      ],\n      \"DocumentProfile\": \"tradeshift.order.1.0\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Documents\": [\n    {\n      \"DocumentId\": \"f3875dae-5fe3-4ed7-a16f-c4ccb9871645\",\n      \"DocumentProfileId\": \"tradeshift.order.1.0\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c8ba246-25a0-4c4c-bfd0-59c17853260b",
+              "name": "The document is in locked state and order has been spawned from the given requisition.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    "spawn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"DocumentId\": \"2b962986-7788-409e-b0ed-dfff61193b19\",\n  \"Orders\": [\n    {\n      \"isSpawned\": false,\n      \"DocumentId\": \"65ef21fc-99e0-44b1-9c6e-214514d6b161\",\n      \"Lines\": [\n        {\n          \"value\": \"1\"\n        }\n      ],\n      \"DocumentProfile\": \"tradeshift.order.1.0\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Locked (WebDAV) (RFC 4918)",
+              "code": 423,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "902f4ee3-8505-4ebe-8618-d1ece0c67610",
+          "name": "requisition by template",
+          "request": {
+            "name": "requisition by template",
+            "description": {
+              "content": "Get a requisition template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "requisitions",
+                "template"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.oasis.ubl+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39331cd9-779d-4131-8ff3-5f076e9b24f9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.oasis.ubl+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.oasis.ubl+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "deef5c18-071b-4a1b-abdb-c67371a0a8a8",
+          "name": "create requisition line",
+          "request": {
+            "name": "create requisition line",
+            "description": {
+              "content": "Create a new Requisition from the requisition template containing the provided line and using the provided id\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "requisitions",
+                ":documentId",
+                "RequisitionLine"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "documentId",
+                  "description": "(Required) Document UUID identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.oasis.ubl+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.oasis.ubl+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61de29be-031c-4526-8cab-7cb909c245a4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    ":documentId",
+                    "RequisitionLine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentId",
+                      "description": "(Required) Document UUID identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.oasis.ubl+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"_B\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\",\n  \"_S\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\",\n  \"_D\": \"http://tradeshift.com/api/public/1.0\",\n  \"RequisitionLine\": [\n    {\n      \"RequisitionPurposeCode\": [\n        {\n          \"CodeListIdentifier\": \"urn:tradeshift.com:api:1.0:requisitionlinepurposecode\",\n          \"CodeContent\": \"BLANKET_PURCHASE_ORDER\"\n        }\n      ],\n      \"SupplierSharedPrice\": [\n        {\n          \"PriceAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 100\n            }\n          ]\n        }\n      ],\n      \"LineItem\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"1\"\n            }\n          ],\n          \"Note\": [\n            {\n              \"TextContent\": \"Freetext note on line 1\"\n            }\n          ],\n          \"Quantity\": [\n            {\n              \"QuantityUnitCode\": \"EA\",\n              \"QuantityContent\": 1\n            }\n          ],\n          \"LineExtensionAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 1200\n            }\n          ],\n          \"AccountingCostCode\": [\n            {\n              \"CodeContent\": \"ProjectID123\"\n            }\n          ],\n          \"Price\": [\n            {\n              \"PriceAmount\": [\n                {\n                  \"AmountCurrencyIdentifier\": \"USD\",\n                  \"AmountContent\": 1200\n                }\n              ],\n              \"BaseQuantity\": [\n                {\n                  \"QuantityUnitCode\": \"EA\",\n                  \"QuantityContent\": 1\n                }\n              ],\n              \"ValidityPeriod\": [\n                {\n                  \"StartDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                },\n                {\n                  \"EndDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"Item\": [\n            {\n              \"Description\": [\n                {\n                  \"TextContent\": \"I want a brown sofa\"\n                }\n              ],\n              \"SellersItemIdentification\": [\n                {\n                  \"IssuerParty\": [\n                    {\n                      \"PartyIdentification\": [\n                        {\n                          \"ID\": [\n                            {\n                              \"IdentifierContent\": \"444666777\"\n                            }\n                          ]\n                        }\n                      ],\n                      \"PartyName\": [\n                        {\n                          \"Name\": [\n                            {\n                              \"TextContent\": \"Sofastore\"\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ],\n              \"CommodityClassification\": [\n                {\n                  \"ItemClassificationCode\": [\n                    {\n                      \"CodeListIdentifier\": \"UNSPSC\",\n                      \"CodeListAgencyIdentifier\": \"113\",\n                      \"CodeContent\": \"56101502\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ]\n        }\n      ],\n      \"DocumentReference\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"order-01\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.oasis.ubl+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ed9f8fa-30b0-4b80-a4ae-c13a40859cf4",
+          "name": "update requisition lines",
+          "request": {
+            "name": "update requisition lines",
+            "description": {
+              "content": "Add a line to the Requisition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "requisitions",
+                ":documentId",
+                "RequisitionLines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "documentId",
+                  "description": "(Required) Document UUID identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.oasis.ubl+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.oasis.ubl+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "432e1a72-c13f-4786-ab78-2d19bf8d4377",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    ":documentId",
+                    "RequisitionLines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentId",
+                      "description": "(Required) Document UUID identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.oasis.ubl+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"_B\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\",\n  \"_S\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\",\n  \"_D\": \"http://tradeshift.com/api/public/1.0\",\n  \"RequisitionLine\": [\n    {\n      \"RequisitionPurposeCode\": [\n        {\n          \"CodeListIdentifier\": \"urn:tradeshift.com:api:1.0:requisitionlinepurposecode\",\n          \"CodeContent\": \"BLANKET_PURCHASE_ORDER\"\n        }\n      ],\n      \"SupplierSharedPrice\": [\n        {\n          \"PriceAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 100\n            }\n          ]\n        }\n      ],\n      \"LineItem\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"1\"\n            }\n          ],\n          \"Note\": [\n            {\n              \"TextContent\": \"Freetext note on line 1\"\n            }\n          ],\n          \"Quantity\": [\n            {\n              \"QuantityUnitCode\": \"EA\",\n              \"QuantityContent\": 1\n            }\n          ],\n          \"LineExtensionAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 1200\n            }\n          ],\n          \"AccountingCostCode\": [\n            {\n              \"CodeContent\": \"ProjectID123\"\n            }\n          ],\n          \"Price\": [\n            {\n              \"PriceAmount\": [\n                {\n                  \"AmountCurrencyIdentifier\": \"USD\",\n                  \"AmountContent\": 1200\n                }\n              ],\n              \"BaseQuantity\": [\n                {\n                  \"QuantityUnitCode\": \"EA\",\n                  \"QuantityContent\": 1\n                }\n              ],\n              \"ValidityPeriod\": [\n                {\n                  \"StartDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                },\n                {\n                  \"EndDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"Item\": [\n            {\n              \"Description\": [\n                {\n                  \"TextContent\": \"I want a brown sofa\"\n                }\n              ],\n              \"SellersItemIdentification\": [\n                {\n                  \"IssuerParty\": [\n                    {\n                      \"PartyIdentification\": [\n                        {\n                          \"ID\": [\n                            {\n                              \"IdentifierContent\": \"444666777\"\n                            }\n                          ]\n                        }\n                      ],\n                      \"PartyName\": [\n                        {\n                          \"Name\": [\n                            {\n                              \"TextContent\": \"Sofastore\"\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ],\n              \"CommodityClassification\": [\n                {\n                  \"ItemClassificationCode\": [\n                    {\n                      \"CodeListIdentifier\": \"UNSPSC\",\n                      \"CodeListAgencyIdentifier\": \"113\",\n                      \"CodeContent\": \"56101502\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ]\n        }\n      ],\n      \"DocumentReference\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"order-01\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.oasis.ubl+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e11d34e2-dc3d-404e-a055-2199cffbfe82",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    ":documentId",
+                    "RequisitionLines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentId",
+                      "description": "(Required) Document UUID identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"_B\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\",\n  \"_S\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\",\n  \"_D\": \"http://tradeshift.com/api/public/1.0\",\n  \"RequisitionLine\": [\n    {\n      \"RequisitionPurposeCode\": [\n        {\n          \"CodeListIdentifier\": \"urn:tradeshift.com:api:1.0:requisitionlinepurposecode\",\n          \"CodeContent\": \"BLANKET_PURCHASE_ORDER\"\n        }\n      ],\n      \"SupplierSharedPrice\": [\n        {\n          \"PriceAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 100\n            }\n          ]\n        }\n      ],\n      \"LineItem\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"1\"\n            }\n          ],\n          \"Note\": [\n            {\n              \"TextContent\": \"Freetext note on line 1\"\n            }\n          ],\n          \"Quantity\": [\n            {\n              \"QuantityUnitCode\": \"EA\",\n              \"QuantityContent\": 1\n            }\n          ],\n          \"LineExtensionAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 1200\n            }\n          ],\n          \"AccountingCostCode\": [\n            {\n              \"CodeContent\": \"ProjectID123\"\n            }\n          ],\n          \"Price\": [\n            {\n              \"PriceAmount\": [\n                {\n                  \"AmountCurrencyIdentifier\": \"USD\",\n                  \"AmountContent\": 1200\n                }\n              ],\n              \"BaseQuantity\": [\n                {\n                  \"QuantityUnitCode\": \"EA\",\n                  \"QuantityContent\": 1\n                }\n              ],\n              \"ValidityPeriod\": [\n                {\n                  \"StartDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                },\n                {\n                  \"EndDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"Item\": [\n            {\n              \"Description\": [\n                {\n                  \"TextContent\": \"I want a brown sofa\"\n                }\n              ],\n              \"SellersItemIdentification\": [\n                {\n                  \"IssuerParty\": [\n                    {\n                      \"PartyIdentification\": [\n                        {\n                          \"ID\": [\n                            {\n                              \"IdentifierContent\": \"444666777\"\n                            }\n                          ]\n                        }\n                      ],\n                      \"PartyName\": [\n                        {\n                          \"Name\": [\n                            {\n                              \"TextContent\": \"Sofastore\"\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ],\n              \"CommodityClassification\": [\n                {\n                  \"ItemClassificationCode\": [\n                    {\n                      \"CodeListIdentifier\": \"UNSPSC\",\n                      \"CodeListAgencyIdentifier\": \"113\",\n                      \"CodeContent\": \"56101502\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ]\n        }\n      ],\n      \"DocumentReference\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"order-01\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f17a163-d947-4afb-93d2-79bad6fa0d70",
+          "name": "get requisition line",
+          "request": {
+            "name": "get requisition line",
+            "description": {
+              "content": "Retrieve a specific Line from a Requisition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "requisitions",
+                ":documentId",
+                "RequisitionLines",
+                ":lineId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lineId",
+                  "description": "(Required) Line UUID identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "documentId",
+                  "description": "(Required) Document UUID identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.oasis.ubl+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09653a27-ee3b-43c2-bdf1-38828b583e3f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    ":documentId",
+                    "RequisitionLines",
+                    ":lineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lineId",
+                      "description": "(Required) Line UUID identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentId",
+                      "description": "(Required) Document UUID identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.oasis.ubl+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.oasis.ubl+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "378d19d7-234b-43be-ad71-dc68443c67ff",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    ":documentId",
+                    "RequisitionLines",
+                    ":lineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lineId",
+                      "description": "(Required) Line UUID identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentId",
+                      "description": "(Required) Document UUID identifier"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ff5fa70-d250-45a9-aa17-cd5c236186f3",
+          "name": "update requisition line",
+          "request": {
+            "name": "update requisition line",
+            "description": {
+              "content": "Update a specific Line of the Requisition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "requisitions",
+                ":documentId",
+                "RequisitionLines",
+                ":lineId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lineId",
+                  "description": "(Required) Line UUID identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "documentId",
+                  "description": "(Required) Document UUID identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.oasis.ubl+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.oasis.ubl+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "26c8bdd1-afc1-412c-af05-71d57ff2c15f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    ":documentId",
+                    "RequisitionLines",
+                    ":lineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lineId",
+                      "description": "(Required) Line UUID identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentId",
+                      "description": "(Required) Document UUID identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.oasis.ubl+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"_B\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\",\n  \"_S\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\",\n  \"_D\": \"http://tradeshift.com/api/public/1.0\",\n  \"RequisitionLine\": [\n    {\n      \"RequisitionPurposeCode\": [\n        {\n          \"CodeListIdentifier\": \"urn:tradeshift.com:api:1.0:requisitionlinepurposecode\",\n          \"CodeContent\": \"BLANKET_PURCHASE_ORDER\"\n        }\n      ],\n      \"SupplierSharedPrice\": [\n        {\n          \"PriceAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 100\n            }\n          ]\n        }\n      ],\n      \"LineItem\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"1\"\n            }\n          ],\n          \"Note\": [\n            {\n              \"TextContent\": \"Freetext note on line 1\"\n            }\n          ],\n          \"Quantity\": [\n            {\n              \"QuantityUnitCode\": \"EA\",\n              \"QuantityContent\": 1\n            }\n          ],\n          \"LineExtensionAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 1200\n            }\n          ],\n          \"AccountingCostCode\": [\n            {\n              \"CodeContent\": \"ProjectID123\"\n            }\n          ],\n          \"Price\": [\n            {\n              \"PriceAmount\": [\n                {\n                  \"AmountCurrencyIdentifier\": \"USD\",\n                  \"AmountContent\": 1200\n                }\n              ],\n              \"BaseQuantity\": [\n                {\n                  \"QuantityUnitCode\": \"EA\",\n                  \"QuantityContent\": 1\n                }\n              ],\n              \"ValidityPeriod\": [\n                {\n                  \"StartDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                },\n                {\n                  \"EndDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"Item\": [\n            {\n              \"Description\": [\n                {\n                  \"TextContent\": \"I want a brown sofa\"\n                }\n              ],\n              \"SellersItemIdentification\": [\n                {\n                  \"IssuerParty\": [\n                    {\n                      \"PartyIdentification\": [\n                        {\n                          \"ID\": [\n                            {\n                              \"IdentifierContent\": \"444666777\"\n                            }\n                          ]\n                        }\n                      ],\n                      \"PartyName\": [\n                        {\n                          \"Name\": [\n                            {\n                              \"TextContent\": \"Sofastore\"\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ],\n              \"CommodityClassification\": [\n                {\n                  \"ItemClassificationCode\": [\n                    {\n                      \"CodeListIdentifier\": \"UNSPSC\",\n                      \"CodeListAgencyIdentifier\": \"113\",\n                      \"CodeContent\": \"56101502\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ]\n        }\n      ],\n      \"DocumentReference\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"order-01\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.oasis.ubl+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "530e53c2-644b-4fe1-bc7a-363f8444a54c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    ":documentId",
+                    "RequisitionLines",
+                    ":lineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lineId",
+                      "description": "(Required) Line UUID identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentId",
+                      "description": "(Required) Document UUID identifier"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"_B\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\",\n  \"_S\": \"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\",\n  \"_D\": \"http://tradeshift.com/api/public/1.0\",\n  \"RequisitionLine\": [\n    {\n      \"RequisitionPurposeCode\": [\n        {\n          \"CodeListIdentifier\": \"urn:tradeshift.com:api:1.0:requisitionlinepurposecode\",\n          \"CodeContent\": \"BLANKET_PURCHASE_ORDER\"\n        }\n      ],\n      \"SupplierSharedPrice\": [\n        {\n          \"PriceAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 100\n            }\n          ]\n        }\n      ],\n      \"LineItem\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"1\"\n            }\n          ],\n          \"Note\": [\n            {\n              \"TextContent\": \"Freetext note on line 1\"\n            }\n          ],\n          \"Quantity\": [\n            {\n              \"QuantityUnitCode\": \"EA\",\n              \"QuantityContent\": 1\n            }\n          ],\n          \"LineExtensionAmount\": [\n            {\n              \"AmountCurrencyIdentifier\": \"USD\",\n              \"AmountContent\": 1200\n            }\n          ],\n          \"AccountingCostCode\": [\n            {\n              \"CodeContent\": \"ProjectID123\"\n            }\n          ],\n          \"Price\": [\n            {\n              \"PriceAmount\": [\n                {\n                  \"AmountCurrencyIdentifier\": \"USD\",\n                  \"AmountContent\": 1200\n                }\n              ],\n              \"BaseQuantity\": [\n                {\n                  \"QuantityUnitCode\": \"EA\",\n                  \"QuantityContent\": 1\n                }\n              ],\n              \"ValidityPeriod\": [\n                {\n                  \"StartDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                },\n                {\n                  \"EndDate\": [\n                    {\n                      \"DateContent\": \"1977-05-15\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"Item\": [\n            {\n              \"Description\": [\n                {\n                  \"TextContent\": \"I want a brown sofa\"\n                }\n              ],\n              \"SellersItemIdentification\": [\n                {\n                  \"IssuerParty\": [\n                    {\n                      \"PartyIdentification\": [\n                        {\n                          \"ID\": [\n                            {\n                              \"IdentifierContent\": \"444666777\"\n                            }\n                          ]\n                        }\n                      ],\n                      \"PartyName\": [\n                        {\n                          \"Name\": [\n                            {\n                              \"TextContent\": \"Sofastore\"\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              ],\n              \"CommodityClassification\": [\n                {\n                  \"ItemClassificationCode\": [\n                    {\n                      \"CodeListIdentifier\": \"UNSPSC\",\n                      \"CodeListAgencyIdentifier\": \"113\",\n                      \"CodeContent\": \"56101502\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ]\n        }\n      ],\n      \"DocumentReference\": [\n        {\n          \"ID\": [\n            {\n              \"IdentifierContent\": \"order-01\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6845789-018d-4ba0-9fe1-9d04c33c8a72",
+          "name": "remove requisition line",
+          "request": {
+            "name": "remove requisition line",
+            "description": {
+              "content": "Remove a specific Line of the Requisition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "requisitions",
+                ":documentId",
+                "RequisitionLines",
+                ":lineId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lineId",
+                  "description": "(Required) Line UUID identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "documentId",
+                  "description": "(Required) Document UUID identifier"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1c562935-dd5b-4d02-8e27-f08fb68bd68e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    ":documentId",
+                    "RequisitionLines",
+                    ":lineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lineId",
+                      "description": "(Required) Line UUID identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentId",
+                      "description": "(Required) Document UUID identifier"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28996cc2-4ac5-4bdd-8cd1-2d17f0753038",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    ":documentId",
+                    "RequisitionLines",
+                    ":lineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lineId",
+                      "description": "(Required) Line UUID identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentId",
+                      "description": "(Required) Document UUID identifier"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7882cf27-747d-4257-8a5a-6d3036c83d4f",
+          "name": "update requisition state",
+          "request": {
+            "name": "update requisition state",
+            "description": {
+              "content": "Set the state for the requisition document",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "requisitions",
+                ":documentId",
+                "state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "documentId",
+                  "description": "(Required) Document UUID identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"NewState\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "85b09366-dbdc-40e6-b49c-340af44dcf7e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "requisitions",
+                    ":documentId",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentId",
+                      "description": "(Required) Document UUID identifier"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"NewState\": \"REJECTED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "61b377cb-588e-47dc-b816-80f35fd88dce",
+    "name": "Tradeshift External Dx Category Documents Requisitions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

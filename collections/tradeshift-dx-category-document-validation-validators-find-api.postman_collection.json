@@ -1,0 +1,128 @@
+{
+  "item": [
+    {
+      "id": "796893fd-7a9f-43eb-9e40-1e85b7c1bc54",
+      "name": "dx-category--document-validation-validators_find",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b2bdd6c5-2837-4c2f-85de-ff5c232e5ef6",
+          "name": "Gets a validator group",
+          "request": {
+            "name": "Gets a validator group",
+            "description": {
+              "content": "Gets a validator group definition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "document-validation",
+                "validation",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) UUID of the validator group to get"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4e063e1-f4a2-47ba-aa21-b943e2cfc489",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) UUID of the validator group to get"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "09137070-e73d-4ab7-a645-0e715a69597e",
+    "name": "Tradeshift External Dx Category Document Validation Validators Find API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

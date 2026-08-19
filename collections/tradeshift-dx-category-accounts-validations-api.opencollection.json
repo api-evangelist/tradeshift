@@ -1,0 +1,304 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Accounts Validations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--accounts-validations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get validations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/validations",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "External (enterprise) ID"
+              }
+            ]
+          },
+          "docs": "Gets a dynamic validation, by External (enterprise) ID. Only available when the relevant features have been enabled for the account."
+        },
+        {
+          "info": {
+            "name": "update validations",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/validations",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "External (enterprise) ID"
+              }
+            ]
+          },
+          "docs": "Saves a dynamic validation, by External (enterprise) ID. Only available when the relevant features have been enabled for the account."
+        },
+        {
+          "info": {
+            "name": "remove validations",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/validations",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "External (enterprise) ID"
+              }
+            ]
+          },
+          "docs": "Deletes a dynamic validation, by External (enterprise) ID. Only available when the relevant features have been enabled for the account."
+        },
+        {
+          "info": {
+            "name": "validation history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/validations/historydata/:historicid",
+            "params": [
+              {
+                "name": "historicid",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for historical data requested"
+              }
+            ]
+          },
+          "docs": "Get dynamic validation changes file populated with content."
+        },
+        {
+          "info": {
+            "name": "list of validations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/validations/list",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Page size per query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number of the query"
+              }
+            ]
+          },
+          "docs": "Returns all dynamic validations that have been created for the account. Only available when the relevant features have been enabled for the account."
+        },
+        {
+          "info": {
+            "name": "validation log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/validations/log",
+            "params": [
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "List only events after this date."
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "List only events before this date."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Page size per query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number of the query"
+              }
+            ]
+          },
+          "docs": "Returns dynamic validations event log for the account."
+        },
+        {
+          "info": {
+            "name": "validations used",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/validations/usedvalues",
+            "params": [
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "List only events after this date."
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "List only events before this date."
+              },
+              {
+                "name": "validationid",
+                "value": "",
+                "type": "query",
+                "description": "Validation to pull events for."
+              },
+              {
+                "name": "valuesetid",
+                "value": "",
+                "type": "query",
+                "description": "Valueset to pull events for."
+              }
+            ]
+          },
+          "docs": "Returns dynamic validations event log for the account and validation/valueset."
+        },
+        {
+          "info": {
+            "name": "validation values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/validations/values",
+            "params": [
+              {
+                "name": "validationid",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the dynamic validation"
+              },
+              {
+                "name": "fieldid",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the field in the dynamic validation"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Query string to search"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Page size per query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number of the query"
+              }
+            ]
+          },
+          "docs": "List values currently registered for a given dynamic validation, by the id of the dynamic validation"
+        },
+        {
+          "info": {
+            "name": "validation value sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/validations/valuesets",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Query string to search"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Page size per query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number of the query"
+              }
+            ]
+          },
+          "docs": "List value sets registered for a given dynamic validation, without retrieving actual values."
+        },
+        {
+          "info": {
+            "name": "validation by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/validations/:dynamicvalidationinternalid/values",
+            "params": [
+              {
+                "name": "dynamicvalidationinternalid",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for dynamic validation"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Query string to search"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size per query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number of the query"
+              }
+            ]
+          },
+          "docs": "List all values currently registered for a given dynamic validation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

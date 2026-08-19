@@ -1,0 +1,152 @@
+{
+  "item": [
+    {
+      "id": "f7167371-ea52-449b-9cca-ad55fd814de2",
+      "name": "dx-category--document-validation-validators_find_all",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3e40f9e-72e0-4418-8b43-9e3465a40076",
+          "name": "List Validator Groups",
+          "request": {
+            "name": "List Validator Groups",
+            "description": {
+              "content": "List validator groups for the tenant, optionally filtering by document type or connection property",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "document-validation",
+                "validation",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "senderTenantId",
+                  "value": "<uuid>",
+                  "description": "UUID of the user company (tenant) that is sending the document. This can be different than the 'tenantId' header value, for example when checking on behalf of a branch. The sender tenant id is used to obtain the connection properties of the connection between the receiver and sender, or other sender related settings."
+                },
+                {
+                  "disabled": false,
+                  "key": "receiverTenantId",
+                  "value": "<uuid>",
+                  "description": "(Required) UUID of the company (tenant) that will receive the document. The receiver tenant is used to check the validators of the receiver when the receiver company has configured validation for other companies sending documents (for example 'sellers' sending invoices to a 'buyer'), to obtain the connection properties of the connection between the receiver and sender, to obtain the country compliance validator groups of the receiver if enabled, or other receiver related settings."
+                },
+                {
+                  "disabled": false,
+                  "key": "documentType",
+                  "value": "<string>",
+                  "description": "Optional document type filter. If not provided, validators with any document type will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "description": "Optional country code used to list by specific country compliance rules. If not provided, it is determined from the country of the receiver (receiverTenantId) if enabled on receiver.To list all country compliance validator groups use the special value 'ALL'.To list all the groups of the receiver but without the country compliance ones, even if defined and enabled, use the special value 'NONE'."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0db09ae5-ce34-4019-a3a2-7356baacdd19",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "senderTenantId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "receiverTenantId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "documentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"value\": \"reference #/components/schemas/GroupDefWithId not found in the OpenAPI spec\"\n  },\n  {\n    \"value\": \"reference #/components/schemas/GroupDefWithId not found in the OpenAPI spec\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "92027f4b-0a99-4eb3-9ed7-9af366afdcac",
+    "name": "Tradeshift External Dx Category Document Validation Validators Find All API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

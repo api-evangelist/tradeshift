@@ -1,0 +1,319 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Accounts Legal Entities API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--accounts-legal_entities
+paths:
+  /rest/external/legalentities/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The UUID identifier of the legal entity.
+    put:
+      responses:
+        '201':
+          description: The legal entity is created and there are no validation errors
+        '204':
+          description: An existing legal entity was updated.
+      description: Create or update a legal entity. If a legal entity with the same id already exists, the existing legal entity will be updated, otherwise the legal entity will be created. While updating the legal entity, only the name, description, legal note and alternate id are updated. During the creation or the updating process, a check is done to see if the alternate id is unique within the same company. The operation is allowed only if the id is unique per company. The body of the PUT is an object that specifies all the values to be saved as part of the legal entity. The legal entity id in this object MUST be absent or as same as the legal entity id in the path parameter. LegalNote may contain plain text or a restricted HTML subset (<b>, <u>, <br/> only); any other markup is stripped server-side. Its visible text, once that formatting is applied, is limited to ~5000 characters - not the raw payload length.
+      operationId: put-rest-external-legalentities-id
+      requestBody:
+        content:
+          application/json:
+            example:
+              Id: 42f824cc-fa0d-4f96-9f82-0987e326cfdf
+              CompanyId: 9b4ce0ff-d8fa-4906-9984-216df4fcbfbc
+              Name: Legal Entity IE22
+              AlternateEntityId: IE22
+              Description: Just a test legal entity
+              LegalNote: <b>Payment terms:</b> Net 30 days.<br/>Please reference PO number on all invoices.<br/><u>Multilingual note:</u> Bitte geben Sie die Bestellnummer auf allen Rechnungen an.
+            schema:
+              required:
+              - Id
+              - CompanyId
+              - Name
+              - AlternateEntityId
+              - Description
+              - LegalNote
+              type: object
+              properties:
+                Id:
+                  pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                  description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                  type: string
+                CompanyId:
+                  pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                  description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                  type: string
+                Name:
+                  type: string
+                AlternateEntityId:
+                  type: string
+                Description:
+                  type: string
+                LegalNote:
+                  maxLength: 20000
+                  description: Plain text or a restricted HTML subset (<b>, <u>, <br/> only - any other markup is stripped server-side). This maxLength bounds the raw, tag-inclusive payload; the enforced limit is ~5000 characters of visible text once formatting is applied.
+                  type: string
+        required: true
+      x-annotation-dx-category: accounts-legal_entities
+      summary: update legal entity
+      tags:
+      - dx-category--accounts-legal_entities
+  /rest/external/legalentities/{id}/identifiers/{identifier}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The UUID identifier of the legal entity.
+    - name: identifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The id of the legal entity for which the identifier is to be added.
+    put:
+      responses:
+        '201':
+          description: The identifier was created
+        '204':
+          description: The identifier with the same scheme already existed and was therefore updated.
+        '400':
+          description: No identifier has been provided.
+        '404':
+          description: The provided legal entity ID does not exist.
+      description: Add or update a legal entity identifier. If a value already exists for the identifier scheme then the value of the identifier is updated. Otherwise, a new identifier is added. Except for the label, all other fields are compulsory. The body of the PUT is an identifier object that needs to be added. The legal entity id in this object MUST be absent or as same as the legal entity id in the path parameter.
+      operationId: put-rest-external-legalentities-id-identifiers-identifier
+      requestBody:
+        content:
+          application/json:
+            example:
+              LegalEntityId: f392d865-5852-4255-b013-17075dba5bb6
+              IdentifierScheme: GB:VAT
+              IdentifierValue: GB987654321
+              Label: 'VAT Reg No:'
+            schema:
+              required:
+              - LegalEntityId
+              - IdentifierScheme
+              - IdentifierValue
+              - Label
+              type: object
+              properties:
+                LegalEntityId:
+                  pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                  description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                  type: string
+                IdentifierScheme:
+                  type: string
+                IdentifierValue:
+                  type: string
+                Label:
+                  type: string
+        required: true
+      x-annotation-dx-category: accounts-legal_entities
+      summary: update legal entity identifiers
+      tags:
+      - dx-category--accounts-legal_entities
+  /rest/external/legalentities/{id}/locations/search:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The UUID identifier of the legal entity.
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              example:
+                Id: 64265696-449f-4d1a-9c48-464cd1b4ea73
+                LegalEntityId: f392d865-5852-4255-b013-17075dba5bb6
+                Type: BILLING
+                IsDefault: true
+                Address:
+                  zip: '33466'
+                  country: GB
+                  buildingnumber: '3'
+                  city: Billing-na-Donu
+                  street: Billing street
+                  locality: Billingovka
+              schema:
+                required:
+                - Id
+                - LegalEntityId
+                - Type
+                - IsDefault
+                - Address
+                type: object
+                properties:
+                  Id:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+                  LegalEntityId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+                  Type:
+                    type: string
+                  IsDefault:
+                    type: boolean
+                  Address:
+                    required:
+                    - zip
+                    - country
+                    - buildingnumber
+                    - city
+                    - street
+                    - locality
+                    type: object
+                    properties:
+                      zip:
+                        type: string
+                      country:
+                        type: string
+                      buildingnumber:
+                        type: string
+                      city:
+                        type: string
+                      street:
+                        type: string
+                      locality:
+                        type: string
+        '400':
+          description: Will return bad request for more than 5 query parameters.
+      description: Search all locations for a legal entity. The results are paged.
+      operationId: get-rest-external-legalentities-id-locations-search
+      parameters:
+      - name: query
+        in: query
+        required: true
+        description: The list of terms to search for terms are simple words like 'alber' or numeric. Every term is post fixed with a wildcard, numeric values are not, max to 5 terms, throws bad request if above.
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: The type of locations to be fetched e.g billing or delivery.
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: The page number to start fetching locations from.
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: The number of items to be fetched per page.
+        schema:
+          maximum: 100
+          type: integer
+      - name: only_defaults
+        in: query
+        description: Only default addresses.
+        schema:
+          type: boolean
+      x-annotation-dx-category: accounts-legal_entities
+      summary: find locations for legal entity
+      tags:
+      - dx-category--accounts-legal_entities
+  /rest/external/legalentities/{id}/locations/{locationid}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The UUID identifier of the legal entity.
+    - name: locationid
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The UUID identifier of the location of the legal entity.
+    put:
+      responses:
+        '201':
+          description: The location was created
+        '204':
+          description: Existing location with the same id existed and therefore was updated.
+        '400':
+          description: No location has been provided.
+        '404':
+          description: The provided legal entity ID does not exist.
+      description: Creates or updates a new location. If the id already exists, the call overwrites the existing values with the new ones that are supplied. If no location with the same id exists then a new one will be added. While adding a default location, a check will be done to see if this call does not create another default location over an existing one. If it does, a validation error will be thrown. The path parameter id replaces the one in the object. The body of the PUT is an object which is the location to be saved for the legal entity. The legal entity id in this object MUST be absent or as same as the legal entity id in the path parameter.
+      operationId: put-rest-external-legalentities-id-locations-locationid
+      requestBody:
+        content:
+          application/json:
+            example:
+              Id: 64265696-449f-4d1a-9c48-464cd1b4ea73
+              LegalEntityId: f392d865-5852-4255-b013-17075dba5bb6
+              Type: BILLING
+              IsDefault: true
+              Address:
+                zip: '33466'
+                country: GB
+                buildingnumber: '3'
+                city: Billing-na-Donu
+                street: Billing street
+                locality: Billingovka
+            schema:
+              required:
+              - Id
+              - LegalEntityId
+              - Type
+              - IsDefault
+              - Address
+              type: object
+              properties:
+                Id:
+                  pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                  description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                  type: string
+                LegalEntityId:
+                  pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                  description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                  type: string
+                Type:
+                  type: string
+                IsDefault:
+                  type: boolean
+                Address:
+                  required:
+                  - zip
+                  - country
+                  - buildingnumber
+                  - city
+                  - street
+                  - locality
+                  type: object
+                  properties:
+                    zip:
+                      type: string
+                    country:
+                      type: string
+                    buildingnumber:
+                      type: string
+                    city:
+                      type: string
+                    street:
+                      type: string
+                    locality:
+                      type: string
+        required: true
+      x-annotation-dx-category: accounts-legal_entities
+      summary: update legal entities for location
+      tags:
+      - dx-category--accounts-legal_entities

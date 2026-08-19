@@ -1,0 +1,116 @@
+{
+  "item": [
+    {
+      "id": "dab2f315-951c-43a6-a4f5-0874a1bcab1f",
+      "name": "dx-category--document-validation-validators_delete",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c44799e-7659-4ca4-95a0-66576f1eeabb",
+          "name": "Delete validator group",
+          "request": {
+            "name": "Delete validator group",
+            "description": {
+              "content": "Permanently deletes a validator group definition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "document-validation",
+                "validation",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) UUID of the validator group to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "320d1f2f-8aed-4382-ae66-2c5af461e066",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) UUID of the validator group to delete"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3c173b61-cccb-4584-93c5-1a7fb700bf6a",
+    "name": "Tradeshift External Dx Category Document Validation Validators Delete API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

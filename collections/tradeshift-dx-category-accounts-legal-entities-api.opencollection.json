@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Accounts Legal Entities API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--accounts-legal_entities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "update legal entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/legalentities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID identifier of the legal entity."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a legal entity. If a legal entity with the same id already exists, the existing legal entity will be updated, otherwise the legal entity will be created. While updating the legal entity, only the name, description, legal note and alternate id are updated. During the creation or the updating process, a check is done to see if the alternate id is unique within the same company. The operation is allowed only if the id is unique per company. The body of the PUT is an object that spe"
+        },
+        {
+          "info": {
+            "name": "update legal entity identifiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/legalentities/:id/identifiers/:identifier",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID identifier of the legal entity."
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The id of the legal entity for which the identifier is to be added."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add or update a legal entity identifier. If a value already exists for the identifier scheme then the value of the identifier is updated. Otherwise, a new identifier is added. Except for the label, all other fields are compulsory. The body of the PUT is an identifier object that needs to be added. The legal entity id in this object MUST be absent or as same as the legal entity id in the path parameter."
+        },
+        {
+          "info": {
+            "name": "find locations for legal entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/legalentities/:id/locations/search",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID identifier of the legal entity."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The list of terms to search for terms are simple words like 'alber' or numeric. Every term is post fixed with a wildcard, numeric values are not, max to 5 terms, throws bad request if above."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of locations to be fetched e.g billing or delivery."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number to start fetching locations from."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be fetched per page."
+              },
+              {
+                "name": "only_defaults",
+                "value": "",
+                "type": "query",
+                "description": "Only default addresses."
+              }
+            ]
+          },
+          "docs": "Search all locations for a legal entity. The results are paged."
+        },
+        {
+          "info": {
+            "name": "update legal entities for location",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/legalentities/:id/locations/:locationid",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID identifier of the legal entity."
+              },
+              {
+                "name": "locationid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID identifier of the location of the legal entity."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates a new location. If the id already exists, the call overwrites the existing values with the new ones that are supplied. If no location with the same id exists then a new one will be added. While adding a default location, a check will be done to see if this call does not create another default location over an existing one. If it does, a validation error will be thrown. The path parameter id replaces the one in the object. The body of the PUT is an object which is the location "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

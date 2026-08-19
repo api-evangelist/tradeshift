@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Assignments Update API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--assignments-update",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "update assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/assignments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "An UUID representing the assignment id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an assignment with assignees, tags, comment, outcome. The new assignees will be added to the existing ones and the duplicates will be removed. The new tags will be added to the existing ones and the duplicates will be removed. The comment will replace the existing one. The outcome will replace the existing one.\n"
+        },
+        {
+          "info": {
+            "name": "update assignment status to CLOSED",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/assignments/:id/close",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "An UUID representing the assignment id."
+              }
+            ]
+          },
+          "docs": "Update the status of the assignment to CLOSED. <br> The assignment can be closed if it is in OPEN state.\n"
+        },
+        {
+          "info": {
+            "name": "update assignment comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/assignments/:id/comment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "An UUID representing the assignment id."
+              }
+            ]
+          },
+          "docs": "Update the comment of the assignment. <br> You should put the new comment of the assignment in the request body as plain text.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

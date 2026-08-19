@@ -1,0 +1,605 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Network Search API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--network-search
+paths:
+  /rest/external/network:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Get the user's connections and a list of companies according to the query parameter
+      operationId: get-rest-external-network
+      parameters:
+      - name: query
+        in: query
+        description: List of keywords to narrow the results
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Maximum number of results, and number of results on each skipped page of results
+        schema:
+          default: 25
+          type: number
+      - name: page
+        in: query
+        description: Number of result pages to skip
+        schema:
+          default: 0
+          type: number
+      x-annotation-dx-category: network-search
+      summary: search network
+      tags:
+      - dx-category--network-search
+  /rest/external/network/companies:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Get a list of Companies in the Tradeshift network according to the query parameters
+      operationId: get-rest-external-network-companies
+      parameters:
+      - name: query
+        in: query
+        description: List of keywords to narrow the results
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Maximum number of results, and number of results on each skipped page of results
+        schema:
+          default: 25
+          maximum: 100
+          type: number
+      - name: omitConnections
+        in: query
+        description: Omit companies with existing connections
+        schema:
+          default: false
+          type: boolean
+      - name: page
+        in: query
+        description: Number of result pages to skip
+        schema:
+          default: 0
+          type: number
+      x-annotation-dx-category: network-search
+      summary: get companies
+      tags:
+      - dx-category--network-search
+  /rest/external/network/connections:
+    get:
+      responses:
+        '200':
+          description: 'A list of connections matching the criteria.
+
+            '
+          content:
+            application/json:
+              example:
+                itemsPerPage: 1
+                itemCount: 1
+                numPages: 1
+                pageId: 1
+                Connection:
+                - ConnectionId: 1aafff37-5dd9-4df1-8902-4f5500e2bc09
+                  ConnectionType: TradeshiftConnection
+                  FromCompanyAccountId: 8f7f8172-eea4-44dd-b5cf-c6c5b8e13b6f
+                  ToCompanyAccountId: 35c00082-34ac-44c7-aadb-3c3e094493aa
+                  State: ACCEPTED
+              schema:
+                title: Tradeshift Public API 1.0 - Connection Summary List
+                type: object
+                additionalProperties: false
+                properties:
+                  itemsPerPage:
+                    type: integer
+                  itemCount:
+                    type: integer
+                  numPages:
+                    type: integer
+                  pageId:
+                    type: integer
+                  Connection:
+                    type: array
+                    items:
+                      required:
+                      - connectionId
+                      - connectionType
+                      - fromCompanyAccountId
+                      - toCompanyAccountId
+                      - state
+                      type: object
+                      properties:
+                        connectionId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        connectionType:
+                          enum:
+                          - TradeshiftConnection
+                          - ExternalConnection
+                          type: string
+                        fromCompanyAccountId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        toCompanyAccountId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        state:
+                          enum:
+                          - CREATED
+                          - REQUESTED
+                          - ACCEPTED
+                          type: string
+                required:
+                - itemsPerPage
+                - itemCount
+                - numPages
+                - pageId
+                - Connection
+        '400':
+          description: Bad Request due to invalid input. More details in body.
+      description: Returns the connections in the network of the current user according to the query parameter.
+      operationId: get-rest-external-network-connections
+      parameters:
+      - name: companyAccountId
+        in: query
+        description: Get connections to the specified companyAccountId
+        schema:
+          type: string
+      - name: query
+        in: query
+        description: List of keywords to narrow the results
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Return only connections of this specified type, either 'TradeshiftConnection' or 'ExternalConnection'
+        schema:
+          default: Any
+          type: string
+      - name: passive
+        in: query
+        description: Whether to include passive connections
+        schema:
+          default: false
+          type: boolean
+      - name: includeProperties
+        in: query
+        description: Include connection properties
+        schema:
+          default: false
+          type: boolean
+      - name: excludeWithProperty
+        in: query
+        description: Exclude connections having specified property, can optionally be used in conjuction with excludeWithPropertyValue
+        schema:
+          default: false
+          type: boolean
+      - name: excludeWithPropertyValue
+        in: query
+        description: Exclude connections having specified property value, to be used in conjuction with excludeWithProperty
+        schema:
+          default: false
+          type: boolean
+      - name: branchId
+        in: query
+        description: Only search for connections in this branch id
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Maximum number of results, and number of results on each skipped page of results.
+        schema:
+          default: 25
+          type: number
+      - name: page
+        in: query
+        description: Number of result pages to skip
+        schema:
+          default: 0
+          type: number
+      x-annotation-dx-category: network-search
+      summary: get connections
+      tags:
+      - dx-category--network-search
+  /rest/external/network/connections/accountingSystemId/{accountingSystemId}:
+    parameters:
+    - name: accountingSystemId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: identifier of the accountingSystemId
+    get:
+      responses:
+        '200':
+          description: 'A list of connections matching the criteria.
+
+            '
+          content:
+            application/json:
+              example:
+                itemsPerPage: 1
+                itemCount: 1
+                numPages: 1
+                pageId: 1
+                Connection:
+                - ConnectionId: 1aafff37-5dd9-4df1-8902-4f5500e2bc09
+                  ConnectionType: TradeshiftConnection
+                  FromCompanyAccountId: 8f7f8172-eea4-44dd-b5cf-c6c5b8e13b6f
+                  ToCompanyAccountId: 35c00082-34ac-44c7-aadb-3c3e094493aa
+                  State: ACCEPTED
+              schema:
+                title: Tradeshift Public API 1.0 - Connection Summary List
+                type: object
+                additionalProperties: false
+                properties:
+                  itemsPerPage:
+                    type: integer
+                  itemCount:
+                    type: integer
+                  numPages:
+                    type: integer
+                  pageId:
+                    type: integer
+                  Connection:
+                    type: array
+                    items:
+                      required:
+                      - connectionId
+                      - connectionType
+                      - fromCompanyAccountId
+                      - toCompanyAccountId
+                      - state
+                      type: object
+                      properties:
+                        connectionId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        connectionType:
+                          enum:
+                          - TradeshiftConnection
+                          - ExternalConnection
+                          type: string
+                        fromCompanyAccountId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        toCompanyAccountId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        state:
+                          enum:
+                          - CREATED
+                          - REQUESTED
+                          - ACCEPTED
+                          type: string
+                required:
+                - itemsPerPage
+                - itemCount
+                - numPages
+                - pageId
+                - Connection
+        '400':
+          description: Bad Request due to invalid input. More details in body.
+          content:
+            application/json:
+              example:
+                ErrorCode: BadRequest
+                Message: Could not resolve type nonExistentType
+                ErrorDetail:
+                - Key: message
+                  Value: Could not resolve type nonExistentType
+                - Key: stacktrace
+                  Value: "com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\n\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\n\t"
+                ValidationError: []
+                RequestId: 2c941598-489c-4fac-8543-03cb921feaf7
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+      description: 'Search for existing or potential connections by AccountingSystemId
+
+        '
+      operationId: get-rest-external-network-connections-accountingsystemid-accountingsystemid
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of results to display, and size of each page to skip.
+        schema:
+          default: 25
+          minimum: 0
+          maximum: 100
+          type: number
+      - name: page
+        in: query
+        description: Number of pages of results to skip
+        schema:
+          default: 0
+          type: number
+      x-annotation-dx-category: network-search
+      summary: find network connections with accountingSystemId
+      tags:
+      - dx-category--network-search
+  /rest/external/network/connections/companies/{companyId}:
+    parameters:
+    - name: companyId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of company account.
+    get:
+      responses:
+        '200':
+          description: 'connection matching the criteria.
+
+            '
+          content:
+            application/json:
+              example:
+                ConnectionId: ff5ce009-2156-4a61-8d0b-e4dc87a5ad8e
+                ConnectionType: CompanyConnection
+                FromCompanyAccountId: 073f3379-cf9d-4999-99b0-135c0a477633
+                CompanyName: Seller2
+                Country: AM
+                AcceptingDocumentProfiles: []
+                CompanyAccountId: 2d4cc7e4-25a3-4a51-bb2a-e76cbb6432d1
+                State: ACCEPTED
+                Properties: {}
+                Identifiers:
+                - scheme: TS:ID
+                  value: 2d4cc7e4-25a3-4a51-bb2a-e76cbb6432d1
+                AddressLines: []
+                RelationTypes: []
+              schema:
+                type: string
+        '404':
+          description: ''
+      description: 'Get a connection to a specific account. If the current user is connected to the account, the connection will be returned, otherwise 404 will be returned
+
+        '
+      operationId: get-rest-external-network-connections-companies-companyid
+      x-annotation-dx-category: network-search
+      summary: get connection for company
+      tags:
+      - dx-category--network-search
+  /rest/external/network/master/connections:
+    get:
+      responses:
+        '200':
+          description: 'A list of connections matching the criteria.
+
+            '
+          content:
+            application/json:
+              example:
+                itemsPerPage: 1
+                itemCount: 1
+                numPages: 1
+                pageId: 1
+                Connection:
+                - ConnectionId: 1aafff37-5dd9-4df1-8902-4f5500e2bc09
+                  ConnectionType: TradeshiftConnection
+                  FromCompanyAccountId: 8f7f8172-eea4-44dd-b5cf-c6c5b8e13b6f
+                  ToCompanyAccountId: 35c00082-34ac-44c7-aadb-3c3e094493aa
+                  State: ACCEPTED
+              schema:
+                title: Tradeshift Public API 1.0 - Connection Summary List
+                type: object
+                additionalProperties: false
+                properties:
+                  itemsPerPage:
+                    type: integer
+                  itemCount:
+                    type: integer
+                  numPages:
+                    type: integer
+                  pageId:
+                    type: integer
+                  Connection:
+                    type: array
+                    items:
+                      required:
+                      - connectionId
+                      - connectionType
+                      - fromCompanyAccountId
+                      - toCompanyAccountId
+                      - state
+                      type: object
+                      properties:
+                        connectionId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        connectionType:
+                          enum:
+                          - TradeshiftConnection
+                          - ExternalConnection
+                          type: string
+                        fromCompanyAccountId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        toCompanyAccountId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        state:
+                          enum:
+                          - CREATED
+                          - REQUESTED
+                          - ACCEPTED
+                          type: string
+                required:
+                - itemsPerPage
+                - itemCount
+                - numPages
+                - pageId
+                - Connection
+        '400':
+          description: Bad Request due to invalid input. More details in body.
+      description: Returns only master direct connections according to the query parameter and includes connection properties
+      operationId: get-rest-external-network-master-connections
+      parameters:
+      - name: query
+        in: query
+        description: List of keywords to narrow the results
+        schema:
+          type: string
+      - name: excludeWithProperty
+        in: query
+        description: Exclude connections having specified property, can optionally be used in conjuction with excludeWithPropertyValue
+        schema:
+          default: false
+          type: boolean
+      - name: excludeWithPropertyValue
+        in: query
+        description: Exclude connections having specified property value, to be used in conjuction with excludeWithProperty
+        schema:
+          default: false
+          type: boolean
+      - name: limit
+        in: query
+        description: Maximum number of results, and number of results on each skipped page of results.
+        schema:
+          default: 25
+          type: number
+      - name: page
+        in: query
+        description: Number of result pages to skip
+        schema:
+          default: 0
+          type: number
+      x-annotation-dx-category: network-search
+      summary: get master connections
+      tags:
+      - dx-category--network-search
+  /rest/external/network/suggest:
+    get:
+      responses:
+        '200':
+          description: 'A list of connections matching the criteria. The list can also contain potential connections to other Tradeshift users, these will have a null ConnectionId.
+
+            '
+          content:
+            text/xml:
+              example: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<ts:ConnectionList\n        xmlns:ts=\"http://tradeshift.com/api/public/1.0\" xmlns:ns5=\"http://tradeshift.com/api/1.0\"\n        numPages=\"-1\" pageId=\"-1\" itemsPerPage=\"1\" itemCount=\"1\">\n    <ts:Connection>\n        <ts:ConnectionType>TradeshiftConnection</ts:ConnectionType>\n        <ts:CompanyName>ELTEC Inc. rgatonxberlg</ts:CompanyName>\n        <ts:Country>US</ts:Country>\n        <ts:CompanyAccountId>c885e58e-da10-4cc3-9564-09e897392989</ts:CompanyAccountId>\n    </ts:Connection>\n</ts:ConnectionList>\n"
+              schema:
+                type: object
+        '400':
+          description: Bad Request due to invalid input. More details in body.
+      description: 'Search for existing or potential connections based on criteria. One of the following parameter combinations needs to be provided - country and companyName, identifierScheme and identifierValue, propertyKey and propertyValue, or email. All criteria are matched using exact, case-insensitive match unless exactMatch is set as false.
+
+        '
+      operationId: get-rest-external-network-suggest
+      parameters:
+      - name: companyName
+        in: query
+        description: Must be provided with country, to search for an exact company name in a given country.
+        schema:
+          type: string
+      - name: country
+        in: query
+        description: 'Must be provided with companyName, to search for an exact company name in a given country. Valid 2-letter country codes are listed in the ''countries'' resource.
+
+          '
+        schema:
+          type: string
+      - name: identifierScheme
+        in: query
+        description: 'Identifier scheme used to identify the company (one of the ''companytypes'' resource) Each pair of identifierScheme and identifierValue will be interpreted as OR.
+
+          '
+        schema:
+          type: string
+      - name: identifierValue
+        in: query
+        description: Company identifier to search for (according to the given identifierScheme)
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: E-mail address of one of the users of the company.
+        schema:
+          type: string
+      - name: existingConnectionsOnly
+        in: query
+        description: Limit results to only existing connections or only potential connections. Defaults to returning both existing and potential connections.
+        schema:
+          type: boolean
+      - name: limit
+        in: query
+        description: Maximum number of results to display, and size of each page to skip.
+        schema:
+          default: 25
+          minimum: 0
+          maximum: 100
+          type: number
+      - name: page
+        in: query
+        description: Number of pages of results to skip
+        schema:
+          default: 0
+          type: number
+      - name: propertyKey
+        in: query
+        description: Name of a property set on the connection.
+        schema:
+          type: string
+      - name: propertyValue
+        in: query
+        description: Value of the specified property name on the connection.
+        schema:
+          type: string
+      - name: includeShareableIdentifiers
+        in: query
+        description: Applicable when searching by identifiers. If enabled also include results where matching identifiers are shareable. Disabled by default.
+        schema:
+          default: false
+          type: boolean
+      x-annotation-dx-category: network-search
+      summary: find network suggestions
+      tags:
+      - dx-category--network-search

@@ -1,0 +1,437 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MCP HTTP Bridge & Management",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth Config",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/admin/auth/config"
+      },
+      "docs": "Public endpoint returning Okta configuration for the frontend SPA.\nNo authentication required — these are public OIDC public-client (PKCE)\nvalues that are necessarily exposed in the browser to begin the login flow.\nThe redirect URI is intentionally NOT returned: the SPA derives it from\nits own origin, so it never needs to be served to unauthenticated callers."
+    },
+    {
+      "info": {
+        "name": "Admin Me",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/admin/me"
+      },
+      "docs": "Admin Me"
+    },
+    {
+      "info": {
+        "name": "List Keys",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/admin/keys"
+      },
+      "docs": "List Keys"
+    },
+    {
+      "info": {
+        "name": "Create Key",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/admin/keys",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create Key"
+    },
+    {
+      "info": {
+        "name": "Update Key",
+        "type": "http"
+      },
+      "http": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/api/admin/keys/:key_id",
+        "params": [
+          {
+            "name": "key_id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update Key"
+    },
+    {
+      "info": {
+        "name": "Deactivate Key",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/admin/keys/:key_id",
+        "params": [
+          {
+            "name": "key_id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Deactivate Key"
+    },
+    {
+      "info": {
+        "name": "List Logs",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/admin/logs",
+        "params": [
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "offset",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "key_name",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "tool_name",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "tenant_id",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "auth_type",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "date_from",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "date_to",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "List Logs"
+    },
+    {
+      "info": {
+        "name": "List Admin Action Logs",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/admin/action-logs",
+        "params": [
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "offset",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "user_email",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "action",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "resource_type",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "date_from",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "date_to",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "List admin action audit logs (who changed what on API keys and OAuth clients)."
+    },
+    {
+      "info": {
+        "name": "List Oauth Clients",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/admin/oauth-clients"
+      },
+      "docs": "List all OAuth clients."
+    },
+    {
+      "info": {
+        "name": "Create Oauth Client",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/admin/oauth-clients",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create new OAuth client."
+    },
+    {
+      "info": {
+        "name": "Update Oauth Client",
+        "type": "http"
+      },
+      "http": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/api/admin/oauth-clients/:client_id",
+        "params": [
+          {
+            "name": "client_id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update an OAuth client's configuration."
+    },
+    {
+      "info": {
+        "name": "Deactivate Oauth Client",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/admin/oauth-clients/:client_id",
+        "params": [
+          {
+            "name": "client_id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Deactivate an OAuth client."
+    },
+    {
+      "info": {
+        "name": "Rotate Tenant Credentials",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/api/admin/tenant-credentials/:tenant_id/rotate",
+        "params": [
+          {
+            "name": "tenant_id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Rotate OAuth1 credentials for a tenant."
+    },
+    {
+      "info": {
+        "name": "Validate Credentials",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/admin/tenant-credentials/validate",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Validate OAuth1 credentials without storing them."
+    },
+    {
+      "info": {
+        "name": "Liveness",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health/live"
+      },
+      "docs": "Liveness probe - checks if the application is running.\nReturns 200 if the app is alive, regardless of database connectivity."
+    },
+    {
+      "info": {
+        "name": "Readiness",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health/ready"
+      },
+      "docs": "Readiness probe - checks if the application is ready to serve traffic.\nValidates database connectivity and critical dependencies."
+    },
+    {
+      "info": {
+        "name": "List All Tools",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/tools/list",
+        "auth": {
+          "type": "apikey",
+          "key": "X-API-Key",
+          "value": "{{X-API-Key}}",
+          "placement": "header"
+        }
+      },
+      "docs": "List all tools across allowed domains."
+    },
+    {
+      "info": {
+        "name": "List Category Tools",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/:category/tools/list",
+        "params": [
+          {
+            "name": "category",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "auth": {
+          "type": "apikey",
+          "key": "X-API-Key",
+          "value": "{{X-API-Key}}",
+          "placement": "header"
+        }
+      },
+      "docs": "List Category Tools"
+    },
+    {
+      "info": {
+        "name": "Execute Category Tool",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/:category/tools/execute",
+        "params": [
+          {
+            "name": "category",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "apikey",
+          "key": "X-API-Key",
+          "value": "{{X-API-Key}}",
+          "placement": "header"
+        }
+      },
+      "docs": "Execute Category Tool"
+    },
+    {
+      "info": {
+        "name": "Create Session",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/admin/session",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a UI session. Validates an Okta token (or dev-mode flag) and sets a session cookie."
+    },
+    {
+      "info": {
+        "name": "Destroy Session",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/admin/session"
+      },
+      "docs": "Clear the UI session cookie."
+    },
+    {
+      "info": {
+        "name": "Serve Spa",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/:full_path",
+        "params": [
+          {
+            "name": "full_path",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Serve Spa"
+    }
+  ],
+  "bundled": true
+}

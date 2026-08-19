@@ -1,0 +1,47 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Accounts Taxes API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--accounts-taxes
+paths:
+  /rest/external/account/taxes:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  StackedTaxes: []
+                  DefaultTaxIndex: '0'
+        '404':
+          description: ''
+      description: Get tax categories. Lists the company taxes for the requesting context, if connectionID is specified it will also include the default tax from the connection properties.
+      operationId: get-rest-external-account-taxes
+      parameters:
+      - name: connectionID
+        in: query
+        required: true
+        description: Connection to get tax categories for.
+        schema:
+          type: string
+      x-annotation-dx-category: accounts-taxes
+      summary: get taxes
+      tags:
+      - dx-category--accounts-taxes
+    put:
+      responses:
+        '204':
+          description: ''
+        '404':
+          description: ''
+      description: Update tax categories.
+      operationId: put-rest-external-account-taxes
+      x-annotation-dx-category: accounts-taxes
+      summary: update taxes
+      tags:
+      - dx-category--accounts-taxes

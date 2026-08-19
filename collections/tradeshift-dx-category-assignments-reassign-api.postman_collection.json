@@ -1,0 +1,725 @@
+{
+  "item": [
+    {
+      "id": "a6ab5191-86d8-421c-a1da-cf85cb6d8ded",
+      "name": "dx-category--assignments-reassign",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5648e19-d8cc-464c-af30-4d08cf69948d",
+          "name": "reassign assignment",
+          "request": {
+            "name": "reassign assignment",
+            "description": {
+              "content": "Reassign the assignment with the given id to the new assignee.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "assignments",
+                ":id",
+                "reassign",
+                ":assigneeid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) An UUID representing the assignment id."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assigneeid",
+                  "description": "(Required) An UUID representing the id of the new assignee."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4752164c-250e-4356-91aa-a7ca85f4b4ed",
+              "name": "&nbsp; The assignment is successfully reassigned.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "reassign",
+                    ":assigneeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assigneeid",
+                      "description": "(Required) An UUID representing the id of the new assignee."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a60b2008-8872-4620-8ed2-410ce5640fb9\",\n  \"externalId\": \"External-Id\",\n  \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n  \"app\": \"APVerification\",\n  \"createdBy\": \"260b2008-8872-4620-8ed2-410ce5640fb3\",\n  \"assigneeIds\": [\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n  ],\n  \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n  \"tags\": [\n    \"A tag\",\n    \"Another tag\"\n  ],\n  \"type\": \"A type\",\n  \"createdAt\": \"2018-10-25T16:40:31.795+03:00\",\n  \"modifiedAt\": \"2018-10-25T16:40:31.795+03:00\",\n  \"outcome\": \"An outcome\",\n  \"status\": \"CLOSED\",\n  \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n  \"comment\": \"A comment\",\n  \"context\": {\n    \"format\": \"App.Tradeshift\",\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5280c686-d7f4-401b-bb06-314099e3b9a2",
+              "name": "The new assignee is the current assignee.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "reassign",
+                    ":assigneeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assigneeid",
+                      "description": "(Required) An UUID representing the id of the new assignee."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5dae630-0a8c-4708-9dfa-707f861c67ea",
+              "name": "The assignment is in CLOSED state.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "reassign",
+                    ":assigneeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assigneeid",
+                      "description": "(Required) An UUID representing the id of the new assignee."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": \"BadRequest\",\n  \"Message\": \"Could not resolve type nonExistentType\",\n  \"ErrorDetail\": [\n    {\n      \"Key\": \"message\",\n      \"Value\": \"Could not resolve type nonExistentType\"\n    },\n    {\n      \"Key\": \"stacktrace\",\n      \"Value\": \"com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\\n\\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\\n\\t\"\n    }\n  ],\n  \"ValidationError\": [],\n  \"RequestId\": \"2c941598-489c-4fac-8543-03cb921feaf7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5aaa59f-328a-43b9-a968-b3bd66ce0f96",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "reassign",
+                    ":assigneeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assigneeid",
+                      "description": "(Required) An UUID representing the id of the new assignee."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "259ee0ac-a09c-4c31-95b9-79243bb6e862",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "reassign",
+                    ":assigneeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assigneeid",
+                      "description": "(Required) An UUID representing the id of the new assignee."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "902ff8e9-0ecb-48db-921f-e066c4347aef",
+              "name": "&nbsp; The default assignee is absent, invalid or inactive. <br> &nbsp; It returns a response body with the ErrorCode \"AbsentDefaultAssignee\" or \"InvalidDefaultAssignee\" when the default assignee is invalid or inactive.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "reassign",
+                    ":assigneeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assigneeid",
+                      "description": "(Required) An UUID representing the id of the new assignee."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": \"AbsentDefaultAssignee\",\n  \"Message\": \"Default assignee is absent. - Default assignee is absent.\",\n  \"ErrorDetail\": [],\n  \"ValidationError\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aef5614b-4053-439b-88d8-4deba34f39bc",
+          "name": "reassign user assignments",
+          "request": {
+            "name": "reassign user assignments",
+            "description": {
+              "content": "Reassign the assignments of the first assignee id to the assignee with the second id. <br> The assignees can be users or teams. <br> The assignments will be updated if: <ul>\n  <li>the current user is regular and the assignments are assigned to him or his teams </li>\n  <li>the current user is queue manager and and the assignments have an assignee in the current branch or child branches</li>\n  <li>the current user is in the same branch as the reassignee</li>\n</ul>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "assignments",
+                "assignees",
+                ":from_assigneeid",
+                "reassignees",
+                ":to_assigneeid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "from_assigneeid",
+                  "description": "(Required) An UUID representing the assignee id."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "to_assigneeid",
+                  "description": "(Required) An UUID representing the reassignee id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa1ebbcc-ce27-46e6-a966-050a09e5943a",
+              "name": "&nbsp; The assignment is successfully reassigned. <br> &nbsp; If the reassignee is not valid, active and member of the current branch, the assignments will be assigned to the default assignee and this action will be marked in the response body. <br> &nbsp; Excepting this case, the response does not have a body.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    "assignees",
+                    ":from_assigneeid",
+                    "reassignees",
+                    ":to_assigneeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "from_assigneeid",
+                      "description": "(Required) An UUID representing the assignee id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "to_assigneeid",
+                      "description": "(Required) An UUID representing the reassignee id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 2,\n  \"items\": [\n    {\n      \"id\": \"460b2008-8872-4620-8ed2-410ce5640fb9\",\n      \"externalId\": \"external id\",\n      \"subjectId\": \"280b2305-8872-3620-9ed2-010ce5640fb7\",\n      \"app\": \"APVerification\",\n      \"createdBy\": \"760b2008-8872-4620-8ed2-410ce5640fb4\",\n      \"assigneeIds\": [\n        \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n      ],\n      \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n      \"tags\": [\n        \"A tag\",\n        \"Another tag\"\n      ],\n      \"type\": \"DOCUMENT\",\n      \"createdAt\": \"2018-10-25T10:56:27.311+03:00\",\n      \"modifiedAt\": \"2018-10-25T10:56:27.311+03:00\",\n      \"outcome\": \"An outcome\",\n      \"status\": \"OPEN\",\n      \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n      \"comment\": \"Assigned to default assignee.\",\n      \"context\": {\n        \"format\": \"App.Tradeshift\",\n        \"context\": [\n          \"freeJson\"\n        ]\n      }\n    },\n    {\n      \"id\": \"a60b2008-8872-4620-8ed2-410ce5640fb9\",\n      \"externalId\": \"external id\",\n      \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n      \"app\": \"APVerification\",\n      \"createdBy\": \"260b2008-8872-4620-8ed2-410ce5640fb3\",\n      \"assigneeIds\": [\n        \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n      ],\n      \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n      \"tags\": [],\n      \"type\": \"A type\",\n      \"createdAt\": \"2018-10-25T16:40:31.795+03:00\",\n      \"modifiedAt\": \"2018-10-25T16:40:31.795+03:00\",\n      \"outcome\": \"An outcome\",\n      \"status\": \"CLOSED\",\n      \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n      \"comment\": \"Assigned to default assignee.\",\n      \"context\": {\n        \"format\": \"App.Tradeshift\",\n        \"context\": {}\n      }\n    }\n  ],\n  \"empty\": false,\n  \"firstItem\": {\n    \"id\": \"460b2008-8872-4620-8ed2-410ce5640fb9\",\n    \"externalId\": \"External-Id\",\n    \"subjectId\": \"280b2305-8872-3620-9ed2-010ce5640fb7\",\n    \"app\": \"APVerification\",\n    \"createdBy\": \"760b2008-8872-4620-8ed2-410ce5640fb4\",\n    \"assigneeIds\": [\n      \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n    ],\n    \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n    \"tags\": [\n      \"A tag\",\n      \"Another tag\"\n    ],\n    \"type\": \"DOCUMENT\",\n    \"createdAt\": \"2018-10-25T10:56:27.311+03:00\",\n    \"modifiedAt\": \"2018-10-25T10:56:27.311+03:00\",\n    \"outcome\": \"An outcome\",\n    \"status\": \"OPEN\",\n    \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n    \"comment\": \"Assigned to default assignee.\",\n    \"context\": {\n      \"format\": \"App.Tradeshift\",\n      \"context\": [\n        \"freeJson\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f9ce423-1996-479a-b957-556aca1df04f",
+              "name": "Assigees are equal or no assignments are found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    "assignees",
+                    ":from_assigneeid",
+                    "reassignees",
+                    ":to_assigneeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "from_assigneeid",
+                      "description": "(Required) An UUID representing the assignee id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "to_assigneeid",
+                      "description": "(Required) An UUID representing the reassignee id."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "adfb4b2d-a96a-45c8-b0a6-95b9d0d6f8bd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    "assignees",
+                    ":from_assigneeid",
+                    "reassignees",
+                    ":to_assigneeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "from_assigneeid",
+                      "description": "(Required) An UUID representing the assignee id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "to_assigneeid",
+                      "description": "(Required) An UUID representing the reassignee id."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "790e9ae0-bbbe-4b0e-878d-5f9ab443e1af",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    "assignees",
+                    ":from_assigneeid",
+                    "reassignees",
+                    ":to_assigneeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "from_assigneeid",
+                      "description": "(Required) An UUID representing the assignee id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "to_assigneeid",
+                      "description": "(Required) An UUID representing the reassignee id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "20b8b466-fb99-409f-8975-009abbab409e",
+              "name": "&nbsp; The default assignee is absent, invalid or inactive. <br> &nbsp; It returns a response body with the ErrorCode \"AbsentDefaultAssignee\" or \"InvalidDefaultAssignee\" when the default assignee is invalid or inactive.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    "assignees",
+                    ":from_assigneeid",
+                    "reassignees",
+                    ":to_assigneeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "from_assigneeid",
+                      "description": "(Required) An UUID representing the assignee id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "to_assigneeid",
+                      "description": "(Required) An UUID representing the reassignee id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": \"AbsentDefaultAssignee\",\n  \"Message\": \"Default assignee is absent. - Default assignee is absent.\",\n  \"ErrorDetail\": [],\n  \"ValidationError\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ed18dbdf-9c5c-4df0-b079-be8dcce0fb0f",
+    "name": "Tradeshift External Dx Category Assignments Reassign API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Assignments Logs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--assignments-logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get assignment logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/assignments/:id/logs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "An UUID representing the assignment id."
+              }
+            ]
+          },
+          "docs": "Get an assignment by id with all its logs. The assignment will be visible if: <ul>\n  <li>the current user is regular and the assignment is assigned to him or his teams </li>\n  <li>the current user is queue manager and and the assignment has an assignee in the current branch or child branches</li>\n</ul>\n"
+        },
+        {
+          "info": {
+            "name": "get assignments by subjectid",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/assignments/subjects/:subjectId/logs",
+            "params": [
+              {
+                "name": "subjectId",
+                "value": "",
+                "type": "path",
+                "description": "A string representing a subject id ( usually a document UUID )."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Number representing the page to be return from the paginated result-set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of assignments displayed per page."
+              }
+            ]
+          },
+          "docs": "Get a paged list of assignments with all their logs, filtered by subject id which usually is a document id. <br> The assignments will be visible if: <ul>\n  <li>the current user is regular and the assignments are assigned to him or his teams </li>\n  <li>the current user is queue manager and and the assignments have an assignee in the current branch or child branches</li>\n</ul>\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

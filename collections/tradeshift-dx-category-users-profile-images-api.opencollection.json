@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Users Profile Images API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--users-profile_images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get user image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/users/:userId/images/:name",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of user account."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Unique name of image."
+              },
+              {
+                "name": "height",
+                "value": "",
+                "type": "query",
+                "description": "The height of the image"
+              },
+              {
+                "name": "width",
+                "value": "",
+                "type": "query",
+                "description": "The width of the image"
+              }
+            ]
+          },
+          "docs": "Returns image by user and image name."
+        },
+        {
+          "info": {
+            "name": "save user image",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/users/:userId/images/:name",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of user account."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Unique name of image."
+              }
+            ]
+          },
+          "docs": "Save an image by user and image name"
+        },
+        {
+          "info": {
+            "name": "remove user image",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/users/:userId/images/:name",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of user account."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Unique name of image."
+              }
+            ]
+          },
+          "docs": "Removes image that matches user and image name parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

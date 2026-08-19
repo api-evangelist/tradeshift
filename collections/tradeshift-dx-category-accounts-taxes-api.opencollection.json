@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Accounts Taxes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--accounts-taxes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get taxes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/taxes",
+            "params": [
+              {
+                "name": "connectionID",
+                "value": "",
+                "type": "query",
+                "description": "Connection to get tax categories for."
+              }
+            ]
+          },
+          "docs": "Get tax categories. Lists the company taxes for the requesting context, if connectionID is specified it will also include the default tax from the connection properties."
+        },
+        {
+          "info": {
+            "name": "update taxes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/taxes"
+          },
+          "docs": "Update tax categories."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,176 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Network Connections API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--network-connections
+paths:
+  /rest/external/network/connections/{connectionId}:
+    parameters:
+    - name: connectionId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Connection identifier as UUID.
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            text/xml:
+              example: "<TradeshiftConnection xmlns=\"http://tradeshift.com/api/public/1.0\">\n  <ConnectionId>4b7e8e41-9c8f-474b-b71b-2bcca615b441</ConnectionId>\n  <CreatedDate>2016-09-08T14:09:33.098+02:00</CreatedDate>\n  <CompanyAccountId>e4e91b4b-0737-40a8-be7b-3f651ffef6a9</CompanyAccountId>\n  <State>REQUESTED</State>\n</TradeshiftConnection>\n"
+              schema:
+                type: object
+      description: 'Retrieves an existing tradeshift or external connection. The returned structure depends on the kind of connection.
+
+        '
+      operationId: get-rest-external-network-connections-connectionid
+      x-annotation-dx-category: network-connections
+      summary: find network connection
+      tags:
+      - dx-category--network-connections
+    put:
+      responses:
+        '201':
+          description: 'Returns the URL of the created connection. The location can in some cases contain another connectionId - this happens when creating a new connection to another Tradeshift user, which already exists.
+
+            '
+      description: 'Create a new connection or update an existing one. The connection is either an internal Tradeshift connection or an external connection.
+
+        '
+      operationId: put-rest-external-network-connections-connectionid
+      requestBody:
+        content:
+          application/json:
+            example:
+              ConnectionType: TradeshiftConnection
+              ConnectionId: 4b7e8e41-9c8f-474b-b71b-2bcca615b441
+              CreatedDate: '2016-09-08T14:09:33.098+02:00'
+              CompanyAccountId: e4e91b4b-0737-40a8-be7b-3f651ffef6a9
+              State: ACCEPTED
+              Invitation:
+                SendMail: true
+            schema:
+              title: Tradeshift Public API 1.0 - Conenction
+              required:
+              - ConnectionType
+              type: object
+              additionalProperties: false
+              properties:
+                ConnectionType:
+                  enum:
+                  - TradeshiftConnection
+                  - ExternalConnection
+                  type: string
+                ConnectionId:
+                  pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                  description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                  type: string
+                CreatedDate:
+                  pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.\d{3})?(Z|(\+|\-)[0-9]{2}:[0-9]{2})
+                  description: ISO8601 formatted DateTime in UTC timezone, fx 2014-12-09T16:11:53Z with optionally .001 for milliseconds.
+                  type: string
+                CompanyAccountId:
+                  pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                  description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                  type: string
+                Invitation:
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    SendMail:
+                      type: boolean
+                  required:
+                  - SendMail
+                Properties:
+                  type: object
+                State:
+                  enum:
+                  - CREATED
+                  - REQUESTED
+                  - ACCEPTED
+                  type: string
+          text/xml:
+            example: "<TradeshiftConnection xmlns=\"http://tradeshift.com/api/public/1.0\">\n  <ConnectionId>4b7e8e41-9c8f-474b-b71b-2bcca615b441</ConnectionId>\n  <CreatedDate>2016-09-08T14:09:33.098+02:00</CreatedDate>\n  <CompanyAccountId>e4e91b4b-0737-40a8-be7b-3f651ffef6a9</CompanyAccountId>\n</TradeshiftConnection>\n"
+            schema:
+              type: object
+        required: true
+      x-annotation-dx-category: network-connections
+      summary: update network connection
+      tags:
+      - dx-category--network-connections
+    delete:
+      responses:
+        '204':
+          description: The connection was deleted
+      description: 'Rejects an existing connection, deleting it and makes it as not accepted with the applicable reverse connection.
+
+        '
+      operationId: delete-rest-external-network-connections-connectionid
+      x-annotation-dx-category: network-connections
+      summary: delete network connection
+      tags:
+      - dx-category--network-connections
+  /rest/external/network/connections/{connectionId}/detail:
+    parameters:
+    - name: connectionId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Connection identifier as UUID.
+    get:
+      responses:
+        '200':
+          description: ''
+        '404':
+          description: ''
+      description: 'Get the details for a connection. Contains the full information on the connection, including names, identifiers, etc. The same structure is returned for both tradeshift and external connections. However, only fields relevant to the connection kind are filled.
+
+        '
+      operationId: get-rest-external-network-connections-connectionid-detail
+      x-annotation-dx-category: network-connections
+      summary: get connection detail
+      tags:
+      - dx-category--network-connections
+  /rest/external/network/connections/{connectionId}/verify:
+    parameters:
+    - name: connectionId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Connection identifier as UUID.
+    post:
+      responses:
+        '200':
+          description: ''
+      description: 'Approves an "unverified" connection created by another party. "Unverified" connections are created in order to interact with companies that may not be active on Tradeshift.
+
+        '
+      operationId: post-rest-external-network-connections-connectionid-verify
+      x-annotation-dx-category: network-connections
+      summary: verify connection
+      tags:
+      - dx-category--network-connections
+  /rest/external/network/favorites:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Get last used connections.
+      operationId: get-rest-external-network-favorites
+      parameters:
+      - name: count
+        in: query
+        description: Number of results to return
+        schema:
+          default: 5
+          type: number
+      x-annotation-dx-category: network-connections
+      summary: get favorites
+      tags:
+      - dx-category--network-connections

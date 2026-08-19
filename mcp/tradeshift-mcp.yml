@@ -6,9 +6,9 @@ server:
   name: tradeshift
   url: https://mcp.tradeshift.com/mcp
   transports:
-    - http
-    - sse
-    - stdio
+  - http
+  - sse
+  - stdio
   console: https://mcp.tradeshift.com/
   in_production_since: '2026'
   runtime: FastAPI on AWS EKS (Ireland), PostgreSQL audit log
@@ -18,93 +18,97 @@ authentication:
   authorization_server: https://mcp.tradeshift.com
   token_endpoint: https://mcp.tradeshift.com/oauth/token
   grant_types_supported:
-    - client_credentials
+  - client_credentials
   token_endpoint_auth_methods_supported:
-    - client_secret_post
+  - client_secret_post
   bearer_methods_supported:
-    - header
+  - header
   protected_resource_metadata: https://mcp.tradeshift.com/.well-known/oauth-protected-resource
   authorization_server_metadata: https://mcp.tradeshift.com/.well-known/oauth-authorization-server
   scopes: scopes/tradeshift-scopes.yml
-  permission_model: >-
-    Every call passes through the same authentication mechanism that protects human sessions and inherits the
-    permissions the human has on Tradeshift resources; the MCP server is authoritative for user access and refuses a
-    call before it reaches the data layer when the permission is absent (per the Tradeshift engineering write-up).
+  permission_model: Every call passes through the same authentication mechanism that protects human sessions
+    and inherits the permissions the human has on Tradeshift resources; the MCP server is authoritative
+    for user access and refuses a call before it reaches the data layer when the permission is absent
+    (per the Tradeshift engineering write-up).
 discovery:
   tools_list:
-    probed: 'POST https://mcp.tradeshift.com/mcp {"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+    probed: POST https://mcp.tradeshift.com/mcp {"jsonrpc":"2.0","id":1,"method":"tools/list"}
     http_status: 401
     body: '{"error": "invalid_token", "error_description": "Authentication required"}'
-    result: >-
-      The live tool manifest is auth-gated. Tool names and input schemas require an authenticated introspection;
-      they are NOT recorded here because Tradeshift does not publish them anonymously.
+    result: The live tool manifest is auth-gated. Tool names and input schemas require an authenticated
+      introspection; they are NOT recorded here because Tradeshift does not publish them anonymously.
   http_bridge:
     openapi: openapi/tradeshift-mcp-bridge-openapi.yml
     source: https://mcp.tradeshift.com/openapi.json
     http_status: 200
     title: MCP HTTP Bridge & Management
     version: 0.1.0
-    note: >-
-      The bridge exposes GET /tools/list, GET /{category}/tools/list and POST /{category}/tools/execute over plain
-      HTTP alongside the management API (API keys, OAuth clients, tenant credentials, execution and admin action
-      logs). All of it is protected by APIKeyHeader (X-API-Key) or a bearer token; anonymous GET /tools/list returns
-      401 "Missing authentication".
+    note: The bridge exposes GET /tools/list, GET /{category}/tools/list and POST /{category}/tools/execute
+      over plain HTTP alongside the management API (API keys, OAuth clients, tenant credentials, execution
+      and admin action logs). All of it is protected by APIKeyHeader (X-API-Key) or a bearer token; anonymous
+      GET /tools/list returns 401 "Missing authentication".
 tool_domains:
-  note: >-
-    Tradeshift states the server exposes 95 tools across six domains. The domain list below is taken verbatim from
-    the provider's own description and corroborated by the scopes advertised in the RFC 8414/9728 metadata. Individual
-    tool names are NOT enumerated — they are not published, and inventing them would misrepresent the surface.
+  note: Tradeshift states the server exposes 95 tools across six domains. The domain list below is taken
+    verbatim from the provider's own description and corroborated by the scopes advertised in the RFC
+    8414/9728 metadata. Individual tool names are NOT enumerated — they are not published, and inventing
+    them would misrepresent the surface.
   count_claimed: 95
   domains:
-    - key: core
-      label: Core services
-      scope: core
-    - key: network
-      label: Supplier network
-      scope: network
-    - key: documents
-      label: Documents
-      scope: documents
-    - key: company
-      label: Company data
-      scope: company
-    - key: bfr
-      label: Business Firewall
-      scope: bfr
-    - key: askada
-      label: AskAda AI assistant / Ada AI document intelligence
-      scope: askada
+  - key: core
+    label: Core services
+    scope: core
+  - key: network
+    label: Supplier network
+    scope: network
+  - key: documents
+    label: Documents
+    scope: documents
+  - key: company
+    label: Company data
+    scope: company
+  - key: bfr
+    label: Business Firewall
+    scope: bfr
+  - key: askada
+    label: AskAda AI assistant / Ada AI document intelligence
+    scope: askada
   example_capabilities_named_by_provider:
-    - Search for a document
-    - Read a supplier connection
-    - Validate a UBL invoice
-    - Look up a tax identifier
-    - Update a property, only when the user is allowed to do so
+  - Search for a document
+  - Read a supplier connection
+  - Validate a UBL invoice
+  - Look up a tax identifier
+  - Update a property, only when the user is allowed to do so
 posture:
   read_access: live in production
-  write_access: >-
-    Announced as coming in a future release ("Over the next few releases we will turn on write access in
-    production"), as of the 2026-05-22 engineering post.
+  write_access: Announced as coming in a future release ("Over the next few releases we will turn on write
+    access in production"), as of the 2026-05-22 engineering post.
   audit: Every tool execution recorded with full request correlation into a PostgreSQL audit log.
   tenant_isolation: true
 x-evidence:
-  - url: https://mcp.tradeshift.com/.well-known/oauth-protected-resource
-    http_status: 200
-    content_type: application/json
-    fetched: '2026-08-02'
-  - url: https://mcp.tradeshift.com/.well-known/oauth-authorization-server
-    http_status: 200
-    content_type: application/json
-    fetched: '2026-08-02'
-  - url: https://mcp.tradeshift.com/openapi.json
-    http_status: 200
-    content_type: application/json
-    fetched: '2026-08-02'
-  - url: https://mcp.tradeshift.com/mcp
-    http_status: 401
-    fetched: '2026-08-02'
-  - url: https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
-    http_status: 200
-    fetched: '2026-08-02'
-    published: '2026-05-22'
-    author: Robert Iordache, Director of Data Science, Tradeshift
+- url: https://mcp.tradeshift.com/.well-known/oauth-protected-resource
+  http_status: 200
+  content_type: application/json
+  fetched: '2026-08-02'
+- url: https://mcp.tradeshift.com/.well-known/oauth-authorization-server
+  http_status: 200
+  content_type: application/json
+  fetched: '2026-08-02'
+- url: https://mcp.tradeshift.com/openapi.json
+  http_status: 200
+  content_type: application/json
+  fetched: '2026-08-02'
+- url: https://mcp.tradeshift.com/mcp
+  http_status: 401
+  fetched: '2026-08-02'
+- url: https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
+  http_status: 200
+  fetched: '2026-08-02'
+  published: '2026-05-22'
+  author: Robert Iordache, Director of Data Science, Tradeshift
+deployment:
+  mode: remote
+  endpoint: https://mcp.tradeshift.com/mcp
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census

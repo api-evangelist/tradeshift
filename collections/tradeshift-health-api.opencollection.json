@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MCP HTTP Bridge & Management Health API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Liveness",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/health/live"
+          },
+          "docs": "Liveness probe - checks if the application is running.\nReturns 200 if the app is alive, regardless of database connectivity."
+        },
+        {
+          "info": {
+            "name": "Readiness",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/health/ready"
+          },
+          "docs": "Readiness probe - checks if the application is ready to serve traffic.\nValidates database connectivity and critical dependencies."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

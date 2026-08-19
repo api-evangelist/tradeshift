@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Accounts Gli Prefixes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--accounts-gli_prefixes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "find gli prefixes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/gliprefixes/:companyId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Company (tenant) UUID identifier of company to administer TSGLI prefixes for."
+              }
+            ]
+          },
+          "docs": "Get all TSGLI prefixes for a company"
+        },
+        {
+          "info": {
+            "name": "update gli prefixes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/gliprefixes/:companyId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Company (tenant) UUID identifier of company to administer TSGLI prefixes for."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new TSGLI prefix for a company"
+        },
+        {
+          "info": {
+            "name": "remove gli prefixes",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/gliprefixes/:companyId/:prefix",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Company (tenant) UUID identifier of company to administer TSGLI prefixes for."
+              },
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "TSGLI prefix"
+              }
+            ]
+          },
+          "docs": "Delete TSGLI prefix"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

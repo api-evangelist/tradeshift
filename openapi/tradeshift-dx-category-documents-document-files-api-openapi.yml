@@ -1,0 +1,393 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Documents Document Files API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--documents-document_files
+paths:
+  /rest/external/documentfiles:
+    get:
+      responses:
+        '200':
+          description: Lists document files.
+          content:
+            text/xml:
+              example: "<DocumentFileList xmlns=\"http://tradeshift.com/api/public/1.0\" itemCount=\"2\" itemsPerPage=\"0\" numPages=\"0\" pageId=\"0\">\n  <Items>\n    <Id>51e40da6-0116-11e4-9055-14109fe0cc3d</Id>\n    <FileName>my_test_invoice</FileName>\n    <MimeType>application/xml</MimeType>\n    <ActorId>51e40da6-0116-11e4-9055-14109fe0cc3d</ActorId>\n    <GroupId>51e40da6-0116-11e4-9055-14109fe0cc3d</GroupId>\n    <Created>2013-07-23T07:35:16.000Z</Created>\n    <Modified>2013-07-23T07:35:16.000Z</Modified>\n    <Validated>2013-07-23T07:35:16.000Z</Validated>\n    <Directory>outbox</Directory>\n    <DocumentId>51e40da6-0116-11e4-9055-14109fe0cc3d</DocumentId>\n    <FileSize>1024</FileSize>\n    <ValidationErrorsSize>42</ValidationErrorsSize>\n  </Items>\n  <Items>\n    <Id>51e40da6-0116-11e4-9055-14109fe0cc3d</Id>\n    <FileName>my_test_invoice</FileName>\n    <MimeType>application/xml</MimeType>\n    <ActorId>51e40da6-0116-11e4-9055-14109fe0cc3d</ActorId>\n    <GroupId>51e40da6-0116-11e4-9055-14109fe0cc3d</GroupId>\n    <Created>2013-07-23T07:35:16.000Z</Created>\n    <Modified>2013-07-23T07:35:16.000Z</Modified>\n    <Validated>2013-07-23T07:35:16.000Z</Validated>\n    <Directory>outbox</Directory>\n    <DocumentId>51e40da6-0116-11e4-9055-14109fe0cc3d</DocumentId>\n    <FileSize>1024</FileSize>\n    <ValidationErrorsSize>42</ValidationErrorsSize>\n  </Items>\n</DocumentFileList>\n"
+              schema:
+                type: object
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+          content:
+            text/xml:
+              schema:
+                example: "<ns6:ResponseError xmlns:cec=\"urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\" xmlns:ns6=\"http://tradeshift.com/api/1.0\" xmlns:ns20=\"urn:oasis:names:specification:ubl:schema:xsd:OrderResponseSimple-2\" xmlns:ns8=\"urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2\" xmlns:ns7=\"http://tradeshift.com/api/2.0\" xmlns:ns13=\"urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2\" xmlns:ns9=\"urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2\" xmlns:ns12=\"urn:oasis:names:specification:ubl:schema:xsd:Quotation-2\" xmlns:ns11=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\" xmlns:ns22=\"urn:oasis:names:specification:ubl:schema:xsd:RequestForQuotation-2\" xmlns:ns10=\"urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2\" xmlns:ns21=\"urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2\" xmlns:ns17=\"urn:oasis:names:specification:ubl:schema:xsd:RemittanceAdvice-2\" xmlns:ns16=\"urn:oasis:names:specification:ubl:schema:xsd:Reminder-2\" xmlns:ns15=\"urn:oasis:names:specification:ubl:schema:xsd:OrderChange-2\" xmlns:ns14=\"urn:oasis:names:specification:ubl:schema:xsd:Order-2\" xmlns:ns19=\"urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2\" xmlns:ts=\"http://tradeshift.com/api/public/1.0\" xmlns:ns18=\"urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2\">\n    <ns6:ErrorCode>ResourceNotFound</ns6:ErrorCode>\n    <ns6:Message>Error&amp;#x3a; ResourceNotFound&amp;#x3a; The object did not exist</ns6:Message>\n    <ns6:RequestId>fff29544-8039-499f-91c5-b3c9e4e3d8b1</ns6:RequestId>\n</ns6:ResponseError>\n"
+      description: Get array of document file objects.
+      operationId: get-rest-external-documentfiles
+      parameters:
+      - name: since
+        in: query
+        description: 'Limits documents to those which have changed since the given timestamp, formatted as a ISO 8601 XSD-timestamp.
+
+          '
+        schema:
+          type: string
+      - name: createdAfter
+        in: query
+        description: List only those files that were created after this date.
+        schema:
+          type: string
+      - name: createdBefore
+        in: query
+        description: List only those files that were created before this date.
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Number of files to be shown at once as part of the first page or for every page.
+        schema:
+          default: 100
+          type: integer
+      - name: noPaging
+        in: query
+        description: 'To disable any paging and either return all files or just the first few files as
+
+          specified by the limit parameter. This parameter supersedes the page parameter.
+
+          '
+        schema:
+          default: false
+          type: boolean
+      - name: recursive
+        in: query
+        description: Recursively include subdirectories, accepted as values 'true' or 'false'.
+        schema:
+          default: false
+          type: boolean
+      - name: directory
+        in: query
+        required: true
+        description: The absolute path of the directory to list files from.
+        schema:
+          type: string
+      - name: listDirectories
+        in: query
+        description: List directory definitions including '.' and subdirectories.
+        schema:
+          default: false
+          type: boolean
+      - name: fileNames
+        in: query
+        description: List of file names to look for.
+        schema:
+          type: string
+      - name: acceptAs
+        in: query
+        description: Regex file name patterns to use to search for files.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: 'The state of the document files to show; ''new'' for non dispatched, ''failed'', for ones
+
+          with validation errors, ''dispatched'' for dispatched documents, ''dispatch_failed'' for
+
+          ones where dispatch has failed.
+
+          '
+        schema:
+          type: string
+      - name: requireDocumentId
+        in: query
+        description: List only those files that have an associated document id.
+        schema:
+          default: false
+          type: boolean
+      - name: page
+        in: query
+        description: Page number of the query
+        schema:
+          default: 0
+          type: integer
+      x-annotation-dx-category: documents-document_files
+      summary: find document files
+      tags:
+      - dx-category--documents-document_files
+  /rest/external/documentfiles/directory:
+    put:
+      responses:
+        '204':
+          description: The directory was created.
+        '304':
+          description: A directory with the same path already exits.
+        '400':
+          description: The directory path supplied was not valid.
+        '403':
+          description: A directory cannot be created with this path.
+      description: Create a new empty directory.
+      operationId: put-rest-external-documentfiles-directory
+      parameters:
+      - name: directory
+        in: query
+        required: true
+        description: Full path of directory to create.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document_files
+      summary: create directory
+      tags:
+      - dx-category--documents-document_files
+    delete:
+      responses:
+        '204':
+          description: The directory was deleted.
+        '304':
+          description: The directory is not modified and therefore not deleted.
+        '400':
+          description: The directory path supplied was not valid.
+        '403':
+          description: User cannot delete this directory or directories on this path.
+        '404':
+          description: The directory that is to be deleted was not found.
+      description: Deletes the directory passed as parameter, this will fail if the directory is not empty.
+      operationId: delete-rest-external-documentfiles-directory
+      parameters:
+      - name: directory
+        in: query
+        required: true
+        description: Full path of directory to delete.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document_files
+      summary: remove directory
+      tags:
+      - dx-category--documents-document_files
+  /rest/external/documentfiles/{filename}/dispatcher:
+    parameters:
+    - name: filename
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Original name of the document file to be renamed
+    post:
+      responses:
+        '201':
+          description: Documentfile was dispatched. The Location response header will point to the created and dispatched document. The headers contain Last-Modified and Document-ID.
+        '204':
+          description: When validation was failed (validation errors can be retrieved using /errors resource).
+        '404':
+          description: File not found.
+      description: Dispatches a documentfile, converting it to UBL and sending it to the inferred receiver.
+      operationId: post-rest-external-documentfiles-filename-dispatcher
+      parameters:
+      - name: filename
+        in: query
+        required: true
+        description: The current filename of the documentfile to dispatch.
+        schema:
+          type: string
+      - name: rename
+        in: query
+        description: A new filename to rename the file to, as part of the dispatch.
+        schema:
+          type: string
+      - name: documentSource
+        in: query
+        description: Track the document's source - We save the source of the document in a new table called documentsource so that we know where the document was dispatched from.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document_files
+      summary: send file
+      tags:
+      - dx-category--documents-document_files
+  /rest/external/documentfiles/{filename}/dispatcher/van/{vanId}:
+    parameters:
+    - name: filename
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Original name of the document file to be renamed
+    - name: vanId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Identifier of VAN to dispatch documentfile
+    post:
+      responses:
+        '201':
+          description: Documentfile was dispatched. The Location response header will point to the created and dispatched document. The headers contain Last-Modified and Document-ID.
+        '204':
+          description: When validation was failed (validation errors can be retrieved using /errors resource).
+        '404':
+          description: File not found.
+      description: Dispatches a documentfile via a given VAN (Value-added-network), converting it to UBL and sending it to the inferred receiver.
+      operationId: post-rest-external-documentfiles-filename-dispatcher-van-vanid
+      parameters:
+      - name: filename
+        in: query
+        required: true
+        description: The current filename of the documentfile to dispatch.
+        schema:
+          type: string
+      - name: rename
+        in: query
+        description: A new filename to rename the file to, as part of the dispatch.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document_files
+      summary: send file via VAN
+      tags:
+      - dx-category--documents-document_files
+  /rest/external/documentfiles/{filename}/errors:
+    parameters:
+    - name: filename
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Original name of the document file to be renamed
+    get:
+      responses:
+        '200':
+          description: Errors were found for the given document.
+        '404':
+          description: No errors were found.
+      description: Retrieves any validation errors that occurred when dispatching a document (must have POST to /dispatcher
+      operationId: get-rest-external-documentfiles-filename-errors
+      x-annotation-dx-category: documents-document_files
+      summary: error by filename
+      tags:
+      - dx-category--documents-document_files
+  /rest/external/documentfiles/{filename}/file:
+    parameters:
+    - name: filename
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Original name of the document file to be renamed
+    get:
+      responses:
+        '200':
+          description: ''
+      description: Retrieves file from a given directory.
+      operationId: get-rest-external-documentfiles-filename-file
+      parameters:
+      - name: directory
+        in: query
+        required: true
+        description: Directory where filename lives.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document_files
+      summary: find file
+      tags:
+      - dx-category--documents-document_files
+    delete:
+      responses:
+        '204':
+          description: File deleted.
+        '400':
+          description: Supplied required parameters are blank or are invalid.
+        '404':
+          description: File to delete not found.
+      description: Deletes a document file.
+      operationId: delete-rest-external-documentfiles-filename-file
+      parameters:
+      - name: directory
+        in: query
+        required: true
+        description: Directory where filename lives.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document_files
+      summary: delete file
+      tags:
+      - dx-category--documents-document_files
+  /rest/external/documentfiles/{filename}/move:
+    parameters:
+    - name: filename
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Original name of the document file to be renamed
+    post:
+      responses:
+        '204':
+          description: File moved to new directory.
+        '400':
+          description: Supplied required parameters are blank or are invalid.
+        '403':
+          description: Moving files from or to the supplied directories is not allowed.
+        '404':
+          description: File to be moved was not found.
+      description: Moves a documentfile to a new folder.
+      operationId: post-rest-external-documentfiles-filename-move
+      parameters:
+      - name: directory
+        in: query
+        required: true
+        description: Directory where file currently lives.
+        schema:
+          type: string
+      - name: newdirectory
+        in: query
+        required: true
+        description: Absolute path the directory to move the documentfile to. If the directory does not exist then the directory is created.
+        schema:
+          type: string
+      - name: replace
+        in: query
+        description: If true, replaces existing file in new directory.
+        schema:
+          type: boolean
+      x-annotation-dx-category: documents-document_files
+      summary: move file to folder
+      tags:
+      - dx-category--documents-document_files
+  /rest/external/documentfiles/{filename}/rename/{newfilename}/file:
+    parameters:
+    - name: filename
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Original name of the document file to be renamed
+    - name: newfilename
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Desired name of the document file being renamed
+    post:
+      responses:
+        '204':
+          description: File was renamed.
+        '304':
+          description: file was not renamed because a file with the same name new name already exists.
+        '400':
+          description: Supplied required parameters are blank or are invalid.
+        '404':
+          description: File with the original name was not found or the directory does not exist.
+      description: Renames the document file within the same directory.
+      operationId: post-rest-external-documentfiles-filename-rename-newfilename-file
+      parameters:
+      - name: directory
+        in: query
+        required: true
+        description: Directory where file lives.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document_files
+      summary: rename file
+      tags:
+      - dx-category--documents-document_files

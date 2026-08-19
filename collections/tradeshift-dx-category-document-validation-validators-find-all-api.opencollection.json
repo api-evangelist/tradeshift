@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Document Validation Validators Find All API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--document-validation-validators_find_all",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Validator Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/document-validation/validation/groups",
+            "params": [
+              {
+                "name": "senderTenantId",
+                "value": "",
+                "type": "query",
+                "description": "UUID of the user company (tenant) that is sending the document. This can be different than the 'tenantId' header value, for example when checking on behalf of a branch. The sender tenant id is used to obtain the connection properties of the connection between the receiver and sender, or other sender related settings."
+              },
+              {
+                "name": "receiverTenantId",
+                "value": "",
+                "type": "query",
+                "description": "UUID of the company (tenant) that will receive the document. The receiver tenant is used to check the validators of the receiver when the receiver company has configured validation for other companies sending documents (for example 'sellers' sending invoices to a 'buyer'), to obtain the connection properties of the connection between the receiver and sender, to obtain the country compliance validator groups of the receiver if enabled, or other receiver related settings."
+              },
+              {
+                "name": "documentType",
+                "value": "",
+                "type": "query",
+                "description": "Optional document type filter. If not provided, validators with any document type will be returned"
+              },
+              {
+                "name": "countryComplianceCode",
+                "value": "",
+                "type": "query",
+                "description": "Optional country code used to list by specific country compliance rules. If not provided, it is determined from the country of the receiver (receiverTenantId) if enabled on receiver.To list all country compliance validator groups use the special value 'ALL'.To list all the groups of the receiver but without the country compliance ones, even if defined and enabled, use the special value 'NONE'."
+              }
+            ]
+          },
+          "docs": "List validator groups for the tenant, optionally filtering by document type or connection property"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

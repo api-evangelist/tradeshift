@@ -1,0 +1,54 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Documents Receipt Advices API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--documents-receipt_advices
+paths:
+  /rest/external/documents/receiptadvices/bynumber/{number}:
+    parameters:
+    - name: number
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Business id of the receipt advice document
+    head:
+      responses:
+        '200':
+          description: Document exists
+        '404':
+          description: Document not found
+      description: Check for the existence of a document via its business id
+      operationId: head-rest-external-documents-receiptadvices-bynumber-number
+      x-annotation-dx-category: documents-receipt_advices
+      summary: receipt advices by number
+      tags:
+      - dx-category--documents-receipt_advices
+  /rest/external/documents/receiptadvices/nextnumber:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            text/plain:
+              schema:
+                example: '"27"'
+        '400':
+          description: ''
+        '401':
+          description: ''
+        '404':
+          description: ''
+          content:
+            text/xml:
+              schema:
+                example: "<ns6:ResponseError xmlns:cec=\"urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\" xmlns:ns6=\"http://tradeshift.com/api/1.0\" xmlns:ns20=\"urn:oasis:names:specification:ubl:schema:xsd:OrderResponseSimple-2\" xmlns:ns8=\"urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2\" xmlns:ns7=\"http://tradeshift.com/api/2.0\" xmlns:ns13=\"urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2\" xmlns:ns9=\"urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2\" xmlns:ns12=\"urn:oasis:names:specification:ubl:schema:xsd:Quotation-2\" xmlns:ns11=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\" xmlns:ns22=\"urn:oasis:names:specification:ubl:schema:xsd:RequestForQuotation-2\" xmlns:ns10=\"urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2\" xmlns:ns21=\"urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2\" xmlns:ns17=\"urn:oasis:names:specification:ubl:schema:xsd:RemittanceAdvice-2\" xmlns:ns16=\"urn:oasis:names:specification:ubl:schema:xsd:Reminder-2\" xmlns:ns15=\"urn:oasis:names:specification:ubl:schema:xsd:OrderChange-2\" xmlns:ns14=\"urn:oasis:names:specification:ubl:schema:xsd:Order-2\" xmlns:ns19=\"urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2\" xmlns:ts=\"http://tradeshift.com/api/public/1.0\" xmlns:ns18=\"urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2\">\n    <ns6:ErrorCode>ResourceNotFound</ns6:ErrorCode>\n    <ns6:Message>Error&amp;#x3a; ResourceNotFound&amp;#x3a; The object did not exist</ns6:Message>\n    <ns6:RequestId>fff29544-8039-499f-91c5-b3c9e4e3d8b1</ns6:RequestId>\n</ns6:ResponseError>\n"
+      description: Get next available business id
+      operationId: get-rest-external-documents-receiptadvices-nextnumber
+      x-annotation-dx-category: documents-receipt_advices
+      summary: next available receipt advice
+      tags:
+      - dx-category--documents-receipt_advices

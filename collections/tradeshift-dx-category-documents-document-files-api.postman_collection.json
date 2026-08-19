@@ -1,0 +1,2321 @@
+{
+  "item": [
+    {
+      "id": "13924fe9-eaca-41de-94c4-0b0c3935f608",
+      "name": "dx-category--documents-document_files",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28550aa3-89e5-41ea-a893-bd6f242d190b",
+          "name": "find document files",
+          "request": {
+            "name": "find document files",
+            "description": {
+              "content": "Get array of document file objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documentfiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<string>",
+                  "description": "Limits documents to those which have changed since the given timestamp, formatted as a ISO 8601 XSD-timestamp.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAfter",
+                  "value": "<string>",
+                  "description": "List only those files that were created after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdBefore",
+                  "value": "<string>",
+                  "description": "List only those files that were created before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Number of files to be shown at once as part of the first page or for every page."
+                },
+                {
+                  "disabled": false,
+                  "key": "noPaging",
+                  "value": "false",
+                  "description": "To disable any paging and either return all files or just the first few files as\nspecified by the limit parameter. This parameter supersedes the page parameter.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "recursive",
+                  "value": "false",
+                  "description": "Recursively include subdirectories, accepted as values 'true' or 'false'."
+                },
+                {
+                  "disabled": false,
+                  "key": "directory",
+                  "value": "<string>",
+                  "description": "(Required) The absolute path of the directory to list files from."
+                },
+                {
+                  "disabled": false,
+                  "key": "listDirectories",
+                  "value": "false",
+                  "description": "List directory definitions including '.' and subdirectories."
+                },
+                {
+                  "disabled": false,
+                  "key": "fileNames",
+                  "value": "<string>",
+                  "description": "List of file names to look for."
+                },
+                {
+                  "disabled": false,
+                  "key": "acceptAs",
+                  "value": "<string>",
+                  "description": "Regex file name patterns to use to search for files."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "The state of the document files to show; 'new' for non dispatched, 'failed', for ones\nwith validation errors, 'dispatched' for dispatched documents, 'dispatch_failed' for\nones where dispatch has failed.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "requireDocumentId",
+                  "value": "false",
+                  "description": "List only those files that have an associated document id."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number of the query"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aff244f1-d1d3-4405-8252-2656c277a583",
+              "name": "Lists document files.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "noPaging",
+                      "value": "false"
+                    },
+                    {
+                      "key": "recursive",
+                      "value": "false"
+                    },
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listDirectories",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fileNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "acceptAs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requireDocumentId",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<DocumentFileList xmlns=\"http://tradeshift.com/api/public/1.0\" itemCount=\"2\" itemsPerPage=\"0\" numPages=\"0\" pageId=\"0\">\n  <Items>\n    <Id>51e40da6-0116-11e4-9055-14109fe0cc3d</Id>\n    <FileName>my_test_invoice</FileName>\n    <MimeType>application/xml</MimeType>\n    <ActorId>51e40da6-0116-11e4-9055-14109fe0cc3d</ActorId>\n    <GroupId>51e40da6-0116-11e4-9055-14109fe0cc3d</GroupId>\n    <Created>2013-07-23T07:35:16.000Z</Created>\n    <Modified>2013-07-23T07:35:16.000Z</Modified>\n    <Validated>2013-07-23T07:35:16.000Z</Validated>\n    <Directory>outbox</Directory>\n    <DocumentId>51e40da6-0116-11e4-9055-14109fe0cc3d</DocumentId>\n    <FileSize>1024</FileSize>\n    <ValidationErrorsSize>42</ValidationErrorsSize>\n  </Items>\n  <Items>\n    <Id>51e40da6-0116-11e4-9055-14109fe0cc3d</Id>\n    <FileName>my_test_invoice</FileName>\n    <MimeType>application/xml</MimeType>\n    <ActorId>51e40da6-0116-11e4-9055-14109fe0cc3d</ActorId>\n    <GroupId>51e40da6-0116-11e4-9055-14109fe0cc3d</GroupId>\n    <Created>2013-07-23T07:35:16.000Z</Created>\n    <Modified>2013-07-23T07:35:16.000Z</Modified>\n    <Validated>2013-07-23T07:35:16.000Z</Validated>\n    <Directory>outbox</Directory>\n    <DocumentId>51e40da6-0116-11e4-9055-14109fe0cc3d</DocumentId>\n    <FileSize>1024</FileSize>\n    <ValidationErrorsSize>42</ValidationErrorsSize>\n  </Items>\n</DocumentFileList>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "9ae05af4-2602-4d85-a51a-0f893d170a05",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "noPaging",
+                      "value": "false"
+                    },
+                    {
+                      "key": "recursive",
+                      "value": "false"
+                    },
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listDirectories",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fileNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "acceptAs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requireDocumentId",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dbedc949-87b9-46e7-80a7-fe7250a3143e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "noPaging",
+                      "value": "false"
+                    },
+                    {
+                      "key": "recursive",
+                      "value": "false"
+                    },
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listDirectories",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fileNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "acceptAs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requireDocumentId",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "741a7137-590b-4294-a95b-df6c8a92f984",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "since",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAfter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdBefore",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "noPaging",
+                      "value": "false"
+                    },
+                    {
+                      "key": "recursive",
+                      "value": "false"
+                    },
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listDirectories",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fileNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "acceptAs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requireDocumentId",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc4a8af7-383f-4299-9c98-787ca3a904c7",
+          "name": "create directory",
+          "request": {
+            "name": "create directory",
+            "description": {
+              "content": "Create a new empty directory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documentfiles",
+                "directory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "directory",
+                  "value": "<string>",
+                  "description": "(Required) Full path of directory to create."
+                }
+              ],
+              "variable": []
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b744ba49-a526-4ac7-9214-7931d1a186da",
+              "name": "The directory was created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    "directory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bdddf617-6289-44d5-9289-afab3968cc73",
+              "name": "A directory with the same path already exits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    "directory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c869588e-cd93-43d0-964d-aa2b5c14d992",
+              "name": "The directory path supplied was not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    "directory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4014a70-c8ad-4d6e-8a62-e9d2ceaa75aa",
+              "name": "A directory cannot be created with this path.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    "directory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62532b2c-b7cb-411b-bea6-323e9ffc03b2",
+          "name": "remove directory",
+          "request": {
+            "name": "remove directory",
+            "description": {
+              "content": "Deletes the directory passed as parameter, this will fail if the directory is not empty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documentfiles",
+                "directory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "directory",
+                  "value": "<string>",
+                  "description": "(Required) Full path of directory to delete."
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e96aa57-a3a3-4ae6-8dcb-e06c480f5a95",
+              "name": "The directory was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    "directory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c366b78c-604b-4189-ac41-98d03e56ede2",
+              "name": "The directory is not modified and therefore not deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    "directory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1bf6d640-fcd1-4e97-be40-e2348de20aa7",
+              "name": "The directory path supplied was not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    "directory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a6a7c50a-fb9d-430b-b336-706b1574138e",
+              "name": "User cannot delete this directory or directories on this path.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    "directory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f9fbcfe-f394-4ee7-b05c-99ec60176360",
+              "name": "The directory that is to be deleted was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    "directory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1721d2f1-5a3c-4ea4-911e-a2c626d2236d",
+          "name": "send file",
+          "request": {
+            "name": "send file",
+            "description": {
+              "content": "Dispatches a documentfile, converting it to UBL and sending it to the inferred receiver.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documentfiles",
+                ":filename",
+                "dispatcher"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filename",
+                  "value": "<string>",
+                  "description": "(Required) The current filename of the documentfile to dispatch."
+                },
+                {
+                  "disabled": false,
+                  "key": "rename",
+                  "value": "<string>",
+                  "description": "A new filename to rename the file to, as part of the dispatch."
+                },
+                {
+                  "disabled": false,
+                  "key": "documentSource",
+                  "value": "<string>",
+                  "description": "Track the document's source - We save the source of the document in a new table called documentsource so that we know where the document was dispatched from."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filename",
+                  "description": "(Required) Original name of the document file to be renamed"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54f0560d-13e6-4d4c-804b-43179c880c79",
+              "name": "Documentfile was dispatched. The Location response header will point to the created and dispatched document. The headers contain Last-Modified and Document-ID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "dispatcher"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentSource",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0e782322-9620-4287-99d5-eda58c4ba9b4",
+              "name": "When validation was failed (validation errors can be retrieved using /errors resource).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "dispatcher"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentSource",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c7ff9cc5-ed08-4be1-82c3-a59caf72eca5",
+              "name": "File not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "dispatcher"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentSource",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48164877-cae5-4304-aedb-c17dcc513678",
+          "name": "send file via VAN",
+          "request": {
+            "name": "send file via VAN",
+            "description": {
+              "content": "Dispatches a documentfile via a given VAN (Value-added-network), converting it to UBL and sending it to the inferred receiver.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documentfiles",
+                ":filename",
+                "dispatcher",
+                "van",
+                ":vanId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filename",
+                  "value": "<string>",
+                  "description": "(Required) The current filename of the documentfile to dispatch."
+                },
+                {
+                  "disabled": false,
+                  "key": "rename",
+                  "value": "<string>",
+                  "description": "A new filename to rename the file to, as part of the dispatch."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filename",
+                  "description": "(Required) Original name of the document file to be renamed"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vanId",
+                  "description": "(Required) Identifier of VAN to dispatch documentfile"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b1e07eb-33ef-4c32-81b2-d460e706a2e0",
+              "name": "Documentfile was dispatched. The Location response header will point to the created and dispatched document. The headers contain Last-Modified and Document-ID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "dispatcher",
+                    "van",
+                    ":vanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rename",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vanId",
+                      "description": "(Required) Identifier of VAN to dispatch documentfile"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f66ded2-51b8-4fe5-9da0-471bd39865f5",
+              "name": "When validation was failed (validation errors can be retrieved using /errors resource).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "dispatcher",
+                    "van",
+                    ":vanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rename",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vanId",
+                      "description": "(Required) Identifier of VAN to dispatch documentfile"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf738206-e569-426e-89c9-1491bf92d249",
+              "name": "File not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "dispatcher",
+                    "van",
+                    ":vanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filename",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rename",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vanId",
+                      "description": "(Required) Identifier of VAN to dispatch documentfile"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a40e943-2105-4a71-9950-caebfa5c335d",
+          "name": "error by filename",
+          "request": {
+            "name": "error by filename",
+            "description": {
+              "content": "Retrieves any validation errors that occurred when dispatching a document (must have POST to /dispatcher",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documentfiles",
+                ":filename",
+                "errors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filename",
+                  "description": "(Required) Original name of the document file to be renamed"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c81d4e50-59d2-4769-96db-13c3dc8d6047",
+              "name": "Errors were found for the given document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "errors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7234d45-748f-4f3f-8473-23849dcbb3c1",
+              "name": "No errors were found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "errors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61610662-f864-4b40-a057-155dc5ff17a1",
+          "name": "find file",
+          "request": {
+            "name": "find file",
+            "description": {
+              "content": "Retrieves file from a given directory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documentfiles",
+                ":filename",
+                "file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "directory",
+                  "value": "<string>",
+                  "description": "(Required) Directory where filename lives."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filename",
+                  "description": "(Required) Original name of the document file to be renamed"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f7acae3-86e8-4b9c-b920-2cfd0e9ef36f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "420b682d-a449-48e7-aea1-893126159b0e",
+          "name": "delete file",
+          "request": {
+            "name": "delete file",
+            "description": {
+              "content": "Deletes a document file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documentfiles",
+                ":filename",
+                "file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "directory",
+                  "value": "<string>",
+                  "description": "(Required) Directory where filename lives."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filename",
+                  "description": "(Required) Original name of the document file to be renamed"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34d90327-aec8-4b65-9bb8-7140e117035b",
+              "name": "File deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e587c09-0bf1-436a-a529-81aa344717f0",
+              "name": "Supplied required parameters are blank or are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a45cf32-0132-4353-b5b9-8b6c54e8e6ac",
+              "name": "File to delete not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b27e5c51-f084-4b4f-9427-7341eb90c145",
+          "name": "move file to folder",
+          "request": {
+            "name": "move file to folder",
+            "description": {
+              "content": "Moves a documentfile to a new folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documentfiles",
+                ":filename",
+                "move"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "directory",
+                  "value": "<string>",
+                  "description": "(Required) Directory where file currently lives."
+                },
+                {
+                  "disabled": false,
+                  "key": "newdirectory",
+                  "value": "<string>",
+                  "description": "(Required) Absolute path the directory to move the documentfile to. If the directory does not exist then the directory is created."
+                },
+                {
+                  "disabled": false,
+                  "key": "replace",
+                  "value": "<boolean>",
+                  "description": "If true, replaces existing file in new directory."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filename",
+                  "description": "(Required) Original name of the document file to be renamed"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6fbc3570-a13f-4ab8-b9bc-7e42ea3ae2b0",
+              "name": "File moved to new directory.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "newdirectory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "replace",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd252cbc-0df0-4808-9877-8acc446973dc",
+              "name": "Supplied required parameters are blank or are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "newdirectory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "replace",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "69b76834-32b6-43dd-a0e8-412c11ecae8c",
+              "name": "Moving files from or to the supplied directories is not allowed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "newdirectory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "replace",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "71bca28f-1099-432a-b0a6-0dd734a77226",
+              "name": "File to be moved was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "newdirectory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "replace",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90e9fee7-1b52-476f-b243-9b44bbe08e90",
+          "name": "rename file",
+          "request": {
+            "name": "rename file",
+            "description": {
+              "content": "Renames the document file within the same directory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documentfiles",
+                ":filename",
+                "rename",
+                ":newfilename",
+                "file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "directory",
+                  "value": "<string>",
+                  "description": "(Required) Directory where file lives."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filename",
+                  "description": "(Required) Original name of the document file to be renamed"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "newfilename",
+                  "description": "(Required) Desired name of the document file being renamed"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "364256bb-d6e2-4454-ad83-1f62d0dcf017",
+              "name": "File was renamed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "rename",
+                    ":newfilename",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "newfilename",
+                      "description": "(Required) Desired name of the document file being renamed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "503cdd9d-8bcd-49f5-99df-216a1be40df0",
+              "name": "file was not renamed because a file with the same name new name already exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "rename",
+                    ":newfilename",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "newfilename",
+                      "description": "(Required) Desired name of the document file being renamed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cbedcd66-1a61-4ece-b1c5-e965ca9424ef",
+              "name": "Supplied required parameters are blank or are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "rename",
+                    ":newfilename",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "newfilename",
+                      "description": "(Required) Desired name of the document file being renamed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "574e57f0-b01f-448f-a731-c3f33fcebf46",
+              "name": "File with the original name was not found or the directory does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documentfiles",
+                    ":filename",
+                    "rename",
+                    ":newfilename",
+                    "file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "directory",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Original name of the document file to be renamed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "newfilename",
+                      "description": "(Required) Desired name of the document file being renamed"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "daf2772b-17d7-4b05-ac6a-09416edd84db",
+    "name": "Tradeshift External Dx Category Documents Document Files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1480 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Documents Document API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--documents-document",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "find documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "The tag the document must have. Can be used multiple times, which is interpreted as OR unless you set useAndOperatorForTags to true, then it will be AND."
+              },
+              {
+                "name": "useAndOperatorForTags",
+                "value": "",
+                "type": "query",
+                "description": "It sets the tags based search to meet all criteria within the set of provided filters."
+              },
+              {
+                "name": "withouttag",
+                "value": "",
+                "type": "query",
+                "description": "The tag the document must not have. Can be used multiple times, which is interpreted as AND."
+              },
+              {
+                "name": "propertykey",
+                "value": "",
+                "type": "query",
+                "description": "Must be specified together with propertyvalue. Each pair of propertykey and propertyvalue will be interpreted as AND by default unless you set useOrOperatorForProperties to true, then it will be OR."
+              },
+              {
+                "name": "propertyvalue",
+                "value": "",
+                "type": "query",
+                "description": "See propertykey."
+              },
+              {
+                "name": "useOrOperatorForProperties",
+                "value": "",
+                "type": "query",
+                "description": "It sets the property based search to meet at least one criteria within the set of provided filters."
+              },
+              {
+                "name": "ascending",
+                "value": "",
+                "type": "query",
+                "description": "Whether the documents are ordered in ascending or descending order (for last edited date), defaults to descending."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of documents to include. Examples of document types 'invoice', 'creditnote'. Can be used multiple times, which is interpreted as OR."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Result page to return. Each page has 'limit' number of results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return. This is also the number of results on each skipped page. Capped to 100. If _onlyIndex is set to true, includesourcedocuments and populatePersonInfo to false value is capped to 10000."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The documents to get DocumentInformation for (a Tradeshift UUID value)"
+              },
+              {
+                "name": "businessId",
+                "value": "",
+                "type": "query",
+                "description": "Limits documents to those with the given business id (invoice/credit note/purchase order number, e.g. 'ABC-123'). Note that business ids are not guaranteed to be unique for received documents, and may potentially be duplicated for different documents, even sent by the same supplier."
+              },
+              {
+                "name": "sentBy",
+                "value": "",
+                "type": "query",
+                "description": "Sender company tenant id (a Tradeshift UUID value)."
+              },
+              {
+                "name": "sentTo",
+                "value": "",
+                "type": "query",
+                "description": "Receiver company tenant ids (a Tradeshift UUID value)."
+              },
+              {
+                "name": "stag",
+                "value": "",
+                "type": "query",
+                "description": "The system tag the document must have. Can be used multiple times, which is interpreted as OR. Known system include \"inbox\", \"outbox\", \"draft\", \"sales\", \"purchases\", \"deleted\"."
+              },
+              {
+                "name": "minissuedate",
+                "value": "",
+                "type": "query",
+                "description": "Earliest issue date of documents to match (according to UBL content)."
+              },
+              {
+                "name": "maxissuedate",
+                "value": "",
+                "type": "query",
+                "description": "Latest issue date of documents to match (according to UBL content)."
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Limits documents to those which have changed since the given timestamp, formatted as a XSD-timestamp."
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "Limits documents to those which were created before the given timestamp, formatted as a XSD-timestamp."
+              },
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "Limits documents to those which were created after the given timestamp, formatted as a XSD-timestamp."
+              },
+              {
+                "name": "processState",
+                "value": "",
+                "type": "query",
+                "description": "The _user_ state the document must have (see /metadata). Can be used multiple times, which is interpreted as OR. Note that this parameter is misnamed as it searches among all user states, not just process state."
+              },
+              {
+                "name": "withoutProcessState",
+                "value": "",
+                "type": "query",
+                "description": "The process state the document must not have (see /metadata). Can be used multiple times, which is interpreted as AND. Note that this parameter is misnamed as it searches among all user states, not just process state."
+              },
+              {
+                "name": "branchId",
+                "value": "",
+                "type": "query",
+                "description": "Document business ids. Can be used multiple times, which is interpreted as OR."
+              },
+              {
+                "name": "totals",
+                "value": "",
+                "type": "query",
+                "description": "Whether to calculate the documents total amount or not."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Representing the state (e.g. SENT, DELIVERED, ACCEPTED) of the searched documents.\nCan be used multiple times, which is interpreted as OR.\nAccepted values are: UNDETERMINED, IN_TRANSIT, PENDING_NOT_A_CONTACT, FAILED_DELIVERY, SENT, DELIVERED, ACCEPTED, OVERDUE, PAID_UNCONFIRMED, PAID_CONFIRMED, REJECTED_BY_SENDER, REJECTED_BY_RECEIVER, DISPUTED_BY_RECEIVER, CLOSED, REPLACED, CORRECTED, IN_ENRICHMENT, IN_CLEARANCE, COLLECTED, AWAITING_ASSISTANCE, ASSISTANCE_PROVIDED, CANCELED, ASSISTANCE_CANCELED, PUNCHOUT_SENT, PUNCHOUT_EDIT.\n"
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Field that indicates the criteria on which result will be ordered upon returning (e.g. DueDate, Amount, Date)."
+              },
+              {
+                "name": "sales",
+                "value": "",
+                "type": "query",
+                "description": "This parameter decides whether the transaction type of selected documents should be sale or not."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "This parameter defines the specific text to be searched within the documents. It can include a single or\nmultiple words or phrases and documents that match the search condition will be returned.\n"
+              },
+              {
+                "name": "copyIndicator",
+                "value": "",
+                "type": "query",
+                "description": "Whether to search only copies of documents, originals or both."
+              },
+              {
+                "name": "onlycopies",
+                "value": "",
+                "type": "query",
+                "description": "Whether to search only copies of documents."
+              },
+              {
+                "name": "onlydrafts",
+                "value": "",
+                "type": "query",
+                "description": "Whether to search only drafts."
+              },
+              {
+                "name": "onlydeleted",
+                "value": "",
+                "type": "query",
+                "description": "Whether to search only deleted documents."
+              },
+              {
+                "name": "includesourcedocuments",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include the raw UBL document in the result. The UBL documents are stripped of attachments before they are returned."
+              },
+              {
+                "name": "waitForIndex",
+                "value": "",
+                "type": "query",
+                "description": "Whether to wait for pending documents to be indexed."
+              },
+              {
+                "name": "_onlyIndex",
+                "value": "",
+                "type": "query",
+                "description": "This flag allows document listing using exclusively the data from the index."
+              },
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "query",
+                "description": "The document conversation id used for getting its related documents."
+              },
+              {
+                "name": "totalFrom",
+                "value": "",
+                "type": "query",
+                "description": "It represents the minimum value of the total range that can be used to filter documents."
+              },
+              {
+                "name": "totalTo",
+                "value": "",
+                "type": "query",
+                "description": "It represents the maximum value of the total range that can be used to filter documents."
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "It represents the currency that can be used to filter documents only of that currency."
+              },
+              {
+                "name": "requesterId",
+                "value": "",
+                "type": "query",
+                "description": "This field can be used to filter documents by the given list of requester Ids, only applicable for Purchase Request Documents. The requester is either the creating person or the document or if specified the \"on behalf of\" person\n"
+              },
+              {
+                "name": "invoiceTypeCode",
+                "value": "",
+                "type": "query",
+                "description": "This field represents the type of invoice for an invoice document. If the field is missing then we will have a normal/commercial invoice filter. For value 325 proforma invoice type will be searched and for value 386 we will have prepayment invoice.\n"
+              },
+              {
+                "name": "accountingSystemId",
+                "value": "",
+                "type": "query",
+                "description": "This field represents a custom value assigned by a client to a connection with a supplier.\n"
+              },
+              {
+                "name": "accountingCost",
+                "value": "",
+                "type": "query",
+                "description": "This field represents a custom value assigned by a client refering to a Cost Center."
+              },
+              {
+                "name": "profileId",
+                "value": "",
+                "type": "query",
+                "description": "It represents the profile id of a given document."
+              },
+              {
+                "name": "populatePersonInfo",
+                "value": "",
+                "type": "query",
+                "description": "Populate person info (actor and requester)"
+              },
+              {
+                "name": "orderTypeCode",
+                "value": "",
+                "type": "query",
+                "description": "This field represents the type of order for an order document."
+              },
+              {
+                "name": "orderChangeTypeCode",
+                "value": "",
+                "type": "query",
+                "description": "This field represents the type of order for an order change document."
+              }
+            ]
+          },
+          "docs": "Gets a list of documents for the current user in XML or JSON format depending on the request Accept header. If multiple criteria are specified, they act as logical AND, unless specified otherwise. Drafts are not returned by default, unless stag=draft is specified. The return list of documents can be sorted by DueDate, LastEdit, Number, Amount, Date, Type."
+        },
+        {
+          "info": {
+            "name": "Get company document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/companies/:owningCompanyId/:documentId",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "owningCompanyId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of company account owning the document."
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves a document in the context of an owning company. If the supplied authentication context has access to\nsee document identified by {documentId}, meaning the sender of the document, then returns a redirect to GET the document with {documentId}.\nIf the supplied authentication context does not have access to the document, then checks to see if it has\naccess to a document that references the supplied {documentId}, and returns a redirect to GET that referencing document instead.\nThis endpoint "
+        },
+        {
+          "info": {
+            "name": "find documents (CSV support)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/csv",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "The tag the document must have. Can be used multiple times, which is interpreted as OR unless you set useAndOperatorForTags to true, then it will be AND."
+              },
+              {
+                "name": "useAndOperatorForTags",
+                "value": "",
+                "type": "query",
+                "description": "It sets the tags based search to meet all criteria within the set of provided filters."
+              },
+              {
+                "name": "withouttag",
+                "value": "",
+                "type": "query",
+                "description": "The tag the document must not have. Can be used multiple times, which is interpreted as AND."
+              },
+              {
+                "name": "propertykey",
+                "value": "",
+                "type": "query",
+                "description": "Must be specified together with propertyvalue. Each pair of propertykey and propertyvalue will be interpreted as AND."
+              },
+              {
+                "name": "propertyvalue",
+                "value": "",
+                "type": "query",
+                "description": "See propertykey."
+              },
+              {
+                "name": "ascending",
+                "value": "",
+                "type": "query",
+                "description": "Whether the documents are ordered in ascending or descending order (for last edited date), defaults to descending."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of documents to include. Can be used multiple times, which is interpreted as OR."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return. This is also the number of results on each skipped page."
+              },
+              {
+                "name": "stag",
+                "value": "",
+                "type": "query",
+                "description": "The system tag the document must have. Can be used multiple times, which is interpreted as OR. Known system include \"inbox\", \"outbox\", \"draft\", \"sales\", \"purchases\", \"deleted\"."
+              },
+              {
+                "name": "minissuedate",
+                "value": "",
+                "type": "query",
+                "description": "Earliest issue date of documents to match (according to UBL content)."
+              },
+              {
+                "name": "maxissuedate",
+                "value": "",
+                "type": "query",
+                "description": "Latest issue date of documents to match (according to UBL content)."
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "Limits documents to those which were created before the given timestamp, formatted as a XSD-timestamp."
+              },
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "Limits documents to those which were created after the given timestamp, formatted as a XSD-timestamp."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Represents the state (e.g. SENT, DELIVERED, ACCEPTED) of the searched documents.\nCan be used multiple times, which is interpreted as OR.\nAccepted values are: UNDETERMINED, IN_TRANSIT, PENDING_NOT_A_CONTACT, FAILED_DELIVERY, SENT, DELIVERED, ACCEPTED, OVERDUE, PAID_UNCONFIRMED, PAID_CONFIRMED, REJECTED_BY_SENDER, REJECTED_BY_RECEIVER, DISPUTED_BY_RECEIVER, CLOSED, REPLACED, AWAITING_ASSISTANCE, ASSISTANCE_PROVIDED, CANCELED, ASSISTANCE_CANCELED, PUNCHOUT_SENT, PUNCHOUT_EDIT.\n"
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Result ordering (e.g. DueDate, Amount, Date)."
+              },
+              {
+                "name": "sales",
+                "value": "",
+                "type": "query",
+                "description": "Whether document is sale or not."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Text to search."
+              },
+              {
+                "name": "copyIndicator",
+                "value": "",
+                "type": "query",
+                "description": "Whether to search only copies of documents, originals or both."
+              },
+              {
+                "name": "onlycopies",
+                "value": "",
+                "type": "query",
+                "description": "Whether to search only copies of documents."
+              },
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "query",
+                "description": "The document conversation id used for getting its related documents."
+              },
+              {
+                "name": "totalFrom",
+                "value": "",
+                "type": "query",
+                "description": "It represents the minimum value of the total range that can be used to filter documents."
+              },
+              {
+                "name": "totalTo",
+                "value": "",
+                "type": "query",
+                "description": "It represents the maximum value of the total range that can be used to filter documents."
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "It represents the currency that can be used to filter documents only of that currency."
+              },
+              {
+                "name": "useOrOperatorForProperties",
+                "value": "",
+                "type": "query",
+                "description": "It sets the property based search to meet at least one criteria within the set of provided filters."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Result page to return. Each page has 'limit' number of results."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The documents to get DocumentInformation for (a Tradeshift UUID value)"
+              },
+              {
+                "name": "sentBy",
+                "value": "",
+                "type": "query",
+                "description": "Sender company tenant id (a Tradeshift UUID value)."
+              },
+              {
+                "name": "sentTo",
+                "value": "",
+                "type": "query",
+                "description": "Receiver company tenant ids (a Tradeshift UUID value)."
+              },
+              {
+                "name": "processState",
+                "value": "",
+                "type": "query",
+                "description": "The _user_ state the document must have (see /metadata). Can be used multiple times, which is interpreted as OR. Note that this parameter is misnamed as it searches among all user states, not just process state."
+              },
+              {
+                "name": "withoutProcessState",
+                "value": "",
+                "type": "query",
+                "description": "The process state the document must not have (see /metadata). Can be used multiple times, which is interpreted as AND. Note that this parameter is misnamed as it searches among all user states, not just process state."
+              },
+              {
+                "name": "branchId",
+                "value": "",
+                "type": "query",
+                "description": "Document business ids. Can be used multiple times, which is interpreted as OR."
+              },
+              {
+                "name": "totals",
+                "value": "",
+                "type": "query",
+                "description": "Whether to calculate the documents total amount or not."
+              },
+              {
+                "name": "onlydrafts",
+                "value": "",
+                "type": "query",
+                "description": "Whether to search only drafts."
+              },
+              {
+                "name": "onlydeleted",
+                "value": "",
+                "type": "query",
+                "description": "Whether to search only deleted documents."
+              },
+              {
+                "name": "requesterId",
+                "value": "",
+                "type": "query",
+                "description": "This field can be used to filter documents by the given list of requester Ids, only applicable for Purchase Request Documents. The requester is either the creating person or the document or if specified the \"on behalf of\" person\n"
+              },
+              {
+                "name": "invoiceTypeCode",
+                "value": "",
+                "type": "query",
+                "description": "This field represents the type of invoice for an invoice document. If the field is missing then we will have a normal/commercial invoice filter. For value 325 proforma invoice type will be searched and for value 386 we will have prepayment invoice.\n"
+              },
+              {
+                "name": "profileId",
+                "value": "",
+                "type": "query",
+                "description": "It represents the profile id of a given document."
+              }
+            ]
+          },
+          "docs": "Gets a list of documents in CSV format for the current user. If multiple criteria are specified, they act as logical AND, unless specified otherwise. Drafts are not returned by default, unless stag=draft is specified. Could be sorted by DueDate, LastEdit, Number, Amount, Date, Type. The returned mime-type is always text/csv regardless if Accept header is application/csv or text/csv."
+        },
+        {
+          "info": {
+            "name": "send document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/dispatcher",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query",
+                "description": "A client-generated id for the new document to be dispatched\n"
+              },
+              {
+                "name": "documentProfileId",
+                "value": "",
+                "type": "query",
+                "description": "The document profile id that the document adheres to (e.g. \\\"nes.p5.invoice.ubl.2.1.dk\\\"), from the 'documentprofiles' resource\n"
+              },
+              {
+                "name": "documentSource",
+                "value": "",
+                "type": "query",
+                "description": "Track the document's source - We save the source of the document in a new table called documentsource so that we know where the document was dispatched from."
+              }
+            ]
+          },
+          "docs": "Store and dispatch the document - the actual document content must be sent as the entity/body of the POST call.\n"
+        },
+        {
+          "info": {
+            "name": "Get Latest Dispatches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/dispatches",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query",
+                "description": "List of document UUID identifiers"
+              },
+              {
+                "name": "accept",
+                "value": "",
+                "type": "query",
+                "description": "Media type for response"
+              }
+            ]
+          },
+          "docs": "Get a list of the latest dispatch information by object IDs. The returned data contains information like:\nthe creation time of the dispatch, the dispatch sender, the channel through which the document is dispatched,\nthe current dispatch state, the ID of the object being dispatched, the connection ID used for dispatching and\ntechnical information containing the reason why a dispatch failed (returned only for failed dispatches).\n"
+        },
+        {
+          "info": {
+            "name": "get document net amount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/netAmount",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentIds",
+                "value": "",
+                "type": "query",
+                "description": "The document uuid. Can be used multiple times."
+              }
+            ]
+          },
+          "docs": "Gets a list of document net amounts for a list of document ids."
+        },
+        {
+          "info": {
+            "name": "Receive document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/received/:documentId",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "The new document's id"
+              }
+            ]
+          },
+          "docs": "This endpoint saves the content of a document for cases when a company has received a document outside of the\nTradeshift platform but wants to add it to the document list anyway. It imports a document as if it has been\nreceived at some point in time. It will be visible in the document list, but replies, such as comments, will\nnot be possible. Only the receiver side copy is created and the original sender will not be notified even if\nthey are on the platform and they are connected.\n"
+        },
+        {
+          "info": {
+            "name": "validate a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/validate",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentProfileId",
+                "value": "",
+                "type": "query",
+                "description": "Document profile used for validating the document."
+              },
+              {
+                "name": "receiverCompanyId",
+                "value": "",
+                "type": "query",
+                "description": "The receiver company id whose document profile will be used for validation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This resource validates a given UBL document content by using a combined document profile made of the sender's default document\nprofile using documentProfileId (e.g. \"tradeshift.invoice.ubl.1.0\") and the document profile set between the sender and the receiver.\nThis can be used before dispatching a document in order to verify if it has profile related errors or not. If the \"receiverCompanyId\"\nparameter is not specified then the validation will be done using only the sender \"documentProfileId\". I"
+        },
+        {
+          "info": {
+            "name": "find document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              },
+              {
+                "name": "includeDraftAttachments",
+                "value": "",
+                "type": "query",
+                "description": "Include attachements in the UBL when the document is in DRAFT state"
+              }
+            ]
+          },
+          "docs": "Returns the document identified by the given UUID, if it exists and is not marked as deleted.\nIf you want to retrieve the deleted documents, use [Find Documents](#get-rest-external-documents) along\nwith stag=deleted parameter and with the corresponding id.\nThe document can be retrieved in a PDF representation or in one of the raw UBL formats\n(XML, JSON or Oasis JSON) depending on the Accept header. The default format is the XML.\n"
+        },
+        {
+          "info": {
+            "name": "update document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              },
+              {
+                "name": "draft",
+                "value": "",
+                "type": "query",
+                "description": "Parameter that indicates if the document should be created in draft mode or not. Documents such as Order Change, Receipt Advice, Remittance Advice,\nStatus Messages, Reminder Messages or Assignments can't be created as drafts while documents such as Invoice are partially validated when it is saved as draft.\n"
+              },
+              {
+                "name": "documentProfileId",
+                "value": "",
+                "type": "query",
+                "description": "The document profile id of the document which will be created (e.g. \"tradeshift.requisition.ubl.1.0\"), from the 'documentprofiles' resource."
+              },
+              {
+                "name": "schemaValidate",
+                "value": "",
+                "type": "query",
+                "description": "Parameter that indicates if the document should be validated against the UBL schema. If this parameter is set to TRUE, the API will detect the UBL\nversion to validate against from the document content. This validation is triggered only if the document is *not* created as draft and also\nif the Nemhandel validation is enabled for the specified document profile.\n"
+              },
+              {
+                "name": "validateDocumentProfile",
+                "value": "",
+                "type": "query",
+                "description": "Parameter that indicates if the document should be validated or not using the selected document profile.\nThe validation is triggered only if the document is not created as draft.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This resource allows to store a document within the Tradeshift platform. The actual document content is sent\nas the entity/body of the API call. The client can decide on the UUID for the new element defined by the\n\"documentId\" parameter. Saving a document as draft will use the document content as primary source for tradeshift internal\nconversion which will output a new TSUBL content overwriting the initial one. By doing so extra connection checks will occur.\nOtherwise, saving it as a non-draft w"
+        },
+        {
+          "info": {
+            "name": "delete document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Soft delete of the document. Deleting a document using this API will not delete the document from the\nsystem, but mark it as deleted. This operation will only affect user's copy of the document, receiver's\n(or sender's) copy will remain intact.\nUser can still query deleted documents if they wish to do so. More details about how to retrieve deleted\ndocument can be found in [Find Documents](#get-rest-external-documents) section.\nIt's not recommended to delete a document using given endpoint.\n"
+        },
+        {
+          "info": {
+            "name": "remove document content",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/content",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Truncate the content for the given document if any exists. This action cannot be revoked or reverted.\nThis is to be used if document content must be permanently wiped, for example for privacy reasons. Truncated documents\nwill have all content except number and issue date removed. All versions of the document will also be truncated\nincluding the document attachments. The document will not be visible in the document manager UI.\n"
+        },
+        {
+          "info": {
+            "name": "convert a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/convert",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              },
+              {
+                "name": "targetDocumentType",
+                "value": "",
+                "type": "query",
+                "description": "This parameter represents the document type to convert to. It should be either (case-sensitive) 'invoice' or 'creditnote'."
+              },
+              {
+                "name": "targetDocumentTargetType",
+                "value": "",
+                "type": "query",
+                "description": "This parameter represents the document profile id that the document adheres to\n(e.g. 'tradeshift.invoice.ubl.1.0'), from the 'documentprofiles' resource.\n"
+              },
+              {
+                "name": "draft",
+                "value": "",
+                "type": "query",
+                "description": "Parameter that indicates if the document should be converted in draft mode or not.\n"
+              },
+              {
+                "name": "withAttachments",
+                "value": "",
+                "type": "query",
+                "description": "Parameter that indicates if the converted document should contain the source document attachements or not."
+              }
+            ]
+          },
+          "docs": "This endpoint allows the conversion of a draft document to another type, keeping the same id. Its primary purpose is\nfor when an Invoice or a CreditNote has been created as draft but with the wrong type. The only valid conversions are of\ndraft invoices to draft credit notes or vice-versa. The converted document will not be saved or dispatched. If the client requires this action,\nother endpoints can be used. More details about saving or dispatching can be found in\n[Send Document](#post-rest-exter"
+        },
+        {
+          "info": {
+            "name": "Get First Dispatch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/dispatches/first",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Get the first dispatch information with regards to a previously dispatched document"
+        },
+        {
+          "info": {
+            "name": "Get Latest Dispatch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/dispatches/latest",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Get the latest dispatch information with regards to a previously dispatched document"
+        },
+        {
+          "info": {
+            "name": "Dispatch a saved document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/dispatches/:dispatchId",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dispatchId",
+                "value": "",
+                "type": "path",
+                "description": "The dispatch id used for dispatching the document"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              },
+              {
+                "name": "documentSource",
+                "value": "",
+                "type": "query",
+                "description": "Track the document's source - We save the source of the document in a new table called documentsource so that we know where the document was dispatched from."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Dispatch a previously saved document. The client can decide on the UUID for the new dispatch. \nIf the receiver has custom validations enabled, the document will be validated using the receivers custom document profile. \nThe body of the PUT is a connection identifier object which is not mandatory. If connectionId is not provided, the connection id will be determined from the document. \nWhen Content-Type header is text/xml, the minimal request body should be in the format `<DispatchRequest xmlns=\""
+        },
+        {
+          "info": {
+            "name": "Dispatch a saved document rejected by Scan IO validation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/dispatches/:dispatchId/scanIOReject",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dispatchId",
+                "value": "",
+                "type": "path",
+                "description": "The dispatch id used for dispatching the document"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Dispatch a previously saved document that was rejected by Scan IO validation. The client can decide on the UUID for the new dispatch.\nThe document must already have the `scanIOReject`, `scanIORejectMessage` and `fr_cleared` properties set, otherwise a 400 error is returned.\nThe documentSource for this dispatch is always set to `scanIO`.\nThe body of the PUT is a connection identifier object which is not mandatory. If connectionId is not provided, the connection id will be determined from the docu"
+        },
+        {
+          "info": {
+            "name": "lock a draft document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/lockedstate/:state",
+            "params": [
+              {
+                "name": "state",
+                "value": "",
+                "type": "path",
+                "description": "This parameter indicates if the document should be marked as sent (locked) or not."
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Mark a draft document as either sale or purchase if any exists. After this operation, the document cannot be modified in any way.\nIf the \"sent\" parameter is set to TRUE then the document will be marked as SALE, otherwise the document will be marked as\nPURCHASE.\n"
+        },
+        {
+          "info": {
+            "name": "find document metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/metadata",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Get metadata for a document. Metadata cannot be edited."
+        },
+        {
+          "info": {
+            "name": "Get original content of existing documents within platform",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/original",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "The Tradeshift platform dispatches documents in ubl format, but it allows the storing of different other formats as well.\nThese are automatically converted to ubl during the dispatch. The original content is stored and can be retrieved using this endpoint.\n"
+        },
+        {
+          "info": {
+            "name": "Asynchronously import a document as a DRAFT",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/original",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "query",
+                "description": "The filename of the original file\n"
+              },
+              {
+                "name": "schemaValidateUbl",
+                "value": "",
+                "type": "query",
+                "description": "Whether to validate the created document against the UBL schema definition\n"
+              },
+              {
+                "name": "validateDocumentProfile",
+                "value": "",
+                "type": "query",
+                "description": "Whether to validate the created document against the document profile\n"
+              }
+            ]
+          },
+          "docs": "It supports storing different document formats apart from ubl. In case of a non-ubl document format an automatic conversion to ubl is performed.\nThe document is saved as it was submitted and could be retrieved in its original format.\n**NOTE: When importing a PDF,only invoices and credit notes are supported, and some discrepancies can be expected between the uploaded\nPDF and resulting ubl draft. This sometimes happens due to bad quality of the uploaded PDF.**\n"
+        },
+        {
+          "info": {
+            "name": "get document import request response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/original/responses/:responseId",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "responseId",
+                "value": "",
+                "type": "path",
+                "description": "The dispatch id used for dispatching the document"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "This resource allows the client to verify the response to an asynchronous import request. The API provides additional information\nregarding the latest import request of a document. The returned data can either contain a list of document validation errors which prevented the\nimport to run successfully or an import failed message if there were any import failures. If there are no errors returned then the\nimport has completed successfully and the client will receive HTTP 201 Created. If the documen"
+        },
+        {
+          "info": {
+            "name": "Get document properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/properties",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Get all user properties for the specified document, excluding tags."
+        },
+        {
+          "info": {
+            "name": "Get document property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/properties/:property_key",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "property_key",
+                "value": "",
+                "type": "path",
+                "description": "The key of the property which is being read, added or deleted"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Get document property value if found, otherwise return empty response."
+        },
+        {
+          "info": {
+            "name": "Add document property",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/properties/:property_key",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "property_key",
+                "value": "",
+                "type": "path",
+                "description": "The key of the property which is being read, added or deleted"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Add or update document property (key & value).\nAdding properties can help cross references between Tradeshift and the interfacing system.\nFor example, adding an ERP posting number as a property to the document after posting, can help cross\nreferencing and reconciliation. The property can then be called e.g. \"ERPCode\" with a value like \"12345\".\nWhile supported it's not recommended to add properties before the document has been created, as neither\nreading nor writing pre created properties will be"
+        },
+        {
+          "info": {
+            "name": "Delete document property",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/properties/:property_key",
+            "params": [
+              {
+                "name": "property_key",
+                "value": "",
+                "type": "path",
+                "description": "The key of the property which is being read, added or deleted"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Delete document property."
+        },
+        {
+          "info": {
+            "name": "Get document's receiver company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/receivercompany",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "This endpoint allows the retrieval of the “receiverCompanyId” tag, using a document id.\nDuring the dispatch, the receiver side copy of the document is tagged with additional information.\nOne of the tags included is the “receiverCompanyId” which represents the company that receives the document.\nBecause this tag is only computed during the dispatch, it is only available on the receiver side copy of the\ndocument and it will most likely be the company itself, but in case of forwarding it will be th"
+        },
+        {
+          "info": {
+            "name": "Get document's referenced id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/senderReferenceId",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "This endpoint returns the referenced document's id for a given document.\nDuring the dispatch, fx. sending a document to another account, a copy is created on the receiver side so that\neach side of the transaction has it's own copy of the document.\nThe receiver side copy of the document is tagged with additional information and one of the tags that are added\nis the “reference” tag, which represents the document id of the sender side copy.\nBecause this tag is only computed during the dispatch, it "
+        },
+        {
+          "info": {
+            "name": "Get document's sender company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/sendercompany",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "This endpoint allows the retrieval of the “senderCompanyId” tag, using a document id.\nDuring the dispatch, fx. sending a document to another account, a copy is created on the receiver side so\nthat each side of the transaction has it's own copy of the document. The receiver side copy is tagged with\nadditional information and one of the tags that are added is the “senderCompanyId” tag, which represents the\nid of the sender account.\nBecause this tag is only computed during the dispatch, it is only "
+        },
+        {
+          "info": {
+            "name": "change document state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/statechange",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Creates an ApplicationResponse to change the state of a document (e.g. accept, reject, dispute).\nThis endpoint calls a method secured with the UPDATE_DOCUMENT operation, allowing users with roles such as\nAccounts Payable Handler to change document state without requiring the CREATE_EDIT_DOCUMENT operation.\nOnly ApplicationResponse documents (tradeshift.status.1.0 profile) are supported.\nThe document profile is fixed and does not need to be specified by the caller.\n"
+        },
+        {
+          "info": {
+            "name": "get document tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/tags",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Get all tags for the specified document. This is a generic document API endpoint which covers all document types.\n"
+        },
+        {
+          "info": {
+            "name": "add document tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/tags/:tag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "path",
+                "description": "The tag value that will be added or removed."
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Add or replace a tag on a document. Tags might be visible in the TS user interface, and are shared between\nAPI accessors. This is a generic document API endpoint which covers all document types. To avoid pulling the\nsame document again and again, tag the invoice, and then poll for only documents without this tag in #1.\nA tag is just a string, and a document can have multiple tags. It can be used to keep track of sub steps in\nthe integration, for instance Pulled, Transformed and Posted, which wou"
+        },
+        {
+          "info": {
+            "name": "delete document tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/tags/:tag",
+            "params": [
+              {
+                "name": "tag",
+                "value": "",
+                "type": "path",
+                "description": "The tag value that will be added or removed."
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Removes a tag from a document. This will also be removed from the TS user interface. This is a generic\ndocument API endpoint which covers all document types.\n"
+        },
+        {
+          "info": {
+            "name": "get status change reasons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/status-change-reasons"
+          },
+          "docs": "Returns the list of available rejection reasons and dispute reasons\nthat can be used when changing the status of a document.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

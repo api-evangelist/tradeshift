@@ -1,0 +1,539 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Accounts Company API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--accounts-company
+paths:
+  /rest/external/accesslist/operation/{operationId}/type/{typeId}/object/{objectId}:
+    parameters:
+    - name: operationId
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: Operation id to be checked
+    - name: typeId
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: Object's type
+    - name: objectId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: "Object id to be checked. \nCould be any type of objects Tradeshift supports (e.g. documentId, dispatchId, conversationId etc.)\n"
+    get:
+      responses:
+        '204':
+          description: User has access to the provided details
+        '401':
+          description: User do not have access to the provided details
+          content:
+            application/json:
+              example:
+                ErrorCode: Unauthorized
+                Message: The user was not authorized to perform the operation&#x3a; 37617bf8&#x2d;4e04&#x2d;41f2&#x2d;bd27&#x2d;9ad9153419ee&#x2f;Operation&#x28;id&#x3d;15&#x2c; name&#x3d;ADMIN&#x5f;ID&#x29; on 35dea17e&#x2d;fdd7&#x2d;46d9&#x2d;88c8&#x2d;c5c632ebf92b
+                ErrorDetail:
+                - Key: userUuid
+                  Value: 37617bf8-4e04-41f2-bd27-9ad9153419ee
+                - Key: securityGroupUuid
+                  Value: 35dea17e-fdd7-46d9-88c8-c5c632ebf92b
+                - Key: operationId
+                  Value: '15'
+                - Key: operationName
+                  Value: ADMIN_ID
+                - Key: stacktrace
+                  Value: ''
+                ValidationError: []
+                RequestId: 92463020-1aa1-48c6-b87f-ad8b97d0599e
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+      description: 'Check if an user identified by the tenantId and actorId is able to access the objectId of the type typeId.
+
+        The operation provided should exist through the list of allowed operations for the role assigned to the user.
+
+        The result takes into consideration also the DocumentAccess settings, if the app is enabled.
+
+        '
+      operationId: get-rest-external-accesslist-operation-operationid-type-typeid-object-objectid
+      parameters: []
+      x-annotation-dx-category: accounts-company
+      summary: Check authorization
+      tags:
+      - dx-category--accounts-company
+  /rest/external/account:
+    get:
+      responses:
+        '200':
+          description: Details about the current company account
+          content:
+            application/json:
+              example:
+                CompanyName: ELTEC Inc. mkxezemhuirw
+                Country: US
+                CompanyAccountId: 16e61501-2e6a-42ae-9bb3-67d1c1468056
+                State: ACTIVE
+                Identifiers:
+                - scheme: TS:VAT
+                  value: eltec.mkxezemhuirw
+                AddressLines: []
+                RegistrationAddressLines: []
+                AcceptingDocumentProfiles: []
+                LookingFor: []
+                Offering: []
+                PublicProfile: false
+                NonuserInvoicing: false
+                AutoAcceptConnections: false
+                Restricted: true
+                Created: '2017-12-12T14:07:43.945Z'
+                Modified: '2017-12-12T14:07:44.342Z'
+                AccountType: FREE
+              schema:
+                type: object
+                properties:
+                  CompanyName:
+                    title: The Companyname Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  Country:
+                    title: The Country Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  CompanyAccountId:
+                    title: The Companyaccountid Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  State:
+                    title: The State Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  Identifiers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        scheme:
+                          title: The Scheme Schema.
+                          default: ''
+                          description: An explanation about the purpose of this instance.
+                          type: string
+                        value:
+                          title: The Value Schema.
+                          default: ''
+                          description: An explanation about the purpose of this instance.
+                          type: string
+                      required:
+                      - scheme
+                      - value
+                  AddressLines:
+                    type: array
+                    items:
+                      title: Empty Object
+                      description: This accepts anything, as long as it's valid JSON.
+                      type: string
+                  AcceptingDocumentProfiles:
+                    type: array
+                    items:
+                      title: Empty Object
+                      description: This accepts anything, as long as it's valid JSON.
+                      type: string
+                  LookingFor:
+                    type: array
+                    items:
+                      title: Empty Object
+                      description: This accepts anything, as long as it's valid JSON.
+                      type: string
+                  Offering:
+                    type: array
+                    items:
+                      title: Empty Object
+                      description: This accepts anything, as long as it's valid JSON.
+                      type: string
+                  PublicProfile:
+                    title: The Publicprofile Schema.
+                    default: false
+                    description: An explanation about the purpose of this instance.
+                    type: boolean
+                  NonuserInvoicing:
+                    title: The Nonuserinvoicing Schema.
+                    default: false
+                    description: An explanation about the purpose of this instance.
+                    type: boolean
+                  AutoAcceptConnections:
+                    title: The Autoacceptconnections Schema.
+                    default: false
+                    description: An explanation about the purpose of this instance.
+                    type: boolean
+                  Restricted:
+                    title: The Restricted Schema.
+                    default: false
+                    description: An explanation about the purpose of this instance.
+                    type: boolean
+                  Created:
+                    title: The Created Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  Modified:
+                    title: The Modified Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  AccountType:
+                    title: The Accounttype Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  LastActive:
+                    title: Last Active timestamp
+                    default: ''
+                    description: Timestamp of the last activity of the account
+                    type: string
+                required:
+                - CompanyName
+                - Country
+                - CompanyAccountId
+                - State
+                - Identifiers
+                - AddressLines
+                - AcceptingDocumentProfiles
+                - LookingFor
+                - Offering
+                - PublicProfile
+                - NonuserInvoicing
+                - AutoAcceptConnections
+                - Restricted
+                - Created
+                - Modified
+                - AccountType
+                - LastActive
+      description: Get information about the company account that is currently being accessed.
+      operationId: get-rest-external-account
+      x-annotation-dx-category: accounts-company
+      summary: get account info
+      tags:
+      - dx-category--accounts-company
+    put:
+      responses:
+        '204':
+          description: Update company information for the current company account.
+        '400':
+          description: Invalid company name, company account id or identifier
+      description: Update company information for the current company account. Properties will not be changed using this resource.
+      operationId: put-rest-external-account
+      requestBody:
+        content:
+          text/xml:
+            example: "<CompanyAccountInfo xmlns=\"http://tradeshift.com/api/public/1.0\">\n    <CompanyName>${companyName}</CompanyName>\n    <Country>US</Country>\n    <CompanyAccountId>813a3b75-a926-4e82-bd2b-a283b3b4bc6a</CompanyAccountId>\n    <State>ACTIVE</State>\n    <Identifiers>\n        <Identifier scheme=\"TS:ID\">96d47166-0abd-41c7-aae3-661ab060cb6b</Identifier>\n    </Identifiers>\n    <AddressLines>\n        <AddressLine scheme=\"buildingnumber\">1</AddressLine>\n        <AddressLine scheme=\"city\">San Francisco</AddressLine>\n        <AddressLine scheme=\"state\">CA</AddressLine>\n        <AddressLine scheme=\"street\">test8 street</AddressLine>\n        <AddressLine scheme=\"zip\">94116</AddressLine>\n    </AddressLines>\n    <RegistrationAddressLines>\n        <RegistrationAddressLine scheme=\"buildingnumber\">Registration Building</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"city\">Registration City</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"state\">Registration State</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"street\">Registration Street</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"zip\">Registration Zip</RegistrationAddressLine>\n    </RegistrationAddressLines>\n    <AcceptingDocumentProfiles/>\n    <LookingFor/>\n    <Offering/>\n    <PublicProfile>false</PublicProfile>\n    <NonuserInvoicing>false</NonuserInvoicing>\n    <AutoAcceptConnections>false</AutoAcceptConnections>\n    <Restricted>true</Restricted>\n    <Created>2017-02-27T16:15:31.059-08:00</Created>\n    <Modified>2017-03-05T18:36:48.811-08:00</Modified>\n    <AccountType>FREE</AccountType>\n</CompanyAccountInfo>"
+            schema:
+              type: object
+        required: true
+      x-annotation-dx-category: accounts-company
+      summary: update account info
+      tags:
+      - dx-category--accounts-company
+  /rest/external/account/info:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  CompanyName: str
+                  Country: str
+                  CompanyAccountId: 58a5b768-08be-48ec-a06d-6874fde8cf46
+                  State: CREATED
+                  Url: str
+                  Description: str
+                  Identifiers: []
+                  AddressLines: []
+                  AcceptingDocumentProfiles: []
+                  Properties: []
+                  LookingFor: null
+                  Offering: null
+                  LogoURL: str
+                  BackgroundURL: str
+                  PublicProfile: 'false'
+                  NonuserInvoicing: 'false'
+                  AutoAcceptConnections: 'false'
+                  Restricted: 'false'
+                  NumConnections: '0'
+                  Industry: ACADEMIA
+                  OtherIndustry: str
+                  OwnershipType: SOLE
+                  Size: ONE
+                  Created: '2013-07-23T07:35:16.000Z'
+                  Modified: '2013-07-23T07:35:16.000Z'
+                  Phone: str
+                  Fax: str
+                  ShortUrl: str
+                  AccountType: FREE
+                  LastActive: '2013-07-23T07:35:16.000Z'
+      description: Returns information about the company account that is currently being accessed.
+      operationId: get-rest-external-account-info
+      x-annotation-dx-category: accounts-company
+      summary: get account info
+      tags:
+      - dx-category--accounts-company
+    put:
+      responses:
+        '204':
+          description: ''
+      description: Update company information for the current company account. Properties will not be changed using this resource.
+      operationId: put-rest-external-account-info
+      requestBody:
+        content:
+          application/json:
+            example:
+              CompanyName: str
+              Country: str
+              CompanyAccountId: 58a5b768-08be-48ec-a06d-6874fde8cf46
+              State: CREATED
+              Url: str
+              Description: str
+              Identifiers: []
+              AddressLines: []
+              AcceptingDocumentProfiles: []
+              Properties: []
+              LookingFor: null
+              Offering: null
+              LogoURL: str
+              BackgroundURL: str
+              PublicProfile: 'false'
+              NonuserInvoicing: 'false'
+              AutoAcceptConnections: 'false'
+              Restricted: 'false'
+              NumConnections: '0'
+              Industry: ACADEMIA
+              OtherIndustry: str
+              OwnershipType: SOLE
+              Size: ONE
+              Created: '2013-07-23T07:35:16.000Z'
+              Modified: '2013-07-23T07:35:16.000Z'
+              Phone: str
+              Fax: str
+              ShortUrl: str
+              AccountType: FREE
+              LastActive: '2013-07-23T07:35:16.000Z'
+            schema:
+              type: string
+        required: true
+      x-annotation-dx-category: accounts-company
+      summary: update account info
+      tags:
+      - dx-category--accounts-company
+  /rest/external/account/{companyId}:
+    parameters:
+    - name: companyId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of company account.
+    get:
+      responses:
+        '200':
+          description: The account was found and returned.
+          content:
+            application/json:
+              schema:
+                example:
+                  CompanyName: str
+                  Country: str
+                  CompanyAccountId: 58a5b768-08be-48ec-a06d-6874fde8cf46
+                  State: CREATED
+                  Url: str
+                  Description: str
+                  Identifiers: []
+                  AddressLines: []
+                  AcceptingDocumentProfiles: []
+                  Properties: []
+                  LookingFor: null
+                  Offering: null
+                  LogoURL: str
+                  BackgroundURL: str
+                  PublicProfile: 'false'
+                  NonuserInvoicing: 'false'
+                  AutoAcceptConnections: 'false'
+                  Restricted: 'false'
+                  NumConnections: '0'
+                  Industry: ACADEMIA
+                  OtherIndustry: str
+                  OwnershipType: SOLE
+                  Size: ONE
+                  Created: '2013-07-23T07:35:16.000Z'
+                  Modified: '2013-07-23T07:35:16.000Z'
+                  Phone: str
+                  Fax: str
+                  ShortUrl: str
+                  AccountType: FREE
+                  LastActive: '2013-07-23T07:35:16.000Z'
+        '204':
+          description: The account queried for did not exist. Empty response will be returned.
+      description: Return account associated with companyId.
+      operationId: get-rest-external-account-companyid
+      x-annotation-dx-category: accounts-company
+      summary: get company account
+      tags:
+      - dx-category--accounts-company
+    put:
+      responses:
+        '204':
+          description: ''
+      description: Update company information for the specified company account.
+      operationId: put-rest-external-account-companyid
+      x-annotation-dx-category: accounts-company
+      summary: put company account
+      tags:
+      - dx-category--accounts-company
+  /rest/external/companies/{companyAccountId}/identifiers:
+    parameters:
+    - name: companyAccountId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of company (tenant).
+    get:
+      responses:
+        '200':
+          description: Get the company identifiers for the requested tenant
+          content:
+            application/json:
+              example:
+              - scheme: DE:MWST
+                value: '812529243'
+                label: Umsatzsteuer-Identifikationsnummer
+                partyTaxScheme: false
+                toBePrinted: false
+              - scheme: DK:CVR
+                value: '27659721'
+                label: ''
+                partyTaxScheme: false
+                toBePrinted: false
+              schema:
+                title: Tradeshift Public API 1.0 - CompanyIdentifiers List
+                type: array
+                additionalProperties: false
+                items:
+                  type: object
+                  properties:
+                    scheme:
+                      title: Identifier scheme
+                      type: string
+                    value:
+                      title: Identifier value
+                      type: string
+                    label:
+                      type: string
+                    partyTaxScheme:
+                      type: boolean
+                    toBePrinted:
+                      type: boolean
+                  required:
+                  - scheme
+                  - value
+                  - label
+                  - partyTaxScheme
+                  - toBePrinted
+      description: Return identifiers associated with the account with this companyId.
+      operationId: get-rest-external-companies-companyaccountid-identifiers
+      x-annotation-dx-category: accounts-company
+      summary: get company identifiers
+      tags:
+      - dx-category--accounts-company
+    put:
+      responses:
+        '200':
+          description: The company identifiers were replaced
+        '400':
+          description: ''
+      description: Update company identifiers for the specified company account.
+      operationId: put-rest-external-companies-companyaccountid-identifiers
+      requestBody:
+        content:
+          application/json:
+            example:
+            - scheme: DE:MWST
+              value: '812529243'
+              label: Umsatzsteuer-Identifikationsnummer
+              partyTaxScheme: false
+              toBePrinted: false
+            - scheme: DK:CVR
+              value: '27659721'
+              label: ''
+              partyTaxScheme: false
+              toBePrinted: false
+            schema:
+              title: Tradeshift Public API 1.0 - CompanyIdentifiers List
+              type: array
+              additionalProperties: false
+              items:
+                type: object
+                properties:
+                  scheme:
+                    title: Identifier scheme
+                    type: string
+                  value:
+                    title: Identifier value
+                    type: string
+                  label:
+                    type: string
+                  partyTaxScheme:
+                    type: boolean
+                  toBePrinted:
+                    type: boolean
+                required:
+                - scheme
+                - value
+                - label
+                - partyTaxScheme
+                - toBePrinted
+        required: true
+      x-annotation-dx-category: accounts-company
+      summary: replace company identifiers
+      tags:
+      - dx-category--accounts-company

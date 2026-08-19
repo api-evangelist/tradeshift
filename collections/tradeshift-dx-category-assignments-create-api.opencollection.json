@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Assignments Create API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--assignments-create",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "create assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/assignments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new assignment. <br> It must have the following mandatory JSON nodes in the request body: <ul> <li>type</li> <li>subjectId</li> </ul> The list of assigneeIds, if provided, must contain at least one valid user or user group. <br/> If no assignees are provided or all provided are missing/invalid/are not members of the current branch, the API will return an error(no default assignee logic is used).The assignees can be users or teams.<br> Also, for the provided assignees, auto-assignees an"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

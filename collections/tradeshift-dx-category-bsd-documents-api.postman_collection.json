@@ -1,0 +1,1488 @@
+{
+  "item": [
+    {
+      "id": "4b7844ab-6997-4a90-a7cb-94f3964262fb",
+      "name": "dx-category--bsd-documents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a708d4e6-f101-47a8-ba7e-e4c11058a058",
+          "name": "Search documents",
+          "request": {
+            "name": "Search documents",
+            "description": {
+              "content": "Get an overview of all the documents the buyer has staged for its suppliers -\noptionally filtered to match the chosen parameters.\nSince there can be millions of documents, the results can be paginated. If the\ntotal number of rows matching the filter parameters is large, the total count\nin the result is an estimate and may deviate significantly from the actual value.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "suppliermanagement",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountingSystemId",
+                  "value": "<string>",
+                  "description": "Identifier of the supplier, which this document relates to, as it was used in the SMD."
+                },
+                {
+                  "disabled": false,
+                  "key": "branchId",
+                  "value": "<string>",
+                  "description": "Internal identifier of the buyer branch, which this document relates to,\nas it has been configured on the platform.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "The state of the document in Buyer Sourced Documents"
+                },
+                {
+                  "disabled": false,
+                  "key": "documentType",
+                  "value": "<string>",
+                  "description": "The type of the document"
+                },
+                {
+                  "disabled": false,
+                  "key": "externalDocumentId",
+                  "value": "<string>",
+                  "description": "Unique identifier to the customer. It can be a customer-generated UUID, an ERP document ID,\nor an ID from a scanning solution. The external ID must also be present in the actual UBL\nof invoices and credit notes in the file ID reference.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "The page of responses to get"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "100",
+                  "description": "The size of the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "created",
+                  "description": "We currently only support ordering the documents by `created`, but that might change in the future.\nThe ordering is specified after a colon `:`. By default, we order ascending (`asc`).\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6549e852-d826-4725-8003-fd490ed3f4d3",
+              "name": "A (possibly empty) page of document meta-data. The total count may be an estimate.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalDocumentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "100"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "created"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"documentId\": \"da8fffc5-1738-49f4-b882-e0f7c19a4175\",\n      \"accountingSystemId\": \"string\",\n      \"branchId\": \"string\",\n      \"documentProfileId\": \"ubl.invoice.2.1.fr\",\n      \"externalDocumentId\": \"string\",\n      \"created\": 279,\n      \"state\": \"DISPATCHING\",\n      \"receivedDocumentId\": \"da8fffc5-1738-49f4-b882-e0f7c19a4175\",\n      \"documentType\": \"STATUS\",\n      \"dispatched\": 8888,\n      \"documentReferences\": [\n        {\n          \"documentReference\": \"string\"\n        },\n        {\n          \"documentReference\": \"string\"\n        }\n      ],\n      \"sourceRef\": \"string\"\n    },\n    {\n      \"documentId\": \"da8fffc5-1738-49f4-b882-e0f7c19a4175\",\n      \"accountingSystemId\": \"string\",\n      \"branchId\": \"string\",\n      \"documentProfileId\": \"tradeshift.status.ubl.1.0\",\n      \"externalDocumentId\": \"string\",\n      \"created\": 64,\n      \"state\": \"DISPATCHED\",\n      \"receivedDocumentId\": \"da8fffc5-1738-49f4-b882-e0f7c19a4175\",\n      \"documentType\": \"STATUS\",\n      \"dispatched\": 6618,\n      \"documentReferences\": [\n        {\n          \"documentReference\": \"string\"\n        },\n        {\n          \"documentReference\": \"string\"\n        }\n      ],\n      \"sourceRef\": \"string\"\n    }\n  ],\n  \"total\": 5129\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "651a2800-56f4-460e-869d-6e617af59992",
+          "name": "Load document",
+          "request": {
+            "name": "Load document",
+            "description": {
+              "content": "Stage a new historical document for being loaded into a suppliers history, when they onboard.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "suppliermanagement",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountingSystemId",
+                  "value": "<string>",
+                  "description": "(Required) Identifier of the supplier, which this document relates to, as it was used in the SMD."
+                },
+                {
+                  "disabled": false,
+                  "key": "branchId",
+                  "value": "<string>",
+                  "description": "(Required) Internal identifier of the buyer branch, which this document relates to, as it has been configured on the\nplatform.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "documentProfileId",
+                  "value": "<string>",
+                  "description": "(Required) The UBL document profile of the posted document."
+                },
+                {
+                  "disabled": false,
+                  "key": "externalDocumentId",
+                  "value": "<string>",
+                  "description": "(Required) Identifier of the invoice the document relates to. I.e. if the document is an invoice, then it can be\nits own invoice number.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "documentReferenceId",
+                  "value": "<string>",
+                  "description": "Identifier (externalDocumentId) of a document that current document refers to. I.e. if the document is\nan application response, then it can have a documentReferenceId that points to an invoice.\nStaging an application response without supplying a documentReferenceId is considered an error.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceRef",
+                  "value": "<string>",
+                  "description": "Customer reference to where the documents were sourced from.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "98c99dcd-8cc2-46eb-bc00-d851dc6fbbd8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentProfileId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalDocumentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentReferenceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceRef",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b39fdde2-715f-4ae9-bb1e-f3ad9abd6751",
+              "name": "Document validation has failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentProfileId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalDocumentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentReferenceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceRef",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"errorDetail\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"validationError\": [\n    {\n      \"errorCode\": \"string\",\n      \"subErrorCode\": \"string\",\n      \"errorDetail\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"index\": 2345,\n      \"message\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"subErrorCode\": \"string\",\n      \"errorDetail\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"index\": 7975,\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13884e9b-58f8-45db-a6cc-6bd016249dc5",
+              "name": "Document already exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentProfileId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalDocumentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentReferenceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceRef",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5921f724-8e6d-450b-9ad0-2cacaa951ba5",
+          "name": "Get Document Metadata",
+          "request": {
+            "name": "Get Document Metadata",
+            "description": {
+              "content": "Get one document's metadata\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "suppliermanagement",
+                "documents",
+                ":externalDocumentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalDocumentId",
+                  "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d9a969a-df56-46ad-b382-dbe38c7edf3c",
+              "name": "Document metadata succesfully retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"documentId\": \"da8fffc5-1738-49f4-b882-e0f7c19a4175\",\n  \"accountingSystemId\": \"string\",\n  \"branchId\": \"string\",\n  \"documentProfileId\": \"ubl.invoice.2.1.us\",\n  \"externalDocumentId\": \"string\",\n  \"created\": 985,\n  \"state\": \"FAILED\",\n  \"receivedDocumentId\": \"da8fffc5-1738-49f4-b882-e0f7c19a4175\",\n  \"documentType\": \"REMITTANCEADVICE\",\n  \"dispatched\": 9025,\n  \"documentReferences\": [\n    {\n      \"documentReference\": \"string\"\n    },\n    {\n      \"documentReference\": \"string\"\n    }\n  ],\n  \"sourceRef\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b306c2f-2d61-4601-a983-207ba972b058",
+              "name": "Document does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "673a42bd-9d1e-4114-84e4-d31fa04f134d",
+          "name": "Load/Override Document",
+          "request": {
+            "name": "Load/Override Document",
+            "description": {
+              "content": "Stage a new historical document for being loaded into a suppliers history, when they onboard.\nAlready existing invoice or credit note with the same externalDocumentId and state IMPORTED will be archived.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "suppliermanagement",
+                "documents",
+                ":externalDocumentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountingSystemId",
+                  "value": "<string>",
+                  "description": "(Required) Identifier of the supplier, which this document relates to, as it was used in the SMD."
+                },
+                {
+                  "disabled": false,
+                  "key": "branchId",
+                  "value": "<string>",
+                  "description": "(Required) Internal identifier of the buyer branch, which this document relates to, as it has been configured on the\nplatform.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "documentProfileId",
+                  "value": "<string>",
+                  "description": "(Required) The UBL document profile of the posted document."
+                },
+                {
+                  "disabled": false,
+                  "key": "documentReferenceId",
+                  "value": "<string>",
+                  "description": "Identifier (externalDocumentId) of a document that current document refers to. I.e. if the document is\nan application response, then it can have a documentReferenceId that points to an invoice.\nStaging an application response without supplying a documentReferenceId is considered an error.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceRef",
+                  "value": "<string>",
+                  "description": "Customer reference to where the documents were sourced from.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalDocumentId",
+                  "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ccedbd9c-da3f-41d6-bc21-bded4a8c3813",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentProfileId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentReferenceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceRef",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "08e1520a-97ad-4154-b507-ddcb8ba68acf",
+              "name": "Document validation has failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branchId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentProfileId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "documentReferenceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceRef",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"errorDetail\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"validationError\": [\n    {\n      \"errorCode\": \"string\",\n      \"subErrorCode\": \"string\",\n      \"errorDetail\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"index\": 2345,\n      \"message\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"subErrorCode\": \"string\",\n      \"errorDetail\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"index\": 7975,\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb0632c3-9685-492d-9f72-7f93782107b0",
+          "name": "Archive Document",
+          "request": {
+            "name": "Archive Document",
+            "description": {
+              "content": "Permanently archives the document.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "suppliermanagement",
+                "documents",
+                ":externalDocumentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalDocumentId",
+                  "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e174c09-532f-41bb-9423-78f544ded71e",
+              "name": "Document was permanently archived.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd374dcf-ef2b-463d-9d1c-f7ddd1980ab4",
+              "name": "Document was not successfully archived.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d0607a5-5b79-4916-a552-cf12e68106d8",
+          "name": "Redispatch Document",
+          "request": {
+            "name": "Redispatch Document",
+            "description": {
+              "content": "Retry the dispatch of a failed document by setting its state to IMPORTED.\nThe document will the asynchronously be picked up for dispatch again.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "suppliermanagement",
+                "documents",
+                ":externalDocumentId",
+                "redispatch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalDocumentId",
+                  "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "880ee2ae-4090-4fec-b322-650d8cf6e5ca",
+              "name": "Document state successfully set to IMPORTED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId",
+                    "redispatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "263769d8-a427-4766-87ef-ecb3cbe09249",
+              "name": "Document is either not in state FAILED or does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId",
+                    "redispatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "390a4e79-9b19-4c92-bb4d-050cbe751fd8",
+          "name": "Get Document Content",
+          "request": {
+            "name": "Get Document Content",
+            "description": {
+              "content": "Retrieve document content.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "suppliermanagement",
+                "documents",
+                ":externalDocumentId",
+                "content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalDocumentId",
+                  "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "30c2106c-1fe0-40fc-830e-8587862dbf1e",
+              "name": "Document content successfully retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6efb7991-8a73-4f4d-8624-0fde1babf425",
+              "name": "Document does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ed04512-c2ba-46fc-b138-87e9e2cf386d",
+          "name": "Get Document State Changes",
+          "request": {
+            "name": "Get Document State Changes",
+            "description": {
+              "content": "Retrieve information about document states changes.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "suppliermanagement",
+                "documents",
+                ":externalDocumentId",
+                "states"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalDocumentId",
+                  "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c69b364-5484-4219-ac37-79b544db85a3",
+              "name": "Document state changes successfully retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId",
+                    "states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"state\": \"DISPATCHING\",\n      \"created\": \"1967-08-07T01:56:44.728Z\",\n      \"error\": {\n        \"errorCode\": \"string\",\n        \"message\": \"string\",\n        \"errorDetail\": [\n          {\n            \"key\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"key\": \"string\",\n            \"value\": \"string\"\n          }\n        ],\n        \"validationError\": [\n          {\n            \"errorCode\": \"string\",\n            \"subErrorCode\": \"string\",\n            \"errorDetail\": [\n              {\n                \"key\": \"string\",\n                \"value\": \"string\"\n              },\n              {\n                \"key\": \"string\",\n                \"value\": \"string\"\n              }\n            ],\n            \"index\": 3540,\n            \"message\": \"string\"\n          },\n          {\n            \"errorCode\": \"string\",\n            \"subErrorCode\": \"string\",\n            \"errorDetail\": [\n              {\n                \"key\": \"string\",\n                \"value\": \"string\"\n              },\n              {\n                \"key\": \"string\",\n                \"value\": \"string\"\n              }\n            ],\n            \"index\": 1053,\n            \"message\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"state\": \"DRAFT\",\n      \"created\": \"1998-06-20T02:28:12.860Z\",\n      \"error\": {\n        \"errorCode\": \"string\",\n        \"message\": \"string\",\n        \"errorDetail\": [\n          {\n            \"key\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"key\": \"string\",\n            \"value\": \"string\"\n          }\n        ],\n        \"validationError\": [\n          {\n            \"errorCode\": \"string\",\n            \"subErrorCode\": \"string\",\n            \"errorDetail\": [\n              {\n                \"key\": \"string\",\n                \"value\": \"string\"\n              },\n              {\n                \"key\": \"string\",\n                \"value\": \"string\"\n              }\n            ],\n            \"index\": 5019,\n            \"message\": \"string\"\n          },\n          {\n            \"errorCode\": \"string\",\n            \"subErrorCode\": \"string\",\n            \"errorDetail\": [\n              {\n                \"key\": \"string\",\n                \"value\": \"string\"\n              },\n              {\n                \"key\": \"string\",\n                \"value\": \"string\"\n              }\n            ],\n            \"index\": 7605,\n            \"message\": \"string\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec2467be-b2e4-4351-8c18-26cb6037831c",
+              "name": "Document does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId",
+                    "states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bb05a7b-6b7d-44fa-842a-75322c2c105f",
+          "name": "Get Document References",
+          "request": {
+            "name": "Get Document References",
+            "description": {
+              "content": "Retrieve List Of Document References\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "suppliermanagement",
+                "documents",
+                ":externalDocumentId",
+                "references"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalDocumentId",
+                  "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9fc93b59-757c-4e95-a83c-b37ef2eb8cca",
+              "name": "Document References successfully retrieved.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId",
+                    "references"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a38e4be5-a051-4ed3-bbc6-bebedddeba99",
+              "name": "Document does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "suppliermanagement",
+                    "documents",
+                    ":externalDocumentId",
+                    "references"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalDocumentId",
+                      "description": "(Required) The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ccdeb5bd-624e-4769-bad3-19270eb4ccf1",
+    "name": "Tradeshift External Dx Category Bsd Documents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

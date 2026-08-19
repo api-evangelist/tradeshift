@@ -1,0 +1,331 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Network Search API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--network-search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "search network",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "List of keywords to narrow the results"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results, and number of results on each skipped page of results"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Number of result pages to skip"
+              }
+            ]
+          },
+          "docs": "Get the user's connections and a list of companies according to the query parameter"
+        },
+        {
+          "info": {
+            "name": "get companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/companies",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "List of keywords to narrow the results"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results, and number of results on each skipped page of results"
+              },
+              {
+                "name": "omitConnections",
+                "value": "",
+                "type": "query",
+                "description": "Omit companies with existing connections"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Number of result pages to skip"
+              }
+            ]
+          },
+          "docs": "Get a list of Companies in the Tradeshift network according to the query parameters"
+        },
+        {
+          "info": {
+            "name": "get connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections",
+            "params": [
+              {
+                "name": "companyAccountId",
+                "value": "",
+                "type": "query",
+                "description": "Get connections to the specified companyAccountId"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "List of keywords to narrow the results"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Return only connections of this specified type, either 'TradeshiftConnection' or 'ExternalConnection'"
+              },
+              {
+                "name": "passive",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include passive connections"
+              },
+              {
+                "name": "includeProperties",
+                "value": "",
+                "type": "query",
+                "description": "Include connection properties"
+              },
+              {
+                "name": "excludeWithProperty",
+                "value": "",
+                "type": "query",
+                "description": "Exclude connections having specified property, can optionally be used in conjuction with excludeWithPropertyValue"
+              },
+              {
+                "name": "excludeWithPropertyValue",
+                "value": "",
+                "type": "query",
+                "description": "Exclude connections having specified property value, to be used in conjuction with excludeWithProperty"
+              },
+              {
+                "name": "branchId",
+                "value": "",
+                "type": "query",
+                "description": "Only search for connections in this branch id"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results, and number of results on each skipped page of results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Number of result pages to skip"
+              }
+            ]
+          },
+          "docs": "Returns the connections in the network of the current user according to the query parameter."
+        },
+        {
+          "info": {
+            "name": "find network connections with accountingSystemId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/accountingSystemId/:accountingSystemId",
+            "params": [
+              {
+                "name": "accountingSystemId",
+                "value": "",
+                "type": "path",
+                "description": "identifier of the accountingSystemId"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to display, and size of each page to skip."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Number of pages of results to skip"
+              }
+            ]
+          },
+          "docs": "Search for existing or potential connections by AccountingSystemId\n"
+        },
+        {
+          "info": {
+            "name": "get connection for company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/companies/:companyId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of company account."
+              }
+            ]
+          },
+          "docs": "Get a connection to a specific account. If the current user is connected to the account, the connection will be returned, otherwise 404 will be returned\n"
+        },
+        {
+          "info": {
+            "name": "get master connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/master/connections",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "List of keywords to narrow the results"
+              },
+              {
+                "name": "excludeWithProperty",
+                "value": "",
+                "type": "query",
+                "description": "Exclude connections having specified property, can optionally be used in conjuction with excludeWithPropertyValue"
+              },
+              {
+                "name": "excludeWithPropertyValue",
+                "value": "",
+                "type": "query",
+                "description": "Exclude connections having specified property value, to be used in conjuction with excludeWithProperty"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results, and number of results on each skipped page of results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Number of result pages to skip"
+              }
+            ]
+          },
+          "docs": "Returns only master direct connections according to the query parameter and includes connection properties"
+        },
+        {
+          "info": {
+            "name": "find network suggestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/suggest",
+            "params": [
+              {
+                "name": "companyName",
+                "value": "",
+                "type": "query",
+                "description": "Must be provided with country, to search for an exact company name in a given country."
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Must be provided with companyName, to search for an exact company name in a given country. Valid 2-letter country codes are listed in the 'countries' resource.\n"
+              },
+              {
+                "name": "identifierScheme",
+                "value": "",
+                "type": "query",
+                "description": "Identifier scheme used to identify the company (one of the 'companytypes' resource) Each pair of identifierScheme and identifierValue will be interpreted as OR.\n"
+              },
+              {
+                "name": "identifierValue",
+                "value": "",
+                "type": "query",
+                "description": "Company identifier to search for (according to the given identifierScheme)"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "E-mail address of one of the users of the company."
+              },
+              {
+                "name": "existingConnectionsOnly",
+                "value": "",
+                "type": "query",
+                "description": "Limit results to only existing connections or only potential connections. Defaults to returning both existing and potential connections."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to display, and size of each page to skip."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Number of pages of results to skip"
+              },
+              {
+                "name": "propertyKey",
+                "value": "",
+                "type": "query",
+                "description": "Name of a property set on the connection."
+              },
+              {
+                "name": "propertyValue",
+                "value": "",
+                "type": "query",
+                "description": "Value of the specified property name on the connection."
+              },
+              {
+                "name": "includeShareableIdentifiers",
+                "value": "",
+                "type": "query",
+                "description": "Applicable when searching by identifiers. If enabled also include results where matching identifiers are shareable. Disabled by default."
+              }
+            ]
+          },
+          "docs": "Search for existing or potential connections based on criteria. One of the following parameter combinations needs to be provided - country and companyName, identifierScheme and identifierValue, propertyKey and propertyValue, or email. All criteria are matched using exact, case-insensitive match unless exactMatch is set as false.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

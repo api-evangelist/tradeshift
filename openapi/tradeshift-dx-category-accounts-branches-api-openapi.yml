@@ -1,0 +1,220 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Accounts Branches API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--accounts-branches
+paths:
+  /rest/external/account/branches:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  numPages: '0'
+                  pageId: '0'
+                  itemsPerPage: '0'
+                  itemCount: '0'
+                  CompanyAccount: []
+      description: Get listing of branches for the current company account, if any.
+      operationId: get-rest-external-account-branches
+      x-annotation-dx-category: accounts-branches
+      summary: get branches
+      tags:
+      - dx-category--accounts-branches
+  /rest/external/account/branches/new:
+    put:
+      responses:
+        '204':
+          description: Created a new company account and optionally user.
+        '400':
+          description: 'The tenant identifier proposed does already exist on the platform and no tenant nor user was created.
+
+            '
+      description: 'Creates a company account as the child of the current account using the provided data in the body of the PUT call. The branch will automatically be activated and no activation email will be sent to any branch users attached to the create request. The identifier(s) must not already exist.
+
+        '
+      operationId: put-rest-external-account-branches-new
+      requestBody:
+        content:
+          application/json:
+            example:
+              User:
+                Id: 0daab548-3990-41ed-b0f4-eb197e693df1
+                Person:
+                  Email: steve.armstrong@example.org
+                ReturnUrl: https://go.tradeshift.com
+                Language: en-us
+                TimeZone: GMT
+                Visible: true
+              CompanyAccount:
+                Company:
+                  CompanyName: Example Inc.
+                  Country: US
+                  Identifier:
+                  - scheme: TS:ID
+                    value: f54bca78-3ac9-4843-ae4a-f6808c0ea477
+              ParentCompanyAccountId: e3e1e302-ea34-416c-8236-248295ef7a8c
+            schema:
+              title: Tradeshift public API 1.0 - CreateBranchAccountRequest
+              required:
+              - User
+              - CompanyAccount
+              - ParentCompanyAccountId
+              type: object
+              additionalProperties: false
+              properties:
+                User:
+                  type: object
+                  properties:
+                    Id:
+                      pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                      description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                      type: string
+                  required:
+                  - Id
+                CompanyAccount:
+                  type: object
+                  properties:
+                    Company:
+                      type: object
+                  required:
+                  - Company
+                From:
+                  type: string
+                SendActivationEmail:
+                  type: boolean
+                ParentCompanyAccountId:
+                  pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                  description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                  type: string
+                Properties:
+                  type: object
+                  properties:
+                    termsandconditions:
+                      type: string
+                  required:
+                  - termsandconditions
+        required: true
+      x-annotation-dx-category: accounts-branches
+      summary: create branch
+      tags:
+      - dx-category--accounts-branches
+  /rest/external/account/branches/{companyId}:
+    parameters:
+    - name: companyId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of company account.
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  Id: 58a5b768-08be-48ec-a06d-6874fde8cf46
+                  State: CREATED
+                  Company:
+                    CompanyName: null
+                    Country: null
+                    Created: null
+                    Modified: null
+                    Identifier: null
+                    AddressLine: null
+                    Phone: null
+                    Fax: null
+                    LegalCompanyStructure: null
+                    AddressAvailable: null
+                    RegistrationAddress: null
+                  Url: str
+                  Description: str
+                  ShortUrl: str
+                  PublicProfile: 'false'
+                  NonuserInvoicing: 'false'
+                  AutoAcceptConnections: 'false'
+                  Restricted: 'false'
+                  Property: null
+                  Offering: null
+                  LookingFor: null
+                  Industry: ACADEMIA
+                  OtherIndustry: str
+                  OwnershipType: SOLE
+                  Size: ONE
+                  NumConnections: '0'
+                  PrimaryBankAccount:
+                    channelCode: str
+                    branchId: str
+                    paymentNote: str
+                    institutionId: str
+                    institutionName: str
+                    branchName: str
+                    value: str
+                    beneficiaryName: str
+                    beneficiaryBankAddress: str
+                    accountTypeCode: str
+                  AccountType: FREE
+                  RegisteredGLI: []
+        '404':
+          description: Specific branch isn't found or isn't a branch of the current parent.
+      description: Get specific branch for the current parent
+      operationId: get-rest-external-account-branches-companyid
+      x-annotation-dx-category: accounts-branches
+      summary: get branch
+      tags:
+      - dx-category--accounts-branches
+  /rest/external/account/parent:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  CompanyName: str
+                  Country: str
+                  CompanyAccountId: 58a5b768-08be-48ec-a06d-6874fde8cf46
+                  State: CREATED
+                  Url: str
+                  Description: str
+                  Identifiers: []
+                  AddressLines: []
+                  AcceptingDocumentProfiles: []
+                  Properties: []
+                  LookingFor: null
+                  Offering: null
+                  LogoURL: str
+                  BackgroundURL: str
+                  PublicProfile: 'false'
+                  NonuserInvoicing: 'false'
+                  AutoAcceptConnections: 'false'
+                  Restricted: 'false'
+                  NumConnections: '0'
+                  Industry: ACADEMIA
+                  OtherIndustry: str
+                  OwnershipType: SOLE
+                  Size: ONE
+                  Created: '2013-07-23T07:35:16.000Z'
+                  Modified: '2013-07-23T07:35:16.000Z'
+                  Phone: str
+                  Fax: str
+                  ShortUrl: str
+                  AccountType: FREE
+                  LastActive: '2013-07-23T07:35:16.000Z'
+        '404':
+          description: ''
+      description: Returns information about the parent account of the current account (the parent is the account of which the current account is a branch).
+      operationId: get-rest-external-account-parent
+      x-annotation-dx-category: accounts-branches
+      summary: get parent
+      tags:
+      - dx-category--accounts-branches

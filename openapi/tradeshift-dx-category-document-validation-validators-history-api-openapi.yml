@@ -1,0 +1,33 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Document Validation Validators History API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--document-validation-validators_history
+paths:
+  /rest/external/document-validation/validation/groups/{groupId}/history:
+    get:
+      tags:
+      - dx-category--document-validation-validators_history
+      summary: Get change history
+      description: Gets the validator group change history, including current definition.
+      operationId: get-rest-external-document-validation-validation-groups-groupid-history
+      parameters:
+      - name: groupId
+        in: path
+        description: UUID of the validator group to get
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupDefHistory'

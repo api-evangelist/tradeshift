@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Documents Receipt Advices API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--documents-receipt_advices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "receipt advices by number",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/receiptadvices/bynumber/:number",
+            "params": [
+              {
+                "name": "number",
+                "value": "",
+                "type": "path",
+                "description": "Business id of the receipt advice document"
+              }
+            ]
+          },
+          "docs": "Check for the existence of a document via its business id"
+        },
+        {
+          "info": {
+            "name": "next available receipt advice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/receiptadvices/nextnumber"
+          },
+          "docs": "Get next available business id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

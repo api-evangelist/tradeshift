@@ -1,0 +1,229 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Documents Requisitions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--documents-requisitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "create requisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/requisitions/RequisitionLine",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Requisition from the requisition template containing the provided line"
+        },
+        {
+          "info": {
+            "name": "get requisition line template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/requisitions/RequisitionLine/template"
+          },
+          "docs": "Get a requisition line template."
+        },
+        {
+          "info": {
+            "name": "create requisition from quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/requisitions/create/fromquote"
+          },
+          "docs": "Create a new requisition from given quote and save it as a draft"
+        },
+        {
+          "info": {
+            "name": "spawn requisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/requisitions/spawn",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Spawn purchase orders based upon the received spawning command"
+        },
+        {
+          "info": {
+            "name": "requisition by template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/requisitions/template"
+          },
+          "docs": "Get a requisition template."
+        },
+        {
+          "info": {
+            "name": "create requisition line",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/requisitions/:documentId/RequisitionLine",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Requisition from the requisition template containing the provided line and using the provided id\n"
+        },
+        {
+          "info": {
+            "name": "update requisition lines",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/requisitions/:documentId/RequisitionLines",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a line to the Requisition"
+        },
+        {
+          "info": {
+            "name": "get requisition line",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/requisitions/:documentId/RequisitionLines/:lineId",
+            "params": [
+              {
+                "name": "lineId",
+                "value": "",
+                "type": "path",
+                "description": "Line UUID identifier"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific Line from a Requisition"
+        },
+        {
+          "info": {
+            "name": "update requisition line",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/requisitions/:documentId/RequisitionLines/:lineId",
+            "params": [
+              {
+                "name": "lineId",
+                "value": "",
+                "type": "path",
+                "description": "Line UUID identifier"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific Line of the Requisition"
+        },
+        {
+          "info": {
+            "name": "remove requisition line",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/requisitions/:documentId/RequisitionLines/:lineId",
+            "params": [
+              {
+                "name": "lineId",
+                "value": "",
+                "type": "path",
+                "description": "Line UUID identifier"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Remove a specific Line of the Requisition"
+        },
+        {
+          "info": {
+            "name": "update requisition state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/requisitions/:documentId/state",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the state for the requisition document"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

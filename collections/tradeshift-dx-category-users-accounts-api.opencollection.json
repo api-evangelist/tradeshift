@@ -1,0 +1,225 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Users Accounts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--users-accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get user info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/info/user"
+          },
+          "docs": "Returns information about the user account currently accessing the system. Be aware that under normal circumstances, this will be a special app user, not the user who has installed an app."
+        },
+        {
+          "info": {
+            "name": "find public users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/public/users",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "User to search for"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Page size per query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number of the query"
+              }
+            ]
+          },
+          "docs": "Searches visible users in all companies (not only the current account) for the query string."
+        },
+        {
+          "info": {
+            "name": "get users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/users",
+            "params": [
+              {
+                "name": "visible",
+                "value": "",
+                "type": "query",
+                "description": "If true, only display users that are visible to everybody in a network."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Page size per query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number of the query"
+              }
+            ]
+          },
+          "docs": "Get a list of users associated with the current account."
+        },
+        {
+          "info": {
+            "name": "get user by email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/users/byemail/:email",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "path",
+                "description": "Email of user being requested"
+              },
+              {
+                "name": "searchparent",
+                "value": "",
+                "type": "query",
+                "description": "If true, search parent account as well."
+              },
+              {
+                "name": "searchlocked",
+                "value": "",
+                "type": "query",
+                "description": "If true, search locked account as well."
+              }
+            ]
+          },
+          "docs": "Find if a user exists inside a company. Case insensitive."
+        },
+        {
+          "info": {
+            "name": "get user by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of user account."
+              }
+            ]
+          },
+          "docs": "Gets account information to requested user. Sensitive info is disclosed within the same company or between companies that are mutually connected."
+        },
+        {
+          "info": {
+            "name": "update user by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of user account."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a user inside the current company account"
+        },
+        {
+          "info": {
+            "name": "find users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/:companyId/users",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Company (tenant) UUID identifier of company to administer TSGLI prefixes for."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "User to search for (optional)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "list of id's for users to return, if any id' are supplied the q, page and limit params will be ignored"
+              },
+              {
+                "name": "includeMemberships",
+                "value": "",
+                "type": "query",
+                "description": "adds membership info to found users"
+              },
+              {
+                "name": "findMembers",
+                "value": "",
+                "type": "query",
+                "description": "consider membership in finding users"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "state - list of user states to query by, if left out default will be ACTIVE and CREATED"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "pagination limit"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number of the query"
+              }
+            ]
+          },
+          "docs": "Searches for or lists the users in the requested company account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

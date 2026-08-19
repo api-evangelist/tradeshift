@@ -1,0 +1,113 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Network Requests API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--network-requests
+paths:
+  /rest/external/network/connect/{companyId}:
+    parameters:
+    - name: companyId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The UUID of the company to create a connection to
+    post:
+      responses:
+        '201':
+          description: ''
+          headers:
+            Location:
+              description: Path to retrieve data regarding the newly created connection.
+              schema:
+                type: string
+      description: 'Creates a networkRequest to the specified company. If the company is in the same zone as the current company then a TradeshiftCompanyConnection is created. If the company is not in the same zone a RemoteCompanyConnection is created.
+
+        '
+      operationId: post-rest-external-network-connect-companyid
+      x-annotation-dx-category: network-requests
+      summary: add network connection
+      tags:
+      - dx-category--network-requests
+  /rest/external/network/pending:
+    get:
+      responses:
+        default:
+          description: ''
+      description: Get the list of connections which are not yet mutual.
+      operationId: get-rest-external-network-pending
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of results, and number of results on each skipped page of results.
+        schema:
+          default: 25
+          type: number
+      - name: page
+        in: query
+        description: Number of result pages to skip
+        schema:
+          default: 0
+          type: number
+      x-annotation-dx-category: network-requests
+      summary: list pending connections
+      tags:
+      - dx-category--network-requests
+  /rest/external/network/requests:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            text/xml:
+              example: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<NetworkRequestList xmlns=\"http://tradeshift.com/api/public/1.0\"\n    numPages=\"-1\"\n    pageId=\"0\" itemsPerPage=\"25\" itemCount=\"1\">\n  <Items>\n    <Id>8929a879-9827-4ebc-97f7-a4aaf8ace939</Id>\n    <SenderCompanyAccountId>a0e2b622-f745-44a6-9691-283751259090</SenderCompanyAccountId>\n    <Received>2017-03-16T21:43:06.536+01:00</Received>\n    <Connection>\n      <ConnectionType>TradeshiftConnection</ConnectionType>\n      <CompanyName>Simon's Catering and Cocktails</CompanyName>\n      <Country>US</Country>\n      <AcceptingDocumentProfiles/>\n      <CompanyAccountId>a0e2b622-f745-44a6-9691-283751259090</CompanyAccountId>\n      <Identifiers/>\n      <AddressLines/>\n    </Connection>\n  </Items>\n</NetworkRequestList>\n"
+              schema:
+                type: object
+      description: Get the list of pending network requests.
+      operationId: get-rest-external-network-requests
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of results, and number of results on each skipped page of results.
+        schema:
+          default: 25
+          type: number
+      - name: page
+        in: query
+        description: Number of result pages to skip
+        schema:
+          default: 0
+          type: number
+      x-annotation-dx-category: network-requests
+      summary: find network requests
+      tags:
+      - dx-category--network-requests
+  /rest/external/network/requests/{connectionId}/accept:
+    parameters:
+    - name: connectionId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of the connection
+    post:
+      responses:
+        '200':
+          description: 'The network request was successfully accepted and the two companies are now connected. The connection ID (UUID) is returned as plaintext.
+
+            '
+          content:
+            text/plain:
+              schema:
+                example: 8df77821-87b2-4251-b70a-c1ce03ab843d
+        '404':
+          description: Connection request was not accepted or does not exist.
+      description: Accepts an existing connection request and marks the connection as accepted with the applicable reverse connection.
+      operationId: post-rest-external-network-requests-connectionid-accept
+      x-annotation-dx-category: network-requests
+      summary: accept network request
+      tags:
+      - dx-category--network-requests

@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Assignments Find API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--assignments-find",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "find assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/assignments",
+            "params": [
+              {
+                "name": "companyid",
+                "value": "",
+                "type": "query",
+                "description": "Company (tenant) UUID used to filter assignments."
+              },
+              {
+                "name": "assigneeids",
+                "value": "",
+                "type": "query",
+                "description": "List of  UUIDs of assignees, used to filter assignments."
+              },
+              {
+                "name": "with_tags",
+                "value": "",
+                "type": "query",
+                "description": "List of strings representing tags to be used to filter assignments."
+              },
+              {
+                "name": "without_tags",
+                "value": "",
+                "type": "query",
+                "description": "List of strings representing tags to be used to exclude assignments."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "List of statuses to be used to filter assignment (e.g. OPEN, CLOSED, WAITING_FOR_ASSIGNEES)"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "String representing a type used to filter assignments."
+              },
+              {
+                "name": "type_category",
+                "value": "",
+                "type": "query",
+                "description": "String representing a type category(a collection of assignment types)"
+              },
+              {
+                "name": "created_from",
+                "value": "",
+                "type": "query",
+                "description": "Datetime used to get assignments created after this date."
+              },
+              {
+                "name": "created_to",
+                "value": "",
+                "type": "query",
+                "description": "Datetime used to get assignments created before this date."
+              },
+              {
+                "name": "modified_from",
+                "value": "",
+                "type": "query",
+                "description": "Datetime used to get assignments modified after this date."
+              },
+              {
+                "name": "modified_to",
+                "value": "",
+                "type": "query",
+                "description": "Datetime used to get assignments modified before this date."
+              },
+              {
+                "name": "subjectid",
+                "value": "",
+                "type": "query",
+                "description": "Represents a free form identifier ( usually a document UUID ) of the subject the assignment is referring to and can be used to search assignments by.\n"
+              },
+              {
+                "name": "externalid",
+                "value": "",
+                "type": "query",
+                "description": "Free form string representing a custom client identifier which can be used later to search assignments by. Assignments service makes no uniqueness validation on this identifier.\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Number representing the page to be return from the paginated result-set."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of assignments displayed per page."
+              },
+              {
+                "name": "sortby",
+                "value": "",
+                "type": "query",
+                "description": "The sorting field."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The sorting direction."
+              }
+            ]
+          },
+          "docs": "Get a paginated list of assignments filtered by the following query parameters. The search will be performed on assignments from the current branch and child branches.\n"
+        },
+        {
+          "info": {
+            "name": "find assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/assignments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "An UUID representing the assignment id."
+              }
+            ]
+          },
+          "docs": "Get the assignment with the given id. <br> The assignment will be visible if the company is the current branch or one of the child branches.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

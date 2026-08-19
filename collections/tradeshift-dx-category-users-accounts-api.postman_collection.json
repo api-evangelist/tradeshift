@@ -1,0 +1,1062 @@
+{
+  "item": [
+    {
+      "id": "bc5e5a5d-11e4-4f61-abd9-a11fe279352a",
+      "name": "dx-category--users-accounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "72c18cc1-a6a2-4af0-8307-f7c0137e4b65",
+          "name": "get user info",
+          "request": {
+            "name": "get user info",
+            "description": {
+              "content": "Returns information about the user account currently accessing the system. Be aware that under normal circumstances, this will be a special app user, not the user who has installed an app.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "info",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d910066c-6b8b-43f1-bda2-8a9374aaca93",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "info",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"413a8273-d83d-42e0-9942-c6959505079c\",\n  \"CompanyName\": \"ELTEC Inc. mfbqdqmyyyep\",\n  \"Username\": \"steve.armstrong@mfbqdqmyyyep.eltec.test.ts.sv\",\n  \"Language\": \"en-us\",\n  \"TimeZone\": \"America/Los_Angeles\",\n  \"Memberships\": [\n    {\n      \"UserId\": \"ff028804-9fc4-4894-ad03-3b27dcd5458c\",\n      \"GroupId\": \"7066241f-e414-493d-acae-a3f98f0432cc\",\n      \"Role\": \"a6a3edcd-00d9-427c-bf03-4ef0112ba16d\"\n    }\n  ],\n  \"Created\": \"2017-12-12T14:26:02.339Z\",\n  \"State\": \"ACTIVE\",\n  \"Type\": \"PERSON\",\n  \"FirstName\": \"Steve\",\n  \"LastName\": \"Armstrong\",\n  \"Visible\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6bd1447-0226-4911-9076-8ce227e6d524",
+          "name": "find public users",
+          "request": {
+            "name": "find public users",
+            "description": {
+              "content": "Searches visible users in all companies (not only the current account) for the query string.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "public",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) User to search for"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "(Required) Page size per query"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number of the query"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6fdb78a2-04d7-4e2e-88e1-da71f6582546",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "public",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd349c3a-b9c0-4f16-b2be-df0c5fd938bf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "public",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e1af12a-a8d7-462e-b84c-88d2d5d61c2c",
+          "name": "get users",
+          "request": {
+            "name": "get users",
+            "description": {
+              "content": "Get a list of users associated with the current account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "visible",
+                  "value": "true",
+                  "description": "(Required) If true, only display users that are visible to everybody in a network."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "(Required) Page size per query"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number of the query"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85d4f818-af46-4152-8945-0bb9d5108b5d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "visible",
+                      "value": "true"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d11480fa-3a48-4ef1-96d0-f1fba80e1d0e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "visible",
+                      "value": "true"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04dd110e-02c3-430d-8ae1-6ddd975fbc74",
+          "name": "get user by email",
+          "request": {
+            "name": "get user by email",
+            "description": {
+              "content": "Find if a user exists inside a company. Case insensitive.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "users",
+                "byemail",
+                ":email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "searchparent",
+                  "value": "false",
+                  "description": "If true, search parent account as well."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchlocked",
+                  "value": "true",
+                  "description": "If true, search locked account as well."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "email",
+                  "description": "(Required) Email of user being requested"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d622f665-a55e-4c1d-8cee-60336a41c834",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "users",
+                    "byemail",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "searchparent",
+                      "value": "false"
+                    },
+                    {
+                      "key": "searchlocked",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email of user being requested"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1af42dc3-5a56-4439-babe-23ef00e7782a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "users",
+                    "byemail",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "searchparent",
+                      "value": "false"
+                    },
+                    {
+                      "key": "searchlocked",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) Email of user being requested"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45a27d4d-3f14-4425-909b-133778f40282",
+          "name": "get user by id",
+          "request": {
+            "name": "get user by id",
+            "description": {
+              "content": "Gets account information to requested user. Sensitive info is disclosed within the same company or between companies that are mutually connected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) UUID identifier of user account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "021a124e-f5d9-42ab-a2cf-af7cd4d62021",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) UUID identifier of user account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserAccountInfo xmlns=\"http://tradeshift.com/api/public/1.0\">\n    <Id>69c772e7-b177-4621-8bb0-c1b3768adcd5</Id>\n    <CompanyAccountId>f54bca78-3ac9-4843-ae4a-f6808c0ea477</CompanyAccountId>\n    <CompanyName>ELTEC Inc.</CompanyName>\n    <Username>steve.armstrong@example.com</Username>\n    <Language>en-us</Language>\n    <TimeZone>America/Los_Angeles</TimeZone>\n    <Memberships>\n        <Membership>\n            <UserId>69c772e7-b177-4621-8bb0-c1b3768adcd5</UserId>\n            <GroupId>cfacdb6c-abef-46bd-9283-098387ac9e03</GroupId>\n            <Role>a6a3edcd-00d9-427c-bf03-4ef0112ba16d</Role>\n        </Membership>\n    </Memberships>\n    <Created>2017-05-08T13:24:36.710+02:00</Created>\n    <State>ACTIVE</State>\n    <Type>PERSON</Type>\n    <FirstName>Steve</FirstName>\n    <LastName>Armstrong</LastName>\n    <Visible>true</Visible>\n</UserAccountInfo>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86053c6f-3457-4665-939a-3a081673d4bf",
+          "name": "update user by id",
+          "request": {
+            "name": "update user by id",
+            "description": {
+              "content": "Create or update a user inside the current company account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) UUID identifier of user account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Id\": \"<string>\",\n  \"CompanyAccountId\": \"<string>\",\n  \"CompanyName\": \"<string>\",\n  \"Username\": \"<string>\",\n  \"Language\": \"<string>\",\n  \"Created\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"TimeZone\": \"<string>\",\n  \"Memberships\": [\n    {\n      \"UserId\": \"<string>\",\n      \"GroupId\": \"<string>\",\n      \"Role\": \"<string>\"\n    },\n    {\n      \"UserId\": \"<string>\",\n      \"GroupId\": \"<string>\",\n      \"Role\": \"<string>\"\n    }\n  ],\n  \"State\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"Title\": \"<string>\",\n  \"PictureUrl\": \"<string>\",\n  \"Visible\": \"<boolean>\",\n  \"RoleId\": \"<string>\",\n  \"Password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9e240526-0dc8-41a7-bbe4-d1e9233c7b54",
+              "name": "The user was updated/created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) UUID identifier of user account."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"413a8273-d83d-42e0-9942-c6959505079c\",\n  \"CompanyAccountId\": \"513a8273-d83d-42e0-9942-c6959505079a\",\n  \"CompanyName\": \"ELTEC Inc. mfbqdqmyyyep\",\n  \"Username\": \"steve.armstrong@mfbqdqmyyyep.eltec.test.ts.sv\",\n  \"Language\": \"en-us\",\n  \"TimeZone\": \"America/Los_Angeles\",\n  \"Memberships\": [\n    {\n      \"UserId\": \"ff028804-9fc4-4894-ad03-3b27dcd5458c\",\n      \"GroupId\": \"7066241f-e414-493d-acae-a3f98f0432cc\",\n      \"Role\": \"a6a3edcd-00d9-427c-bf03-4ef0112ba16d\"\n    }\n  ],\n  \"Created\": \"2017-12-12T14:26:02.339Z\",\n  \"State\": \"ACTIVE\",\n  \"Type\": \"PERSON\",\n  \"FirstName\": \"Steve\",\n  \"LastName\": \"Armstrong\",\n  \"Title\": \"Mr.\",\n  \"PictureUrl\": \"theUrl\",\n  \"Visible\": true,\n  \"RoleId\": \"a6a3edcd-00d9-427c-bf03-4ef0112ba16d\",\n  \"Password\": \"theSecretSauce\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c9acfa53-c79f-4e6e-b3ab-7345493dc9fc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) UUID identifier of user account."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"413a8273-d83d-42e0-9942-c6959505079c\",\n  \"CompanyAccountId\": \"513a8273-d83d-42e0-9942-c6959505079a\",\n  \"CompanyName\": \"ELTEC Inc. mfbqdqmyyyep\",\n  \"Username\": \"steve.armstrong@mfbqdqmyyyep.eltec.test.ts.sv\",\n  \"Language\": \"en-us\",\n  \"TimeZone\": \"America/Los_Angeles\",\n  \"Memberships\": [\n    {\n      \"UserId\": \"ff028804-9fc4-4894-ad03-3b27dcd5458c\",\n      \"GroupId\": \"7066241f-e414-493d-acae-a3f98f0432cc\",\n      \"Role\": \"a6a3edcd-00d9-427c-bf03-4ef0112ba16d\"\n    }\n  ],\n  \"Created\": \"2017-12-12T14:26:02.339Z\",\n  \"State\": \"ACTIVE\",\n  \"Type\": \"PERSON\",\n  \"FirstName\": \"Steve\",\n  \"LastName\": \"Armstrong\",\n  \"Title\": \"Mr.\",\n  \"PictureUrl\": \"theUrl\",\n  \"Visible\": true,\n  \"RoleId\": \"a6a3edcd-00d9-427c-bf03-4ef0112ba16d\",\n  \"Password\": \"theSecretSauce\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b544190-de37-416c-ba8a-c8a4a37b4788",
+          "name": "find users",
+          "request": {
+            "name": "find users",
+            "description": {
+              "content": "Searches for or lists the users in the requested company account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                ":companyId",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "User to search for (optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "list of id's for users to return, if any id' are supplied the q, page and limit params will be ignored"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeMemberships",
+                  "value": "true",
+                  "description": "adds membership info to found users"
+                },
+                {
+                  "disabled": false,
+                  "key": "findMembers",
+                  "value": "false",
+                  "description": "consider membership in finding users"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "state - list of user states to query by, if left out default will be ACTIVE and CREATED"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "pagination limit"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number of the query"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) Company (tenant) UUID identifier of company to administer TSGLI prefixes for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b04bbeef-2b34-4e7a-bc06-7daf86e0f6a8",
+              "name": "List of the found users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    ":companyId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeMemberships",
+                      "value": "true"
+                    },
+                    {
+                      "key": "findMembers",
+                      "value": "false"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) Company (tenant) UUID identifier of company to administer TSGLI prefixes for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"itemsPerPage\": 25,\n  \"itemCount\": 1,\n  \"numPages\": 1,\n  \"pageId\": 0,\n  \"UserAccounts\": [\n    {\n      \"Id\": \"e7eb4520-34f6-48c3-8982-024366454ba4\",\n      \"CompanyAccountId\": \"b289b086-c96f-4b09-a0e9-300631948601\",\n      \"CompanyName\": \"ELTEC Inc. jvuvlsxwdzlh\",\n      \"Username\": \"steve.armstrong@jvuvlsxwdzlh.eltec.test.ts.sv\",\n      \"Language\": \"en-us\",\n      \"TimeZone\": \"America/Los_Angeles\",\n      \"Memberships\": [\n        {\n          \"UserId\": \"e7eb4520-34f6-48c3-8982-024366454ba4\",\n          \"GroupId\": \"b289b086-c96f-4b09-a0e9-300631948601\",\n          \"Role\": \"a6a3edcd-00d9-427c-bf03-4ef0112ba16d\"\n        }\n      ],\n      \"Created\": \"2017-04-04T10:58:54.585+02:00\",\n      \"State\": \"ACTIVE\",\n      \"Type\": \"PERSON\",\n      \"FirstName\": \"Steve\",\n      \"LastName\": \"Armstrong\",\n      \"Visible\": true\n    }\n  ],\n  \"PrimaryUser\": \"e7eb4520-34f6-48c3-8982-024366454ba4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "976f823f-29a9-4b6c-9d97-5417cd63104c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    ":companyId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeMemberships",
+                      "value": "true"
+                    },
+                    {
+                      "key": "findMembers",
+                      "value": "false"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) Company (tenant) UUID identifier of company to administer TSGLI prefixes for."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "019db6a8-dd54-4c20-b4ed-835eeaf4e292",
+    "name": "Tradeshift External Dx Category Users Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

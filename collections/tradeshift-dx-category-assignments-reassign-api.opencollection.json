@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Assignments Reassign API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--assignments-reassign",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "reassign assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/assignments/:id/reassign/:assigneeid",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "An UUID representing the assignment id."
+              },
+              {
+                "name": "assigneeid",
+                "value": "",
+                "type": "path",
+                "description": "An UUID representing the id of the new assignee."
+              }
+            ]
+          },
+          "docs": "Reassign the assignment with the given id to the new assignee.\n"
+        },
+        {
+          "info": {
+            "name": "reassign user assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/assignments/assignees/:from_assigneeid/reassignees/:to_assigneeid",
+            "params": [
+              {
+                "name": "from_assigneeid",
+                "value": "",
+                "type": "path",
+                "description": "An UUID representing the assignee id."
+              },
+              {
+                "name": "to_assigneeid",
+                "value": "",
+                "type": "path",
+                "description": "An UUID representing the reassignee id."
+              }
+            ]
+          },
+          "docs": "Reassign the assignments of the first assignee id to the assignee with the second id. <br> The assignees can be users or teams. <br> The assignments will be updated if: <ul>\n  <li>the current user is regular and the assignments are assigned to him or his teams </li>\n  <li>the current user is queue manager and and the assignments have an assignee in the current branch or child branches</li>\n  <li>the current user is in the same branch as the reassignee</li>\n</ul>\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

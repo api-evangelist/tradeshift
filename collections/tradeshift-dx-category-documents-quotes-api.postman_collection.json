@@ -1,0 +1,141 @@
+{
+  "item": [
+    {
+      "id": "0eb359eb-378c-4012-aeaa-4274f6bcd720",
+      "name": "dx-category--documents-quotes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5f1ed073-2cc6-4222-adc9-3ff4bd038569",
+          "name": "get quote template",
+          "request": {
+            "name": "get quote template",
+            "description": {
+              "content": "Get a quote template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "quotes",
+                "template"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "connectionId",
+                  "value": "<string>",
+                  "description": "The receiving connection id. It is used to preset data in template."
+                },
+                {
+                  "disabled": false,
+                  "key": "companyAccountId",
+                  "value": "<string>",
+                  "description": "The receiver company id. It is used to preset data in template."
+                },
+                {
+                  "disabled": false,
+                  "key": "quoteId",
+                  "value": "<string>",
+                  "description": "The receiver company id. It is used to preset data in template."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "697c396d-8c8f-40cd-8c25-a53009067d62",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "quotes",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "connectionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "quoteId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"DocumentProfileId\": \"tradeshift.quote.1.0\",\n  \"TaxCategories\": {\n    \"StackedTaxes\": [],\n    \"DefaultTaxIndex\": 0\n  },\n  \"Ubl\": {\n    \"DocumentType\": \"QuotationType\",\n    \"UBLVersionID\": {\n      \"value\": \"2.0\"\n    },\n    \"CustomizationID\": {\n      \"value\": \"urn:tradeshift.com:ubl-2.0-customizations:2010-06\"\n    },\n    \"ProfileID\": {\n      \"value\": \"urn:www.cenbii.eu:profile:bii04:ver1.0\",\n      \"schemeID\": \"CWA 16073:2010\",\n      \"schemeAgencyID\": \"CEN/ISSS WS/BII\",\n      \"schemeVersionID\": \"1\"\n    },\n    \"ID\": {\n      \"value\": \"1\"\n    },\n    \"IssueDate\": {\n      \"value\": \"2017-04-06\"\n    },\n    \"PricingCurrencyCode\": {\n      \"value\": \"CNY\"\n    },\n    \"AdditionalDocumentReference\": [\n      {\n        \"ID\": {\n          \"value\": \"HALF_EVEN\"\n        },\n        \"DocumentTypeCode\": {\n          \"value\": \"RoundingRule\",\n          \"listID\": \"urn:tradeshift.com:api:1.0:documenttypecode\"\n        }\n      }\n    ],\n    \"SellerSupplierParty\": {\n      \"Party\": {\n        \"PartyIdentification\": [\n          {\n            \"ID\": {\n              \"value\": \"c9989bf0-0bf4-4500-86e9-af8edfcca6eb\",\n              \"schemeID\": \"TS:ID\"\n            }\n          }\n        ],\n        \"PartyName\": [\n          {\n            \"Name\": {\n              \"value\": \"Test Supplier\"\n            }\n          }\n        ],\n        \"PostalAddress\": {\n          \"AddressFormatCode\": {\n            \"value\": \"5\",\n            \"listID\": \"UN/ECE 3477\",\n            \"listAgencyID\": \"6\",\n            \"listVersionID\": \"D08B\"\n          },\n          \"StreetName\": {\n            \"value\": \"street\"\n          },\n          \"BuildingNumber\": {\n            \"value\": \"6\"\n          },\n          \"CityName\": {\n            \"value\": \"city\"\n          },\n          \"PostalZone\": {\n            \"value\": \"100000\"\n          },\n          \"CountrySubentity\": {\n            \"value\": \"test\"\n          },\n          \"Country\": {\n            \"IdentificationCode\": {\n              \"value\": \"CN\"\n            }\n          }\n        },\n        \"Contact\": {\n          \"ID\": {\n            \"value\": \"1\"\n          },\n          \"Name\": {\n            \"value\": \"Steve Armstrong\"\n          }\n        },\n        \"Person\": {\n          \"FirstName\": {\n            \"value\": \"Steve\"\n          },\n          \"FamilyName\": {\n            \"value\": \"Armstrong\"\n          }\n        }\n      }\n    },\n    \"QuotedMonetaryTotal\": {\n      \"LineExtensionAmount\": {\n        \"value\": 0,\n        \"currencyID\": \"CNY\"\n      },\n      \"TaxExclusiveAmount\": {\n        \"value\": 0,\n        \"currencyID\": \"CNY\"\n      },\n      \"TaxInclusiveAmount\": {\n        \"value\": 0,\n        \"currencyID\": \"CNY\"\n      },\n      \"PayableAmount\": {\n        \"value\": 0,\n        \"currencyID\": \"CNY\"\n      }\n    }\n  },\n  \"DocumentProfile\": {\n    \"AttachmentRequired\": false,\n    \"DocumentProfileId\": \"tradeshift.quote.1.0\",\n    \"PaymentMeansCode\": [\n      \"10\",\n      \"20\",\n      \"42\",\n      \"porta-31-a\"\n    ],\n    \"DocumentType\": \"quote\",\n    \"DocumentFields\": []\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b368beb3-9c81-4fb0-ba32-4a48e6284dbd",
+    "name": "Tradeshift External Dx Category Documents Quotes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

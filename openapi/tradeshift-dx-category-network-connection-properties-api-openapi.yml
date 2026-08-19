@@ -1,0 +1,204 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Network Connection Properties API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--network-connection_properties
+paths:
+  /rest/external/network/connections/companies/{companyId}/properties/{propertyKey}:
+    parameters:
+    - name: propertyKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Connection property key
+    - name: companyId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of company account.
+    put:
+      responses:
+        '204':
+          description: ''
+      description: Stores a single value for a property key on the multiple connections that point to a given companyAccountId
+      operationId: put-rest-external-network-connections-companies-companyid-properties-propertykey
+      x-annotation-dx-category: network-connection_properties
+      summary: set connection property
+      tags:
+      - dx-category--network-connection_properties
+  /rest/external/network/connections/{connectionId}/properties:
+    parameters:
+    - name: connectionId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Connection identifier as UUID.
+    get:
+      responses:
+        '200':
+          description: There are any properties on the connection
+          content:
+            text/xml:
+              example: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<ns5:ConnectionProperties xmlns:ns5=\"http://tradeshift.com/api/1.0\">\n    <ns5:Properties>\n        <ns5:Key>key</ns5:Key>\n        <ns5:Values>value</ns5:Values>\n    </ns5:Properties>\n</ns5:ConnectionProperties>\n"
+              schema:
+                type: object
+        '204':
+          description: There are no properties on the connection
+      description: 'Retrieves all properties for a connection. Note that one property key can have a list of values.
+
+        '
+      operationId: get-rest-external-network-connections-connectionid-properties
+      x-annotation-dx-category: network-connection_properties
+      summary: find properties
+      tags:
+      - dx-category--network-connection_properties
+    put:
+      responses:
+        '204':
+          description: Properties replaced.
+      description: Replaces existing properties with given properties.
+      operationId: put-rest-external-network-connections-connectionid-properties
+      requestBody:
+        content:
+          application/json:
+            example:
+              Items:
+              - Key: propertyKey1
+                Values:
+                - value1
+                - value2
+              - Key: propertyKey2
+                Values:
+                - value3
+            schema:
+              title: Tradeshift Public API 1.0 - Connection Property List
+              type: object
+              additionalProperties: false
+              properties:
+                Items:
+                  type: array
+                  items:
+                    type: object
+              required:
+              - Items
+          text/xml:
+            example: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<ConnectionPropertyList xmlns=\"http://tradeshift.com/api/public/1.0\">\n    <Items>\n        <ConnectionProperty>\n            <Key>propertyKey1</Key>\n            <Values>value1</Values>\n            <Values>value2</Values>\n        </ConnectionProperty>\n    </Items>\n    <Items>\n        <Key>propertyKey2</Key>\n        <Values>value3</Values>\n    </Items>\n</ConnectionPropertyList>\n"
+            schema:
+              type: object
+        required: true
+      x-annotation-dx-category: network-connection_properties
+      summary: replace properties
+      tags:
+      - dx-category--network-connection_properties
+    post:
+      responses:
+        '200':
+          description: Properties updated. Response body describes what happened for each property. Only when detailedResponse is true.
+        '204':
+          description: Properties updated. Only when detailedResponse is false.
+        '400':
+          description: Bad payload. E.g. the connection you try to update does not exist.
+      description: Updates given properties.
+      operationId: post-rest-external-network-connections-connectionid-properties
+      requestBody:
+        content:
+          application/json:
+            example:
+              Items:
+              - Key: propertyKey1
+                Values:
+                - value1
+                - value2
+              - Key: propertyKey2
+                Values:
+                - value3
+            schema:
+              title: Tradeshift Public API 1.0 - Connection Property List
+              type: object
+              additionalProperties: false
+              properties:
+                Items:
+                  type: array
+                  items:
+                    type: object
+              required:
+              - Items
+          text/xml:
+            example: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<ConnectionPropertyList xmlns=\"http://tradeshift.com/api/public/1.0\">\n    <Items>\n        <ConnectionProperty>\n            <Key>propertyKey1</Key>\n            <Values>value1</Values>\n            <Values>value2</Values>\n        </ConnectionProperty>\n    </Items>\n    <Items>\n        <Key>propertyKey2</Key>\n        <Values>value3</Values>\n    </Items>\n</ConnectionPropertyList>\n"
+            schema:
+              type: object
+        required: true
+      parameters:
+      - name: detailedResponse
+        in: query
+        description: Specify if a detailed response of what was updated should be returned.
+        schema:
+          default: false
+          type: boolean
+      x-annotation-dx-category: network-connection_properties
+      summary: update properties
+      tags:
+      - dx-category--network-connection_properties
+  /rest/external/network/connections/{connectionId}/properties/{key}:
+    parameters:
+    - name: key
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Property key
+    - name: connectionId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Connection identifier as UUID.
+    get:
+      responses:
+        '200':
+          description: The property exists on the connection
+          content:
+            text/plain:
+              schema:
+                example: myvalue
+        '204':
+          description: the property does not exist on the connection
+      description: Retrieves value for the given connection property key.
+      operationId: get-rest-external-network-connections-connectionid-properties-key
+      x-annotation-dx-category: network-connection_properties
+      summary: find property by key
+      tags:
+      - dx-category--network-connection_properties
+    put:
+      responses:
+        '204':
+          description: value added successfully.
+      description: Stores a single value for given property key, replacing any previous value.
+      operationId: put-rest-external-network-connections-connectionid-properties-key
+      requestBody:
+        content:
+          text/plain:
+            example: newvalue
+            schema:
+              type: string
+        required: true
+      x-annotation-dx-category: network-connection_properties
+      summary: update property by key
+      tags:
+      - dx-category--network-connection_properties
+    delete:
+      responses:
+        '204':
+          description: Property deleted.
+      description: Deletes a property for a given key.
+      operationId: delete-rest-external-network-connections-connectionid-properties-key
+      x-annotation-dx-category: network-connection_properties
+      summary: remove properties
+      tags:
+      - dx-category--network-connection_properties

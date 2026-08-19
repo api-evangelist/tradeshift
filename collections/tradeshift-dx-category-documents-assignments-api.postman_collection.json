@@ -1,0 +1,1307 @@
+{
+  "item": [
+    {
+      "id": "b988748a-71e9-4c5e-85ec-2e77d25d19f7",
+      "name": "dx-category--documents-assignments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eef14dff-f1b1-4dfc-9fc4-f2569bcc0f22",
+          "name": "get company auto assignments",
+          "request": {
+            "name": "get company auto assignments",
+            "description": {
+              "content": "Get paginated company auto assignments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "assignments",
+                "companies",
+                ":companyid",
+                "autoassignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "The current page of the result set to be fetched"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The limit of the result set to return, also page size"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyid",
+                  "description": "(Required) UUID identifier of the company account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2804500-063a-4aef-964a-69db14d5441f",
+              "name": "Paginated company auto assignments list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "companies",
+                    ":companyid",
+                    "autoassignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyid",
+                      "description": "(Required) UUID identifier of the company account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"numPages\": 10,\n  \"pageId\": 0,\n  \"itemsPerPage\": 40,\n  \"itemCount\": 200,\n  \"Items\": [\n    {\n      \"AutoAssignmentInfo\": {\n        \"ExcludeUser\": false,\n        \"Assignee\": \"21e6e782-f760-43d6-aa1c-d614ce966d8c\",\n        \"AutoAssignee\": \"cb11332d-1ec4-4ecf-95fe-ce94cca20a34\",\n        \"GroupId\": \"4f4a7eb9-7978-4860-a293-a254d15f3e29\",\n        \"Created\": 1565335439328,\n        \"DelegationType\": \"DELEGATING\",\n        \"CreatedBy\": \"21e6e782-f760-43d6-aa1c-d614ce966d8c\",\n        \"IsDelegation\": true\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ae0dcdc-43d9-4a2a-8100-3d87511377d7",
+          "name": "get company assignments sparse",
+          "request": {
+            "name": "get company assignments sparse",
+            "description": {
+              "content": "Get paginated company assignments, using lightweight sparse composition of response data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "assignments",
+                "companies",
+                ":companyid",
+                "sparse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "The current page of the result set to be fetched"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The limit of the result set to return, also page size"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyid",
+                  "description": "(Required) UUID identifier of the company account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "72e28c86-77b7-4632-b6f6-84c3b3ac5887",
+              "name": "Paginated company assignments list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "companies",
+                    ":companyid",
+                    "sparse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyid",
+                      "description": "(Required) UUID identifier of the company account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"itemsPerPage\": 2,\n  \"itemCount\": 2,\n  \"numPages\": 1,\n  \"pageId\": 0,\n  \"Assignments\": [\n    {\n      \"DocumentId\": \"ac304edf-7fa7-49c3-8f1c-e82c037cf743\",\n      \"DocumentType\": {\n        \"mimeType\": \"text/xml\",\n        \"documentProfileId\": \"tradeshift.assignment.1.0\",\n        \"type\": \"assignment\"\n      },\n      \"Tags\": {\n        \"Tag\": []\n      },\n      \"ItemInfos\": [],\n      \"ConversationStates\": [],\n      \"CopyIndicator\": false,\n      \"Deleted\": false,\n      \"SourceDocument\": {\n        \"DocumentType\": \"AssignmentType\",\n        \"IssueDate\": {\n          \"value\": \"2019-04-02T08:38:25.139Z\"\n        },\n        \"IssueTime\": {\n          \"value\": \"2019-04-02T08:38:25.139Z\"\n        },\n        \"Assignee\": [\n          {\n            \"PartyIdentification\": [\n              {\n                \"ID\": {\n                  \"value\": \"a482b987-7c39-40e2-a526-03549d5fe668\"\n                }\n              }\n            ],\n            \"Contact\": {\n              \"ElectronicMail\": {\n                \"value\": \"george.owen@simons-catering.test.ts.sv\"\n              }\n            },\n            \"Person\": [\n              {\n                \"FirstName\": {\n                  \"value\": \"Simon\"\n                },\n                \"FamilyName\": {\n                  \"value\": \"Owen\"\n                }\n              }\n            ]\n          }\n        ],\n        \"Delegation\": [],\n        \"Subject\": {\n          \"UUID\": {\n            \"value\": \"867dd235-4b16-5212-b1aa-292bce33765e\"\n          }\n        },\n        \"Type\": \"APPROVAL\",\n        \"OriginalDocumentId\": {\n          \"value\": \"867dd235-4b16-5212-b1aa-292bce33765e\"\n        }\n      },\n      \"Properties\": []\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09494339-7a87-4ccb-a05b-7d89806d82f8",
+          "name": "get user auto-assignment in specific group",
+          "request": {
+            "name": "get user auto-assignment in specific group",
+            "description": {
+              "content": "Endpoint used to fetch the auto-assignee for a specific user and a specific group id. The requesting user has to be a member of the inquired security group id.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "assignments",
+                "groups",
+                ":groupId",
+                "users",
+                ":userId",
+                "autoassign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) UUID identifier of auto assignment security group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) UUID identifier of the assignee user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59be64e6-1545-474c-88ca-73532d7e2ef8",
+              "name": "An autoassignment has been found, auto-assignee user details are returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "groups",
+                    ":groupId",
+                    "users",
+                    ":userId",
+                    "autoassign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) UUID identifier of auto assignment security group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) UUID identifier of the assignee user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"72585039-d82d-4f76-8531-bf52717d5957\",\n  \"CompanyAccountId\": \"8a4cdb4a-9ec5-4107-a55b-dedf3aa7b000\",\n  \"CompanyName\": \"ELTEC Inc. ddmrafryuyaw\",\n  \"Username\": \"steve.armstrong@ddmrafryuyaw.eltec.test.ts.sv\",\n  \"Language\": \"en-us\",\n  \"TimeZone\": \"America/Los_Angeles\",\n  \"Memberships\": [\n    {\n      \"UserId\": \"72585039-d82d-4f76-8531-bf52717d5957\",\n      \"GroupId\": \"8a4cdb4a-9ec5-4107-a55b-dedf3aa7b000\",\n      \"Role\": \"a6a3edcd-00d9-427c-bf03-4ef0112ba16d\"\n    }\n  ],\n  \"Created\": \"2019-10-31T12:08:59.303Z\",\n  \"State\": \"ACTIVE\",\n  \"Type\": \"PERSON\",\n  \"FirstName\": \"Steve\",\n  \"LastName\": \"Armstrong\",\n  \"Visible\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a65a61a-1bd1-4514-b2f8-19a198df96c2",
+              "name": "Requesting user is not a member of the specified security group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "groups",
+                    ":groupId",
+                    "users",
+                    ":userId",
+                    "autoassign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) UUID identifier of auto assignment security group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) UUID identifier of the assignee user."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1dd078cc-f0a3-4b48-91c3-70ed1e4fc93d",
+          "name": "get user assignments",
+          "request": {
+            "name": "get user assignments",
+            "description": {
+              "content": "Returns the assignment document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "assignments",
+                "users",
+                ":userId",
+                "autoassign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "subjectType",
+                  "value": "DOCUMENT",
+                  "description": "The subject of the Assignment [DOCUMENT, USER, COMPANY, CONNECTION, NETWORK_REQUEST]"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) UUID identifier of user account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc1d9201-0850-4276-9a86-e37c9bcf31a3",
+              "name": "Returns the assignment document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "users",
+                    ":userId",
+                    "autoassign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "subjectType",
+                      "value": "DOCUMENT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) UUID identifier of user account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"DocumentType\": \"AssignmentType\",\n  \"UBLVersionID\": {\n    \"value\": \"2.0\"\n  },\n  \"CustomizationID\": {\n    \"value\": \"urn:tradeshift.com:ubl-2.0-customizations:2010-06\"\n  },\n  \"ID\": {\n    \"value\": \"18744cac-cab0-4508-950b-bb4983dbcfa6\"\n  },\n  \"IssueDate\": {\n    \"value\": \"2016-11-29+01:00\"\n  },\n  \"IssueTime\": {\n    \"value\": \"11:21:21.011+01:00\"\n  },\n  \"Assigner\": {\n    \"PartyIdentification\": [\n      {\n        \"ID\": {\n          \"value\": \"e6e0b52f-ce77-4e0c-b7a1-d3c63f2857fb\",\n          \"schemeURI\": \"http://tradeshift.com/api/1.0/userId\"\n        }\n      }\n    ],\n    \"Contact\": {\n      \"ElectronicMail\": {\n        \"value\": \"lma+buyer@tradeshift.com\"\n      }\n    },\n    \"Person\": {\n      \"FirstName\": {\n        \"value\": \"Marie\"\n      },\n      \"FamilyName\": {\n        \"value\": \"Carter\"\n      }\n    }\n  },\n  \"Assignee\": [\n    {\n      \"PartyIdentification\": [\n        {\n          \"ID\": {\n            \"value\": \"2dc74f5e-4ac7-45bf-8b6b-67dcf9ae2920\",\n            \"schemeURI\": \"http://tradeshift.com/api/1.0/userId\"\n          }\n        }\n      ],\n      \"Contact\": {\n        \"ElectronicMail\": {\n          \"value\": \"lma+hhr@tradeshift.com\"\n        }\n      },\n      \"Person\": {\n        \"FirstName\": {\n          \"value\": \"Pete\"\n        },\n        \"FamilyName\": {\n          \"value\": \"Johnson\"\n        },\n        \"JobTitle\": {\n          \"value\": \"Head of HR\"\n        }\n      }\n    }\n  ],\n  \"Delegation\": [],\n  \"Subject\": {\n    \"UUID\": {\n      \"value\": \"2849ac7c-36c9-4b20-8ca1-dc29a4a6e2b8\"\n    },\n    \"DocumentType\": {\n      \"value\": \"USER\"\n    }\n  },\n  \"Context\": {\n    \"EmbeddedDocumentBinaryObject\": {\n      \"value\": \"ewogICJjb21tZW50IiA6IG51bGwsCiAgInVzZXIiIDogewogICAgIk1lbWJlcnNoaXBzIiA6IFsgewogICAgICAiUm9sZSIgOiAiZmU4ODhmYmItMTcyZi00NjdjLWI5YWQtZWZlMDcyMGZlY2Y5IiwKICAgICAgIlVzZXJJZCIgOiAiMjg0OWFjN2MtMzZjOS00YjIwLThjYTEtZGMyOWE0YTZlMmI4IiwKICAgICAgIkdyb3VwSWQiIDogImJlNjg2NWVlLWRhYmQtNDcxNi05YzlkLTg5YjZkZDk1NTMyYiIKICAgIH0gXSwKICAgICJDb21wYW55QWNjb3VudElkIiA6ICJiZTY4NjVlZS1kYWJkLTQ3MTYtOWM5ZC04OWI2ZGQ5NTUzMmIiLAogICAgIkZpcnN0TmFtZSIgOiAiTHlubiIsCiAgICAiVGl0bGUiIDogIkhSIE1hbmFnZXIgKE9uIEJlaGFsZiBvZikiLAogICAgIkNyZWF0ZWQiIDogIjIwMTYtMTAtMTlUMTU6NTU6MTYuMDQ3KzAyOjAwIiwKICAgICJDb21wYW55TmFtZSIgOiAiQnV5ZXIgbG1hK2J1eWVyQHRyYWRlc2hpZnQuY29tIiwKICAgICJUaW1lWm9uZSIgOiAiRXVyb3BlL0NvcGVuaGFnZW4iLAogICAgIlR5cGUiIDogIlBFUlNPTiIsCiAgICAiTGFuZ3VhZ2UiIDogImVuLXVzIiwKICAgICJVc2VybmFtZSIgOiAibG1hK29ib0B0cmFkZXNoaWZ0LmNvbSIsCiAgICAiU3RhdGUiIDogIkxPQ0tFRCIsCiAgICAiVmlzaWJsZSIgOiB0cnVlLAogICAgIklkIiA6ICIyODQ5YWM3Yy0zNmM5LTRiMjAtOGNhMS1kYzI5YTRhNmUyYjgiLAogICAgIkxhc3ROYW1lIiA6ICJLZW5uZWR5IgogIH0KfQ==\",\n      \"format\": \"app:Tradeshift.UserManagement.AssignmentEntryService\",\n      \"mimeCode\": \"text/plain\"\n    }\n  },\n  \"ReminderDate\": {\n    \"value\": \"2016-12-01+01:00\"\n  },\n  \"ReminderTime\": {\n    \"value\": \"11:21:21.014+01:00\"\n  },\n  \"EscalationDate\": {\n    \"value\": \"2016-12-06+01:00\"\n  },\n  \"EscalationTime\": {\n    \"value\": \"11:21:21.014+01:00\"\n  },\n  \"VendorId\": \"tradeshift\",\n  \"Type\": \"REASSIGN\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fccba2ad-650b-401f-aa98-bc7096279d83",
+              "name": "Bad request error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "users",
+                    ":userId",
+                    "autoassign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "subjectType",
+                      "value": "DOCUMENT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) UUID identifier of user account."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43e67eb4-8a9b-4431-afcf-d348fc217572",
+          "name": "get user assignments detail",
+          "request": {
+            "name": "get user assignments detail",
+            "description": {
+              "content": "Returns the auto assignment details of an user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "assignments",
+                "users",
+                ":userId",
+                "autoassign",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User UUID identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76511b07-fbe2-4860-adf4-857b39710bc7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "users",
+                    ":userId",
+                    "autoassign",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User UUID identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<AutoAssignmentDetail xmlns=\"http://tradeshift.com/api/public/1.0\">\n    <User>\n        <Id>0daab548-3990-41ed-b0f4-eb197e693df1</Id>\n        <CompanyAccountId>093aafb9-2620-4655-885e-888f2a65c59c</CompanyAccountId>\n        <CompanyName>Tradeshift</CompanyName>\n        <Username>steve.armstrong@example.org</Username>\n        <Language>en-us</Language>\n        <TimeZone>GMT</TimeZone>\n        <Memberships>\n            <Membership>\n                <UserId>0daab548-3990-41ed-b0f4-eb197e693df1</UserId>\n                <GroupId>093aafb9-2620-4655-885e-888f2a65c59c</GroupId>\n                <Role>a6a3edcd-00d9-427c-bf03-4ef0112ba16d</Role>\n            </Membership>\n        </Memberships>\n        <Created>2016-06-07T14:29:05.601+02:00</Created>\n        <State>ACTIVE</State>\n        <Type>PERSON</Type>\n        <FirstName>Steve</FirstName>\n        <LastName>Armstrong</LastName>\n        <Title>boss</Title>\n        <Visible>true</Visible>\n    </User>\n    <AutoAssignee>\n        <ExcludeUser>false</ExcludeUser>\n        <UserID>0daab548-3990-41ed-b0f4-eb197e693df1</UserID>\n        <Created/>\n        <IsDelegation>true</IsDelegation>\n        <DelegationType>DELEGATING</DelegationType>\n    </AutoAssignee>\n</AutoAssignmentDetail>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3ec8ab9-ce54-45f8-a00b-26e344c510d7",
+          "name": "delete auto assignment",
+          "request": {
+            "name": "delete auto assignment",
+            "description": {
+              "content": "Delete one assignment as identified by the path parameters and the requester's group id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "assignments",
+                "users",
+                ":userId",
+                "autoassign",
+                ":autoAssigneeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "groupId",
+                  "value": "<string>",
+                  "description": "Group id associated to this autoassignment. If this is missing, the X-Tradeshift-TenantId header value is used"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) The assignee id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "autoAssigneeId",
+                  "description": "(Required) The autoassignee id"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b09dcf72-fafa-4615-b8ea-e7f99bbfab8d",
+              "name": "The requested auto assignment has been deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "users",
+                    ":userId",
+                    "autoassign",
+                    ":autoAssigneeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The assignee id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoAssigneeId",
+                      "description": "(Required) The autoassignee id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a2593dbc-83fa-4648-8508-19d0bf00854e",
+              "name": "Couldn't find the requested assignment for deletion",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "users",
+                    ":userId",
+                    "autoassign",
+                    ":autoAssigneeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The assignee id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoAssigneeId",
+                      "description": "(Required) The autoassignee id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e0cd95c-194c-48d5-93be-1b05146cb204",
+          "name": "create autoassignment",
+          "request": {
+            "name": "create autoassignment",
+            "description": {
+              "content": "Create an autoassignment from userId to autoAssigneeId",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "assignments",
+                "users",
+                ":userId",
+                "autoassign",
+                ":autoAssigneeId",
+                "delegationType",
+                ":delegationType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "excludeUser",
+                  "value": "false",
+                  "description": "Whether to exclude the user"
+                },
+                {
+                  "disabled": false,
+                  "key": "groupId",
+                  "value": "<string>",
+                  "description": "Group id associated to this autoassignment. If this is missing, the X-Tradeshift-TenantId header value is used"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User UUID identifier for the assigner"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "autoAssigneeId",
+                  "description": "(Required) User UUID identifier for the assignee"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "delegationType",
+                  "description": "(Required) Type of delegation to be applied"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed0013d3-f45c-41bf-9a49-0198b8b03d5e",
+              "name": "Autoassignment created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "users",
+                    ":userId",
+                    "autoassign",
+                    ":autoAssigneeId",
+                    "delegationType",
+                    ":delegationType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "excludeUser",
+                      "value": "false"
+                    },
+                    {
+                      "key": "groupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User UUID identifier for the assigner"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoAssigneeId",
+                      "description": "(Required) User UUID identifier for the assignee"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "delegationType",
+                      "description": "(Required) Type of delegation to be applied"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28989367-de65-4e4f-80dc-e418e45baf0f",
+              "name": "The requesting user is not a member of the specified security group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "users",
+                    ":userId",
+                    "autoassign",
+                    ":autoAssigneeId",
+                    "delegationType",
+                    ":delegationType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "excludeUser",
+                      "value": "false"
+                    },
+                    {
+                      "key": "groupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User UUID identifier for the assigner"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoAssigneeId",
+                      "description": "(Required) User UUID identifier for the assignee"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "delegationType",
+                      "description": "(Required) Type of delegation to be applied"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c5d4531-253f-4139-8f5d-ee7a92d2bb14",
+          "name": "find assigners by user",
+          "request": {
+            "name": "find assigners by user",
+            "description": {
+              "content": "Returns the all assigners that activated auto assign or delegate to current user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "assignments",
+                "users",
+                ":userId",
+                "autoassigners",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User UUID identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "513a41e4-af8b-40fc-8a37-5b14d2163108",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "users",
+                    ":userId",
+                    "autoassigners",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User UUID identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AutoAssigners\": [\n    {\n      \"User\": {\n        \"Id\": \"0daab548-3990-41ed-b0f4-eb197e693df1\",\n        \"CompanyAccountId\": \"093aafb9-2620-4655-885e-888f2a65c59c\",\n        \"CompanyName\": \"Tradeshift\",\n        \"Username\": \"steve.armstrong@example.org\",\n        \"Language\": \"en\",\n        \"TimeZone\": \"GMT\",\n        \"Memberships\": [\n          {\n            \"UserId\": \"0daab548-3990-41ed-b0f4-eb197e693df1\",\n            \"GroupId\": \"093aafb9-2620-4655-885e-888f2a65c59c\",\n            \"Role\": \"a6a3edcd-00d9-427c-bf03-4ef0112ba16d\"\n          }\n        ],\n        \"Created\": \"2016-06-07T14:29:05.601+02:00\",\n        \"State\": \"ACTIVE\",\n        \"Type\": \"PERSON\",\n        \"FirstName\": \"Steve\",\n        \"LastName\": \"Armstrong\",\n        \"Title\": \"boss\",\n        \"Visible\": true\n      },\n      \"AutoAssignee\": {\n        \"ExcludeUser\": false,\n        \"UserID\": \"0daab548-3990-41ed-b0f4-eb197e693df1\",\n        \"Created\": 1472655207107,\n        \"IsDelegation\": true,\n        \"DelegationType\": \"DELEGATING\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "283cd9ce-49ff-4193-b331-d41c0ce15aa3",
+          "name": "get user assignments sparse",
+          "request": {
+            "name": "get user assignments sparse",
+            "description": {
+              "content": "Get paginated user assignments, using lightweight sparse composition of response data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "documents",
+                "assignments",
+                "users",
+                ":userid",
+                "sparse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "The current page of the result set to be fetched"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The limit of the result set to return, also page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Type of the assignment to include in the result set"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userid",
+                  "description": "(Required) UUID identifier of user account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3ad3a39-7df2-41d7-b0ef-afd06d1fba4e",
+              "name": "Paginated user assignments list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "documents",
+                    "assignments",
+                    "users",
+                    ":userid",
+                    "sparse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userid",
+                      "description": "(Required) UUID identifier of user account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"itemsPerPage\": 2,\n  \"itemCount\": 2,\n  \"numPages\": 1,\n  \"pageId\": 0,\n  \"Assignments\": [\n    {\n      \"DocumentId\": \"ac304edf-7fa7-49c3-8f1c-e82c037cf743\",\n      \"DocumentType\": {\n        \"mimeType\": \"text/xml\",\n        \"documentProfileId\": \"tradeshift.assignment.1.0\",\n        \"type\": \"assignment\"\n      },\n      \"Tags\": {\n        \"Tag\": []\n      },\n      \"ItemInfos\": [],\n      \"ConversationStates\": [],\n      \"CopyIndicator\": false,\n      \"Deleted\": false,\n      \"SourceDocument\": {\n        \"DocumentType\": \"AssignmentType\",\n        \"IssueDate\": {\n          \"value\": \"2019-04-02T08:38:25.139Z\"\n        },\n        \"IssueTime\": {\n          \"value\": \"2019-04-02T08:38:25.139Z\"\n        },\n        \"Assignee\": [\n          {\n            \"PartyIdentification\": [\n              {\n                \"ID\": {\n                  \"value\": \"a482b987-7c39-40e2-a526-03549d5fe668\"\n                }\n              }\n            ],\n            \"Contact\": {\n              \"ElectronicMail\": {\n                \"value\": \"george.owen@simons-catering.test.ts.sv\"\n              }\n            },\n            \"Person\": [\n              {\n                \"FirstName\": {\n                  \"value\": \"Simon\"\n                },\n                \"FamilyName\": {\n                  \"value\": \"Owen\"\n                }\n              }\n            ]\n          }\n        ],\n        \"Delegation\": [],\n        \"Subject\": {\n          \"UUID\": {\n            \"value\": \"867dd235-4b16-5212-b1aa-292bce33765e\"\n          }\n        },\n        \"Type\": \"APPROVAL\",\n        \"OriginalDocumentId\": {\n          \"value\": \"867dd235-4b16-5212-b1aa-292bce33765e\"\n        }\n      },\n      \"Properties\": []\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8310f300-c3fe-4341-91b7-d28407565acb",
+    "name": "Tradeshift External Dx Category Documents Assignments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

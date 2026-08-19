@@ -1,0 +1,104 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Documents Attachments API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--documents-attachments
+paths:
+  /rest/external/documents/{documentId}/attachments:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              example:
+                DocumentAttachment:
+                - Name: Screen Shot 2016-09-08 at 2.59.56 PM.png
+                  ContentType: image/png
+                  Type: attachment
+              schema:
+                required:
+                - DocumentAttachment
+                type: object
+                properties:
+                  DocumentAttachment:
+                    type: array
+                    items:
+                      required:
+                      - Name
+                      - ContentType
+                      - Type
+                      type: object
+                      properties:
+                        Name:
+                          type: string
+                        ContentType:
+                          type: string
+                        Type:
+                          type: string
+      description: Returns a list of all attachments a document has
+      operationId: get-rest-external-documents-documentid-attachments
+      x-annotation-dx-category: documents-attachments
+      summary: find document attachments
+      tags:
+      - dx-category--documents-attachments
+  /rest/external/documents/{documentId}/attachments/{name}/content:
+    parameters:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+      description: File name of the attachment
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    put:
+      responses:
+        '201':
+          description: ''
+      description: Create a new attachment for the document
+      operationId: put-rest-external-documents-documentid-attachments-name-content
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+        required: true
+      x-annotation-dx-category: documents-attachments
+      summary: update document attachment
+      tags:
+      - dx-category--documents-attachments
+    delete:
+      responses:
+        '200':
+          description: The document attachment was deleted successfully.
+        '400':
+          description: Bad Request due to invalid input.
+        '401':
+          description: The user was not authorized to perform the operation.
+        '404':
+          description: The document attachment was not found.
+      description: 'Removes an existing attachment having the provided parameter name from the document.
+
+        This can be used when the document attachment is either outdated or not applicable any more.
+
+        '
+      operationId: delete-rest-external-documents-documentid-attachments-name-content
+      x-annotation-dx-category: documents-attachments
+      summary: delete document attachment
+      tags:
+      - dx-category--documents-attachments

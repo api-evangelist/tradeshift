@@ -1,0 +1,43 @@
+openapi: 3.2.0
+info:
+  title: MCP HTTP Bridge & Management Health API
+  version: 0.1.0
+tags:
+- name: Health
+paths:
+  /health/live:
+    get:
+      summary: Liveness
+      description: 'Liveness probe - checks if the application is running.
+
+        Returns 200 if the app is alive, regardless of database connectivity.'
+      operationId: liveness_health_live_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Health
+  /health/ready:
+    get:
+      summary: Readiness
+      description: 'Readiness probe - checks if the application is ready to serve traffic.
+
+        Validates database connectivity and critical dependencies.'
+      operationId: readiness_health_ready_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Health
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key

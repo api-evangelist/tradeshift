@@ -1,0 +1,27 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Document Validation Validators Delete API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--document-validation-validators_delete
+paths:
+  /rest/external/document-validation/validation/groups/{groupId}:
+    delete:
+      tags:
+      - dx-category--document-validation-validators_delete
+      summary: Delete validator group
+      description: Permanently deletes a validator group definition
+      operationId: delete-rest-external-document-validation-validation-groups-groupid
+      parameters:
+      - name: groupId
+        in: path
+        description: UUID of the validator group to delete
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: No Content

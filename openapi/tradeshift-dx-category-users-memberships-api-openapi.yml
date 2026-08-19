@@ -1,0 +1,486 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Users Memberships API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--users-memberships
+paths:
+  /rest/external/account/members/{userId}:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of user account.
+    delete:
+      responses:
+        '204':
+          description: ''
+      description: Remove a member from the current company account. Users who belong to the account (have the account's CompanyAccountId) cannot be removed.
+      operationId: delete-rest-external-account-members-userid
+      x-annotation-dx-category: users-memberships
+      summary: remove user
+      tags:
+      - dx-category--users-memberships
+  /rest/external/account/users/{userId}/role:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of user account.
+    put:
+      responses:
+        '204':
+          description: ''
+        '403':
+          description: ''
+      description: Create a membership for the given user, group and role deleting all the existing group's memberships.
+      operationId: put-rest-external-account-users-userid-role
+      x-annotation-dx-category: users-memberships
+      summary: replace roles
+      tags:
+      - dx-category--users-memberships
+  /rest/external/account/users/{userId}/state:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of user account.
+    put:
+      responses:
+        '204':
+          description: ''
+        '403':
+          description: ''
+      description: Set the state of a user.
+      operationId: put-rest-external-account-users-userid-state
+      requestBody:
+        content:
+          text/plain:
+            example: LOCKED
+            schema:
+              type: string
+        required: true
+      x-annotation-dx-category: users-memberships
+      summary: set user state
+      tags:
+      - dx-category--users-memberships
+  /rest/external/usergroups:
+    get:
+      responses:
+        '200':
+          description: 'A list of user groups without members returned as an ExternalUserGroupsList.
+
+            In case the user does not have any user groups then a blank list is returned.
+
+            '
+        '400':
+          description: If one or more of the query parameters are invalid.
+      description: 'Gets list of all user groups that the user has access to. Groups are fetched without members
+
+        but each user group entry will have the number of members it has.
+
+        '
+      operationId: get-rest-external-usergroups
+      parameters:
+      - name: limit
+        in: query
+        description: The number of user groups to fetch per call.
+        schema:
+          default: 25
+          minimum: 0
+          maximum: 100
+          type: integer
+      - name: page
+        in: query
+        description: The page number from which to start fetching the user groups.
+        schema:
+          default: 0
+          minimum: 0
+          type: integer
+      - name: state
+        in: query
+        description: The state of the user groups.
+        schema:
+          default: ACTIVE
+          type: string
+      - name: query
+        in: query
+        description: User group name query string.
+        schema:
+          type: string
+      - name: member
+        in: query
+        description: Returned user groups must have the supplied user is as a member.
+        schema:
+          type: string
+      x-annotation-dx-category: users-memberships
+      summary: Find user groups by query string
+      tags:
+      - dx-category--users-memberships
+  /rest/external/users/{userId}/branches:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User account UUID.
+    get:
+      responses:
+        '200':
+          description: List of branches
+          content:
+            application/json:
+              example:
+              - Id: 59cef2b3-3190-4329-b29f-00ac476b40da
+                Name: Simon's Catering and Cocktails AGrvylkxsnevop
+                Country: US
+              - Id: 89cef2b3-3190-4329-c29f-10ac476b40db
+                Name: 'Petes''s Cocktails '
+                Country: US
+              schema:
+                title: Tradeshift Public API 1.0 - GLI List
+                type: array
+                additionalProperties: false
+                items:
+                  type: object
+                  properties:
+                    Id:
+                      pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                      description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                      type: string
+                    Name:
+                      type: string
+                    Country:
+                      type: string
+                  required:
+                  - Id
+                  - Name
+                  - Country
+        '400':
+          description: Company hierarchy is corrupted, unable to get root branch. Contact support team.
+        '404':
+          description: User not found or out of company hierarchy
+      description: 'Returns a list of branches for the specified user inside organisation hierarchy of his current company.
+
+        '
+      operationId: get-rest-external-users-userid-branches
+      x-annotation-dx-category: users-memberships
+      summary: List of current company branches where the specified user is a member
+      tags:
+      - dx-category--users-memberships
+  /rest/external/users/{userId}/current/branches:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User account UUID.
+    get:
+      responses:
+        '200':
+          description: List of branches
+        '404':
+          description: User not found or out of company hierarchy
+      description: 'Returns a list of branches for the specified user inside organisation hierarchy of his current company.
+
+        '
+      operationId: get-rest-external-users-userid-current-branches
+      x-annotation-dx-category: users-memberships
+      summary: List of current company branches starting from current branch where the specified user is a member
+      tags:
+      - dx-category--users-memberships
+  /rest/external/users/{userId}/memberships/{groupId}:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of user account.
+    - name: groupId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of the security group
+    delete:
+      responses:
+        '204':
+          description: Always returns a 204
+        '400':
+          description: returns bad request when users membership cannot be removed
+          content:
+            application/json:
+              example:
+                ErrorCode: BadRequest
+                Message: Could not resolve type nonExistentType
+                ErrorDetail:
+                - Key: message
+                  Value: Could not resolve type nonExistentType
+                - Key: stacktrace
+                  Value: "com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\n\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\n\t"
+                ValidationError: []
+                RequestId: 2c941598-489c-4fac-8543-03cb921feaf7
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+      description: Remove user's membership to a group.
+      operationId: delete-rest-external-users-userid-memberships-groupid
+      x-annotation-dx-category: users-memberships
+      summary: remove user membership
+      tags:
+      - dx-category--users-memberships
+  /rest/external/users/{userId}/overridingcompanyaccountid:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User account UUID.
+    put:
+      responses:
+        '204':
+          description: Successful
+        '400':
+          description: Bad Request due to invalid input. More details in body.
+          content:
+            application/json:
+              example:
+                ErrorCode: BadRequest
+                Message: Could not resolve type nonExistentType
+                ErrorDetail:
+                - Key: message
+                  Value: Could not resolve type nonExistentType
+                - Key: stacktrace
+                  Value: "com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\n\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\n\t"
+                ValidationError: []
+                RequestId: 2c941598-489c-4fac-8543-03cb921feaf7
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+        '401':
+          description: User is not a company admin or out of processed companies hierarchy.
+          content:
+            application/json:
+              example:
+                ErrorCode: Unauthorized
+                Message: The user was not authorized to perform the operation&#x3a; 37617bf8&#x2d;4e04&#x2d;41f2&#x2d;bd27&#x2d;9ad9153419ee&#x2f;Operation&#x28;id&#x3d;15&#x2c; name&#x3d;ADMIN&#x5f;ID&#x29; on 35dea17e&#x2d;fdd7&#x2d;46d9&#x2d;88c8&#x2d;c5c632ebf92b
+                ErrorDetail:
+                - Key: userUuid
+                  Value: 37617bf8-4e04-41f2-bd27-9ad9153419ee
+                - Key: securityGroupUuid
+                  Value: 35dea17e-fdd7-46d9-88c8-c5c632ebf92b
+                - Key: operationId
+                  Value: '15'
+                - Key: operationName
+                  Value: ADMIN_ID
+                - Key: stacktrace
+                  Value: ''
+                ValidationError: []
+                RequestId: 92463020-1aa1-48c6-b87f-ad8b97d0599e
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+        '404':
+          description: User not found.
+          content:
+            application/json:
+              example:
+                ErrorCode: ResourceNotFound
+                Message: 'Error: ResourceNotFound: The object did not exist'
+                ErrorDetail: []
+                ValidationError: []
+                RequestId: e52264d2-f5c9-43ef-92f1-c40fa64cb3c2
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+      description: 'Change home company environment which is displayed after the user logs in.
+
+        The requester must be a company admin and the requester''s company must be a parent to the user''s company and
+
+        overriding company, otherwise 401 returns.
+
+        '
+      operationId: put-rest-external-users-userid-overridingcompanyaccountid
+      requestBody:
+        content:
+          text/plain:
+            example: f54bca78-3ac9-4843-ae4a-f6808c0ea477
+            schema:
+              type: string
+        required: true
+      x-annotation-dx-category: users-memberships
+      summary: Change home branch for a user
+      tags:
+      - dx-category--users-memberships
+  /rest/external/users/{userId}/primarybranch/{newGroupId}:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User account UUID.
+    - name: newGroupId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of the security group
+    put:
+      responses:
+        '204':
+          description: OK
+        '400':
+          description: User is not a memeber of new primary group or group is out of company hierarchy
+        '401':
+          description: Requester is not authorized to perform operation.
+        '404':
+          description: User not found or out of company hierarchy
+      description: 'Change current primary group and remove old primary group membership. The user must be a member of new group.
+
+        The requester must be a company admin and requester''s company must be a parent to user''s primary company,
+
+        otherwise 401 returns.
+
+        '
+      operationId: put-rest-external-users-userid-primarybranch-newgroupid
+      x-annotation-dx-category: users-memberships
+      summary: Change current primary group and remove old primary group membership
+      tags:
+      - dx-category--users-memberships

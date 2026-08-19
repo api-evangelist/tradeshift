@@ -1,0 +1,977 @@
+{
+  "item": [
+    {
+      "id": "cf76f5d8-1302-4d5d-8290-800bd5af1ab4",
+      "name": "dx-category--accounts-legal_entities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4adc9613-f8b5-4f81-9995-01194b471f38",
+          "name": "update legal entity",
+          "request": {
+            "name": "update legal entity",
+            "description": {
+              "content": "Create or update a legal entity. If a legal entity with the same id already exists, the existing legal entity will be updated, otherwise the legal entity will be created. While updating the legal entity, only the name, description, legal note and alternate id are updated. During the creation or the updating process, a check is done to see if the alternate id is unique within the same company. The operation is allowed only if the id is unique per company. The body of the PUT is an object that specifies all the values to be saved as part of the legal entity. The legal entity id in this object MUST be absent or as same as the legal entity id in the path parameter. LegalNote may contain plain text or a restricted HTML subset (<b>, <u>, <br/> only); any other markup is stripped server-side. Its visible text, once that formatting is applied, is limited to ~5000 characters - not the raw payload length.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "legalentities",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The UUID identifier of the legal entity."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Id\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"AlternateEntityId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"LegalNote\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e2985ce-c42a-458b-95b8-7f40ed16ee12",
+              "name": "The legal entity is created and there are no validation errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"42f824cc-fa0d-4f96-9f82-0987e326cfdf\",\n  \"CompanyId\": \"9b4ce0ff-d8fa-4906-9984-216df4fcbfbc\",\n  \"Name\": \"Legal Entity IE22\",\n  \"AlternateEntityId\": \"IE22\",\n  \"Description\": \"Just a test legal entity\",\n  \"LegalNote\": \"<b>Payment terms:</b> Net 30 days.<br/>Please reference PO number on all invoices.<br/><u>Multilingual note:</u> Bitte geben Sie die Bestellnummer auf allen Rechnungen an.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "762cf37d-c23a-4d9d-8e2f-088b0a047a71",
+              "name": "An existing legal entity was updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"42f824cc-fa0d-4f96-9f82-0987e326cfdf\",\n  \"CompanyId\": \"9b4ce0ff-d8fa-4906-9984-216df4fcbfbc\",\n  \"Name\": \"Legal Entity IE22\",\n  \"AlternateEntityId\": \"IE22\",\n  \"Description\": \"Just a test legal entity\",\n  \"LegalNote\": \"<b>Payment terms:</b> Net 30 days.<br/>Please reference PO number on all invoices.<br/><u>Multilingual note:</u> Bitte geben Sie die Bestellnummer auf allen Rechnungen an.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03ea88cc-646a-4c6a-9b72-c3c57f3912f0",
+          "name": "update legal entity identifiers",
+          "request": {
+            "name": "update legal entity identifiers",
+            "description": {
+              "content": "Add or update a legal entity identifier. If a value already exists for the identifier scheme then the value of the identifier is updated. Otherwise, a new identifier is added. Except for the label, all other fields are compulsory. The body of the PUT is an identifier object that needs to be added. The legal entity id in this object MUST be absent or as same as the legal entity id in the path parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "legalentities",
+                ":id",
+                "identifiers",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The UUID identifier of the legal entity."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) The id of the legal entity for which the identifier is to be added."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"LegalEntityId\": \"<string>\",\n  \"IdentifierScheme\": \"<string>\",\n  \"IdentifierValue\": \"<string>\",\n  \"Label\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d607cd48-9ad1-4ad9-9bec-c966db0baccc",
+              "name": "The identifier was created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id",
+                    "identifiers",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The id of the legal entity for which the identifier is to be added."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"LegalEntityId\": \"f392d865-5852-4255-b013-17075dba5bb6\",\n  \"IdentifierScheme\": \"GB:VAT\",\n  \"IdentifierValue\": \"GB987654321\",\n  \"Label\": \"VAT Reg No:\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6abddafc-8ee2-4eb0-9ce6-08cdfdfa7c76",
+              "name": "The identifier with the same scheme already existed and was therefore updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id",
+                    "identifiers",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The id of the legal entity for which the identifier is to be added."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"LegalEntityId\": \"f392d865-5852-4255-b013-17075dba5bb6\",\n  \"IdentifierScheme\": \"GB:VAT\",\n  \"IdentifierValue\": \"GB987654321\",\n  \"Label\": \"VAT Reg No:\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f76dac1a-5bda-4fc2-9fc8-003dbb68271e",
+              "name": "No identifier has been provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id",
+                    "identifiers",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The id of the legal entity for which the identifier is to be added."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"LegalEntityId\": \"f392d865-5852-4255-b013-17075dba5bb6\",\n  \"IdentifierScheme\": \"GB:VAT\",\n  \"IdentifierValue\": \"GB987654321\",\n  \"Label\": \"VAT Reg No:\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb42363e-de41-4f7e-8db2-3afb250cdff7",
+              "name": "The provided legal entity ID does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id",
+                    "identifiers",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The id of the legal entity for which the identifier is to be added."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"LegalEntityId\": \"f392d865-5852-4255-b013-17075dba5bb6\",\n  \"IdentifierScheme\": \"GB:VAT\",\n  \"IdentifierValue\": \"GB987654321\",\n  \"Label\": \"VAT Reg No:\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9f54873-8485-4c23-a6d2-ab075b918db0",
+          "name": "find locations for legal entity",
+          "request": {
+            "name": "find locations for legal entity",
+            "description": {
+              "content": "Search all locations for a legal entity. The results are paged.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "legalentities",
+                ":id",
+                "locations",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) The list of terms to search for terms are simple words like 'alber' or numeric. Every term is post fixed with a wildcard, numeric values are not, max to 5 terms, throws bad request if above."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The type of locations to be fetched e.g billing or delivery."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The page number to start fetching locations from."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of items to be fetched per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "only_defaults",
+                  "value": "<boolean>",
+                  "description": "Only default addresses."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The UUID identifier of the legal entity."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9077fbf-47a4-4542-bde2-89158b0d93bc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id",
+                    "locations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "only_defaults",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"64265696-449f-4d1a-9c48-464cd1b4ea73\",\n  \"LegalEntityId\": \"f392d865-5852-4255-b013-17075dba5bb6\",\n  \"Type\": \"BILLING\",\n  \"IsDefault\": true,\n  \"Address\": {\n    \"zip\": \"33466\",\n    \"country\": \"GB\",\n    \"buildingnumber\": \"3\",\n    \"city\": \"Billing-na-Donu\",\n    \"street\": \"Billing street\",\n    \"locality\": \"Billingovka\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b70aecf4-c93b-42be-9dc5-512b5d72bb94",
+              "name": "Will return bad request for more than 5 query parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id",
+                    "locations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "only_defaults",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6754a7de-a7f4-4c98-8a73-b02b50c28937",
+          "name": "update legal entities for location",
+          "request": {
+            "name": "update legal entities for location",
+            "description": {
+              "content": "Creates or updates a new location. If the id already exists, the call overwrites the existing values with the new ones that are supplied. If no location with the same id exists then a new one will be added. While adding a default location, a check will be done to see if this call does not create another default location over an existing one. If it does, a validation error will be thrown. The path parameter id replaces the one in the object. The body of the PUT is an object which is the location to be saved for the legal entity. The legal entity id in this object MUST be absent or as same as the legal entity id in the path parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "legalentities",
+                ":id",
+                "locations",
+                ":locationid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The UUID identifier of the legal entity."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locationid",
+                  "description": "(Required) The UUID identifier of the location of the legal entity."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Id\": \"<string>\",\n  \"LegalEntityId\": \"<string>\",\n  \"Type\": \"<string>\",\n  \"IsDefault\": \"<boolean>\",\n  \"Address\": {\n    \"zip\": \"<string>\",\n    \"country\": \"<string>\",\n    \"buildingnumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"locality\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0ba0b549-3ef9-4f46-bd51-18cdbd1e7644",
+              "name": "The location was created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id",
+                    "locations",
+                    ":locationid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationid",
+                      "description": "(Required) The UUID identifier of the location of the legal entity."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"64265696-449f-4d1a-9c48-464cd1b4ea73\",\n  \"LegalEntityId\": \"f392d865-5852-4255-b013-17075dba5bb6\",\n  \"Type\": \"BILLING\",\n  \"IsDefault\": true,\n  \"Address\": {\n    \"zip\": \"33466\",\n    \"country\": \"GB\",\n    \"buildingnumber\": \"3\",\n    \"city\": \"Billing-na-Donu\",\n    \"street\": \"Billing street\",\n    \"locality\": \"Billingovka\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24fd0705-d439-4895-9b7e-90625e4cb0d8",
+              "name": "Existing location with the same id existed and therefore was updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id",
+                    "locations",
+                    ":locationid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationid",
+                      "description": "(Required) The UUID identifier of the location of the legal entity."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"64265696-449f-4d1a-9c48-464cd1b4ea73\",\n  \"LegalEntityId\": \"f392d865-5852-4255-b013-17075dba5bb6\",\n  \"Type\": \"BILLING\",\n  \"IsDefault\": true,\n  \"Address\": {\n    \"zip\": \"33466\",\n    \"country\": \"GB\",\n    \"buildingnumber\": \"3\",\n    \"city\": \"Billing-na-Donu\",\n    \"street\": \"Billing street\",\n    \"locality\": \"Billingovka\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4e999e9f-10ae-41eb-a9e1-bc1bdd76c2e3",
+              "name": "No location has been provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id",
+                    "locations",
+                    ":locationid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationid",
+                      "description": "(Required) The UUID identifier of the location of the legal entity."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"64265696-449f-4d1a-9c48-464cd1b4ea73\",\n  \"LegalEntityId\": \"f392d865-5852-4255-b013-17075dba5bb6\",\n  \"Type\": \"BILLING\",\n  \"IsDefault\": true,\n  \"Address\": {\n    \"zip\": \"33466\",\n    \"country\": \"GB\",\n    \"buildingnumber\": \"3\",\n    \"city\": \"Billing-na-Donu\",\n    \"street\": \"Billing street\",\n    \"locality\": \"Billingovka\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "073cd2f7-82fd-46c0-8deb-f3df112c528b",
+              "name": "The provided legal entity ID does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "legalentities",
+                    ":id",
+                    "locations",
+                    ":locationid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The UUID identifier of the legal entity."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locationid",
+                      "description": "(Required) The UUID identifier of the location of the legal entity."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"64265696-449f-4d1a-9c48-464cd1b4ea73\",\n  \"LegalEntityId\": \"f392d865-5852-4255-b013-17075dba5bb6\",\n  \"Type\": \"BILLING\",\n  \"IsDefault\": true,\n  \"Address\": {\n    \"zip\": \"33466\",\n    \"country\": \"GB\",\n    \"buildingnumber\": \"3\",\n    \"city\": \"Billing-na-Donu\",\n    \"street\": \"Billing street\",\n    \"locality\": \"Billingovka\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9090e657-f53f-41cf-b395-4ffab2a5a1d5",
+    "name": "Tradeshift External Dx Category Accounts Legal Entities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

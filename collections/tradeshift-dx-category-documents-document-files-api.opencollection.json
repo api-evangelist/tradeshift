@@ -1,0 +1,358 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Documents Document Files API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--documents-document_files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "find document files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documentfiles",
+            "params": [
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Limits documents to those which have changed since the given timestamp, formatted as a ISO 8601 XSD-timestamp.\n"
+              },
+              {
+                "name": "createdAfter",
+                "value": "",
+                "type": "query",
+                "description": "List only those files that were created after this date."
+              },
+              {
+                "name": "createdBefore",
+                "value": "",
+                "type": "query",
+                "description": "List only those files that were created before this date."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of files to be shown at once as part of the first page or for every page."
+              },
+              {
+                "name": "noPaging",
+                "value": "",
+                "type": "query",
+                "description": "To disable any paging and either return all files or just the first few files as\nspecified by the limit parameter. This parameter supersedes the page parameter.\n"
+              },
+              {
+                "name": "recursive",
+                "value": "",
+                "type": "query",
+                "description": "Recursively include subdirectories, accepted as values 'true' or 'false'."
+              },
+              {
+                "name": "directory",
+                "value": "",
+                "type": "query",
+                "description": "The absolute path of the directory to list files from."
+              },
+              {
+                "name": "listDirectories",
+                "value": "",
+                "type": "query",
+                "description": "List directory definitions including '.' and subdirectories."
+              },
+              {
+                "name": "fileNames",
+                "value": "",
+                "type": "query",
+                "description": "List of file names to look for."
+              },
+              {
+                "name": "acceptAs",
+                "value": "",
+                "type": "query",
+                "description": "Regex file name patterns to use to search for files."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state of the document files to show; 'new' for non dispatched, 'failed', for ones\nwith validation errors, 'dispatched' for dispatched documents, 'dispatch_failed' for\nones where dispatch has failed.\n"
+              },
+              {
+                "name": "requireDocumentId",
+                "value": "",
+                "type": "query",
+                "description": "List only those files that have an associated document id."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number of the query"
+              }
+            ]
+          },
+          "docs": "Get array of document file objects."
+        },
+        {
+          "info": {
+            "name": "create directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documentfiles/directory",
+            "params": [
+              {
+                "name": "directory",
+                "value": "",
+                "type": "query",
+                "description": "Full path of directory to create."
+              }
+            ]
+          },
+          "docs": "Create a new empty directory."
+        },
+        {
+          "info": {
+            "name": "remove directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documentfiles/directory",
+            "params": [
+              {
+                "name": "directory",
+                "value": "",
+                "type": "query",
+                "description": "Full path of directory to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the directory passed as parameter, this will fail if the directory is not empty."
+        },
+        {
+          "info": {
+            "name": "send file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documentfiles/:filename/dispatcher",
+            "params": [
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path",
+                "description": "Original name of the document file to be renamed"
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "query",
+                "description": "The current filename of the documentfile to dispatch."
+              },
+              {
+                "name": "rename",
+                "value": "",
+                "type": "query",
+                "description": "A new filename to rename the file to, as part of the dispatch."
+              },
+              {
+                "name": "documentSource",
+                "value": "",
+                "type": "query",
+                "description": "Track the document's source - We save the source of the document in a new table called documentsource so that we know where the document was dispatched from."
+              }
+            ]
+          },
+          "docs": "Dispatches a documentfile, converting it to UBL and sending it to the inferred receiver."
+        },
+        {
+          "info": {
+            "name": "send file via VAN",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documentfiles/:filename/dispatcher/van/:vanId",
+            "params": [
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path",
+                "description": "Original name of the document file to be renamed"
+              },
+              {
+                "name": "vanId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of VAN to dispatch documentfile"
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "query",
+                "description": "The current filename of the documentfile to dispatch."
+              },
+              {
+                "name": "rename",
+                "value": "",
+                "type": "query",
+                "description": "A new filename to rename the file to, as part of the dispatch."
+              }
+            ]
+          },
+          "docs": "Dispatches a documentfile via a given VAN (Value-added-network), converting it to UBL and sending it to the inferred receiver."
+        },
+        {
+          "info": {
+            "name": "error by filename",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documentfiles/:filename/errors",
+            "params": [
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path",
+                "description": "Original name of the document file to be renamed"
+              }
+            ]
+          },
+          "docs": "Retrieves any validation errors that occurred when dispatching a document (must have POST to /dispatcher"
+        },
+        {
+          "info": {
+            "name": "find file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documentfiles/:filename/file",
+            "params": [
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path",
+                "description": "Original name of the document file to be renamed"
+              },
+              {
+                "name": "directory",
+                "value": "",
+                "type": "query",
+                "description": "Directory where filename lives."
+              }
+            ]
+          },
+          "docs": "Retrieves file from a given directory."
+        },
+        {
+          "info": {
+            "name": "delete file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documentfiles/:filename/file",
+            "params": [
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path",
+                "description": "Original name of the document file to be renamed"
+              },
+              {
+                "name": "directory",
+                "value": "",
+                "type": "query",
+                "description": "Directory where filename lives."
+              }
+            ]
+          },
+          "docs": "Deletes a document file."
+        },
+        {
+          "info": {
+            "name": "move file to folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documentfiles/:filename/move",
+            "params": [
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path",
+                "description": "Original name of the document file to be renamed"
+              },
+              {
+                "name": "directory",
+                "value": "",
+                "type": "query",
+                "description": "Directory where file currently lives."
+              },
+              {
+                "name": "newdirectory",
+                "value": "",
+                "type": "query",
+                "description": "Absolute path the directory to move the documentfile to. If the directory does not exist then the directory is created."
+              },
+              {
+                "name": "replace",
+                "value": "",
+                "type": "query",
+                "description": "If true, replaces existing file in new directory."
+              }
+            ]
+          },
+          "docs": "Moves a documentfile to a new folder."
+        },
+        {
+          "info": {
+            "name": "rename file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documentfiles/:filename/rename/:newfilename/file",
+            "params": [
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path",
+                "description": "Original name of the document file to be renamed"
+              },
+              {
+                "name": "newfilename",
+                "value": "",
+                "type": "path",
+                "description": "Desired name of the document file being renamed"
+              },
+              {
+                "name": "directory",
+                "value": "",
+                "type": "query",
+                "description": "Directory where file lives."
+              }
+            ]
+          },
+          "docs": "Renames the document file within the same directory."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Documents Attachments API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--documents-attachments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "find document attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/attachments",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Returns a list of all attachments a document has"
+        },
+        {
+          "info": {
+            "name": "update document attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/attachments/:name/content",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "File name of the attachment"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Create a new attachment for the document"
+        },
+        {
+          "info": {
+            "name": "delete document attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/:documentId/attachments/:name/content",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "File name of the attachment"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path",
+                "description": "Document UUID identifier"
+              }
+            ]
+          },
+          "docs": "Removes an existing attachment having the provided parameter name from the document.\nThis can be used when the document attachment is either outdated or not applicable any more.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,189 @@
+{
+  "item": [
+    {
+      "id": "d9724eb2-1459-493c-a26d-45523533820e",
+      "name": "dx-category--document-validation-validators_save",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ae5e859c-a04d-40f1-b8d5-2d04692a8e16",
+          "name": "Save validator group",
+          "request": {
+            "name": "Save validator group",
+            "description": {
+              "content": "Creates or updates a validator group definition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "document-validation",
+                "validation",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) UUID of the validator group to create or update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3cbadde2-2698-47e4-ab98-d5c29ca84eed",
+              "name": "Successfully updated validator group definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) UUID of the validator group to create or update"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tenantId\": \"cb555bf8-0949-4857-acf3-03aef59c00ec\",\n  \"documentType\": \"Invoice\",\n  \"countryCompliance\": {\n    \"countryCode\": \"RO\"\n  },\n  \"connectionProperty\": {\n    \"key\": \"SupplierCategory\",\n    \"value\": \"DO\"\n  },\n  \"validators\": [\n    {\n      \"type\": \"pattern\",\n      \"dispatchRestriction\": \"Hard\",\n      \"context\": \"/Invoice/cac:InvoiceLine\",\n      \"field\": \"cac:OrderLineReference/cac:OrderReference/cbc:ID\",\n      \"pattern\": \"^\\\\d+$\",\n      \"multiValueMatchBehavior\": \"AnyMatch\",\n      \"message\": \"ID must contain only numbers\"\n    },\n    {\n      \"type\": \"minLength\",\n      \"dispatchRestriction\": \"Soft\",\n      \"field\": \"/Invoice/cbc:ID\",\n      \"minLength\": 5,\n      \"message\": \"ID must have minimum 5 characters\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b16867a7-37c6-4c43-a3f0-351c12a85a87",
+              "name": "Created a new validator group definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) UUID of the validator group to create or update"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tenantId\": \"cb555bf8-0949-4857-acf3-03aef59c00ec\",\n  \"documentType\": \"Invoice\",\n  \"countryCompliance\": {\n    \"countryCode\": \"RO\"\n  },\n  \"connectionProperty\": {\n    \"key\": \"SupplierCategory\",\n    \"value\": \"DO\"\n  },\n  \"validators\": [\n    {\n      \"type\": \"pattern\",\n      \"dispatchRestriction\": \"Hard\",\n      \"context\": \"/Invoice/cac:InvoiceLine\",\n      \"field\": \"cac:OrderLineReference/cac:OrderReference/cbc:ID\",\n      \"pattern\": \"^\\\\d+$\",\n      \"multiValueMatchBehavior\": \"AnyMatch\",\n      \"message\": \"ID must contain only numbers\"\n    },\n    {\n      \"type\": \"minLength\",\n      \"dispatchRestriction\": \"Soft\",\n      \"field\": \"/Invoice/cbc:ID\",\n      \"minLength\": 5,\n      \"message\": \"ID must have minimum 5 characters\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "54307c80-ce00-4f65-91d9-c0dd94c11fa9",
+    "name": "Tradeshift External Dx Category Document Validation Validators Save API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

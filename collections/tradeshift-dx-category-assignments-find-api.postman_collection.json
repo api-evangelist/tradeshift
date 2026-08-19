@@ -1,0 +1,810 @@
+{
+  "item": [
+    {
+      "id": "4a0b39c4-bc2f-40e5-9fee-094c0cd53cf0",
+      "name": "dx-category--assignments-find",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d7160284-d3c8-40d1-9a39-4198170fbe48",
+          "name": "find assignments",
+          "request": {
+            "name": "find assignments",
+            "description": {
+              "content": "Get a paginated list of assignments filtered by the following query parameters. The search will be performed on assignments from the current branch and child branches.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "assignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "companyid",
+                  "value": "<string>",
+                  "description": "Company (tenant) UUID used to filter assignments."
+                },
+                {
+                  "disabled": false,
+                  "key": "assigneeids",
+                  "value": "<string>",
+                  "description": "List of  UUIDs of assignees, used to filter assignments."
+                },
+                {
+                  "disabled": false,
+                  "key": "with_tags",
+                  "value": "<string>",
+                  "description": "List of strings representing tags to be used to filter assignments."
+                },
+                {
+                  "disabled": false,
+                  "key": "without_tags",
+                  "value": "<string>",
+                  "description": "List of strings representing tags to be used to exclude assignments."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "List of statuses to be used to filter assignment (e.g. OPEN, CLOSED, WAITING_FOR_ASSIGNEES)"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "String representing a type used to filter assignments."
+                },
+                {
+                  "disabled": false,
+                  "key": "type_category",
+                  "value": "<string>",
+                  "description": "String representing a type category(a collection of assignment types)"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_from",
+                  "value": "<string>",
+                  "description": "Datetime used to get assignments created after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_to",
+                  "value": "<string>",
+                  "description": "Datetime used to get assignments created before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "modified_from",
+                  "value": "<string>",
+                  "description": "Datetime used to get assignments modified after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "modified_to",
+                  "value": "<string>",
+                  "description": "Datetime used to get assignments modified before this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "subjectid",
+                  "value": "<string>",
+                  "description": "Represents a free form identifier ( usually a document UUID ) of the subject the assignment is referring to and can be used to search assignments by.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "externalid",
+                  "value": "<string>",
+                  "description": "Free form string representing a custom client identifier which can be used later to search assignments by. Assignments service makes no uniqueness validation on this identifier.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Number representing the page to be return from the paginated result-set."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "The number of assignments displayed per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "The sorting field."
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "The sorting direction."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c3053f3-56f0-4431-a4d0-7f7217542af7",
+              "name": "Returns the paged list of filtered assignments. <br> If no assignments are found it returns an empty paged list.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "companyid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assigneeids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "without_tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type_category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modified_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modified_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subjectid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 2,\n  \"items\": [\n    {\n      \"id\": \"460b2008-8872-4620-8ed2-410ce5640fb9\",\n      \"externalId\": \"external id\",\n      \"subjectId\": \"280b2305-8872-3620-9ed2-010ce5640fb7\",\n      \"app\": \"APVerification\",\n      \"createdBy\": \"760b2008-8872-4620-8ed2-410ce5640fb4\",\n      \"assigneeIds\": [\n        \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n      ],\n      \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n      \"tags\": [\n        \"A tag\",\n        \"Another tag\"\n      ],\n      \"type\": \"DOCUMENT\",\n      \"createdAt\": \"2018-10-25T10:56:27.311+03:00\",\n      \"modifiedAt\": \"2018-10-25T10:56:27.311+03:00\",\n      \"outcome\": \"An outcome\",\n      \"status\": \"OPEN\",\n      \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n      \"comment\": \"Assigned to default assignee.\",\n      \"context\": {\n        \"format\": \"App.Tradeshift\",\n        \"context\": [\n          \"freeJson\"\n        ]\n      }\n    },\n    {\n      \"id\": \"a60b2008-8872-4620-8ed2-410ce5640fb9\",\n      \"externalId\": \"external id\",\n      \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n      \"app\": \"APVerification\",\n      \"createdBy\": \"260b2008-8872-4620-8ed2-410ce5640fb3\",\n      \"assigneeIds\": [\n        \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n      ],\n      \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n      \"tags\": [],\n      \"type\": \"A type\",\n      \"createdAt\": \"2018-10-25T16:40:31.795+03:00\",\n      \"modifiedAt\": \"2018-10-25T16:40:31.795+03:00\",\n      \"outcome\": \"An outcome\",\n      \"status\": \"CLOSED\",\n      \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n      \"comment\": \"Assigned to default assignee.\",\n      \"context\": {\n        \"format\": \"App.Tradeshift\",\n        \"context\": {}\n      }\n    }\n  ],\n  \"empty\": false,\n  \"firstItem\": {\n    \"id\": \"460b2008-8872-4620-8ed2-410ce5640fb9\",\n    \"externalId\": \"External-Id\",\n    \"subjectId\": \"280b2305-8872-3620-9ed2-010ce5640fb7\",\n    \"app\": \"APVerification\",\n    \"createdBy\": \"760b2008-8872-4620-8ed2-410ce5640fb4\",\n    \"assigneeIds\": [\n      \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n    ],\n    \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n    \"tags\": [\n      \"A tag\",\n      \"Another tag\"\n    ],\n    \"type\": \"DOCUMENT\",\n    \"createdAt\": \"2018-10-25T10:56:27.311+03:00\",\n    \"modifiedAt\": \"2018-10-25T10:56:27.311+03:00\",\n    \"outcome\": \"An outcome\",\n    \"status\": \"OPEN\",\n    \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n    \"comment\": \"Assigned to default assignee.\",\n    \"context\": {\n      \"format\": \"App.Tradeshift\",\n      \"context\": [\n        \"freeJson\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12b48ff2-6024-4eaa-b8b2-3d833f9f5ca4",
+              "name": "The page number is negative.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "companyid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assigneeids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "without_tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type_category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modified_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modified_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subjectid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": \"BadRequest\",\n  \"Message\": \"An invalid request was made - Parameter 'page' cannot be negative\",\n  \"ErrorDetail\": [\n    {\n      \"Key\": \"message\",\n      \"Value\": \"Parameter 'page' cannot be negative.\"\n    }\n  ],\n  \"ValidationError\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c296ba2e-8af5-48f6-8bf2-5f801a0c9f8a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "companyid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assigneeids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "without_tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type_category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modified_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modified_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subjectid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0793370f-d5fa-4fbd-a2b6-d52fa08be134",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "companyid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assigneeids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "without_tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type_category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modified_from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modified_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subjectid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c538540-9b89-4818-aebc-57b102ae552a",
+          "name": "find assignment",
+          "request": {
+            "name": "find assignment",
+            "description": {
+              "content": "Get the assignment with the given id. <br> The assignment will be visible if the company is the current branch or one of the child branches.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "assignments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) An UUID representing the assignment id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65e7a881-93ed-4427-a3e5-faaaa279ae84",
+              "name": "Successfully returns the assignment with the given id.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a60b2008-8872-4620-8ed2-410ce5640fb9\",\n  \"externalId\": \"External-Id\",\n  \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n  \"app\": \"APVerification\",\n  \"createdBy\": \"260b2008-8872-4620-8ed2-410ce5640fb3\",\n  \"assigneeIds\": [\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n  ],\n  \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n  \"tags\": [\n    \"A tag\",\n    \"Another tag\"\n  ],\n  \"type\": \"A type\",\n  \"createdAt\": \"2018-10-25T16:40:31.795+03:00\",\n  \"modifiedAt\": \"2018-10-25T16:40:31.795+03:00\",\n  \"outcome\": \"An outcome\",\n  \"status\": \"CLOSED\",\n  \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n  \"comment\": \"A comment\",\n  \"context\": {\n    \"format\": \"App.Tradeshift\",\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbc1dc52-7ee1-48c2-ac1b-0a7425c7fa70",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6928d04c-fd18-4bd1-bfc3-859c9fd71e0f",
+              "name": "Current user does not have access to assignment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12ebeec7-a527-4070-b62d-0e822b45d938",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1c2b8336-242d-4a31-b023-ba0b90ab6c21",
+    "name": "Tradeshift External Dx Category Assignments Find API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

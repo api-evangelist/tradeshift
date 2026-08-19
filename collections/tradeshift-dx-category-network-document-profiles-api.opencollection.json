@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Network Document Profiles API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--network-document_profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "find doc profile inbound",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId/documentProfiles/:documentType/inbound",
+            "params": [
+              {
+                "name": "documentType",
+                "value": "",
+                "type": "path",
+                "description": "The type of document"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ]
+          },
+          "docs": "Get the document profile that would be applied on incoming documents from the account pointed to by a connection."
+        },
+        {
+          "info": {
+            "name": "find doc profile outbound",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId/documentProfiles/:documentType/outbound",
+            "params": [
+              {
+                "name": "documentType",
+                "value": "",
+                "type": "path",
+                "description": "The type of document"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ]
+          },
+          "docs": "Get the document profile that would be applied on outgoing documents from the account pointed to by a connection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

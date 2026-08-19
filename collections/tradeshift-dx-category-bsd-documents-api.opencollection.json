@@ -1,0 +1,291 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Bsd Documents API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--bsd-documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/suppliermanagement/documents",
+            "params": [
+              {
+                "name": "accountingSystemId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the supplier, which this document relates to, as it was used in the SMD."
+              },
+              {
+                "name": "branchId",
+                "value": "",
+                "type": "query",
+                "description": "Internal identifier of the buyer branch, which this document relates to,\nas it has been configured on the platform.\n"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state of the document in Buyer Sourced Documents"
+              },
+              {
+                "name": "documentType",
+                "value": "",
+                "type": "query",
+                "description": "The type of the document"
+              },
+              {
+                "name": "externalDocumentId",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier to the customer. It can be a customer-generated UUID, an ERP document ID,\nor an ID from a scanning solution. The external ID must also be present in the actual UBL\nof invoices and credit notes in the file ID reference.\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page of responses to get"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "The size of the page"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "We currently only support ordering the documents by `created`, but that might change in the future.\nThe ordering is specified after a colon `:`. By default, we order ascending (`asc`).\n"
+              }
+            ]
+          },
+          "docs": "Get an overview of all the documents the buyer has staged for its suppliers -\noptionally filtered to match the chosen parameters.\nSince there can be millions of documents, the results can be paginated. If the\ntotal number of rows matching the filter parameters is large, the total count\nin the result is an estimate and may deviate significantly from the actual value.\n"
+        },
+        {
+          "info": {
+            "name": "Load document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/suppliermanagement/documents",
+            "params": [
+              {
+                "name": "accountingSystemId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the supplier, which this document relates to, as it was used in the SMD."
+              },
+              {
+                "name": "branchId",
+                "value": "",
+                "type": "query",
+                "description": "Internal identifier of the buyer branch, which this document relates to, as it has been configured on the\nplatform.\n"
+              },
+              {
+                "name": "documentProfileId",
+                "value": "",
+                "type": "query",
+                "description": "The UBL document profile of the posted document."
+              },
+              {
+                "name": "externalDocumentId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the invoice the document relates to. I.e. if the document is an invoice, then it can be\nits own invoice number.\n"
+              },
+              {
+                "name": "documentReferenceId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier (externalDocumentId) of a document that current document refers to. I.e. if the document is\nan application response, then it can have a documentReferenceId that points to an invoice.\nStaging an application response without supplying a documentReferenceId is considered an error.\n"
+              },
+              {
+                "name": "sourceRef",
+                "value": "",
+                "type": "query",
+                "description": "Customer reference to where the documents were sourced from.\n"
+              }
+            ]
+          },
+          "docs": "Stage a new historical document for being loaded into a suppliers history, when they onboard."
+        },
+        {
+          "info": {
+            "name": "Get Document Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/suppliermanagement/documents/:externalDocumentId",
+            "params": [
+              {
+                "name": "externalDocumentId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+              }
+            ]
+          },
+          "docs": "Get one document's metadata\n"
+        },
+        {
+          "info": {
+            "name": "Load/Override Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/suppliermanagement/documents/:externalDocumentId",
+            "params": [
+              {
+                "name": "externalDocumentId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+              },
+              {
+                "name": "accountingSystemId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the supplier, which this document relates to, as it was used in the SMD."
+              },
+              {
+                "name": "branchId",
+                "value": "",
+                "type": "query",
+                "description": "Internal identifier of the buyer branch, which this document relates to, as it has been configured on the\nplatform.\n"
+              },
+              {
+                "name": "documentProfileId",
+                "value": "",
+                "type": "query",
+                "description": "The UBL document profile of the posted document."
+              },
+              {
+                "name": "documentReferenceId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier (externalDocumentId) of a document that current document refers to. I.e. if the document is\nan application response, then it can have a documentReferenceId that points to an invoice.\nStaging an application response without supplying a documentReferenceId is considered an error.\n"
+              },
+              {
+                "name": "sourceRef",
+                "value": "",
+                "type": "query",
+                "description": "Customer reference to where the documents were sourced from.\n"
+              }
+            ]
+          },
+          "docs": "Stage a new historical document for being loaded into a suppliers history, when they onboard.\nAlready existing invoice or credit note with the same externalDocumentId and state IMPORTED will be archived.\n"
+        },
+        {
+          "info": {
+            "name": "Archive Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/suppliermanagement/documents/:externalDocumentId",
+            "params": [
+              {
+                "name": "externalDocumentId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+              }
+            ]
+          },
+          "docs": "Permanently archives the document.\n"
+        },
+        {
+          "info": {
+            "name": "Redispatch Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/suppliermanagement/documents/:externalDocumentId/redispatch",
+            "params": [
+              {
+                "name": "externalDocumentId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+              }
+            ]
+          },
+          "docs": "Retry the dispatch of a failed document by setting its state to IMPORTED.\nThe document will the asynchronously be picked up for dispatch again.\n"
+        },
+        {
+          "info": {
+            "name": "Get Document Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/suppliermanagement/documents/:externalDocumentId/content",
+            "params": [
+              {
+                "name": "externalDocumentId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+              }
+            ]
+          },
+          "docs": "Retrieve document content.\n"
+        },
+        {
+          "info": {
+            "name": "Get Document State Changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/suppliermanagement/documents/:externalDocumentId/states",
+            "params": [
+              {
+                "name": "externalDocumentId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+              }
+            ]
+          },
+          "docs": "Retrieve information about document states changes.\n"
+        },
+        {
+          "info": {
+            "name": "Get Document References",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/suppliermanagement/documents/:externalDocumentId/references",
+            "params": [
+              {
+                "name": "externalDocumentId",
+                "value": "",
+                "type": "path",
+                "description": "The external identifier of the document. I.e. if the document is an invoice, then it can be its own invoice\nnumber.\n"
+              }
+            ]
+          },
+          "docs": "Retrieve List Of Document References\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

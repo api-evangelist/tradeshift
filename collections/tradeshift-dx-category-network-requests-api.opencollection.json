@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Network Requests API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--network-requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "add network connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connect/:companyId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the company to create a connection to"
+              }
+            ]
+          },
+          "docs": "Creates a networkRequest to the specified company. If the company is in the same zone as the current company then a TradeshiftCompanyConnection is created. If the company is not in the same zone a RemoteCompanyConnection is created.\n"
+        },
+        {
+          "info": {
+            "name": "list pending connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/pending",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results, and number of results on each skipped page of results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Number of result pages to skip"
+              }
+            ]
+          },
+          "docs": "Get the list of connections which are not yet mutual."
+        },
+        {
+          "info": {
+            "name": "find network requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/requests",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results, and number of results on each skipped page of results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Number of result pages to skip"
+              }
+            ]
+          },
+          "docs": "Get the list of pending network requests."
+        },
+        {
+          "info": {
+            "name": "accept network request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/requests/:connectionId/accept",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of the connection"
+              }
+            ]
+          },
+          "docs": "Accepts an existing connection request and marks the connection as accepted with the applicable reverse connection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

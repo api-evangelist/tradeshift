@@ -1,0 +1,57 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Document Validation Validators Save API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--document-validation-validators_save
+paths:
+  /rest/external/document-validation/validation/groups/{groupId}:
+    put:
+      tags:
+      - dx-category--document-validation-validators_save
+      summary: Save validator group
+      description: Creates or updates a validator group definition
+      operationId: put-rest-external-document-validation-validation-groups-groupid
+      parameters:
+      - name: groupId
+        in: path
+        description: UUID of the validator group to create or update
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        description: Validator group definition in JSON format
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              tenantId: cb555bf8-0949-4857-acf3-03aef59c00ec
+              documentType: Invoice
+              countryCompliance:
+                countryCode: RO
+              connectionProperty:
+                key: SupplierCategory
+                value: DO
+              validators:
+              - type: pattern
+                dispatchRestriction: Hard
+                context: /Invoice/cac:InvoiceLine
+                field: cac:OrderLineReference/cac:OrderReference/cbc:ID
+                pattern: ^\d+$
+                multiValueMatchBehavior: AnyMatch
+                message: ID must contain only numbers
+              - type: minLength
+                dispatchRestriction: Soft
+                field: /Invoice/cbc:ID
+                minLength: 5
+                message: ID must have minimum 5 characters
+        required: true
+      responses:
+        '200':
+          description: Successfully updated validator group definition
+        '201':
+          description: Created a new validator group definition

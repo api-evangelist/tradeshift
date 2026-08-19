@@ -1,0 +1,1575 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Documents Requisitions API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--documents-requisitions
+paths:
+  /rest/external/documents/requisitions/RequisitionLine:
+    post:
+      responses:
+        '201':
+          description: ''
+          content:
+            application/vnd.oasis.ubl+json:
+              schema:
+                example:
+                  _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+                  _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+                  _D: http://tradeshift.com/api/public/1.0
+                  Requisition:
+                  - ID:
+                    - IdentifierContent: bac9a69c-ec35-4a12-a455-9fb57c24dbfb
+                    Note:
+                    - TextContent: I want to request a purchase
+                    OrderDocumentReference:
+                    - ID:
+                      - IdentifierContent: order-01
+                    - ID:
+                      - IdentifierContent: order-02
+                    OriginatorCustomerParty:
+                    - Party:
+                      - Contact:
+                        - ID:
+                          - IdentificationSchemeUniformResourceIdentifier: http://tradeshift.com/api/1.0/userId
+                            IdentifierContent: UUID
+                          ElectronicMail:
+                          - TextContent: john@johnsson.se
+                    Delivery:
+                    - DeliveryLocation:
+                      - Address:
+                        - ID:
+                          - IdentificationSchemeIdentifier: GLN
+                            IdentificationSchemeAgencyIdentifier: '9'
+                            IdentifierContent: '1234567890123'
+                          Postbox:
+                          - TextContent: '123'
+                          StreetName:
+                          - TextContent: Rådhusgatan
+                          AdditionalStreetName:
+                          - TextContent: 2nd floor
+                          BuildingNumber:
+                          - TextContent: '5'
+                          Department:
+                          - TextContent: Purchasing departmen
+                          CityName:
+                          - TextContent: Stockholm
+                          PostalZone:
+                          - TextContent: '11000'
+                          Region:
+                          - TextContent: RegionX
+                          Country:
+                          - IdentificationCode:
+                            - CodeContent: SE
+                    AnticipatedMonetaryTotal:
+                    - PayableAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 2108
+                    RequisitionLine:
+                    - RequisitionPurposeCode:
+                      - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                        CodeContent: BLANKET_PURCHASE_ORDER
+                      SupplierSharedPrice:
+                      - PriceAmount:
+                        - AmountCurrencyIdentifier: USD
+                          AmountContent: 100
+                      LineItem:
+                      - ID:
+                        - IdentifierContent: '1'
+                        Note:
+                        - TextContent: Freetext note on line 1
+                        Quantity:
+                        - QuantityUnitCode: EA
+                          QuantityContent: 1
+                        LineExtensionAmount:
+                        - AmountCurrencyIdentifier: USD
+                          AmountContent: 1200
+                        AccountingCostCode:
+                        - CodeContent: ProjectID123
+                        Price:
+                        - PriceAmount:
+                          - AmountCurrencyIdentifier: USD
+                            AmountContent: 1200
+                          BaseQuantity:
+                          - QuantityUnitCode: EA
+                            QuantityContent: 1
+                          ValidityPeriod:
+                          - StartDate:
+                            - DateContent: '1977-05-15'
+                          - EndDate:
+                            - DateContent: '1977-05-15'
+                        Item:
+                        - Description:
+                          - TextContent: I want a brown sofa
+                          SellersItemIdentification:
+                          - IssuerParty:
+                            - PartyIdentification:
+                              - ID:
+                                - IdentifierContent: '444666777'
+                              PartyName:
+                              - Name:
+                                - TextContent: Sofastore
+                          CommodityClassification:
+                          - ItemClassificationCode:
+                            - CodeListIdentifier: UNSPSC
+                              CodeListAgencyIdentifier: '113'
+                              CodeContent: '56101502'
+                      DocumentReference:
+                      - ID:
+                        - IdentifierContent: order-01
+                    UBLVersionID:
+                    - IdentifierContent: '2.0'
+                    CustomizationID:
+                    - IdentifierContent: urn:tradeshift.com:ubl-2.0-customizations:2010-06
+                    ProfileID:
+                    - IdentificationSchemeIdentifier: CWA 16073:2010
+                      IdentificationSchemeAgencyIdentifier: '1'
+                      IdentificationSchemeAgencyNameText: CEN/ISSS WS/BII
+                      IdentifierContent: urn:www.cenbii.eu:profile:bii04:ver1.0
+                    CreationDate:
+                    - DateContent: '1977-05-15'
+                    CreationTime:
+                    - TimeContent: '1977-05-15'
+                    BuyerCustomerParty:
+                    - Party:
+                      - PartyIdentification:
+                        - ID:
+                          - IdentificationSchemeIdentifier: TS:ID
+                            IdentifierContent: 79eec713-cd84-4a4d-86b5-e35527ef3b3b
+                        PartyName:
+                        - Name:
+                          - TextContent: Zurich
+                        Contact:
+                        - ID:
+                          - IdentificationSchemeUniformResourceIdentifier: http://tradeshift.com/api/1.0/userId
+                            IdentifierContent: UUID
+                          ElectronicMail:
+                          - TextContent: pelle@johnsson.se
+      description: Create a new Requisition from the requisition template containing the provided line
+      operationId: post-rest-external-documents-requisitions-requisitionline
+      requestBody:
+        content:
+          application/vnd.oasis.ubl+json:
+            example:
+              _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+              _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+              _D: http://tradeshift.com/api/public/1.0
+              RequisitionLine:
+              - RequisitionPurposeCode:
+                - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                  CodeContent: BLANKET_PURCHASE_ORDER
+                SupplierSharedPrice:
+                - PriceAmount:
+                  - AmountCurrencyIdentifier: USD
+                    AmountContent: 100
+                LineItem:
+                - ID:
+                  - IdentifierContent: '1'
+                  Note:
+                  - TextContent: Freetext note on line 1
+                  Quantity:
+                  - QuantityUnitCode: EA
+                    QuantityContent: 1
+                  LineExtensionAmount:
+                  - AmountCurrencyIdentifier: USD
+                    AmountContent: 1200
+                  AccountingCostCode:
+                  - CodeContent: ProjectID123
+                  Price:
+                  - PriceAmount:
+                    - AmountCurrencyIdentifier: USD
+                      AmountContent: 1200
+                    BaseQuantity:
+                    - QuantityUnitCode: EA
+                      QuantityContent: 1
+                    ValidityPeriod:
+                    - StartDate:
+                      - DateContent: '1977-05-15'
+                    - EndDate:
+                      - DateContent: '1977-05-15'
+                  Item:
+                  - Description:
+                    - TextContent: I want a brown sofa
+                    SellersItemIdentification:
+                    - IssuerParty:
+                      - PartyIdentification:
+                        - ID:
+                          - IdentifierContent: '444666777'
+                        PartyName:
+                        - Name:
+                          - TextContent: Sofastore
+                    CommodityClassification:
+                    - ItemClassificationCode:
+                      - CodeListIdentifier: UNSPSC
+                        CodeListAgencyIdentifier: '113'
+                        CodeContent: '56101502'
+                DocumentReference:
+                - ID:
+                  - IdentifierContent: order-01
+            schema:
+              type: string
+        required: true
+      x-annotation-dx-category: documents-requisitions
+      summary: create requisition
+      tags:
+      - dx-category--documents-requisitions
+  /rest/external/documents/requisitions/RequisitionLine/template:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/vnd.oasis.ubl+json:
+              schema:
+                example:
+                  _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+                  _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+                  _D: http://tradeshift.com/api/public/1.0
+                  RequisitionLine:
+                  - RequisitionPurposeCode:
+                    - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                      CodeContent: BLANKET_PURCHASE_ORDER
+                    SupplierSharedPrice:
+                    - PriceAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 100
+                    LineItem:
+                    - ID:
+                      - IdentifierContent: '1'
+                      Note:
+                      - TextContent: Freetext note on line 1
+                      Quantity:
+                      - QuantityUnitCode: EA
+                        QuantityContent: 1
+                      LineExtensionAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 1200
+                      AccountingCostCode:
+                      - CodeContent: ProjectID123
+                      Price:
+                      - PriceAmount:
+                        - AmountCurrencyIdentifier: USD
+                          AmountContent: 1200
+                        BaseQuantity:
+                        - QuantityUnitCode: EA
+                          QuantityContent: 1
+                        ValidityPeriod:
+                        - StartDate:
+                          - DateContent: '1977-05-15'
+                        - EndDate:
+                          - DateContent: '1977-05-15'
+                      Item:
+                      - Description:
+                        - TextContent: I want a brown sofa
+                        SellersItemIdentification:
+                        - IssuerParty:
+                          - PartyIdentification:
+                            - ID:
+                              - IdentifierContent: '444666777'
+                            PartyName:
+                            - Name:
+                              - TextContent: Sofastore
+                        CommodityClassification:
+                        - ItemClassificationCode:
+                          - CodeListIdentifier: UNSPSC
+                            CodeListAgencyIdentifier: '113'
+                            CodeContent: '56101502'
+                    DocumentReference:
+                    - ID:
+                      - IdentifierContent: order-01
+      description: Get a requisition line template.
+      operationId: get-rest-external-documents-requisitions-requisitionline-template
+      x-annotation-dx-category: documents-requisitions
+      summary: get requisition line template
+      tags:
+      - dx-category--documents-requisitions
+  /rest/external/documents/requisitions/create/fromquote:
+    put:
+      responses:
+        '200':
+          description: UUID of the requisition document, that was created from given quote
+        '400':
+          description: Bad request error.
+          content:
+            application/json:
+              example:
+                ErrorCode: BadRequest
+                Message: Could not resolve type nonExistentType
+                ErrorDetail:
+                - Key: message
+                  Value: Could not resolve type nonExistentType
+                - Key: stacktrace
+                  Value: "com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\n\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\n\t"
+                ValidationError: []
+                RequestId: 2c941598-489c-4fac-8543-03cb921feaf7
+              schema:
+                title: Tradeshift Private API 1.0 - ResponseError
+                required:
+                - RequestId
+                - ErrorCode
+                - Message
+                type: object
+                additionalProperties: false
+                properties:
+                  RequestId:
+                    description: Unique identifier (UUID) of the request causing the error.
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    type: string
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      required:
+                      - Key
+                      - Value
+                      type: object
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ErrorCode:
+                          type: string
+                        SubErrorCode:
+                          type: string
+                        ErrorDetail:
+                          type: array
+                          items:
+                            required:
+                            - Key
+                            - Value
+                            type: object
+                            properties:
+                              Key:
+                                type: string
+                              Value:
+                                type: string
+                        Index:
+                          type: integer
+                        Message:
+                          type: string
+                      required:
+                      - ErrorCode
+                      - SubErrorCode
+                      - ErrorDetail
+                      - Index
+                      - Message
+      description: Create a new requisition from given quote and save it as a draft
+      operationId: put-rest-external-documents-requisitions-create-fromquote
+      requestBody:
+        content:
+          text/plain:
+            example: a7e78a06-81da-4221-8432-84a10012da7b
+            schema:
+              type: string
+        required: true
+      x-annotation-dx-category: documents-requisitions
+      summary: create requisition from quote
+      tags:
+      - dx-category--documents-requisitions
+  /rest/external/documents/requisitions/spawn:
+    post:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              example:
+                Documents:
+                - DocumentId: f3875dae-5fe3-4ed7-a16f-c4ccb9871645
+                  DocumentProfileId: tradeshift.order.1.0
+              schema:
+                type: object
+                properties:
+                  DocumentType:
+                    type: string
+                  UBLVersionID:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  CustomizationID:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  ProfileID:
+                    required:
+                    - value
+                    - schemeAgencyID
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                      schemeAgencyID:
+                        type: string
+                  ID:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  CreationDate:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  BuyerCustomerParty:
+                    required:
+                    - Party
+                    type: object
+                    properties:
+                      Party:
+                        required:
+                        - PartyIdentification
+                        - PartyName
+                        - PostalAddress
+                        - Contact
+                        type: object
+                        properties:
+                          PartyIdentification:
+                            type: array
+                            items:
+                              required:
+                              - ID
+                              type: object
+                              properties:
+                                ID:
+                                  required:
+                                  - value
+                                  - schemeID
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                    schemeID:
+                                      type: string
+                          PartyName:
+                            type: array
+                            items:
+                              required:
+                              - Name
+                              type: object
+                              properties:
+                                Name:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                          PostalAddress:
+                            required:
+                            - StreetName
+                            type: object
+                            properties:
+                              StreetName:
+                                required:
+                                - value
+                                type: object
+                                properties:
+                                  value:
+                                    type: string
+                          Contact:
+                            required:
+                            - ID
+                            - Name
+                            - ElectronicMail
+                            type: object
+                            properties:
+                              ID:
+                                required:
+                                - value
+                                - schemeURI
+                                type: object
+                                properties:
+                                  value:
+                                    type: string
+                                  schemeURI:
+                                    type: string
+                              Name:
+                                required:
+                                - value
+                                type: object
+                                properties:
+                                  value:
+                                    type: string
+                              ElectronicMail:
+                                required:
+                                - value
+                                type: object
+                                properties:
+                                  value:
+                                    type: string
+                  OriginatorCustomerParty:
+                    required:
+                    - Party
+                    type: object
+                    properties:
+                      Party:
+                        type: object
+                  Delivery:
+                    type: array
+                    items:
+                      required:
+                      - DeliveryAddress
+                      type: object
+                      properties:
+                        DeliveryAddress:
+                          required:
+                          - StreetName
+                          - BuildingName
+                          - CityName
+                          - PostalZone
+                          - CountrySubentity
+                          - Country
+                          type: object
+                          properties:
+                            StreetName:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            BuildingName:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            CityName:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            PostalZone:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            CountrySubentity:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            Country:
+                              required:
+                              - IdentificationCode
+                              type: object
+                              properties:
+                                IdentificationCode:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                        DeliveryParty:
+                          required:
+                          - PartyName
+                          - PartyTaxScheme
+                          type: object
+                          properties:
+                            PartyIdentification:
+                              required:
+                              - ID
+                              type: object
+                              properties:
+                                ID:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                            PartyName:
+                              required:
+                              - Name
+                              type: object
+                              properties:
+                                Name:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                            PartyTaxScheme:
+                              required:
+                              - Id
+                              type: object
+                              properties:
+                                TaxScheme:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                        Despatch:
+                          type: object
+                          properties:
+                            DespatchAddress:
+                              required:
+                              - StreetName
+                              - BuildingName
+                              - CityName
+                              - PostalZone
+                              - CountrySubentity
+                              - Country
+                              type: object
+                              properties:
+                                StreetName:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                BuildingName:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                CityName:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                PostalZone:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                CountrySubentity:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                Country:
+                                  required:
+                                  - IdentificationCode
+                                  type: object
+                                  properties:
+                                    IdentificationCode:
+                                      required:
+                                      - value
+                                      type: object
+                                      properties:
+                                        value:
+                                          type: string
+                            DespatchParty:
+                              required:
+                              - PartyName
+                              - PartyTaxScheme
+                              type: object
+                              properties:
+                                PartyIdentification:
+                                  required:
+                                  - ID
+                                  type: object
+                                  properties:
+                                    ID:
+                                      required:
+                                      - value
+                                      type: object
+                                      properties:
+                                        value:
+                                          type: string
+                                PartyName:
+                                  required:
+                                  - Name
+                                  type: object
+                                  properties:
+                                    Name:
+                                      required:
+                                      - value
+                                      type: object
+                                      properties:
+                                        value:
+                                          type: string
+                                PartyTaxScheme:
+                                  required:
+                                  - Id
+                                  type: object
+                                  properties:
+                                    TaxScheme:
+                                      required:
+                                      - value
+                                      type: object
+                                      properties:
+                                        value:
+                                          type: string
+                  AnticipatedMonetaryTotal:
+                    required:
+                    - PayableAmount
+                    type: object
+                    properties:
+                      PayableAmount:
+                        required:
+                        - value
+                        - currencyID
+                        type: object
+                        properties:
+                          value:
+                            type: integer
+                          currencyID:
+                            type: string
+                required:
+                - DocumentType
+                - Delivery
+        '423':
+          description: The document is in locked state and order has been spawned from the given requisition.
+      description: Spawn purchase orders based upon the received spawning command
+      operationId: post-rest-external-documents-requisitions-spawn
+      requestBody:
+        content:
+          application/json:
+            example:
+              DocumentId: 2b962986-7788-409e-b0ed-dfff61193b19
+              Orders:
+              - isSpawned: false
+                DocumentId: 65ef21fc-99e0-44b1-9c6e-214514d6b161
+                Lines:
+                - value: '1'
+                DocumentProfile: tradeshift.order.1.0
+            schema:
+              required:
+              - DocumentId
+              type: object
+              additionalProperties: true
+              properties:
+                DocumentId:
+                  pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                  description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                  type: string
+                Orders:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      DocumentId:
+                        pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                        description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                        type: string
+                      isSpawned:
+                        type: boolean
+                      DocumentProfile:
+                        type: string
+                      Lines:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                          required:
+                          - value
+                    required:
+                    - DocumentId
+                    - isSpawned
+                    - DocumentProfile
+                    - Lines
+        required: true
+      x-annotation-dx-category: documents-requisitions
+      summary: spawn requisition
+      tags:
+      - dx-category--documents-requisitions
+  /rest/external/documents/requisitions/template:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/vnd.oasis.ubl+json:
+              schema:
+                example:
+                  _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+                  _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+                  _D: http://tradeshift.com/api/public/1.0
+                  Requisition:
+                  - ID:
+                    - IdentifierContent: bac9a69c-ec35-4a12-a455-9fb57c24dbfb
+                    Note:
+                    - TextContent: I want to request a purchase
+                    OrderDocumentReference:
+                    - ID:
+                      - IdentifierContent: order-01
+                    - ID:
+                      - IdentifierContent: order-02
+                    OriginatorCustomerParty:
+                    - Party:
+                      - Contact:
+                        - ID:
+                          - IdentificationSchemeUniformResourceIdentifier: http://tradeshift.com/api/1.0/userId
+                            IdentifierContent: UUID
+                          ElectronicMail:
+                          - TextContent: john@johnsson.se
+                    Delivery:
+                    - DeliveryLocation:
+                      - Address:
+                        - ID:
+                          - IdentificationSchemeIdentifier: GLN
+                            IdentificationSchemeAgencyIdentifier: '9'
+                            IdentifierContent: '1234567890123'
+                          Postbox:
+                          - TextContent: '123'
+                          StreetName:
+                          - TextContent: Rådhusgatan
+                          AdditionalStreetName:
+                          - TextContent: 2nd floor
+                          BuildingNumber:
+                          - TextContent: '5'
+                          Department:
+                          - TextContent: Purchasing departmen
+                          CityName:
+                          - TextContent: Stockholm
+                          PostalZone:
+                          - TextContent: '11000'
+                          Region:
+                          - TextContent: RegionX
+                          Country:
+                          - IdentificationCode:
+                            - CodeContent: SE
+                    AnticipatedMonetaryTotal:
+                    - PayableAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 2108
+                    RequisitionLine:
+                    - RequisitionPurposeCode:
+                      - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                        CodeContent: BLANKET_PURCHASE_ORDER
+                      SupplierSharedPrice:
+                      - PriceAmount:
+                        - AmountCurrencyIdentifier: USD
+                          AmountContent: 100
+                      LineItem:
+                      - ID:
+                        - IdentifierContent: '1'
+                        Note:
+                        - TextContent: Freetext note on line 1
+                        Quantity:
+                        - QuantityUnitCode: EA
+                          QuantityContent: 1
+                        LineExtensionAmount:
+                        - AmountCurrencyIdentifier: USD
+                          AmountContent: 1200
+                        AccountingCostCode:
+                        - CodeContent: ProjectID123
+                        Price:
+                        - PriceAmount:
+                          - AmountCurrencyIdentifier: USD
+                            AmountContent: 1200
+                          BaseQuantity:
+                          - QuantityUnitCode: EA
+                            QuantityContent: 1
+                          ValidityPeriod:
+                          - StartDate:
+                            - DateContent: '1977-05-15'
+                          - EndDate:
+                            - DateContent: '1977-05-15'
+                        Item:
+                        - Description:
+                          - TextContent: I want a brown sofa
+                          SellersItemIdentification:
+                          - IssuerParty:
+                            - PartyIdentification:
+                              - ID:
+                                - IdentifierContent: '444666777'
+                              PartyName:
+                              - Name:
+                                - TextContent: Sofastore
+                          CommodityClassification:
+                          - ItemClassificationCode:
+                            - CodeListIdentifier: UNSPSC
+                              CodeListAgencyIdentifier: '113'
+                              CodeContent: '56101502'
+                      DocumentReference:
+                      - ID:
+                        - IdentifierContent: order-01
+                    UBLVersionID:
+                    - IdentifierContent: '2.0'
+                    CustomizationID:
+                    - IdentifierContent: urn:tradeshift.com:ubl-2.0-customizations:2010-06
+                    ProfileID:
+                    - IdentificationSchemeIdentifier: CWA 16073:2010
+                      IdentificationSchemeAgencyIdentifier: '1'
+                      IdentificationSchemeAgencyNameText: CEN/ISSS WS/BII
+                      IdentifierContent: urn:www.cenbii.eu:profile:bii04:ver1.0
+                    CreationDate:
+                    - DateContent: '1977-05-15'
+                    CreationTime:
+                    - TimeContent: '1977-05-15'
+                    BuyerCustomerParty:
+                    - Party:
+                      - PartyIdentification:
+                        - ID:
+                          - IdentificationSchemeIdentifier: TS:ID
+                            IdentifierContent: 79eec713-cd84-4a4d-86b5-e35527ef3b3b
+                        PartyName:
+                        - Name:
+                          - TextContent: Zurich
+                        Contact:
+                        - ID:
+                          - IdentificationSchemeUniformResourceIdentifier: http://tradeshift.com/api/1.0/userId
+                            IdentifierContent: UUID
+                          ElectronicMail:
+                          - TextContent: pelle@johnsson.se
+      description: Get a requisition template.
+      operationId: get-rest-external-documents-requisitions-template
+      x-annotation-dx-category: documents-requisitions
+      summary: requisition by template
+      tags:
+      - dx-category--documents-requisitions
+  /rest/external/documents/requisitions/{documentId}/RequisitionLine:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    post:
+      responses:
+        '201':
+          description: ''
+          content:
+            application/vnd.oasis.ubl+json:
+              schema:
+                example:
+                  _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+                  _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+                  _D: http://tradeshift.com/api/public/1.0
+                  Requisition:
+                  - ID:
+                    - IdentifierContent: bac9a69c-ec35-4a12-a455-9fb57c24dbfb
+                    Note:
+                    - TextContent: I want to request a purchase
+                    OrderDocumentReference:
+                    - ID:
+                      - IdentifierContent: order-01
+                    - ID:
+                      - IdentifierContent: order-02
+                    OriginatorCustomerParty:
+                    - Party:
+                      - Contact:
+                        - ID:
+                          - IdentificationSchemeUniformResourceIdentifier: http://tradeshift.com/api/1.0/userId
+                            IdentifierContent: UUID
+                          ElectronicMail:
+                          - TextContent: john@johnsson.se
+                    Delivery:
+                    - DeliveryLocation:
+                      - Address:
+                        - ID:
+                          - IdentificationSchemeIdentifier: GLN
+                            IdentificationSchemeAgencyIdentifier: '9'
+                            IdentifierContent: '1234567890123'
+                          Postbox:
+                          - TextContent: '123'
+                          StreetName:
+                          - TextContent: Rådhusgatan
+                          AdditionalStreetName:
+                          - TextContent: 2nd floor
+                          BuildingNumber:
+                          - TextContent: '5'
+                          Department:
+                          - TextContent: Purchasing departmen
+                          CityName:
+                          - TextContent: Stockholm
+                          PostalZone:
+                          - TextContent: '11000'
+                          Region:
+                          - TextContent: RegionX
+                          Country:
+                          - IdentificationCode:
+                            - CodeContent: SE
+                    AnticipatedMonetaryTotal:
+                    - PayableAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 2108
+                    RequisitionLine:
+                    - RequisitionPurposeCode:
+                      - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                        CodeContent: BLANKET_PURCHASE_ORDER
+                      SupplierSharedPrice:
+                      - PriceAmount:
+                        - AmountCurrencyIdentifier: USD
+                          AmountContent: 100
+                      LineItem:
+                      - ID:
+                        - IdentifierContent: '1'
+                        Note:
+                        - TextContent: Freetext note on line 1
+                        Quantity:
+                        - QuantityUnitCode: EA
+                          QuantityContent: 1
+                        LineExtensionAmount:
+                        - AmountCurrencyIdentifier: USD
+                          AmountContent: 1200
+                        AccountingCostCode:
+                        - CodeContent: ProjectID123
+                        Price:
+                        - PriceAmount:
+                          - AmountCurrencyIdentifier: USD
+                            AmountContent: 1200
+                          BaseQuantity:
+                          - QuantityUnitCode: EA
+                            QuantityContent: 1
+                          ValidityPeriod:
+                          - StartDate:
+                            - DateContent: '1977-05-15'
+                          - EndDate:
+                            - DateContent: '1977-05-15'
+                        Item:
+                        - Description:
+                          - TextContent: I want a brown sofa
+                          SellersItemIdentification:
+                          - IssuerParty:
+                            - PartyIdentification:
+                              - ID:
+                                - IdentifierContent: '444666777'
+                              PartyName:
+                              - Name:
+                                - TextContent: Sofastore
+                          CommodityClassification:
+                          - ItemClassificationCode:
+                            - CodeListIdentifier: UNSPSC
+                              CodeListAgencyIdentifier: '113'
+                              CodeContent: '56101502'
+                      DocumentReference:
+                      - ID:
+                        - IdentifierContent: order-01
+                    UBLVersionID:
+                    - IdentifierContent: '2.0'
+                    CustomizationID:
+                    - IdentifierContent: urn:tradeshift.com:ubl-2.0-customizations:2010-06
+                    ProfileID:
+                    - IdentificationSchemeIdentifier: CWA 16073:2010
+                      IdentificationSchemeAgencyIdentifier: '1'
+                      IdentificationSchemeAgencyNameText: CEN/ISSS WS/BII
+                      IdentifierContent: urn:www.cenbii.eu:profile:bii04:ver1.0
+                    CreationDate:
+                    - DateContent: '1977-05-15'
+                    CreationTime:
+                    - TimeContent: '1977-05-15'
+                    BuyerCustomerParty:
+                    - Party:
+                      - PartyIdentification:
+                        - ID:
+                          - IdentificationSchemeIdentifier: TS:ID
+                            IdentifierContent: 79eec713-cd84-4a4d-86b5-e35527ef3b3b
+                        PartyName:
+                        - Name:
+                          - TextContent: Zurich
+                        Contact:
+                        - ID:
+                          - IdentificationSchemeUniformResourceIdentifier: http://tradeshift.com/api/1.0/userId
+                            IdentifierContent: UUID
+                          ElectronicMail:
+                          - TextContent: pelle@johnsson.se
+      description: 'Create a new Requisition from the requisition template containing the provided line and using the provided id
+
+        '
+      operationId: post-rest-external-documents-requisitions-documentid-requisitionline
+      requestBody:
+        content:
+          application/vnd.oasis.ubl+json:
+            example:
+              _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+              _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+              _D: http://tradeshift.com/api/public/1.0
+              RequisitionLine:
+              - RequisitionPurposeCode:
+                - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                  CodeContent: BLANKET_PURCHASE_ORDER
+                SupplierSharedPrice:
+                - PriceAmount:
+                  - AmountCurrencyIdentifier: USD
+                    AmountContent: 100
+                LineItem:
+                - ID:
+                  - IdentifierContent: '1'
+                  Note:
+                  - TextContent: Freetext note on line 1
+                  Quantity:
+                  - QuantityUnitCode: EA
+                    QuantityContent: 1
+                  LineExtensionAmount:
+                  - AmountCurrencyIdentifier: USD
+                    AmountContent: 1200
+                  AccountingCostCode:
+                  - CodeContent: ProjectID123
+                  Price:
+                  - PriceAmount:
+                    - AmountCurrencyIdentifier: USD
+                      AmountContent: 1200
+                    BaseQuantity:
+                    - QuantityUnitCode: EA
+                      QuantityContent: 1
+                    ValidityPeriod:
+                    - StartDate:
+                      - DateContent: '1977-05-15'
+                    - EndDate:
+                      - DateContent: '1977-05-15'
+                  Item:
+                  - Description:
+                    - TextContent: I want a brown sofa
+                    SellersItemIdentification:
+                    - IssuerParty:
+                      - PartyIdentification:
+                        - ID:
+                          - IdentifierContent: '444666777'
+                        PartyName:
+                        - Name:
+                          - TextContent: Sofastore
+                    CommodityClassification:
+                    - ItemClassificationCode:
+                      - CodeListIdentifier: UNSPSC
+                        CodeListAgencyIdentifier: '113'
+                        CodeContent: '56101502'
+                DocumentReference:
+                - ID:
+                  - IdentifierContent: order-01
+            schema:
+              type: string
+        required: true
+      x-annotation-dx-category: documents-requisitions
+      summary: create requisition line
+      tags:
+      - dx-category--documents-requisitions
+  /rest/external/documents/requisitions/{documentId}/RequisitionLines:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    post:
+      responses:
+        '201':
+          description: ''
+          content:
+            application/vnd.oasis.ubl+json:
+              schema:
+                example:
+                  _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+                  _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+                  _D: http://tradeshift.com/api/public/1.0
+                  RequisitionLine:
+                  - RequisitionPurposeCode:
+                    - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                      CodeContent: BLANKET_PURCHASE_ORDER
+                    SupplierSharedPrice:
+                    - PriceAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 100
+                    LineItem:
+                    - ID:
+                      - IdentifierContent: '1'
+                      Note:
+                      - TextContent: Freetext note on line 1
+                      Quantity:
+                      - QuantityUnitCode: EA
+                        QuantityContent: 1
+                      LineExtensionAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 1200
+                      AccountingCostCode:
+                      - CodeContent: ProjectID123
+                      Price:
+                      - PriceAmount:
+                        - AmountCurrencyIdentifier: USD
+                          AmountContent: 1200
+                        BaseQuantity:
+                        - QuantityUnitCode: EA
+                          QuantityContent: 1
+                        ValidityPeriod:
+                        - StartDate:
+                          - DateContent: '1977-05-15'
+                        - EndDate:
+                          - DateContent: '1977-05-15'
+                      Item:
+                      - Description:
+                        - TextContent: I want a brown sofa
+                        SellersItemIdentification:
+                        - IssuerParty:
+                          - PartyIdentification:
+                            - ID:
+                              - IdentifierContent: '444666777'
+                            PartyName:
+                            - Name:
+                              - TextContent: Sofastore
+                        CommodityClassification:
+                        - ItemClassificationCode:
+                          - CodeListIdentifier: UNSPSC
+                            CodeListAgencyIdentifier: '113'
+                            CodeContent: '56101502'
+                    DocumentReference:
+                    - ID:
+                      - IdentifierContent: order-01
+        '404':
+          description: ''
+      description: Add a line to the Requisition
+      operationId: post-rest-external-documents-requisitions-documentid-requisitionlines
+      requestBody:
+        content:
+          application/vnd.oasis.ubl+json:
+            example:
+              _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+              _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+              _D: http://tradeshift.com/api/public/1.0
+              RequisitionLine:
+              - RequisitionPurposeCode:
+                - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                  CodeContent: BLANKET_PURCHASE_ORDER
+                SupplierSharedPrice:
+                - PriceAmount:
+                  - AmountCurrencyIdentifier: USD
+                    AmountContent: 100
+                LineItem:
+                - ID:
+                  - IdentifierContent: '1'
+                  Note:
+                  - TextContent: Freetext note on line 1
+                  Quantity:
+                  - QuantityUnitCode: EA
+                    QuantityContent: 1
+                  LineExtensionAmount:
+                  - AmountCurrencyIdentifier: USD
+                    AmountContent: 1200
+                  AccountingCostCode:
+                  - CodeContent: ProjectID123
+                  Price:
+                  - PriceAmount:
+                    - AmountCurrencyIdentifier: USD
+                      AmountContent: 1200
+                    BaseQuantity:
+                    - QuantityUnitCode: EA
+                      QuantityContent: 1
+                    ValidityPeriod:
+                    - StartDate:
+                      - DateContent: '1977-05-15'
+                    - EndDate:
+                      - DateContent: '1977-05-15'
+                  Item:
+                  - Description:
+                    - TextContent: I want a brown sofa
+                    SellersItemIdentification:
+                    - IssuerParty:
+                      - PartyIdentification:
+                        - ID:
+                          - IdentifierContent: '444666777'
+                        PartyName:
+                        - Name:
+                          - TextContent: Sofastore
+                    CommodityClassification:
+                    - ItemClassificationCode:
+                      - CodeListIdentifier: UNSPSC
+                        CodeListAgencyIdentifier: '113'
+                        CodeContent: '56101502'
+                DocumentReference:
+                - ID:
+                  - IdentifierContent: order-01
+            schema:
+              type: string
+        required: true
+      x-annotation-dx-category: documents-requisitions
+      summary: update requisition lines
+      tags:
+      - dx-category--documents-requisitions
+  /rest/external/documents/requisitions/{documentId}/RequisitionLines/{lineId}:
+    parameters:
+    - name: lineId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Line UUID identifier
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/vnd.oasis.ubl+json:
+              schema:
+                example:
+                  _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+                  _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+                  _D: http://tradeshift.com/api/public/1.0
+                  RequisitionLine:
+                  - RequisitionPurposeCode:
+                    - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                      CodeContent: BLANKET_PURCHASE_ORDER
+                    SupplierSharedPrice:
+                    - PriceAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 100
+                    LineItem:
+                    - ID:
+                      - IdentifierContent: '1'
+                      Note:
+                      - TextContent: Freetext note on line 1
+                      Quantity:
+                      - QuantityUnitCode: EA
+                        QuantityContent: 1
+                      LineExtensionAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 1200
+                      AccountingCostCode:
+                      - CodeContent: ProjectID123
+                      Price:
+                      - PriceAmount:
+                        - AmountCurrencyIdentifier: USD
+                          AmountContent: 1200
+                        BaseQuantity:
+                        - QuantityUnitCode: EA
+                          QuantityContent: 1
+                        ValidityPeriod:
+                        - StartDate:
+                          - DateContent: '1977-05-15'
+                        - EndDate:
+                          - DateContent: '1977-05-15'
+                      Item:
+                      - Description:
+                        - TextContent: I want a brown sofa
+                        SellersItemIdentification:
+                        - IssuerParty:
+                          - PartyIdentification:
+                            - ID:
+                              - IdentifierContent: '444666777'
+                            PartyName:
+                            - Name:
+                              - TextContent: Sofastore
+                        CommodityClassification:
+                        - ItemClassificationCode:
+                          - CodeListIdentifier: UNSPSC
+                            CodeListAgencyIdentifier: '113'
+                            CodeContent: '56101502'
+                    DocumentReference:
+                    - ID:
+                      - IdentifierContent: order-01
+        '404':
+          description: ''
+      description: Retrieve a specific Line from a Requisition
+      operationId: get-rest-external-documents-requisitions-documentid-requisitionlines-lineid
+      x-annotation-dx-category: documents-requisitions
+      summary: get requisition line
+      tags:
+      - dx-category--documents-requisitions
+    put:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/vnd.oasis.ubl+json:
+              schema:
+                example:
+                  _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+                  _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+                  _D: http://tradeshift.com/api/public/1.0
+                  RequisitionLine:
+                  - RequisitionPurposeCode:
+                    - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                      CodeContent: BLANKET_PURCHASE_ORDER
+                    SupplierSharedPrice:
+                    - PriceAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 100
+                    LineItem:
+                    - ID:
+                      - IdentifierContent: '1'
+                      Note:
+                      - TextContent: Freetext note on line 1
+                      Quantity:
+                      - QuantityUnitCode: EA
+                        QuantityContent: 1
+                      LineExtensionAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 1200
+                      AccountingCostCode:
+                      - CodeContent: ProjectID123
+                      Price:
+                      - PriceAmount:
+                        - AmountCurrencyIdentifier: USD
+                          AmountContent: 1200
+                        BaseQuantity:
+                        - QuantityUnitCode: EA
+                          QuantityContent: 1
+                        ValidityPeriod:
+                        - StartDate:
+                          - DateContent: '1977-05-15'
+                        - EndDate:
+                          - DateContent: '1977-05-15'
+                      Item:
+                      - Description:
+                        - TextContent: I want a brown sofa
+                        SellersItemIdentification:
+                        - IssuerParty:
+                          - PartyIdentification:
+                            - ID:
+                              - IdentifierContent: '444666777'
+                            PartyName:
+                            - Name:
+                              - TextContent: Sofastore
+                        CommodityClassification:
+                        - ItemClassificationCode:
+                          - CodeListIdentifier: UNSPSC
+                            CodeListAgencyIdentifier: '113'
+                            CodeContent: '56101502'
+                    DocumentReference:
+                    - ID:
+                      - IdentifierContent: order-01
+        '404':
+          description: ''
+      description: Update a specific Line of the Requisition
+      operationId: put-rest-external-documents-requisitions-documentid-requisitionlines-lineid
+      requestBody:
+        content:
+          application/vnd.oasis.ubl+json:
+            example:
+              _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+              _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+              _D: http://tradeshift.com/api/public/1.0
+              RequisitionLine:
+              - RequisitionPurposeCode:
+                - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                  CodeContent: BLANKET_PURCHASE_ORDER
+                SupplierSharedPrice:
+                - PriceAmount:
+                  - AmountCurrencyIdentifier: USD
+                    AmountContent: 100
+                LineItem:
+                - ID:
+                  - IdentifierContent: '1'
+                  Note:
+                  - TextContent: Freetext note on line 1
+                  Quantity:
+                  - QuantityUnitCode: EA
+                    QuantityContent: 1
+                  LineExtensionAmount:
+                  - AmountCurrencyIdentifier: USD
+                    AmountContent: 1200
+                  AccountingCostCode:
+                  - CodeContent: ProjectID123
+                  Price:
+                  - PriceAmount:
+                    - AmountCurrencyIdentifier: USD
+                      AmountContent: 1200
+                    BaseQuantity:
+                    - QuantityUnitCode: EA
+                      QuantityContent: 1
+                    ValidityPeriod:
+                    - StartDate:
+                      - DateContent: '1977-05-15'
+                    - EndDate:
+                      - DateContent: '1977-05-15'
+                  Item:
+                  - Description:
+                    - TextContent: I want a brown sofa
+                    SellersItemIdentification:
+                    - IssuerParty:
+                      - PartyIdentification:
+                        - ID:
+                          - IdentifierContent: '444666777'
+                        PartyName:
+                        - Name:
+                          - TextContent: Sofastore
+                    CommodityClassification:
+                    - ItemClassificationCode:
+                      - CodeListIdentifier: UNSPSC
+                        CodeListAgencyIdentifier: '113'
+                        CodeContent: '56101502'
+                DocumentReference:
+                - ID:
+                  - IdentifierContent: order-01
+            schema:
+              type: string
+        required: true
+      x-annotation-dx-category: documents-requisitions
+      summary: update requisition line
+      tags:
+      - dx-category--documents-requisitions
+    delete:
+      responses:
+        '204':
+          description: ''
+        '404':
+          description: ''
+      description: Remove a specific Line of the Requisition
+      operationId: delete-rest-external-documents-requisitions-documentid-requisitionlines-lineid
+      x-annotation-dx-category: documents-requisitions
+      summary: remove requisition line
+      tags:
+      - dx-category--documents-requisitions
+  /rest/external/documents/requisitions/{documentId}/state:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    put:
+      responses:
+        '204':
+          description: ''
+      description: Set the state for the requisition document
+      operationId: put-rest-external-documents-requisitions-documentid-state
+      requestBody:
+        content:
+          application/json:
+            example:
+              NewState: REJECTED
+            schema:
+              required:
+              - NewState
+              type: object
+              properties:
+                NewState:
+                  type: string
+        required: true
+      x-annotation-dx-category: documents-requisitions
+      summary: update requisition state
+      tags:
+      - dx-category--documents-requisitions

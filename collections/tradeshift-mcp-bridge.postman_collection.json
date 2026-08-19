@@ -1,0 +1,2864 @@
+{
+  "item": [
+    {
+      "id": "82ea19ab-e71f-4334-b7a5-fba52aa71c54",
+      "name": "Auth Config",
+      "request": {
+        "name": "Auth Config",
+        "description": {
+          "content": "Public endpoint returning Okta configuration for the frontend SPA.\nNo authentication required — these are public OIDC public-client (PKCE)\nvalues that are necessarily exposed in the browser to begin the login flow.\nThe redirect URI is intentionally NOT returned: the SPA derives it from\nits own origin, so it never needs to be served to unauthenticated callers.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "auth",
+            "config"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "a3f0519f-7ec0-4ee4-a6ef-732e52245446",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "auth",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e6384b9f-5cb7-420c-a422-ac73fd36f1dd",
+      "name": "Admin Me",
+      "request": {
+        "name": "Admin Me",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "me"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "3b208060-893a-46b7-89fd-551d1e957c8b",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "17b6a094-2db3-4281-91ab-d0e25e0a7e93",
+      "name": "List Keys",
+      "request": {
+        "name": "List Keys",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "keys"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "f6bef992-d53e-4ffd-8aff-e87ee0991e87",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "f40e41a2-a7cd-4fd6-98c3-d244ffdebb3b",
+      "name": "Create Key",
+      "request": {
+        "name": "Create Key",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "keys"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"<string>\",\n  \"agent_name\": \"<string>\",\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"rate_limit\": \"<integer>\",\n  \"tenant_id\": \"<string>\",\n  \"ts_consumer_key\": \"<string>\",\n  \"ts_consumer_secret\": \"<string>\",\n  \"ts_access_token\": \"<string>\",\n  \"ts_token_secret\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "7be01211-c64a-48b3-b79b-08c0f81e9f7b",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"agent_name\": \"<string>\",\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"rate_limit\": \"<integer>\",\n  \"tenant_id\": \"<string>\",\n  \"ts_consumer_key\": \"<string>\",\n  \"ts_consumer_secret\": \"<string>\",\n  \"ts_access_token\": \"<string>\",\n  \"ts_token_secret\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "a3b8250a-5276-4b47-9108-4a780d457d5c",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"agent_name\": \"<string>\",\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"rate_limit\": \"<integer>\",\n  \"tenant_id\": \"<string>\",\n  \"ts_consumer_key\": \"<string>\",\n  \"ts_consumer_secret\": \"<string>\",\n  \"ts_access_token\": \"<string>\",\n  \"ts_token_secret\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "3c620348-876c-4394-93a6-cfde062f04a4",
+      "name": "Update Key",
+      "request": {
+        "name": "Update Key",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "keys",
+            ":key_id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "key_id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "PATCH",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "58f7fd94-d7dc-4b23-9d2e-b5fb214fb776",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "keys",
+                ":key_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "8460d842-0867-496f-b895-868b97721ac4",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "keys",
+                ":key_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "1dac7bf9-fcf3-4932-9965-eaf2ec675474",
+      "name": "Deactivate Key",
+      "request": {
+        "name": "Deactivate Key",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "keys",
+            ":key_id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "key_id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "966a9702-881a-4b18-ba7d-ee22985b9fcb",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "keys",
+                ":key_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "1548e32b-abe1-40e9-8e79-41ff88f36a33",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "keys",
+                ":key_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "cfcd2fd6-9d90-4cec-a5a0-4d2b42fff463",
+      "name": "List Logs",
+      "request": {
+        "name": "List Logs",
+        "description": {},
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "logs"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "30"
+            },
+            {
+              "disabled": false,
+              "key": "offset",
+              "value": "0"
+            },
+            {
+              "disabled": false,
+              "key": "key_name",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "tool_name",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "tenant_id",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "auth_type",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "date_from",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "date_to",
+              "value": "<string>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "41fffca7-62b4-4946-b843-3b00664a1fbd",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "30"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "key_name",
+                  "value": "<string>"
+                },
+                {
+                  "key": "tool_name",
+                  "value": "<string>"
+                },
+                {
+                  "key": "tenant_id",
+                  "value": "<string>"
+                },
+                {
+                  "key": "auth_type",
+                  "value": "<string>"
+                },
+                {
+                  "key": "date_from",
+                  "value": "<string>"
+                },
+                {
+                  "key": "date_to",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "5adef831-55a5-42e9-8620-e95ea88ebdb4",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "30"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "key_name",
+                  "value": "<string>"
+                },
+                {
+                  "key": "tool_name",
+                  "value": "<string>"
+                },
+                {
+                  "key": "tenant_id",
+                  "value": "<string>"
+                },
+                {
+                  "key": "auth_type",
+                  "value": "<string>"
+                },
+                {
+                  "key": "date_from",
+                  "value": "<string>"
+                },
+                {
+                  "key": "date_to",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "6987fa73-68aa-4266-9bda-4fc3f0edcecd",
+      "name": "List Admin Action Logs",
+      "request": {
+        "name": "List Admin Action Logs",
+        "description": {
+          "content": "List admin action audit logs (who changed what on API keys and OAuth clients).",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "action-logs"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "50"
+            },
+            {
+              "disabled": false,
+              "key": "offset",
+              "value": "0"
+            },
+            {
+              "disabled": false,
+              "key": "user_email",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "action",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "resource_type",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "date_from",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "date_to",
+              "value": "<string>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "84b8a430-f04e-48d3-91b9-939d857b808f",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "action-logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "user_email",
+                  "value": "<string>"
+                },
+                {
+                  "key": "action",
+                  "value": "<string>"
+                },
+                {
+                  "key": "resource_type",
+                  "value": "<string>"
+                },
+                {
+                  "key": "date_from",
+                  "value": "<string>"
+                },
+                {
+                  "key": "date_to",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "cdad82ca-5bc7-4fc9-8fb3-a11645c9fa8d",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "action-logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "user_email",
+                  "value": "<string>"
+                },
+                {
+                  "key": "action",
+                  "value": "<string>"
+                },
+                {
+                  "key": "resource_type",
+                  "value": "<string>"
+                },
+                {
+                  "key": "date_from",
+                  "value": "<string>"
+                },
+                {
+                  "key": "date_to",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "0f355887-a0a2-4cdf-a6a6-8f670a60fe08",
+      "name": "List Oauth Clients",
+      "request": {
+        "name": "List Oauth Clients",
+        "description": {
+          "content": "List all OAuth clients.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "oauth-clients"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "9ba74799-473d-4b95-8742-7ead27f76883",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "oauth-clients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "77edbe2a-521c-4575-a3c9-ae6640bd789e",
+      "name": "Create Oauth Client",
+      "request": {
+        "name": "Create Oauth Client",
+        "description": {
+          "content": "Create new OAuth client.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "oauth-clients"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"<string>\",\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"token_lifetime\": \"<integer>\",\n  \"tenant_id\": \"<string>\",\n  \"ts_consumer_key\": \"<string>\",\n  \"ts_consumer_secret\": \"<string>\",\n  \"ts_access_token\": \"<string>\",\n  \"ts_token_secret\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "069071d9-c98c-48c6-bf3a-585c0e1d8b73",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "oauth-clients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"token_lifetime\": \"<integer>\",\n  \"tenant_id\": \"<string>\",\n  \"ts_consumer_key\": \"<string>\",\n  \"ts_consumer_secret\": \"<string>\",\n  \"ts_access_token\": \"<string>\",\n  \"ts_token_secret\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "f1e981e9-d86d-4703-8188-7285a4ab8020",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "oauth-clients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"token_lifetime\": \"<integer>\",\n  \"tenant_id\": \"<string>\",\n  \"ts_consumer_key\": \"<string>\",\n  \"ts_consumer_secret\": \"<string>\",\n  \"ts_access_token\": \"<string>\",\n  \"ts_token_secret\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "4fbc9719-295f-4f83-80a5-6c152fc55609",
+      "name": "Update Oauth Client",
+      "request": {
+        "name": "Update Oauth Client",
+        "description": {
+          "content": "Update an OAuth client's configuration.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "oauth-clients",
+            ":client_id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "client_id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "PATCH",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"token_lifetime\": \"<integer>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "19d6b0d3-da53-43af-9ed2-6976e7ab3983",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "oauth-clients",
+                ":client_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "client_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"token_lifetime\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "5486df76-e8ef-4a06-8fff-a4e17c44c16b",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "oauth-clients",
+                ":client_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "client_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"allowed_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"token_lifetime\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "64e0d64a-f3c2-4e2c-8636-e5a200bde203",
+      "name": "Deactivate Oauth Client",
+      "request": {
+        "name": "Deactivate Oauth Client",
+        "description": {
+          "content": "Deactivate an OAuth client.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "oauth-clients",
+            ":client_id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "client_id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7f11f0cd-8f13-4fd6-9d66-0bb7d3d69dfb",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "oauth-clients",
+                ":client_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "client_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "c58a7086-ec2a-4629-afe7-79e4e2ac72a3",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "oauth-clients",
+                ":client_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "client_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "547d0b68-2e2d-49a0-8a77-e59b3ab3bc83",
+      "name": "Rotate Tenant Credentials",
+      "request": {
+        "name": "Rotate Tenant Credentials",
+        "description": {
+          "content": "Rotate OAuth1 credentials for a tenant.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "tenant-credentials",
+            ":tenant_id",
+            "rotate"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "tenant_id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ts_consumer_key\": \"<string>\",\n  \"ts_consumer_secret\": \"<string>\",\n  \"ts_access_token\": \"<string>\",\n  \"ts_token_secret\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "55c6b5b6-cd45-40c6-8cbe-3a3d33cf0d9f",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "tenant-credentials",
+                ":tenant_id",
+                "rotate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ts_consumer_key\": \"<string>\",\n  \"ts_consumer_secret\": \"<string>\",\n  \"ts_access_token\": \"<string>\",\n  \"ts_token_secret\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "15fc6ae3-ba72-445a-9b4e-16dd21d1c70b",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "tenant-credentials",
+                ":tenant_id",
+                "rotate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tenant_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ts_consumer_key\": \"<string>\",\n  \"ts_consumer_secret\": \"<string>\",\n  \"ts_access_token\": \"<string>\",\n  \"ts_token_secret\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "6ebd43c0-144b-457c-b1d9-d03011bf3ffd",
+      "name": "Validate Credentials",
+      "request": {
+        "name": "Validate Credentials",
+        "description": {
+          "content": "Validate OAuth1 credentials without storing them.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "tenant-credentials",
+            "validate"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tenant_id\": \"<string>\",\n  \"consumer_key\": \"<string>\",\n  \"consumer_secret\": \"<string>\",\n  \"access_token\": \"<string>\",\n  \"token_secret\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "a9db0478-572b-4424-87b9-33ac44f0c322",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "tenant-credentials",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenant_id\": \"<string>\",\n  \"consumer_key\": \"<string>\",\n  \"consumer_secret\": \"<string>\",\n  \"access_token\": \"<string>\",\n  \"token_secret\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "dd15590a-5db6-4e48-a626-d0590310303a",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "tenant-credentials",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenant_id\": \"<string>\",\n  \"consumer_key\": \"<string>\",\n  \"consumer_secret\": \"<string>\",\n  \"access_token\": \"<string>\",\n  \"token_secret\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5b752024-c3dd-445c-be5b-3ad477f1b9c8",
+      "name": "Liveness",
+      "request": {
+        "name": "Liveness",
+        "description": {
+          "content": "Liveness probe - checks if the application is running.\nReturns 200 if the app is alive, regardless of database connectivity.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "health",
+            "live"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "f1201985-993a-442e-b430-29514761957a",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "health",
+                "live"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e36d634b-af98-4b66-aaf9-a3f274da93a6",
+      "name": "Readiness",
+      "request": {
+        "name": "Readiness",
+        "description": {
+          "content": "Readiness probe - checks if the application is ready to serve traffic.\nValidates database connectivity and critical dependencies.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "health",
+            "ready"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "83b55ae3-fdc9-4451-bef5-cab29e6dd046",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "health",
+                "ready"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "84e37053-ae65-4315-9a6a-5b7ac874282b",
+      "name": "List All Tools",
+      "request": {
+        "name": "List All Tools",
+        "description": {
+          "content": "List all tools across allowed domains.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "tools",
+            "list"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "key",
+              "value": "X-API-Key"
+            },
+            {
+              "key": "value",
+              "value": "{{apiKey}}"
+            },
+            {
+              "key": "in",
+              "value": "header"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "aee6c5f3-8638-4914-878b-89d4aeef2cbf",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "tools",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "X-API-Key",
+                "value": "<API Key>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "456f98ec-adfd-42a0-938a-154bfa293020",
+      "name": "List Category Tools",
+      "request": {
+        "name": "List Category Tools",
+        "description": {},
+        "url": {
+          "path": [
+            ":category",
+            "tools",
+            "list"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "category",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "key",
+              "value": "X-API-Key"
+            },
+            {
+              "key": "value",
+              "value": "{{apiKey}}"
+            },
+            {
+              "key": "in",
+              "value": "header"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "4b2f21ed-7394-49c1-8a03-99c482a0e0af",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":category",
+                "tools",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "category",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "X-API-Key",
+                "value": "<API Key>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "2e3e5e06-9026-400a-bc2f-1bcd2688694d",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":category",
+                "tools",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "category",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "X-API-Key",
+                "value": "<API Key>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9cc93538-e765-4456-96d4-af6c15c591e9",
+      "name": "Execute Category Tool",
+      "request": {
+        "name": "Execute Category Tool",
+        "description": {},
+        "url": {
+          "path": [
+            ":category",
+            "tools",
+            "execute"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "category",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "key",
+              "value": "X-API-Key"
+            },
+            {
+              "key": "value",
+              "value": "{{apiKey}}"
+            },
+            {
+              "key": "in",
+              "value": "header"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tool\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": true,\n    \"key_1\": \"string\",\n    \"key_2\": true\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "b393564a-cc37-444b-b2ca-f73ebec26606",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":category",
+                "tools",
+                "execute"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "category",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "X-API-Key",
+                "value": "<API Key>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tool\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": \"string\",\n    \"key_1\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "4863f4d4-366b-49fb-9720-807baaf5d91b",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":category",
+                "tools",
+                "execute"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "category",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "X-API-Key",
+                "value": "<API Key>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tool\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": \"string\",\n    \"key_1\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "8e153751-95fe-468e-b80d-88347eb3c465",
+      "name": "Create Session",
+      "request": {
+        "name": "Create Session",
+        "description": {
+          "content": "Create a UI session. Validates an Okta token (or dev-mode flag) and sets a session cookie.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "session"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"token\": \"<string>\",\n  \"dev_mode\": \"<boolean>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "8845393a-224f-40cb-b6a9-acf5fd6bc16d",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"dev_mode\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "71801ea6-1a57-4da5-9b89-07258dd0aec2",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"dev_mode\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d37745ea-355b-4d47-a535-0fc3a55b9991",
+      "name": "Destroy Session",
+      "request": {
+        "name": "Destroy Session",
+        "description": {
+          "content": "Clear the UI session cookie.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "api",
+            "admin",
+            "session"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "0d2888a4-b3a9-4c7e-ac7e-31913c791c0f",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "api",
+                "admin",
+                "session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d64afc8b-81a7-48a5-a3ed-2e4def19df38",
+      "name": "Serve Spa",
+      "request": {
+        "name": "Serve Spa",
+        "description": {},
+        "url": {
+          "path": [
+            ":full_path"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "full_path",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "0b0237ed-d6af-4630-b771-0206296fc8a2",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":full_path"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "full_path",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "dd13dff3-42fa-44c0-ad0d-6d7ba9ebd02e",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":full_path"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "full_path",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f7abe5e5-7a63-4973-89f8-f005d3c0c36e",
+    "name": "MCP HTTP Bridge & Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Accounts Branches API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--accounts-branches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get branches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/branches"
+          },
+          "docs": "Get listing of branches for the current company account, if any."
+        },
+        {
+          "info": {
+            "name": "create branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/branches/new",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a company account as the child of the current account using the provided data in the body of the PUT call. The branch will automatically be activated and no activation email will be sent to any branch users attached to the create request. The identifier(s) must not already exist.\n"
+        },
+        {
+          "info": {
+            "name": "get branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/branches/:companyId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of company account."
+              }
+            ]
+          },
+          "docs": "Get specific branch for the current parent"
+        },
+        {
+          "info": {
+            "name": "get parent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/parent"
+          },
+          "docs": "Returns information about the parent account of the current account (the parent is the account of which the current account is a branch)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

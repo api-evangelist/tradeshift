@@ -1,0 +1,477 @@
+{
+  "item": [
+    {
+      "id": "c76c6059-6a4c-41cd-a004-b71e07e093fd",
+      "name": "dx-category--accounts-branches",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5aa7401e-84d7-47de-81ab-a053c9359683",
+          "name": "get branches",
+          "request": {
+            "name": "get branches",
+            "description": {
+              "content": "Get listing of branches for the current company account, if any.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "branches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "559053b7-a9fd-49b9-b5b7-fec4acc2c25b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "branches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed76fe8e-2d99-4062-aa7c-e999b309a2d2",
+          "name": "create branch",
+          "request": {
+            "name": "create branch",
+            "description": {
+              "content": "Creates a company account as the child of the current account using the provided data in the body of the PUT call. The branch will automatically be activated and no activation email will be sent to any branch users attached to the create request. The identifier(s) must not already exist.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "branches",
+                "new"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"User\": {\n    \"Id\": \"<string>\"\n  },\n  \"CompanyAccount\": {\n    \"Company\": \"<object>\"\n  },\n  \"ParentCompanyAccountId\": \"<string>\",\n  \"From\": \"<string>\",\n  \"SendActivationEmail\": \"<boolean>\",\n  \"Properties\": {\n    \"termsandconditions\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95814794-1096-4f73-b3d0-78034d616d8b",
+              "name": "Created a new company account and optionally user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "branches",
+                    "new"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"User\": {\n    \"Id\": \"0daab548-3990-41ed-b0f4-eb197e693df1\",\n    \"Person\": {\n      \"Email\": \"steve.armstrong@example.org\"\n    },\n    \"ReturnUrl\": \"https://go.tradeshift.com\",\n    \"Language\": \"en-us\",\n    \"TimeZone\": \"GMT\",\n    \"Visible\": true\n  },\n  \"CompanyAccount\": {\n    \"Company\": {\n      \"CompanyName\": \"Example Inc.\",\n      \"Country\": \"US\",\n      \"Identifier\": [\n        {\n          \"scheme\": \"TS:ID\",\n          \"value\": \"f54bca78-3ac9-4843-ae4a-f6808c0ea477\"\n        }\n      ]\n    }\n  },\n  \"ParentCompanyAccountId\": \"e3e1e302-ea34-416c-8236-248295ef7a8c\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63001490-add8-4110-8906-76c94457344f",
+              "name": "The tenant identifier proposed does already exist on the platform and no tenant nor user was created.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "branches",
+                    "new"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"User\": {\n    \"Id\": \"0daab548-3990-41ed-b0f4-eb197e693df1\",\n    \"Person\": {\n      \"Email\": \"steve.armstrong@example.org\"\n    },\n    \"ReturnUrl\": \"https://go.tradeshift.com\",\n    \"Language\": \"en-us\",\n    \"TimeZone\": \"GMT\",\n    \"Visible\": true\n  },\n  \"CompanyAccount\": {\n    \"Company\": {\n      \"CompanyName\": \"Example Inc.\",\n      \"Country\": \"US\",\n      \"Identifier\": [\n        {\n          \"scheme\": \"TS:ID\",\n          \"value\": \"f54bca78-3ac9-4843-ae4a-f6808c0ea477\"\n        }\n      ]\n    }\n  },\n  \"ParentCompanyAccountId\": \"e3e1e302-ea34-416c-8236-248295ef7a8c\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28f4a419-f7b7-4b0e-b30b-67f69cc2afe9",
+          "name": "get branch",
+          "request": {
+            "name": "get branch",
+            "description": {
+              "content": "Get specific branch for the current parent",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "branches",
+                ":companyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) UUID identifier of company account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c82b93b8-98ee-474a-8f0b-6894dcad5baf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "branches",
+                    ":companyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) UUID identifier of company account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc378532-092e-4552-bb85-b1f7bb8efef8",
+              "name": "Specific branch isn't found or isn't a branch of the current parent.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "branches",
+                    ":companyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) UUID identifier of company account."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d3ee6e6-10ee-4aec-af7a-742c2d49254f",
+          "name": "get parent",
+          "request": {
+            "name": "get parent",
+            "description": {
+              "content": "Returns information about the parent account of the current account (the parent is the account of which the current account is a branch).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "parent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f147689-20e9-4f2b-9835-f139691796a1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "parent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "423d5883-c4b7-49d2-be6f-8805d99a5adb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "parent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "89344f6c-21de-4b5f-b5fa-9df9619fa735",
+    "name": "Tradeshift External Dx Category Accounts Branches API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,718 @@
+{
+  "item": [
+    {
+      "id": "8172fb78-e339-4fea-bb26-101dbdf4c622",
+      "name": "Document Validation",
+      "description": {
+        "content": "Manages document validators",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c5f101a7-8f49-46fa-bbce-70ad6f0d8041",
+          "name": "Validate document",
+          "request": {
+            "name": "Validate document",
+            "description": {
+              "content": "Validate a document by testing matching validators, optionally specifying a category to filter the validator groups that are applied. Only the validator groups for the provided document type are run.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "document-validation",
+                "validation",
+                "validate-document"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "senderTenantId",
+                  "value": "<uuid>",
+                  "description": "(Required) UUID of the user company (tenant) that is sending the document. This can be different than the 'tenantId' header value, for example when checking on behalf of a branch. The sender tenant id is used to obtain the connection properties of the connection between the receiver and sender, or other sender related settings."
+                },
+                {
+                  "disabled": false,
+                  "key": "receiverTenantId",
+                  "value": "<uuid>",
+                  "description": "(Required) UUID of the company (tenant) that will receive the document. The receiver tenant is used to check the validators of the receiver when the receiver company has configured validation for other companies sending documents (for example 'sellers' sending invoices to a 'buyer'), to obtain the connection properties of the connection between the receiver and sender, to obtain the country compliance validator groups of the receiver if enabled, or other receiver related settings."
+                },
+                {
+                  "disabled": false,
+                  "key": "documentId",
+                  "value": "<uuid>",
+                  "description": "Optional document id to validate, if provided the document content body is ignored."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>\n<element>(string)</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2d0658b-6d8a-4fe5-b6e0-92c2f7462c41",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "validate-document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "senderTenantId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "receiverTenantId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "documentId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b330a7f3-746d-4843-a502-d7e40db84840",
+          "name": "Gets a validator group",
+          "request": {
+            "name": "Gets a validator group",
+            "description": {
+              "content": "Gets a validator group definition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "document-validation",
+                "validation",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) UUID of the validator group to get"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62ae04e1-abc3-4207-a910-0d9763cda522",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) UUID of the validator group to get"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dfa8c6b7-db0a-4ab5-b18c-cafb54a40cdc",
+          "name": "Save validator group",
+          "request": {
+            "name": "Save validator group",
+            "description": {
+              "content": "Creates or updates a validator group definition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "document-validation",
+                "validation",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) UUID of the validator group to create or update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2add8553-6868-4716-a259-969526f03426",
+              "name": "Successfully updated validator group definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) UUID of the validator group to create or update"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tenantId\": \"cb555bf8-0949-4857-acf3-03aef59c00ec\",\n  \"documentType\": \"Invoice\",\n  \"countryCompliance\": {\n    \"countryCode\": \"RO\"\n  },\n  \"connectionProperty\": {\n    \"key\": \"SupplierCategory\",\n    \"value\": \"DO\"\n  },\n  \"validators\": [\n    {\n      \"type\": \"pattern\",\n      \"dispatchRestriction\": \"Hard\",\n      \"context\": \"/Invoice/cac:InvoiceLine\",\n      \"field\": \"cac:OrderLineReference/cac:OrderReference/cbc:ID\",\n      \"pattern\": \"^\\\\d+$\",\n      \"multiValueMatchBehavior\": \"AnyMatch\",\n      \"message\": \"ID must contain only numbers\"\n    },\n    {\n      \"type\": \"minLength\",\n      \"dispatchRestriction\": \"Soft\",\n      \"field\": \"/Invoice/cbc:ID\",\n      \"minLength\": 5,\n      \"message\": \"ID must have minimum 5 characters\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "59dabbbc-a67b-4307-8b73-c4df3cd2437e",
+              "name": "Created a new validator group definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) UUID of the validator group to create or update"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tenantId\": \"cb555bf8-0949-4857-acf3-03aef59c00ec\",\n  \"documentType\": \"Invoice\",\n  \"countryCompliance\": {\n    \"countryCode\": \"RO\"\n  },\n  \"connectionProperty\": {\n    \"key\": \"SupplierCategory\",\n    \"value\": \"DO\"\n  },\n  \"validators\": [\n    {\n      \"type\": \"pattern\",\n      \"dispatchRestriction\": \"Hard\",\n      \"context\": \"/Invoice/cac:InvoiceLine\",\n      \"field\": \"cac:OrderLineReference/cac:OrderReference/cbc:ID\",\n      \"pattern\": \"^\\\\d+$\",\n      \"multiValueMatchBehavior\": \"AnyMatch\",\n      \"message\": \"ID must contain only numbers\"\n    },\n    {\n      \"type\": \"minLength\",\n      \"dispatchRestriction\": \"Soft\",\n      \"field\": \"/Invoice/cbc:ID\",\n      \"minLength\": 5,\n      \"message\": \"ID must have minimum 5 characters\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0f06174-5fa2-49ef-a27f-93975b871bdb",
+          "name": "Delete validator group",
+          "request": {
+            "name": "Delete validator group",
+            "description": {
+              "content": "Permanently deletes a validator group definition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "document-validation",
+                "validation",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) UUID of the validator group to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a29caf64-cea8-4e5c-a58b-b21c6b9c72a6",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) UUID of the validator group to delete"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37707de9-6a31-464f-8464-26a62e2e46bf",
+          "name": "Get change history",
+          "request": {
+            "name": "Get change history",
+            "description": {
+              "content": "Gets the validator group change history, including current definition.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "document-validation",
+                "validation",
+                "groups",
+                ":groupId",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) UUID of the validator group to get"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbd6bd3b-3bd3-43c7-abdb-af85110ae36c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "groups",
+                    ":groupId",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) UUID of the validator group to get"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"value\": \"reference #/components/schemas/GroupDefHistory not found in the OpenAPI spec\"\n  },\n  {\n    \"value\": \"reference #/components/schemas/GroupDefHistory not found in the OpenAPI spec\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87227ff3-a6e8-4412-9506-d9eefb8eab4f",
+          "name": "List Validator Groups",
+          "request": {
+            "name": "List Validator Groups",
+            "description": {
+              "content": "List validator groups for the tenant, optionally filtering by document type or connection property",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "document-validation",
+                "validation",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "senderTenantId",
+                  "value": "<uuid>",
+                  "description": "UUID of the user company (tenant) that is sending the document. This can be different than the 'tenantId' header value, for example when checking on behalf of a branch. The sender tenant id is used to obtain the connection properties of the connection between the receiver and sender, or other sender related settings."
+                },
+                {
+                  "disabled": false,
+                  "key": "receiverTenantId",
+                  "value": "<uuid>",
+                  "description": "(Required) UUID of the company (tenant) that will receive the document. The receiver tenant is used to check the validators of the receiver when the receiver company has configured validation for other companies sending documents (for example 'sellers' sending invoices to a 'buyer'), to obtain the connection properties of the connection between the receiver and sender, to obtain the country compliance validator groups of the receiver if enabled, or other receiver related settings."
+                },
+                {
+                  "disabled": false,
+                  "key": "documentType",
+                  "value": "<string>",
+                  "description": "Optional document type filter. If not provided, validators with any document type will be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "description": "Optional country code used to list by specific country compliance rules. If not provided, it is determined from the country of the receiver (receiverTenantId) if enabled on receiver.To list all country compliance validator groups use the special value 'ALL'.To list all the groups of the receiver but without the country compliance ones, even if defined and enabled, use the special value 'NONE'."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d27c3ba-c80e-4797-8d1b-b45e21c2d46a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "document-validation",
+                    "validation",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "senderTenantId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "receiverTenantId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "documentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"value\": \"reference #/components/schemas/GroupDefWithId not found in the OpenAPI spec\"\n  },\n  {\n    \"value\": \"reference #/components/schemas/GroupDefWithId not found in the OpenAPI spec\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a5fb1142-7f31-4e60-9ec8-f0ca293036bd",
+    "name": "Tradeshift External Document Validation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manages document validators",
+      "type": "text/plain"
+    }
+  }
+}

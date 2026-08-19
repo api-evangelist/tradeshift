@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Document Validation Validate Document API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--document-validation-validate_document",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate document",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/document-validation/validation/validate-document",
+            "params": [
+              {
+                "name": "senderTenantId",
+                "value": "",
+                "type": "query",
+                "description": "UUID of the user company (tenant) that is sending the document. This can be different than the 'tenantId' header value, for example when checking on behalf of a branch. The sender tenant id is used to obtain the connection properties of the connection between the receiver and sender, or other sender related settings."
+              },
+              {
+                "name": "receiverTenantId",
+                "value": "",
+                "type": "query",
+                "description": "UUID of the company (tenant) that will receive the document. The receiver tenant is used to check the validators of the receiver when the receiver company has configured validation for other companies sending documents (for example 'sellers' sending invoices to a 'buyer'), to obtain the connection properties of the connection between the receiver and sender, to obtain the country compliance validator groups of the receiver if enabled, or other receiver related settings."
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query",
+                "description": "Optional document id to validate, if provided the document content body is ignored."
+              }
+            ]
+          },
+          "docs": "Validate a document by testing matching validators, optionally specifying a category to filter the validator groups that are applied. Only the validator groups for the provided document type are run."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

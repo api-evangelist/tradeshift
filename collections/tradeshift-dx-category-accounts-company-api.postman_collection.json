@@ -1,0 +1,1038 @@
+{
+  "item": [
+    {
+      "id": "98b4443e-d866-45fe-8a80-eeed0fea2c1d",
+      "name": "dx-category--accounts-company",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "96701baf-c532-4a75-94db-f8840d5670ee",
+          "name": "Check authorization",
+          "request": {
+            "name": "Check authorization",
+            "description": {
+              "content": "Check if an user identified by the tenantId and actorId is able to access the objectId of the type typeId.\nThe operation provided should exist through the list of allowed operations for the role assigned to the user.\nThe result takes into consideration also the DocumentAccess settings, if the app is enabled.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "accesslist",
+                "operation",
+                ":operationId",
+                "type",
+                ":typeId",
+                "object",
+                ":objectId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "operationId",
+                  "description": "(Required) Operation id to be checked"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "typeId",
+                  "description": "(Required) Object's type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectId",
+                  "description": "(Required) Object id to be checked. \nCould be any type of objects Tradeshift supports (e.g. documentId, dispatchId, conversationId etc.)\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d9e5966-096e-4434-940a-3315ee9d03e8",
+              "name": "User has access to the provided details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "accesslist",
+                    "operation",
+                    ":operationId",
+                    "type",
+                    ":typeId",
+                    "object",
+                    ":objectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "operationId",
+                      "description": "(Required) Operation id to be checked"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "typeId",
+                      "description": "(Required) Object's type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectId",
+                      "description": "(Required) Object id to be checked. \nCould be any type of objects Tradeshift supports (e.g. documentId, dispatchId, conversationId etc.)\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7254737-f2bd-4939-ac29-5f3a7ca65d15",
+              "name": "User do not have access to the provided details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "accesslist",
+                    "operation",
+                    ":operationId",
+                    "type",
+                    ":typeId",
+                    "object",
+                    ":objectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "operationId",
+                      "description": "(Required) Operation id to be checked"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "typeId",
+                      "description": "(Required) Object's type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectId",
+                      "description": "(Required) Object id to be checked. \nCould be any type of objects Tradeshift supports (e.g. documentId, dispatchId, conversationId etc.)\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": \"Unauthorized\",\n  \"Message\": \"The user was not authorized to perform the operation&#x3a; 37617bf8&#x2d;4e04&#x2d;41f2&#x2d;bd27&#x2d;9ad9153419ee&#x2f;Operation&#x28;id&#x3d;15&#x2c; name&#x3d;ADMIN&#x5f;ID&#x29; on 35dea17e&#x2d;fdd7&#x2d;46d9&#x2d;88c8&#x2d;c5c632ebf92b\",\n  \"ErrorDetail\": [\n    {\n      \"Key\": \"userUuid\",\n      \"Value\": \"37617bf8-4e04-41f2-bd27-9ad9153419ee\"\n    },\n    {\n      \"Key\": \"securityGroupUuid\",\n      \"Value\": \"35dea17e-fdd7-46d9-88c8-c5c632ebf92b\"\n    },\n    {\n      \"Key\": \"operationId\",\n      \"Value\": \"15\"\n    },\n    {\n      \"Key\": \"operationName\",\n      \"Value\": \"ADMIN_ID\"\n    },\n    {\n      \"Key\": \"stacktrace\",\n      \"Value\": \"\"\n    }\n  ],\n  \"ValidationError\": [],\n  \"RequestId\": \"92463020-1aa1-48c6-b87f-ad8b97d0599e\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d20c78f0-5c44-4e22-8a75-11011e1543f7",
+          "name": "get account info",
+          "request": {
+            "name": "get account info",
+            "description": {
+              "content": "Get information about the company account that is currently being accessed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c570e824-fa9e-4f2f-840b-1980f6b0e523",
+              "name": "Details about the current company account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CompanyName\": \"ELTEC Inc. mkxezemhuirw\",\n  \"Country\": \"US\",\n  \"CompanyAccountId\": \"16e61501-2e6a-42ae-9bb3-67d1c1468056\",\n  \"State\": \"ACTIVE\",\n  \"Identifiers\": [\n    {\n      \"scheme\": \"TS:VAT\",\n      \"value\": \"eltec.mkxezemhuirw\"\n    }\n  ],\n  \"AddressLines\": [],\n  \"RegistrationAddressLines\": [],\n  \"AcceptingDocumentProfiles\": [],\n  \"LookingFor\": [],\n  \"Offering\": [],\n  \"PublicProfile\": false,\n  \"NonuserInvoicing\": false,\n  \"AutoAcceptConnections\": false,\n  \"Restricted\": true,\n  \"Created\": \"2017-12-12T14:07:43.945Z\",\n  \"Modified\": \"2017-12-12T14:07:44.342Z\",\n  \"AccountType\": \"FREE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d61ed465-14b0-43b3-9cff-155ea633f9c9",
+          "name": "update account info",
+          "request": {
+            "name": "update account info",
+            "description": {
+              "content": "Update company information for the current company account. Properties will not be changed using this resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ba71d992-1ad3-44e6-b177-913abe347d0d",
+              "name": "Update company information for the current company account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<CompanyAccountInfo xmlns=\"http://tradeshift.com/api/public/1.0\">\n    <CompanyName>${companyName}</CompanyName>\n    <Country>US</Country>\n    <CompanyAccountId>813a3b75-a926-4e82-bd2b-a283b3b4bc6a</CompanyAccountId>\n    <State>ACTIVE</State>\n    <Identifiers>\n        <Identifier scheme=\"TS:ID\">96d47166-0abd-41c7-aae3-661ab060cb6b</Identifier>\n    </Identifiers>\n    <AddressLines>\n        <AddressLine scheme=\"buildingnumber\">1</AddressLine>\n        <AddressLine scheme=\"city\">San Francisco</AddressLine>\n        <AddressLine scheme=\"state\">CA</AddressLine>\n        <AddressLine scheme=\"street\">test8 street</AddressLine>\n        <AddressLine scheme=\"zip\">94116</AddressLine>\n    </AddressLines>\n    <RegistrationAddressLines>\n        <RegistrationAddressLine scheme=\"buildingnumber\">Registration Building</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"city\">Registration City</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"state\">Registration State</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"street\">Registration Street</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"zip\">Registration Zip</RegistrationAddressLine>\n    </RegistrationAddressLines>\n    <AcceptingDocumentProfiles/>\n    <LookingFor/>\n    <Offering/>\n    <PublicProfile>false</PublicProfile>\n    <NonuserInvoicing>false</NonuserInvoicing>\n    <AutoAcceptConnections>false</AutoAcceptConnections>\n    <Restricted>true</Restricted>\n    <Created>2017-02-27T16:15:31.059-08:00</Created>\n    <Modified>2017-03-05T18:36:48.811-08:00</Modified>\n    <AccountType>FREE</AccountType>\n</CompanyAccountInfo>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c99c51f-ef76-427a-afac-1adcdd8ca651",
+              "name": "Invalid company name, company account id or identifier",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<CompanyAccountInfo xmlns=\"http://tradeshift.com/api/public/1.0\">\n    <CompanyName>${companyName}</CompanyName>\n    <Country>US</Country>\n    <CompanyAccountId>813a3b75-a926-4e82-bd2b-a283b3b4bc6a</CompanyAccountId>\n    <State>ACTIVE</State>\n    <Identifiers>\n        <Identifier scheme=\"TS:ID\">96d47166-0abd-41c7-aae3-661ab060cb6b</Identifier>\n    </Identifiers>\n    <AddressLines>\n        <AddressLine scheme=\"buildingnumber\">1</AddressLine>\n        <AddressLine scheme=\"city\">San Francisco</AddressLine>\n        <AddressLine scheme=\"state\">CA</AddressLine>\n        <AddressLine scheme=\"street\">test8 street</AddressLine>\n        <AddressLine scheme=\"zip\">94116</AddressLine>\n    </AddressLines>\n    <RegistrationAddressLines>\n        <RegistrationAddressLine scheme=\"buildingnumber\">Registration Building</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"city\">Registration City</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"state\">Registration State</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"street\">Registration Street</RegistrationAddressLine>\n        <RegistrationAddressLine scheme=\"zip\">Registration Zip</RegistrationAddressLine>\n    </RegistrationAddressLines>\n    <AcceptingDocumentProfiles/>\n    <LookingFor/>\n    <Offering/>\n    <PublicProfile>false</PublicProfile>\n    <NonuserInvoicing>false</NonuserInvoicing>\n    <AutoAcceptConnections>false</AutoAcceptConnections>\n    <Restricted>true</Restricted>\n    <Created>2017-02-27T16:15:31.059-08:00</Created>\n    <Modified>2017-03-05T18:36:48.811-08:00</Modified>\n    <AccountType>FREE</AccountType>\n</CompanyAccountInfo>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5748232-b8ca-420b-9670-830400428d81",
+          "name": "get account info",
+          "request": {
+            "name": "get account info",
+            "description": {
+              "content": "Returns information about the company account that is currently being accessed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b32ac0dc-1509-4875-96a1-a443a27d543a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d39242c8-865c-4b13-96e0-cf0eaa048287",
+          "name": "update account info",
+          "request": {
+            "name": "update account info",
+            "description": {
+              "content": "Update company information for the current company account. Properties will not be changed using this resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59867723-dc8f-4bc6-bba3-7cbaa33b9f3a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CompanyName\": \"str\",\n  \"Country\": \"str\",\n  \"CompanyAccountId\": \"58a5b768-08be-48ec-a06d-6874fde8cf46\",\n  \"State\": \"CREATED\",\n  \"Url\": \"str\",\n  \"Description\": \"str\",\n  \"Identifiers\": [],\n  \"AddressLines\": [],\n  \"AcceptingDocumentProfiles\": [],\n  \"Properties\": [],\n  \"LookingFor\": null,\n  \"Offering\": null,\n  \"LogoURL\": \"str\",\n  \"BackgroundURL\": \"str\",\n  \"PublicProfile\": \"false\",\n  \"NonuserInvoicing\": \"false\",\n  \"AutoAcceptConnections\": \"false\",\n  \"Restricted\": \"false\",\n  \"NumConnections\": \"0\",\n  \"Industry\": \"ACADEMIA\",\n  \"OtherIndustry\": \"str\",\n  \"OwnershipType\": \"SOLE\",\n  \"Size\": \"ONE\",\n  \"Created\": \"2013-07-23T07:35:16.000Z\",\n  \"Modified\": \"2013-07-23T07:35:16.000Z\",\n  \"Phone\": \"str\",\n  \"Fax\": \"str\",\n  \"ShortUrl\": \"str\",\n  \"AccountType\": \"FREE\",\n  \"LastActive\": \"2013-07-23T07:35:16.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7eafa529-de76-4bdd-a720-4619944722da",
+          "name": "get company account",
+          "request": {
+            "name": "get company account",
+            "description": {
+              "content": "Return account associated with companyId.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                ":companyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) UUID identifier of company account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "174f9824-2bb1-4eec-b681-5b3eb47b0374",
+              "name": "The account was found and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    ":companyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) UUID identifier of company account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f01f0ad-48bb-45e7-8f5d-1c7fc21ed30d",
+              "name": "The account queried for did not exist. Empty response will be returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    ":companyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) UUID identifier of company account."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dfad4c92-00f4-48e5-8ab9-b936c5f3ef7b",
+          "name": "put company account",
+          "request": {
+            "name": "put company account",
+            "description": {
+              "content": "Update company information for the specified company account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "account",
+                ":companyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) UUID identifier of company account."
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd43d25e-a656-4532-bba1-9cc4c044bfeb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "account",
+                    ":companyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) UUID identifier of company account."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4547cb2f-4825-44ef-aba0-1bf0cd6d68f0",
+          "name": "get company identifiers",
+          "request": {
+            "name": "get company identifiers",
+            "description": {
+              "content": "Return identifiers associated with the account with this companyId.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "companies",
+                ":companyAccountId",
+                "identifiers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyAccountId",
+                  "description": "(Required) UUID identifier of company (tenant)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2c4527b-b14f-467d-abd7-2c96db411adb",
+              "name": "Get the company identifiers for the requested tenant",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "companies",
+                    ":companyAccountId",
+                    "identifiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyAccountId",
+                      "description": "(Required) UUID identifier of company (tenant)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"scheme\": \"DE:MWST\",\n    \"value\": \"812529243\",\n    \"label\": \"Umsatzsteuer-Identifikationsnummer\",\n    \"partyTaxScheme\": false,\n    \"toBePrinted\": false\n  },\n  {\n    \"scheme\": \"DK:CVR\",\n    \"value\": \"27659721\",\n    \"label\": \"\",\n    \"partyTaxScheme\": false,\n    \"toBePrinted\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b40b4447-c88d-44cb-9a2e-07508603b41d",
+          "name": "replace company identifiers",
+          "request": {
+            "name": "replace company identifiers",
+            "description": {
+              "content": "Update company identifiers for the specified company account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "companies",
+                ":companyAccountId",
+                "identifiers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyAccountId",
+                  "description": "(Required) UUID identifier of company (tenant)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"scheme\": \"<string>\",\n    \"value\": \"<string>\",\n    \"label\": \"<string>\",\n    \"partyTaxScheme\": \"<boolean>\",\n    \"toBePrinted\": \"<boolean>\"\n  },\n  {\n    \"scheme\": \"<string>\",\n    \"value\": \"<string>\",\n    \"label\": \"<string>\",\n    \"partyTaxScheme\": \"<boolean>\",\n    \"toBePrinted\": \"<boolean>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6f135d96-9a39-4fe1-b24a-2b71f183eea4",
+              "name": "The company identifiers were replaced",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "companies",
+                    ":companyAccountId",
+                    "identifiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyAccountId",
+                      "description": "(Required) UUID identifier of company (tenant)."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"scheme\": \"DE:MWST\",\n    \"value\": \"812529243\",\n    \"label\": \"Umsatzsteuer-Identifikationsnummer\",\n    \"partyTaxScheme\": false,\n    \"toBePrinted\": false\n  },\n  {\n    \"scheme\": \"DK:CVR\",\n    \"value\": \"27659721\",\n    \"label\": \"\",\n    \"partyTaxScheme\": false,\n    \"toBePrinted\": false\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b2410ef-64bb-4f2b-9706-f6b1f613d70b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "companies",
+                    ":companyAccountId",
+                    "identifiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyAccountId",
+                      "description": "(Required) UUID identifier of company (tenant)."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"scheme\": \"DE:MWST\",\n    \"value\": \"812529243\",\n    \"label\": \"Umsatzsteuer-Identifikationsnummer\",\n    \"partyTaxScheme\": false,\n    \"toBePrinted\": false\n  },\n  {\n    \"scheme\": \"DK:CVR\",\n    \"value\": \"27659721\",\n    \"label\": \"\",\n    \"partyTaxScheme\": false,\n    \"toBePrinted\": false\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5fb26c99-05e2-4eb0-a8bd-125483a5fdaf",
+    "name": "Tradeshift External Dx Category Accounts Company API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

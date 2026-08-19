@@ -1,0 +1,1264 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Documents Assignments API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--documents-assignments
+paths:
+  /rest/external/documents/assignments/companies/{companyid}/autoassignments:
+    parameters:
+    - name: companyid
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of the company account.
+    get:
+      responses:
+        '200':
+          description: Paginated company auto assignments list.
+          content:
+            application/json:
+              example:
+                numPages: 10
+                pageId: 0
+                itemsPerPage: 40
+                itemCount: 200
+                Items:
+                - AutoAssignmentInfo:
+                    ExcludeUser: false
+                    Assignee: 21e6e782-f760-43d6-aa1c-d614ce966d8c
+                    AutoAssignee: cb11332d-1ec4-4ecf-95fe-ce94cca20a34
+                    GroupId: 4f4a7eb9-7978-4860-a293-a254d15f3e29
+                    Created: 1565335439328
+                    DelegationType: DELEGATING
+                    CreatedBy: 21e6e782-f760-43d6-aa1c-d614ce966d8c
+                    IsDelegation: true
+              schema:
+                title: Tradeshift Public API 1.0 - AutoAssignmentsCompleteInfoPagedList
+                required:
+                - numPages
+                - pageId
+                - itemsPerPage
+                - itemCount
+                type: object
+                additionalProperties: false
+                properties:
+                  numPages:
+                    type: integer
+                  pageId:
+                    type: integer
+                  itemsPerPage:
+                    type: integer
+                  itemCount:
+                    type: integer
+                  Items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ExcludeUser:
+                          type: boolean
+                        Assignee:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        AutoAssignee:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        GroupId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        Created:
+                          type: number
+                        DelegationType:
+                          type: string
+                        CreatedBy:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        IsDelegation:
+                          type: boolean
+                      required:
+                      - ExcludeUser
+                      - Assignee
+                      - AutoAssignee
+                      - GroupId
+                      - Created
+                      - DelegationType
+                      - CreatedBy
+                      - IsDelegation
+      description: Get paginated company auto assignments.
+      operationId: get-rest-external-documents-assignments-companies-companyid-autoassignments
+      parameters:
+      - name: page
+        in: query
+        description: The current page of the result set to be fetched
+        schema:
+          default: 0
+          type: integer
+      - name: limit
+        in: query
+        description: The limit of the result set to return, also page size
+        schema:
+          default: 10
+          type: integer
+      x-annotation-dx-category: documents-assignments
+      summary: get company auto assignments
+      tags:
+      - dx-category--documents-assignments
+  /rest/external/documents/assignments/companies/{companyid}/sparse:
+    parameters:
+    - name: companyid
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of the company account.
+    get:
+      responses:
+        '200':
+          description: Paginated company assignments list.
+          content:
+            application/json:
+              example:
+                itemsPerPage: 2
+                itemCount: 2
+                numPages: 1
+                pageId: 0
+                Assignments:
+                - DocumentId: ac304edf-7fa7-49c3-8f1c-e82c037cf743
+                  DocumentType:
+                    mimeType: text/xml
+                    documentProfileId: tradeshift.assignment.1.0
+                    type: assignment
+                  Tags:
+                    Tag: []
+                  ItemInfos: []
+                  ConversationStates: []
+                  CopyIndicator: false
+                  Deleted: false
+                  SourceDocument:
+                    DocumentType: AssignmentType
+                    IssueDate:
+                      value: '2019-04-02T08:38:25.139Z'
+                    IssueTime:
+                      value: '2019-04-02T08:38:25.139Z'
+                    Assignee:
+                    - PartyIdentification:
+                      - ID:
+                          value: a482b987-7c39-40e2-a526-03549d5fe668
+                      Contact:
+                        ElectronicMail:
+                          value: george.owen@simons-catering.test.ts.sv
+                      Person:
+                      - FirstName:
+                          value: Simon
+                        FamilyName:
+                          value: Owen
+                    Delegation: []
+                    Subject:
+                      UUID:
+                        value: 867dd235-4b16-5212-b1aa-292bce33765e
+                    Type: APPROVAL
+                    OriginalDocumentId:
+                      value: 867dd235-4b16-5212-b1aa-292bce33765e
+                  Properties: []
+              schema:
+                title: Tradeshift Public API 1.0 - AssignmentsPagedList
+                required:
+                - itemsPerPage
+                - itemCount
+                - numPages
+                - pageId
+                - Assignments
+                type: object
+                additionalProperties: false
+                properties:
+                  itemsPerPage:
+                    type: integer
+                  itemCount:
+                    type: integer
+                  numPages:
+                    type: integer
+                  pageId:
+                    type: integer
+                  Assignments:
+                    type: array
+                    items:
+                      required:
+                      - DocumentType
+                      - Tags
+                      - ItemInfos
+                      - ConversationStates
+                      - CopyIndicator
+                      - Deleted
+                      - SourceDocument
+                      - Properties
+                      type: object
+                      properties:
+                        DocumentType:
+                          required:
+                          - mimeType
+                          - documentProfileId
+                          - type
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            mimeType:
+                              type: string
+                            documentProfileId:
+                              type: string
+                        Tags:
+                          required:
+                          - Tag
+                          type: object
+                          properties:
+                            Tag:
+                              type: array
+                              items:
+                                type: string
+                        ItemInfos:
+                          type: array
+                          items:
+                            type: string
+                        ConversationStates:
+                          type: array
+                          items:
+                            type: string
+                        CopyIndicator:
+                          type: boolean
+                        Deleted:
+                          type: boolean
+                        SourceDocument:
+                          required:
+                          - DocumentType
+                          - IssueTime
+                          - Assignee
+                          - Delegation
+                          - Subject
+                          - Type
+                          - OriginalDocumentId
+                          type: object
+                          properties:
+                            DocumentType:
+                              type: string
+                            IssueTime:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            Assignee:
+                              type: array
+                              items:
+                                required:
+                                - PartyIdentification
+                                - Contact
+                                - Person
+                                type: object
+                                properties:
+                                  PartyIdentification:
+                                    type: array
+                                    items:
+                                      required:
+                                      - ID
+                                      type: object
+                                      properties:
+                                        ID:
+                                          required:
+                                          - value
+                                          type: object
+                                          properties:
+                                            value:
+                                              type: string
+                                            schemeURI:
+                                              type: string
+                                  Contact:
+                                    required:
+                                    - ElectronicMail
+                                    type: object
+                                    properties:
+                                      ElectronicMail:
+                                        required:
+                                        - value
+                                        type: object
+                                        properties:
+                                          value:
+                                            type: string
+                                  Person:
+                                    type: array
+                                    items:
+                                      type: string
+                            Delegation:
+                              type: array
+                              items:
+                                type: string
+                            Subject:
+                              required:
+                              - UUID
+                              type: object
+                              properties:
+                                UUID:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                            Type:
+                              type: string
+                            OriginalDocumentId:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                        Properties:
+                          type: array
+                          items:
+                            type: string
+      description: Get paginated company assignments, using lightweight sparse composition of response data.
+      operationId: get-rest-external-documents-assignments-companies-companyid-sparse
+      parameters:
+      - name: page
+        in: query
+        description: The current page of the result set to be fetched
+        schema:
+          default: 0
+          type: integer
+      - name: limit
+        in: query
+        description: The limit of the result set to return, also page size
+        schema:
+          default: 10
+          type: integer
+      x-annotation-dx-category: documents-assignments
+      summary: get company assignments sparse
+      tags:
+      - dx-category--documents-assignments
+  /rest/external/documents/assignments/groups/{groupId}/users/{userId}/autoassign:
+    parameters:
+    - name: groupId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of auto assignment security group.
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of the assignee user.
+    get:
+      responses:
+        '200':
+          description: An autoassignment has been found, auto-assignee user details are returned
+          content:
+            application/json:
+              example:
+                Id: 72585039-d82d-4f76-8531-bf52717d5957
+                CompanyAccountId: 8a4cdb4a-9ec5-4107-a55b-dedf3aa7b000
+                CompanyName: ELTEC Inc. ddmrafryuyaw
+                Username: steve.armstrong@ddmrafryuyaw.eltec.test.ts.sv
+                Language: en-us
+                TimeZone: America/Los_Angeles
+                Memberships:
+                - UserId: 72585039-d82d-4f76-8531-bf52717d5957
+                  GroupId: 8a4cdb4a-9ec5-4107-a55b-dedf3aa7b000
+                  Role: a6a3edcd-00d9-427c-bf03-4ef0112ba16d
+                Created: '2019-10-31T12:08:59.303Z'
+                State: ACTIVE
+                Type: PERSON
+                FirstName: Steve
+                LastName: Armstrong
+                Visible: true
+              schema:
+                required:
+                - Id
+                - CompanyAccountId
+                - CompanyName
+                - Username
+                - Language
+                - Created
+                - FirstName
+                - LastName
+                type: object
+                properties:
+                  Id:
+                    type: string
+                  CompanyAccountId:
+                    type: string
+                  CompanyName:
+                    type: string
+                  Username:
+                    type: string
+                  Language:
+                    type: string
+                  TimeZone:
+                    type: string
+                  Created:
+                    type: string
+                  Memberships:
+                    type: array
+                    items:
+                      required:
+                      - UserId
+                      - GroupId
+                      - Role
+                      type: object
+                      properties:
+                        UserId:
+                          type: string
+                        GroupId:
+                          type: string
+                        Role:
+                          type: string
+                  State:
+                    type: string
+                  Type:
+                    type: string
+                  FirstName:
+                    type: string
+                  LastName:
+                    type: string
+                  Title:
+                    type: string
+                  Visible:
+                    type: boolean
+        '401':
+          description: Requesting user is not a member of the specified security group
+      description: 'Endpoint used to fetch the auto-assignee for a specific user and a specific group id. The requesting user has to be a member of the inquired security group id.
+
+        '
+      operationId: get-rest-external-documents-assignments-groups-groupid-users-userid-autoassign
+      x-annotation-dx-category: documents-assignments
+      summary: get user auto-assignment in specific group
+      tags:
+      - dx-category--documents-assignments
+  /rest/external/documents/assignments/users/{userId}/autoassign:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of user account.
+    get:
+      responses:
+        '200':
+          description: Returns the assignment document
+          content:
+            application/json:
+              example:
+                DocumentType: AssignmentType
+                UBLVersionID:
+                  value: '2.0'
+                CustomizationID:
+                  value: urn:tradeshift.com:ubl-2.0-customizations:2010-06
+                ID:
+                  value: 18744cac-cab0-4508-950b-bb4983dbcfa6
+                IssueDate:
+                  value: 2016-11-29+01:00
+                IssueTime:
+                  value: 11:21:21.011+01:00
+                Assigner:
+                  PartyIdentification:
+                  - ID:
+                      value: e6e0b52f-ce77-4e0c-b7a1-d3c63f2857fb
+                      schemeURI: http://tradeshift.com/api/1.0/userId
+                  Contact:
+                    ElectronicMail:
+                      value: lma+buyer@tradeshift.com
+                  Person:
+                    FirstName:
+                      value: Marie
+                    FamilyName:
+                      value: Carter
+                Assignee:
+                - PartyIdentification:
+                  - ID:
+                      value: 2dc74f5e-4ac7-45bf-8b6b-67dcf9ae2920
+                      schemeURI: http://tradeshift.com/api/1.0/userId
+                  Contact:
+                    ElectronicMail:
+                      value: lma+hhr@tradeshift.com
+                  Person:
+                    FirstName:
+                      value: Pete
+                    FamilyName:
+                      value: Johnson
+                    JobTitle:
+                      value: Head of HR
+                Delegation: []
+                Subject:
+                  UUID:
+                    value: 2849ac7c-36c9-4b20-8ca1-dc29a4a6e2b8
+                  DocumentType:
+                    value: USER
+                Context:
+                  EmbeddedDocumentBinaryObject:
+                    value: ewogICJjb21tZW50IiA6IG51bGwsCiAgInVzZXIiIDogewogICAgIk1lbWJlcnNoaXBzIiA6IFsgewogICAgICAiUm9sZSIgOiAiZmU4ODhmYmItMTcyZi00NjdjLWI5YWQtZWZlMDcyMGZlY2Y5IiwKICAgICAgIlVzZXJJZCIgOiAiMjg0OWFjN2MtMzZjOS00YjIwLThjYTEtZGMyOWE0YTZlMmI4IiwKICAgICAgIkdyb3VwSWQiIDogImJlNjg2NWVlLWRhYmQtNDcxNi05YzlkLTg5YjZkZDk1NTMyYiIKICAgIH0gXSwKICAgICJDb21wYW55QWNjb3VudElkIiA6ICJiZTY4NjVlZS1kYWJkLTQ3MTYtOWM5ZC04OWI2ZGQ5NTUzMmIiLAogICAgIkZpcnN0TmFtZSIgOiAiTHlubiIsCiAgICAiVGl0bGUiIDogIkhSIE1hbmFnZXIgKE9uIEJlaGFsZiBvZikiLAogICAgIkNyZWF0ZWQiIDogIjIwMTYtMTAtMTlUMTU6NTU6MTYuMDQ3KzAyOjAwIiwKICAgICJDb21wYW55TmFtZSIgOiAiQnV5ZXIgbG1hK2J1eWVyQHRyYWRlc2hpZnQuY29tIiwKICAgICJUaW1lWm9uZSIgOiAiRXVyb3BlL0NvcGVuaGFnZW4iLAogICAgIlR5cGUiIDogIlBFUlNPTiIsCiAgICAiTGFuZ3VhZ2UiIDogImVuLXVzIiwKICAgICJVc2VybmFtZSIgOiAibG1hK29ib0B0cmFkZXNoaWZ0LmNvbSIsCiAgICAiU3RhdGUiIDogIkxPQ0tFRCIsCiAgICAiVmlzaWJsZSIgOiB0cnVlLAogICAgIklkIiA6ICIyODQ5YWM3Yy0zNmM5LTRiMjAtOGNhMS1kYzI5YTRhNmUyYjgiLAogICAgIkxhc3ROYW1lIiA6ICJLZW5uZWR5IgogIH0KfQ==
+                    format: app:Tradeshift.UserManagement.AssignmentEntryService
+                    mimeCode: text/plain
+                ReminderDate:
+                  value: 2016-12-01+01:00
+                ReminderTime:
+                  value: 11:21:21.014+01:00
+                EscalationDate:
+                  value: 2016-12-06+01:00
+                EscalationTime:
+                  value: 11:21:21.014+01:00
+                VendorId: tradeshift
+                Type: REASSIGN
+              schema:
+                required:
+                - DocumentType
+                - UBLVersionID
+                - CustomizationID
+                - ID
+                - IssueDate
+                - IssueTime
+                - Assigner
+                - Assignee
+                - Delegation
+                - Subject
+                - Context
+                - ReminderDate
+                - ReminderTime
+                - EscalationDate
+                - EscalationTime
+                - VendorId
+                - Type
+                type: object
+                properties:
+                  DocumentType:
+                    type: string
+                  UBLVersionID:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  CustomizationID:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  ID:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  IssueDate:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  IssueTime:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  Assigner:
+                    required:
+                    - PartyIdentification
+                    - Contact
+                    - Person
+                    type: object
+                    properties:
+                      PartyIdentification:
+                        type: array
+                        items:
+                          required:
+                          - ID
+                          type: object
+                          properties:
+                            ID:
+                              required:
+                              - value
+                              - schemeURI
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                                schemeURI:
+                                  type: string
+                      Contact:
+                        required:
+                        - ElectronicMail
+                        type: object
+                        properties:
+                          ElectronicMail:
+                            required:
+                            - value
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                      Person:
+                        required:
+                        - FirstName
+                        - FamilyName
+                        type: object
+                        properties:
+                          FirstName:
+                            required:
+                            - value
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                          FamilyName:
+                            required:
+                            - value
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                  Assignee:
+                    type: array
+                    items:
+                      required:
+                      - PartyIdentification
+                      - Contact
+                      - Person
+                      type: object
+                      properties:
+                        PartyIdentification:
+                          type: array
+                          items:
+                            required:
+                            - ID
+                            type: object
+                            properties:
+                              ID:
+                                required:
+                                - value
+                                - schemeURI
+                                type: object
+                                properties:
+                                  value:
+                                    type: string
+                                  schemeURI:
+                                    type: string
+                        Contact:
+                          required:
+                          - ElectronicMail
+                          type: object
+                          properties:
+                            ElectronicMail:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                        Person:
+                          required:
+                          - FirstName
+                          - FamilyName
+                          - JobTitle
+                          type: object
+                          properties:
+                            FirstName:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            FamilyName:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            JobTitle:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                  Delegation:
+                    type: array
+                    items:
+                      type: string
+                  Subject:
+                    required:
+                    - UUID
+                    - DocumentType
+                    type: object
+                    properties:
+                      UUID:
+                        required:
+                        - value
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                      DocumentType:
+                        required:
+                        - value
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                  Context:
+                    required:
+                    - EmbeddedDocumentBinaryObject
+                    type: object
+                    properties:
+                      EmbeddedDocumentBinaryObject:
+                        required:
+                        - value
+                        - format
+                        - mimeCode
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                          format:
+                            type: string
+                          mimeCode:
+                            type: string
+                  ReminderDate:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  ReminderTime:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  EscalationDate:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  EscalationTime:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  VendorId:
+                    type: string
+                  Type:
+                    type: string
+        '400':
+          description: Bad request error.
+      description: Returns the assignment document.
+      operationId: get-rest-external-documents-assignments-users-userid-autoassign
+      parameters:
+      - name: subjectType
+        in: query
+        description: The subject of the Assignment [DOCUMENT, USER, COMPANY, CONNECTION, NETWORK_REQUEST]
+        schema:
+          default: DOCUMENT
+          type: string
+      x-annotation-dx-category: documents-assignments
+      summary: get user assignments
+      tags:
+      - dx-category--documents-assignments
+  /rest/external/documents/assignments/users/{userId}/autoassign/detail:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User UUID identifier
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            text/xml:
+              example: "<AutoAssignmentDetail xmlns=\"http://tradeshift.com/api/public/1.0\">\n    <User>\n        <Id>0daab548-3990-41ed-b0f4-eb197e693df1</Id>\n        <CompanyAccountId>093aafb9-2620-4655-885e-888f2a65c59c</CompanyAccountId>\n        <CompanyName>Tradeshift</CompanyName>\n        <Username>steve.armstrong@example.org</Username>\n        <Language>en-us</Language>\n        <TimeZone>GMT</TimeZone>\n        <Memberships>\n            <Membership>\n                <UserId>0daab548-3990-41ed-b0f4-eb197e693df1</UserId>\n                <GroupId>093aafb9-2620-4655-885e-888f2a65c59c</GroupId>\n                <Role>a6a3edcd-00d9-427c-bf03-4ef0112ba16d</Role>\n            </Membership>\n        </Memberships>\n        <Created>2016-06-07T14:29:05.601+02:00</Created>\n        <State>ACTIVE</State>\n        <Type>PERSON</Type>\n        <FirstName>Steve</FirstName>\n        <LastName>Armstrong</LastName>\n        <Title>boss</Title>\n        <Visible>true</Visible>\n    </User>\n    <AutoAssignee>\n        <ExcludeUser>false</ExcludeUser>\n        <UserID>0daab548-3990-41ed-b0f4-eb197e693df1</UserID>\n        <Created/>\n        <IsDelegation>true</IsDelegation>\n        <DelegationType>DELEGATING</DelegationType>\n    </AutoAssignee>\n</AutoAssignmentDetail>\n"
+              schema:
+                type: object
+      description: Returns the auto assignment details of an user.
+      operationId: get-rest-external-documents-assignments-users-userid-autoassign-detail
+      x-annotation-dx-category: documents-assignments
+      summary: get user assignments detail
+      tags:
+      - dx-category--documents-assignments
+  /rest/external/documents/assignments/users/{userId}/autoassign/{autoAssigneeId}:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The assignee id
+    - name: autoAssigneeId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The autoassignee id
+    delete:
+      responses:
+        '200':
+          description: The requested auto assignment has been deleted
+        '304':
+          description: Couldn't find the requested assignment for deletion
+      description: Delete one assignment as identified by the path parameters and the requester's group id
+      operationId: delete-rest-external-documents-assignments-users-userid-autoassign-autoassigneeid
+      parameters:
+      - name: groupId
+        in: query
+        description: Group id associated to this autoassignment. If this is missing, the X-Tradeshift-TenantId header value is used
+        schema:
+          type: string
+      x-annotation-dx-category: documents-assignments
+      summary: delete auto assignment
+      tags:
+      - dx-category--documents-assignments
+  /rest/external/documents/assignments/users/{userId}/autoassign/{autoAssigneeId}/delegationType/{delegationType}:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User UUID identifier for the assigner
+    - name: autoAssigneeId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User UUID identifier for the assignee
+    - name: delegationType
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Type of delegation to be applied
+    put:
+      responses:
+        '204':
+          description: Autoassignment created.
+        '401':
+          description: The requesting user is not a member of the specified security group
+      description: Create an autoassignment from userId to autoAssigneeId
+      operationId: put-rest-external-documents-assignments-users-userid-autoassign-autoassigneeid-delegationtype-delegationtype
+      parameters:
+      - name: excludeUser
+        in: query
+        description: Whether to exclude the user
+        schema:
+          default: false
+          type: boolean
+      - name: groupId
+        in: query
+        description: Group id associated to this autoassignment. If this is missing, the X-Tradeshift-TenantId header value is used
+        schema:
+          type: string
+      x-annotation-dx-category: documents-assignments
+      summary: create autoassignment
+      tags:
+      - dx-category--documents-assignments
+  /rest/external/documents/assignments/users/{userId}/autoassigners/detail:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User UUID identifier
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              example:
+                AutoAssigners:
+                - User:
+                    Id: 0daab548-3990-41ed-b0f4-eb197e693df1
+                    CompanyAccountId: 093aafb9-2620-4655-885e-888f2a65c59c
+                    CompanyName: Tradeshift
+                    Username: steve.armstrong@example.org
+                    Language: en
+                    TimeZone: GMT
+                    Memberships:
+                    - UserId: 0daab548-3990-41ed-b0f4-eb197e693df1
+                      GroupId: 093aafb9-2620-4655-885e-888f2a65c59c
+                      Role: a6a3edcd-00d9-427c-bf03-4ef0112ba16d
+                    Created: '2016-06-07T14:29:05.601+02:00'
+                    State: ACTIVE
+                    Type: PERSON
+                    FirstName: Steve
+                    LastName: Armstrong
+                    Title: boss
+                    Visible: true
+                  AutoAssignee:
+                    ExcludeUser: false
+                    UserID: 0daab548-3990-41ed-b0f4-eb197e693df1
+                    Created: 1472655207107
+                    IsDelegation: true
+                    DelegationType: DELEGATING
+              schema:
+                required:
+                - AutoAssigners
+                type: object
+                properties:
+                  AutoAssigners:
+                    type: array
+                    items:
+                      required:
+                      - User
+                      - AutoAssignee
+                      type: object
+                      properties:
+                        User:
+                          required:
+                          - Id
+                          - CompanyAccountId
+                          - CompanyName
+                          - Username
+                          - Language
+                          - TimeZone
+                          - Memberships
+                          - Created
+                          - State
+                          - Type
+                          - FirstName
+                          - LastName
+                          - Title
+                          - Visible
+                          type: object
+                          properties:
+                            Id:
+                              type: string
+                            CompanyAccountId:
+                              type: string
+                            CompanyName:
+                              type: string
+                            Username:
+                              type: string
+                            Language:
+                              type: string
+                            TimeZone:
+                              type: string
+                            Created:
+                              type: string
+                            Memberships:
+                              type: array
+                              items:
+                                required:
+                                - UserId
+                                - GroupId
+                                - Role
+                                type: object
+                                properties:
+                                  UserId:
+                                    type: string
+                                  GroupId:
+                                    type: string
+                                  Role:
+                                    type: string
+                            State:
+                              type: string
+                            Type:
+                              type: string
+                            FirstName:
+                              type: string
+                            LastName:
+                              type: string
+                            Title:
+                              type: string
+                            Visible:
+                              type: boolean
+                        AutoAssignee:
+                          required:
+                          - ExcludeUser
+                          - UserID
+                          - Created
+                          - IsDelegation
+                          - DelegationType
+                          type: object
+                          properties:
+                            ExcludeUser:
+                              type: boolean
+                            UserID:
+                              type: string
+                            Created:
+                              type: integer
+                            IsDelegation:
+                              type: boolean
+                            DelegationType:
+                              type: string
+      description: Returns the all assigners that activated auto assign or delegate to current user
+      operationId: get-rest-external-documents-assignments-users-userid-autoassigners-detail
+      x-annotation-dx-category: documents-assignments
+      summary: find assigners by user
+      tags:
+      - dx-category--documents-assignments
+  /rest/external/documents/assignments/users/{userid}/sparse:
+    parameters:
+    - name: userid
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of user account.
+    get:
+      responses:
+        '200':
+          description: Paginated user assignments list.
+          content:
+            application/json:
+              example:
+                itemsPerPage: 2
+                itemCount: 2
+                numPages: 1
+                pageId: 0
+                Assignments:
+                - DocumentId: ac304edf-7fa7-49c3-8f1c-e82c037cf743
+                  DocumentType:
+                    mimeType: text/xml
+                    documentProfileId: tradeshift.assignment.1.0
+                    type: assignment
+                  Tags:
+                    Tag: []
+                  ItemInfos: []
+                  ConversationStates: []
+                  CopyIndicator: false
+                  Deleted: false
+                  SourceDocument:
+                    DocumentType: AssignmentType
+                    IssueDate:
+                      value: '2019-04-02T08:38:25.139Z'
+                    IssueTime:
+                      value: '2019-04-02T08:38:25.139Z'
+                    Assignee:
+                    - PartyIdentification:
+                      - ID:
+                          value: a482b987-7c39-40e2-a526-03549d5fe668
+                      Contact:
+                        ElectronicMail:
+                          value: george.owen@simons-catering.test.ts.sv
+                      Person:
+                      - FirstName:
+                          value: Simon
+                        FamilyName:
+                          value: Owen
+                    Delegation: []
+                    Subject:
+                      UUID:
+                        value: 867dd235-4b16-5212-b1aa-292bce33765e
+                    Type: APPROVAL
+                    OriginalDocumentId:
+                      value: 867dd235-4b16-5212-b1aa-292bce33765e
+                  Properties: []
+              schema:
+                title: Tradeshift Public API 1.0 - AssignmentsPagedList
+                required:
+                - itemsPerPage
+                - itemCount
+                - numPages
+                - pageId
+                - Assignments
+                type: object
+                additionalProperties: false
+                properties:
+                  itemsPerPage:
+                    type: integer
+                  itemCount:
+                    type: integer
+                  numPages:
+                    type: integer
+                  pageId:
+                    type: integer
+                  Assignments:
+                    type: array
+                    items:
+                      required:
+                      - DocumentType
+                      - Tags
+                      - ItemInfos
+                      - ConversationStates
+                      - CopyIndicator
+                      - Deleted
+                      - SourceDocument
+                      - Properties
+                      type: object
+                      properties:
+                        DocumentType:
+                          required:
+                          - mimeType
+                          - documentProfileId
+                          - type
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            mimeType:
+                              type: string
+                            documentProfileId:
+                              type: string
+                        Tags:
+                          required:
+                          - Tag
+                          type: object
+                          properties:
+                            Tag:
+                              type: array
+                              items:
+                                type: string
+                        ItemInfos:
+                          type: array
+                          items:
+                            type: string
+                        ConversationStates:
+                          type: array
+                          items:
+                            type: string
+                        CopyIndicator:
+                          type: boolean
+                        Deleted:
+                          type: boolean
+                        SourceDocument:
+                          required:
+                          - DocumentType
+                          - IssueTime
+                          - Assignee
+                          - Delegation
+                          - Subject
+                          - Type
+                          - OriginalDocumentId
+                          type: object
+                          properties:
+                            DocumentType:
+                              type: string
+                            IssueTime:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            Assignee:
+                              type: array
+                              items:
+                                required:
+                                - PartyIdentification
+                                - Contact
+                                - Person
+                                type: object
+                                properties:
+                                  PartyIdentification:
+                                    type: array
+                                    items:
+                                      required:
+                                      - ID
+                                      type: object
+                                      properties:
+                                        ID:
+                                          required:
+                                          - value
+                                          type: object
+                                          properties:
+                                            value:
+                                              type: string
+                                            schemeURI:
+                                              type: string
+                                  Contact:
+                                    required:
+                                    - ElectronicMail
+                                    type: object
+                                    properties:
+                                      ElectronicMail:
+                                        required:
+                                        - value
+                                        type: object
+                                        properties:
+                                          value:
+                                            type: string
+                                  Person:
+                                    type: array
+                                    items:
+                                      type: string
+                            Delegation:
+                              type: array
+                              items:
+                                type: string
+                            Subject:
+                              required:
+                              - UUID
+                              type: object
+                              properties:
+                                UUID:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                            Type:
+                              type: string
+                            OriginalDocumentId:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                        Properties:
+                          type: array
+                          items:
+                            type: string
+      description: Get paginated user assignments, using lightweight sparse composition of response data
+      operationId: get-rest-external-documents-assignments-users-userid-sparse
+      parameters:
+      - name: page
+        in: query
+        description: The current page of the result set to be fetched
+        schema:
+          default: 0
+          type: integer
+      - name: limit
+        in: query
+        description: The limit of the result set to return, also page size
+        schema:
+          default: 10
+          type: integer
+      - name: type
+        in: query
+        description: Type of the assignment to include in the result set
+        schema:
+          type: string
+      x-annotation-dx-category: documents-assignments
+      summary: get user assignments sparse
+      tags:
+      - dx-category--documents-assignments

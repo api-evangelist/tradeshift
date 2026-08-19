@@ -1,0 +1,177 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Accounts Company API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--accounts-company",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check authorization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/accesslist/operation/:operationId/type/:typeId/object/:objectId",
+            "params": [
+              {
+                "name": "operationId",
+                "value": "",
+                "type": "path",
+                "description": "Operation id to be checked"
+              },
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path",
+                "description": "Object's type"
+              },
+              {
+                "name": "objectId",
+                "value": "",
+                "type": "path",
+                "description": "Object id to be checked. \nCould be any type of objects Tradeshift supports (e.g. documentId, dispatchId, conversationId etc.)\n"
+              }
+            ]
+          },
+          "docs": "Check if an user identified by the tenantId and actorId is able to access the objectId of the type typeId.\nThe operation provided should exist through the list of allowed operations for the role assigned to the user.\nThe result takes into consideration also the DocumentAccess settings, if the app is enabled.\n"
+        },
+        {
+          "info": {
+            "name": "get account info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account"
+          },
+          "docs": "Get information about the company account that is currently being accessed."
+        },
+        {
+          "info": {
+            "name": "update account info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account"
+          },
+          "docs": "Update company information for the current company account. Properties will not be changed using this resource."
+        },
+        {
+          "info": {
+            "name": "get account info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/info"
+          },
+          "docs": "Returns information about the company account that is currently being accessed."
+        },
+        {
+          "info": {
+            "name": "update account info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update company information for the current company account. Properties will not be changed using this resource."
+        },
+        {
+          "info": {
+            "name": "get company account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/:companyId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of company account."
+              }
+            ]
+          },
+          "docs": "Return account associated with companyId."
+        },
+        {
+          "info": {
+            "name": "put company account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/:companyId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of company account."
+              }
+            ]
+          },
+          "docs": "Update company information for the specified company account."
+        },
+        {
+          "info": {
+            "name": "get company identifiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/companies/:companyAccountId/identifiers",
+            "params": [
+              {
+                "name": "companyAccountId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of company (tenant)."
+              }
+            ]
+          },
+          "docs": "Return identifiers associated with the account with this companyId."
+        },
+        {
+          "info": {
+            "name": "replace company identifiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/companies/:companyAccountId/identifiers",
+            "params": [
+              {
+                "name": "companyAccountId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of company (tenant)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update company identifiers for the specified company account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

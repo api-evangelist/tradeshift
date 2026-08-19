@@ -1,0 +1,279 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Documents Assignments API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--documents-assignments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get company auto assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/assignments/companies/:companyid/autoassignments",
+            "params": [
+              {
+                "name": "companyid",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of the company account."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The current page of the result set to be fetched"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The limit of the result set to return, also page size"
+              }
+            ]
+          },
+          "docs": "Get paginated company auto assignments."
+        },
+        {
+          "info": {
+            "name": "get company assignments sparse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/assignments/companies/:companyid/sparse",
+            "params": [
+              {
+                "name": "companyid",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of the company account."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The current page of the result set to be fetched"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The limit of the result set to return, also page size"
+              }
+            ]
+          },
+          "docs": "Get paginated company assignments, using lightweight sparse composition of response data."
+        },
+        {
+          "info": {
+            "name": "get user auto-assignment in specific group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/assignments/groups/:groupId/users/:userId/autoassign",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of auto assignment security group."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of the assignee user."
+              }
+            ]
+          },
+          "docs": "Endpoint used to fetch the auto-assignee for a specific user and a specific group id. The requesting user has to be a member of the inquired security group id.\n"
+        },
+        {
+          "info": {
+            "name": "get user assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/assignments/users/:userId/autoassign",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of user account."
+              },
+              {
+                "name": "subjectType",
+                "value": "",
+                "type": "query",
+                "description": "The subject of the Assignment [DOCUMENT, USER, COMPANY, CONNECTION, NETWORK_REQUEST]"
+              }
+            ]
+          },
+          "docs": "Returns the assignment document."
+        },
+        {
+          "info": {
+            "name": "get user assignments detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/assignments/users/:userId/autoassign/detail",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User UUID identifier"
+              }
+            ]
+          },
+          "docs": "Returns the auto assignment details of an user."
+        },
+        {
+          "info": {
+            "name": "delete auto assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/assignments/users/:userId/autoassign/:autoAssigneeId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The assignee id"
+              },
+              {
+                "name": "autoAssigneeId",
+                "value": "",
+                "type": "path",
+                "description": "The autoassignee id"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "query",
+                "description": "Group id associated to this autoassignment. If this is missing, the X-Tradeshift-TenantId header value is used"
+              }
+            ]
+          },
+          "docs": "Delete one assignment as identified by the path parameters and the requester's group id"
+        },
+        {
+          "info": {
+            "name": "create autoassignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/assignments/users/:userId/autoassign/:autoAssigneeId/delegationType/:delegationType",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User UUID identifier for the assigner"
+              },
+              {
+                "name": "autoAssigneeId",
+                "value": "",
+                "type": "path",
+                "description": "User UUID identifier for the assignee"
+              },
+              {
+                "name": "delegationType",
+                "value": "",
+                "type": "path",
+                "description": "Type of delegation to be applied"
+              },
+              {
+                "name": "excludeUser",
+                "value": "",
+                "type": "query",
+                "description": "Whether to exclude the user"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "query",
+                "description": "Group id associated to this autoassignment. If this is missing, the X-Tradeshift-TenantId header value is used"
+              }
+            ]
+          },
+          "docs": "Create an autoassignment from userId to autoAssigneeId"
+        },
+        {
+          "info": {
+            "name": "find assigners by user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/assignments/users/:userId/autoassigners/detail",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User UUID identifier"
+              }
+            ]
+          },
+          "docs": "Returns the all assigners that activated auto assign or delegate to current user"
+        },
+        {
+          "info": {
+            "name": "get user assignments sparse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/documents/assignments/users/:userid/sparse",
+            "params": [
+              {
+                "name": "userid",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of user account."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The current page of the result set to be fetched"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The limit of the result set to return, also page size"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type of the assignment to include in the result set"
+              }
+            ]
+          },
+          "docs": "Get paginated user assignments, using lightweight sparse composition of response data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,373 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Accounts Validations API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--accounts-validations
+paths:
+  /rest/external/account/validations:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  numPages: '0'
+                  pageId: '0'
+                  itemsPerPage: '0'
+                  itemCount: '0'
+                  DynamicValidation: []
+        '403':
+          description: If the feature is not available for this account.
+      description: Gets a dynamic validation, by External (enterprise) ID. Only available when the relevant features have been enabled for the account.
+      operationId: get-rest-external-account-validations
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: External (enterprise) ID
+        schema:
+          type: string
+      x-annotation-dx-category: accounts-validations
+      summary: get validations
+      tags:
+      - dx-category--accounts-validations
+    put:
+      responses:
+        '204':
+          description: ''
+        '403':
+          description: If the feature is not available for this account.
+      description: Saves a dynamic validation, by External (enterprise) ID. Only available when the relevant features have been enabled for the account.
+      operationId: put-rest-external-account-validations
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: External (enterprise) ID
+        schema:
+          type: string
+      x-annotation-dx-category: accounts-validations
+      summary: update validations
+      tags:
+      - dx-category--accounts-validations
+    delete:
+      responses:
+        '204':
+          description: ''
+        '403':
+          description: If the feature is not available for this account.
+      description: Deletes a dynamic validation, by External (enterprise) ID. Only available when the relevant features have been enabled for the account.
+      operationId: delete-rest-external-account-validations
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: External (enterprise) ID
+        schema:
+          type: string
+      x-annotation-dx-category: accounts-validations
+      summary: remove validations
+      tags:
+      - dx-category--accounts-validations
+  /rest/external/account/validations/historydata/{historicid}:
+    parameters:
+    - name: historicid
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Identifier for historical data requested
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  changes: '[B@68c2f2e3'
+                  created: '0'
+                  filename: str
+                  filesize: '0'
+                  id: 58a5b768-08be-48ec-a06d-6874fde8cf46
+        '404':
+          description: ''
+      description: Get dynamic validation changes file populated with content.
+      operationId: get-rest-external-account-validations-historydata-historicid
+      x-annotation-dx-category: accounts-validations
+      summary: validation history
+      tags:
+      - dx-category--accounts-validations
+  /rest/external/account/validations/list:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  numPages: '0'
+                  pageId: '0'
+                  itemsPerPage: '0'
+                  itemCount: '0'
+                  DynamicValidation: []
+        '403':
+          description: If the feature is not available for this account.
+      description: Returns all dynamic validations that have been created for the account. Only available when the relevant features have been enabled for the account.
+      operationId: get-rest-external-account-validations-list
+      parameters:
+      - name: limit
+        in: query
+        required: true
+        description: Page size per query
+        schema:
+          default: 25
+          type: integer
+      - name: page
+        in: query
+        description: Page number of the query
+        schema:
+          default: 0
+          type: integer
+      x-annotation-dx-category: accounts-validations
+      summary: list of validations
+      tags:
+      - dx-category--accounts-validations
+  /rest/external/account/validations/log:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  numPages: '0'
+                  pageId: '0'
+                  itemsPerPage: '0'
+                  itemCount: '0'
+                  DynamicValidationEvents: []
+        '404':
+          description: If no events are found.
+      description: Returns dynamic validations event log for the account.
+      operationId: get-rest-external-account-validations-log
+      parameters:
+      - name: after
+        in: query
+        description: List only events after this date.
+        schema:
+          type: string
+      - name: before
+        in: query
+        description: List only events before this date.
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: true
+        description: Page size per query
+        schema:
+          default: 25
+          type: integer
+      - name: page
+        in: query
+        description: Page number of the query
+        schema:
+          default: 0
+          type: integer
+      x-annotation-dx-category: accounts-validations
+      summary: validation log
+      tags:
+      - dx-category--accounts-validations
+  /rest/external/account/validations/usedvalues:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  numPages: '0'
+                  pageId: '0'
+                  itemsPerPage: '0'
+                  itemCount: '0'
+                  DynamicValidationEvents: []
+        '404':
+          description: If no events are found.
+      description: Returns dynamic validations event log for the account and validation/valueset.
+      operationId: get-rest-external-account-validations-usedvalues
+      parameters:
+      - name: after
+        in: query
+        description: List only events after this date.
+        schema:
+          type: string
+      - name: before
+        in: query
+        description: List only events before this date.
+        schema:
+          type: string
+      - name: validationid
+        in: query
+        required: true
+        description: Validation to pull events for.
+        schema:
+          type: string
+      - name: valuesetid
+        in: query
+        required: true
+        description: Valueset to pull events for.
+        schema:
+          type: string
+      x-annotation-dx-category: accounts-validations
+      summary: validations used
+      tags:
+      - dx-category--accounts-validations
+  /rest/external/account/validations/values:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  numPages: '0'
+                  pageId: '0'
+                  itemsPerPage: '0'
+                  itemCount: '0'
+                  DynamicValidationValues: []
+        '404':
+          description: If no dynamic validations are found.
+      description: List values currently registered for a given dynamic validation, by the id of the dynamic validation
+      operationId: get-rest-external-account-validations-values
+      parameters:
+      - name: validationid
+        in: query
+        required: true
+        description: Identifier of the dynamic validation
+        schema:
+          type: string
+      - name: fieldid
+        in: query
+        description: Identifier of the field in the dynamic validation
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: Query string to search
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: true
+        description: Page size per query
+        schema:
+          default: 25
+          type: integer
+      - name: page
+        in: query
+        description: Page number of the query
+        schema:
+          default: 0
+          type: integer
+      x-annotation-dx-category: accounts-validations
+      summary: validation values
+      tags:
+      - dx-category--accounts-validations
+  /rest/external/account/validations/valuesets:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  numPages: '0'
+                  pageId: '0'
+                  itemsPerPage: '0'
+                  itemCount: '0'
+                  DynamicValidationValues: []
+        '404':
+          description: If no dynamic validations are found.
+      description: List value sets registered for a given dynamic validation, without retrieving actual values.
+      operationId: get-rest-external-account-validations-valuesets
+      parameters:
+      - name: search
+        in: query
+        description: Query string to search
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: true
+        description: Page size per query
+        schema:
+          default: 25
+          type: integer
+      - name: page
+        in: query
+        description: Page number of the query
+        schema:
+          default: 0
+          type: integer
+      x-annotation-dx-category: accounts-validations
+      summary: validation value sets
+      tags:
+      - dx-category--accounts-validations
+  /rest/external/account/validations/{dynamicvalidationinternalid}/values:
+    parameters:
+    - name: dynamicvalidationinternalid
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Identifier for dynamic validation
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  numPages: '0'
+                  pageId: '0'
+                  itemsPerPage: '0'
+                  itemCount: '0'
+                  DynamicValidationValues: []
+        '404':
+          description: If no dynamic validations are found.
+      description: List all values currently registered for a given dynamic validation.
+      operationId: get-rest-external-account-validations-dynamicvalidationinternalid-values
+      parameters:
+      - name: search
+        in: query
+        description: Query string to search
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: true
+        description: page size per query
+        schema:
+          default: 25
+          type: integer
+      - name: page
+        in: query
+        description: page number of the query
+        schema:
+          default: 0
+          type: integer
+      x-annotation-dx-category: accounts-validations
+      summary: validation by id
+      tags:
+      - dx-category--accounts-validations

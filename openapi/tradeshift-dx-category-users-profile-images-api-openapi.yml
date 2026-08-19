@@ -1,0 +1,91 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Users Profile Images API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--users-profile_images
+paths:
+  /rest/external/account/users/{userId}/images/{name}:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of user account.
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique name of image.
+    get:
+      responses:
+        '200':
+          description: ''
+        '304':
+          description: ''
+        '307':
+          description: ''
+        '404':
+          description: ''
+      description: Returns image by user and image name.
+      operationId: get-rest-external-account-users-userid-images-name
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: The mime-type of the image
+        schema:
+          type: string
+      - name: height
+        in: query
+        description: The height of the image
+        schema:
+          default: 0
+          type: number
+      - name: width
+        in: query
+        description: The width of the image
+        schema:
+          default: 0
+          type: number
+      x-annotation-dx-category: users-profile_images
+      summary: get user image
+      tags:
+      - dx-category--users-profile_images
+    put:
+      responses:
+        '201':
+          description: ''
+        '406':
+          description: ''
+        '502':
+          description: ''
+      description: Save an image by user and image name
+      operationId: put-rest-external-account-users-userid-images-name
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        description: The mime-type of the image
+        schema:
+          type: string
+      x-annotation-dx-category: users-profile_images
+      summary: save user image
+      tags:
+      - dx-category--users-profile_images
+    delete:
+      responses:
+        '204':
+          description: ''
+        '404':
+          description: ''
+      description: Removes image that matches user and image name parameters.
+      operationId: delete-rest-external-account-users-userid-images-name
+      x-annotation-dx-category: users-profile_images
+      summary: remove user image
+      tags:
+      - dx-category--users-profile_images

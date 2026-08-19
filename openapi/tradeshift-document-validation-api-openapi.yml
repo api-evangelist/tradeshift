@@ -1,0 +1,294 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Document Validation API
+  version: 1.0.0
+  description: Manages document validators
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: Document Validation
+  description: Manages document validators
+paths:
+  /rest/external/document-validation/validation/validate-document:
+    put:
+      tags:
+      - Document Validation
+      summary: Validate document
+      description: Validate a document by testing matching validators, optionally specifying a category to filter the validator groups that are applied. Only the validator groups for the provided document type are run.
+      operationId: put-rest-external-document-validation-validation-validate-document
+      parameters:
+      - name: senderTenantId
+        in: query
+        description: UUID of the user company (tenant) that is sending the document. This can be different than the 'tenantId' header value, for example when checking on behalf of a branch. The sender tenant id is used to obtain the connection properties of the connection between the receiver and sender, or other sender related settings.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: receiverTenantId
+        in: query
+        description: UUID of the company (tenant) that will receive the document. The receiver tenant is used to check the validators of the receiver when the receiver company has configured validation for other companies sending documents (for example 'sellers' sending invoices to a 'buyer'), to obtain the connection properties of the connection between the receiver and sender, to obtain the country compliance validator groups of the receiver if enabled, or other receiver related settings.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: documentId
+        in: query
+        description: Optional document id to validate, if provided the document content body is ignored.
+        required: false
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: array
+              description: Optional document content in UBL XML format that will be tested against the validators. Only checked if documentId parameter is not provided. If documentId parameter is provided, this is ignored.
+              items:
+                type: string
+                format: byte
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResult'
+  /rest/external/document-validation/validation/groups/{groupId}:
+    get:
+      tags:
+      - Document Validation
+      summary: Gets a validator group
+      description: Gets a validator group definition
+      operationId: get-rest-external-document-validation-validation-groups-groupid
+      parameters:
+      - name: groupId
+        in: path
+        description: UUID of the validator group to get
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupDef'
+    put:
+      tags:
+      - Document Validation
+      summary: Save validator group
+      description: Creates or updates a validator group definition
+      operationId: put-rest-external-document-validation-validation-groups-groupid
+      parameters:
+      - name: groupId
+        in: path
+        description: UUID of the validator group to create or update
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        description: Validator group definition in JSON format
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              tenantId: cb555bf8-0949-4857-acf3-03aef59c00ec
+              documentType: Invoice
+              countryCompliance:
+                countryCode: RO
+              connectionProperty:
+                key: SupplierCategory
+                value: DO
+              validators:
+              - type: pattern
+                dispatchRestriction: Hard
+                context: /Invoice/cac:InvoiceLine
+                field: cac:OrderLineReference/cac:OrderReference/cbc:ID
+                pattern: ^\d+$
+                multiValueMatchBehavior: AnyMatch
+                message: ID must contain only numbers
+              - type: minLength
+                dispatchRestriction: Soft
+                field: /Invoice/cbc:ID
+                minLength: 5
+                message: ID must have minimum 5 characters
+        required: true
+      responses:
+        '200':
+          description: Successfully updated validator group definition
+        '201':
+          description: Created a new validator group definition
+    delete:
+      tags:
+      - Document Validation
+      summary: Delete validator group
+      description: Permanently deletes a validator group definition
+      operationId: delete-rest-external-document-validation-validation-groups-groupid
+      parameters:
+      - name: groupId
+        in: path
+        description: UUID of the validator group to delete
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: No Content
+  /rest/external/document-validation/validation/groups/{groupId}/history:
+    get:
+      tags:
+      - Document Validation
+      summary: Get change history
+      description: Gets the validator group change history, including current definition.
+      operationId: get-rest-external-document-validation-validation-groups-groupid-history
+      parameters:
+      - name: groupId
+        in: path
+        description: UUID of the validator group to get
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupDefHistory'
+  /rest/external/document-validation/validation/groups:
+    get:
+      tags:
+      - Document Validation
+      summary: List Validator Groups
+      description: List validator groups for the tenant, optionally filtering by document type or connection property
+      operationId: get-rest-external-document-validation-validation-groups
+      parameters:
+      - name: senderTenantId
+        in: query
+        description: UUID of the user company (tenant) that is sending the document. This can be different than the 'tenantId' header value, for example when checking on behalf of a branch. The sender tenant id is used to obtain the connection properties of the connection between the receiver and sender, or other sender related settings.
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: receiverTenantId
+        in: query
+        description: UUID of the company (tenant) that will receive the document. The receiver tenant is used to check the validators of the receiver when the receiver company has configured validation for other companies sending documents (for example 'sellers' sending invoices to a 'buyer'), to obtain the connection properties of the connection between the receiver and sender, to obtain the country compliance validator groups of the receiver if enabled, or other receiver related settings.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: documentType
+        in: query
+        description: Optional document type filter. If not provided, validators with any document type will be returned
+        required: false
+        schema:
+          type: string
+          enum:
+          - ApplicationResponse
+          - AttachedDocument
+          - AwardedNotification
+          - BillOfLading
+          - BusinessCard
+          - CallForTenders
+          - Catalogue
+          - CatalogueDeletion
+          - CatalogueItemSpecificationUpdate
+          - CataloguePricingUpdate
+          - CatalogueRequest
+          - CertificateOfOrigin
+          - ContractAwardNotice
+          - ContractNotice
+          - CreditNote
+          - DebitNote
+          - DespatchAdvice
+          - DigitalAgreement
+          - DigitalCapability
+          - DocumentStatus
+          - DocumentStatusRequest
+          - Enquiry
+          - EnquiryResponse
+          - ExceptionCriteria
+          - ExceptionNotification
+          - ExpressionOfInterestRequest
+          - ExpressionOfInterestResponse
+          - Forecast
+          - ForecastRevision
+          - ForwardingInstructions
+          - FreightInvoice
+          - FulfilmentCancellation
+          - GoodsItemItinerary
+          - GuaranteeCertificate
+          - InstructionForReturns
+          - InventoryReport
+          - Invoice
+          - ItemInformationRequest
+          - Order
+          - OrderCancellation
+          - OrderChange
+          - OrderResponse
+          - OrderResponseSimple
+          - PackingList
+          - PriorInformationNotice
+          - ProductActivity
+          - QualificationApplicationRequest
+          - QualificationApplicationResponse
+          - Quotation
+          - ReceiptAdvice
+          - Reminder
+          - RemittanceAdvice
+          - RequestForQuotation
+          - RetailEvent
+          - SelfBilledCreditNote
+          - SelfBilledInvoice
+          - Statement
+          - StockAvailabilityReport
+          - Tender
+          - TenderContract
+          - TenderReceipt
+          - TenderStatus
+          - TenderStatusRequest
+          - TenderWithdrawal
+          - TendererQualification
+          - TendererQualificationResponse
+          - TradeItemLocationProfile
+          - TransportExecutionPlan
+          - TransportExecutionPlanRequest
+          - TransportProgressStatus
+          - TransportProgressStatusRequest
+          - TransportServiceDescription
+          - TransportServiceDescriptionRequest
+          - TransportationStatus
+          - TransportationStatusRequest
+          - UnawardedNotification
+          - UnsubscribeFromProcedureRequest
+          - UnsubscribeFromProcedureResponse
+          - UtilityStatement
+          - Waybill
+          - WeightStatement
+      - name: countryComplianceCode
+        in: query
+        description: Optional country code used to list by specific country compliance rules. If not provided, it is determined from the country of the receiver (receiverTenantId) if enabled on receiver.To list all country compliance validator groups use the special value 'ALL'.To list all the groups of the receiver but without the country compliance ones, even if defined and enabled, use the special value 'NONE'.
+        required: false
+        schema:
+          type: object
+          properties:
+            countryCode:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupDefWithId'

@@ -1,0 +1,189 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Network Connection Properties API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--network-connection_properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "set connection property",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/companies/:companyId/properties/:propertyKey",
+            "params": [
+              {
+                "name": "propertyKey",
+                "value": "",
+                "type": "path",
+                "description": "Connection property key"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of company account."
+              }
+            ]
+          },
+          "docs": "Stores a single value for a property key on the multiple connections that point to a given companyAccountId"
+        },
+        {
+          "info": {
+            "name": "find properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId/properties",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ]
+          },
+          "docs": "Retrieves all properties for a connection. Note that one property key can have a list of values.\n"
+        },
+        {
+          "info": {
+            "name": "update properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId/properties",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              },
+              {
+                "name": "detailedResponse",
+                "value": "",
+                "type": "query",
+                "description": "Specify if a detailed response of what was updated should be returned."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates given properties."
+        },
+        {
+          "info": {
+            "name": "replace properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId/properties",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces existing properties with given properties."
+        },
+        {
+          "info": {
+            "name": "find property by key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId/properties/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "Property key"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ]
+          },
+          "docs": "Retrieves value for the given connection property key."
+        },
+        {
+          "info": {
+            "name": "update property by key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId/properties/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "Property key"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ]
+          },
+          "docs": "Stores a single value for given property key, replacing any previous value."
+        },
+        {
+          "info": {
+            "name": "remove properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/network/connections/:connectionId/properties/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "Property key"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection identifier as UUID."
+              }
+            ]
+          },
+          "docs": "Deletes a property for a given key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

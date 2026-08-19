@@ -1,0 +1,600 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Users Accounts API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--users-accounts
+paths:
+  /rest/external/account/info/user:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              example:
+                Id: 413a8273-d83d-42e0-9942-c6959505079c
+                CompanyName: ELTEC Inc. mfbqdqmyyyep
+                Username: steve.armstrong@mfbqdqmyyyep.eltec.test.ts.sv
+                Language: en-us
+                TimeZone: America/Los_Angeles
+                Memberships:
+                - UserId: ff028804-9fc4-4894-ad03-3b27dcd5458c
+                  GroupId: 7066241f-e414-493d-acae-a3f98f0432cc
+                  Role: a6a3edcd-00d9-427c-bf03-4ef0112ba16d
+                Created: '2017-12-12T14:26:02.339Z'
+                State: ACTIVE
+                Type: PERSON
+                FirstName: Steve
+                LastName: Armstrong
+                Visible: true
+              schema:
+                title: Tradeshift Public API 1.0 - UserAccountList
+                type: object
+                properties:
+                  Id:
+                    title: The Id Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  CompanyName:
+                    title: The Companyname Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  Username:
+                    title: The Username Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  Language:
+                    title: The Language Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  TimeZone:
+                    title: The Timezone Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  Memberships:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        UserId:
+                          title: The Userid Schema.
+                          default: ''
+                          description: An explanation about the purpose of this instance.
+                          type: string
+                        GroupId:
+                          title: The Groupid Schema.
+                          default: ''
+                          description: An explanation about the purpose of this instance.
+                          type: string
+                        Role:
+                          title: The Role Schema.
+                          default: ''
+                          description: An explanation about the purpose of this instance.
+                          type: string
+                      required:
+                      - UserId
+                      - GroupId
+                      - Role
+                  Created:
+                    title: The Created Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  State:
+                    title: The State Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  Type:
+                    title: The Type Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  FirstName:
+                    title: The Firstname Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  LastName:
+                    title: The Lastname Schema.
+                    default: ''
+                    description: An explanation about the purpose of this instance.
+                    type: string
+                  Visible:
+                    title: The Visible Schema.
+                    default: false
+                    description: An explanation about the purpose of this instance.
+                    type: boolean
+                required:
+                - Id
+                - CompanyName
+                - Username
+                - Language
+                - TimeZone
+                - Memberships
+                - Created
+                - State
+                - Type
+                - FirstName
+                - LastName
+                - Visible
+      description: Returns information about the user account currently accessing the system. Be aware that under normal circumstances, this will be a special app user, not the user who has installed an app.
+      operationId: get-rest-external-account-info-user
+      x-annotation-dx-category: users-accounts
+      summary: get user info
+      tags:
+      - dx-category--users-accounts
+  /rest/external/account/public/users:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  itemsPerPage: 25
+                  itemCount: 1
+                  numPages: 1
+                  pageId: 0
+                  UserAccounts:
+                  - Id: e7eb4520-34f6-48c3-8982-024366454ba4
+                    CompanyAccountId: b289b086-c96f-4b09-a0e9-300631948601
+                    CompanyName: ELTEC Inc. jvuvlsxwdzlh
+                    Username: steve.armstrong@jvuvlsxwdzlh.eltec.test.ts.sv
+                    Language: en-us
+                    TimeZone: America/Los_Angeles
+                    Memberships:
+                    - UserId: e7eb4520-34f6-48c3-8982-024366454ba4
+                      GroupId: b289b086-c96f-4b09-a0e9-300631948601
+                      Role: a6a3edcd-00d9-427c-bf03-4ef0112ba16d
+                    Created: '2017-04-04T10:58:54.585+02:00'
+                    State: ACTIVE
+                    Type: PERSON
+                    FirstName: Steve
+                    LastName: Armstrong
+                    Visible: true
+                  PrimaryUser: e7eb4520-34f6-48c3-8982-024366454ba4
+        '404':
+          description: ''
+      description: Searches visible users in all companies (not only the current account) for the query string.
+      operationId: get-rest-external-account-public-users
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: User to search for
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: true
+        description: Page size per query
+        schema:
+          default: 10
+          type: integer
+      - name: page
+        in: query
+        description: Page number of the query
+        schema:
+          default: 0
+          type: integer
+      x-annotation-dx-category: users-accounts
+      summary: find public users
+      tags:
+      - dx-category--users-accounts
+  /rest/external/account/users:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  itemsPerPage: 25
+                  itemCount: 1
+                  numPages: 1
+                  pageId: 0
+                  UserAccounts:
+                  - Id: e7eb4520-34f6-48c3-8982-024366454ba4
+                    CompanyAccountId: b289b086-c96f-4b09-a0e9-300631948601
+                    CompanyName: ELTEC Inc. jvuvlsxwdzlh
+                    Username: steve.armstrong@jvuvlsxwdzlh.eltec.test.ts.sv
+                    Language: en-us
+                    TimeZone: America/Los_Angeles
+                    Memberships:
+                    - UserId: e7eb4520-34f6-48c3-8982-024366454ba4
+                      GroupId: b289b086-c96f-4b09-a0e9-300631948601
+                      Role: a6a3edcd-00d9-427c-bf03-4ef0112ba16d
+                    Created: '2017-04-04T10:58:54.585+02:00'
+                    State: ACTIVE
+                    Type: PERSON
+                    FirstName: Steve
+                    LastName: Armstrong
+                    Visible: true
+                  PrimaryUser: e7eb4520-34f6-48c3-8982-024366454ba4
+        '404':
+          description: ''
+      description: Get a list of users associated with the current account.
+      operationId: get-rest-external-account-users
+      parameters:
+      - name: visible
+        in: query
+        required: true
+        description: If true, only display users that are visible to everybody in a network.
+        schema:
+          default: true
+          type: boolean
+      - name: limit
+        in: query
+        required: true
+        description: Page size per query
+        schema:
+          default: 25
+          type: integer
+      - name: page
+        in: query
+        description: Page number of the query
+        schema:
+          default: 0
+          type: integer
+      x-annotation-dx-category: users-accounts
+      summary: get users
+      tags:
+      - dx-category--users-accounts
+  /rest/external/account/users/byemail/{email}:
+    parameters:
+    - name: email
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Email of user being requested
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                example:
+                  Id: bc537c59-6c8c-49d0-bc24-14b6d676b106
+                  Person:
+                    Created: '2016-09-27T10:49:45.739+02:00'
+                    FirstName: Dwight
+                    LastName: Schrute
+                    Email: dwight.schrute@dundermifflin.com
+                  CompanyAccountId: 87b14576-04f6-480c-a4fd-8f692dd89fa8
+                  UserName: dwight.schrute@dundermifflin.com
+                  Credentials: []
+                  State: ACTIVE
+                  Language: en-us
+                  Kind: PERSON
+                  TimeZone: America/New_York
+                  Visible: false
+                  OverridingCompanyAccountId: 87b14576-04f6-480c-a4fd-8f692dd89fa8
+        '404':
+          description: ''
+      description: Find if a user exists inside a company. Case insensitive.
+      operationId: get-rest-external-account-users-byemail-email
+      parameters:
+      - name: searchparent
+        in: query
+        description: If true, search parent account as well.
+        schema:
+          default: false
+          type: boolean
+      - name: searchlocked
+        in: query
+        description: If true, search locked account as well.
+        schema:
+          default: true
+          type: boolean
+      x-annotation-dx-category: users-accounts
+      summary: get user by email
+      tags:
+      - dx-category--users-accounts
+  /rest/external/account/users/{userId}:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of user account.
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            text/xml:
+              example: "<UserAccountInfo xmlns=\"http://tradeshift.com/api/public/1.0\">\n    <Id>69c772e7-b177-4621-8bb0-c1b3768adcd5</Id>\n    <CompanyAccountId>f54bca78-3ac9-4843-ae4a-f6808c0ea477</CompanyAccountId>\n    <CompanyName>ELTEC Inc.</CompanyName>\n    <Username>steve.armstrong@example.com</Username>\n    <Language>en-us</Language>\n    <TimeZone>America/Los_Angeles</TimeZone>\n    <Memberships>\n        <Membership>\n            <UserId>69c772e7-b177-4621-8bb0-c1b3768adcd5</UserId>\n            <GroupId>cfacdb6c-abef-46bd-9283-098387ac9e03</GroupId>\n            <Role>a6a3edcd-00d9-427c-bf03-4ef0112ba16d</Role>\n        </Membership>\n    </Memberships>\n    <Created>2017-05-08T13:24:36.710+02:00</Created>\n    <State>ACTIVE</State>\n    <Type>PERSON</Type>\n    <FirstName>Steve</FirstName>\n    <LastName>Armstrong</LastName>\n    <Visible>true</Visible>\n</UserAccountInfo>\n"
+              schema:
+                type: object
+      description: Gets account information to requested user. Sensitive info is disclosed within the same company or between companies that are mutually connected.
+      operationId: get-rest-external-account-users-userid
+      x-annotation-dx-category: users-accounts
+      summary: get user by id
+      tags:
+      - dx-category--users-accounts
+    put:
+      responses:
+        '204':
+          description: The user was updated/created successfully.
+        '404':
+          description: ''
+      description: Create or update a user inside the current company account
+      operationId: put-rest-external-account-users-userid
+      requestBody:
+        content:
+          application/json:
+            example:
+              Id: 413a8273-d83d-42e0-9942-c6959505079c
+              CompanyAccountId: 513a8273-d83d-42e0-9942-c6959505079a
+              CompanyName: ELTEC Inc. mfbqdqmyyyep
+              Username: steve.armstrong@mfbqdqmyyyep.eltec.test.ts.sv
+              Language: en-us
+              TimeZone: America/Los_Angeles
+              Memberships:
+              - UserId: ff028804-9fc4-4894-ad03-3b27dcd5458c
+                GroupId: 7066241f-e414-493d-acae-a3f98f0432cc
+                Role: a6a3edcd-00d9-427c-bf03-4ef0112ba16d
+              Created: '2017-12-12T14:26:02.339Z'
+              State: ACTIVE
+              Type: PERSON
+              FirstName: Steve
+              LastName: Armstrong
+              Title: Mr.
+              PictureUrl: theUrl
+              Visible: true
+              RoleId: a6a3edcd-00d9-427c-bf03-4ef0112ba16d
+              Password: theSecretSauce
+            schema:
+              required:
+              - Id
+              - CompanyAccountId
+              - CompanyName
+              - Username
+              - Language
+              - Created
+              - FirstName
+              - LastName
+              type: object
+              properties:
+                Id:
+                  type: string
+                CompanyAccountId:
+                  type: string
+                CompanyName:
+                  type: string
+                Username:
+                  type: string
+                Language:
+                  type: string
+                TimeZone:
+                  type: string
+                Memberships:
+                  type: array
+                  items:
+                    required:
+                    - UserId
+                    - GroupId
+                    - Role
+                    type: object
+                    properties:
+                      UserId:
+                        type: string
+                      GroupId:
+                        type: string
+                      Role:
+                        type: string
+                Created:
+                  type: string
+                State:
+                  type: string
+                Type:
+                  type: string
+                FirstName:
+                  maxLength: 128
+                  type: string
+                LastName:
+                  maxLength: 128
+                  type: string
+                Title:
+                  type: string
+                PictureUrl:
+                  type: string
+                Visible:
+                  type: boolean
+                RoleId:
+                  type: string
+                Password:
+                  type: string
+        required: true
+      x-annotation-dx-category: users-accounts
+      summary: update user by id
+      tags:
+      - dx-category--users-accounts
+  /rest/external/account/{companyId}/users:
+    parameters:
+    - name: companyId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Company (tenant) UUID identifier of company to administer TSGLI prefixes for.
+    get:
+      responses:
+        '200':
+          description: List of the found users
+          content:
+            application/json:
+              example:
+                itemsPerPage: 25
+                itemCount: 1
+                numPages: 1
+                pageId: 0
+                UserAccounts:
+                - Id: e7eb4520-34f6-48c3-8982-024366454ba4
+                  CompanyAccountId: b289b086-c96f-4b09-a0e9-300631948601
+                  CompanyName: ELTEC Inc. jvuvlsxwdzlh
+                  Username: steve.armstrong@jvuvlsxwdzlh.eltec.test.ts.sv
+                  Language: en-us
+                  TimeZone: America/Los_Angeles
+                  Memberships:
+                  - UserId: e7eb4520-34f6-48c3-8982-024366454ba4
+                    GroupId: b289b086-c96f-4b09-a0e9-300631948601
+                    Role: a6a3edcd-00d9-427c-bf03-4ef0112ba16d
+                  Created: '2017-04-04T10:58:54.585+02:00'
+                  State: ACTIVE
+                  Type: PERSON
+                  FirstName: Steve
+                  LastName: Armstrong
+                  Visible: true
+                PrimaryUser: e7eb4520-34f6-48c3-8982-024366454ba4
+              schema:
+                title: Tradeshift Public API 1.0 - UserAccountList
+                type: object
+                properties:
+                  itemsPerPage:
+                    type: number
+                  itemCount:
+                    type: number
+                  numPages:
+                    type: number
+                  pageId:
+                    type: number
+                  UserAccounts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Id:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        CompanyAccountId:
+                          type: string
+                        CompanyName:
+                          type: string
+                        Username:
+                          type: string
+                        Language:
+                          type: string
+                        TimeZone:
+                          type: string
+                        Memberships:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              UserId:
+                                pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                                description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                                type: string
+                              GroupId:
+                                pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                                description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                                type: string
+                              Role:
+                                pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                                description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                                type: string
+                            required:
+                            - UserId
+                            - GroupId
+                            - Role
+                        Created:
+                          type: string
+                        State:
+                          type: string
+                        Type:
+                          type: string
+                        FirstName:
+                          type: string
+                        LastName:
+                          type: string
+                        Visible:
+                          type: boolean
+                      required:
+                      - Id
+                      - CompanyAccountId
+                      - CompanyName
+                      - Username
+                      - Language
+                      - TimeZone
+                      - Memberships
+                      - Created
+                      - State
+                      - Type
+                      - FirstName
+                      - LastName
+                      - Visible
+                  PrimaryUser:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+                required:
+                - itemsPerPage
+                - itemCount
+                - numPages
+                - pageId
+                - UserAccounts
+                - PrimaryUser
+        '404':
+          description: ''
+      description: Searches for or lists the users in the requested company account
+      operationId: get-rest-external-account-companyid-users
+      parameters:
+      - name: q
+        in: query
+        description: User to search for (optional)
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: list of id's for users to return, if any id' are supplied the q, page and limit params will be ignored
+        schema:
+          type: string
+      - name: includeMemberships
+        in: query
+        description: adds membership info to found users
+        schema:
+          default: true
+          type: boolean
+      - name: findMembers
+        in: query
+        description: consider membership in finding users
+        schema:
+          default: false
+          type: boolean
+      - name: state
+        in: query
+        description: state - list of user states to query by, if left out default will be ACTIVE and CREATED
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: pagination limit
+        schema:
+          default: 25
+          type: integer
+      - name: page
+        in: query
+        description: Page number of the query
+        schema:
+          default: 0
+          type: integer
+      x-annotation-dx-category: users-accounts
+      summary: find users
+      tags:
+      - dx-category--users-accounts

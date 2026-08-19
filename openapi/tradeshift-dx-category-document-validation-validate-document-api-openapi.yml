@@ -1,0 +1,54 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Document Validation Validate Document API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--document-validation-validate_document
+paths:
+  /rest/external/document-validation/validation/validate-document:
+    put:
+      tags:
+      - dx-category--document-validation-validate_document
+      summary: Validate document
+      description: Validate a document by testing matching validators, optionally specifying a category to filter the validator groups that are applied. Only the validator groups for the provided document type are run.
+      operationId: put-rest-external-document-validation-validation-validate-document
+      parameters:
+      - name: senderTenantId
+        in: query
+        description: UUID of the user company (tenant) that is sending the document. This can be different than the 'tenantId' header value, for example when checking on behalf of a branch. The sender tenant id is used to obtain the connection properties of the connection between the receiver and sender, or other sender related settings.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: receiverTenantId
+        in: query
+        description: UUID of the company (tenant) that will receive the document. The receiver tenant is used to check the validators of the receiver when the receiver company has configured validation for other companies sending documents (for example 'sellers' sending invoices to a 'buyer'), to obtain the connection properties of the connection between the receiver and sender, to obtain the country compliance validator groups of the receiver if enabled, or other receiver related settings.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: documentId
+        in: query
+        description: Optional document id to validate, if provided the document content body is ignored.
+        required: false
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: array
+              description: Optional document content in UBL XML format that will be tested against the validators. Only checked if documentId parameter is not provided. If documentId parameter is provided, this is ignored.
+              items:
+                type: string
+                format: byte
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResult'

@@ -1,0 +1,471 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Documents Quotes API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--documents-quotes
+paths:
+  /rest/external/documents/quotes/template:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              example:
+                DocumentProfileId: tradeshift.quote.1.0
+                TaxCategories:
+                  StackedTaxes: []
+                  DefaultTaxIndex: 0
+                Ubl:
+                  DocumentType: QuotationType
+                  UBLVersionID:
+                    value: '2.0'
+                  CustomizationID:
+                    value: urn:tradeshift.com:ubl-2.0-customizations:2010-06
+                  ProfileID:
+                    value: urn:www.cenbii.eu:profile:bii04:ver1.0
+                    schemeID: CWA 16073:2010
+                    schemeAgencyID: CEN/ISSS WS/BII
+                    schemeVersionID: '1'
+                  ID:
+                    value: '1'
+                  IssueDate:
+                    value: '2017-04-06'
+                  PricingCurrencyCode:
+                    value: CNY
+                  AdditionalDocumentReference:
+                  - ID:
+                      value: HALF_EVEN
+                    DocumentTypeCode:
+                      value: RoundingRule
+                      listID: urn:tradeshift.com:api:1.0:documenttypecode
+                  SellerSupplierParty:
+                    Party:
+                      PartyIdentification:
+                      - ID:
+                          value: c9989bf0-0bf4-4500-86e9-af8edfcca6eb
+                          schemeID: TS:ID
+                      PartyName:
+                      - Name:
+                          value: Test Supplier
+                      PostalAddress:
+                        AddressFormatCode:
+                          value: '5'
+                          listID: UN/ECE 3477
+                          listAgencyID: '6'
+                          listVersionID: D08B
+                        StreetName:
+                          value: street
+                        BuildingNumber:
+                          value: '6'
+                        CityName:
+                          value: city
+                        PostalZone:
+                          value: '100000'
+                        CountrySubentity:
+                          value: test
+                        Country:
+                          IdentificationCode:
+                            value: CN
+                      Contact:
+                        ID:
+                          value: '1'
+                        Name:
+                          value: Steve Armstrong
+                      Person:
+                        FirstName:
+                          value: Steve
+                        FamilyName:
+                          value: Armstrong
+                  QuotedMonetaryTotal:
+                    LineExtensionAmount:
+                      value: 0
+                      currencyID: CNY
+                    TaxExclusiveAmount:
+                      value: 0
+                      currencyID: CNY
+                    TaxInclusiveAmount:
+                      value: 0
+                      currencyID: CNY
+                    PayableAmount:
+                      value: 0
+                      currencyID: CNY
+                DocumentProfile:
+                  AttachmentRequired: false
+                  DocumentProfileId: tradeshift.quote.1.0
+                  PaymentMeansCode:
+                  - '10'
+                  - '20'
+                  - '42'
+                  - porta-31-a
+                  DocumentType: quote
+                  DocumentFields: []
+              schema:
+                type: object
+                properties:
+                  DocumentProfile:
+                    type: object
+                    properties:
+                      AttachmentRequired:
+                        type: boolean
+                      DocumentFields:
+                        type: array
+                        items:
+                          type: string
+                      DocumentProfileId:
+                        type: string
+                      DocumentType:
+                        type: string
+                      PaymentMeansCode:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                    - AttachmentRequired
+                    - DocumentFields
+                    - DocumentProfileId
+                    - DocumentType
+                    - PaymentMeansCode
+                  DocumentProfileId:
+                    type: string
+                  TaxCategories:
+                    type: object
+                    properties:
+                      DefaultTaxIndex:
+                        type: integer
+                      StackedTaxes:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                    - DefaultTaxIndex
+                    - StackedTaxes
+                  Ubl:
+                    type: object
+                    properties:
+                      AdditionalDocumentReference:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            DocumentTypeCode:
+                              type: object
+                              properties:
+                                listID:
+                                  type: string
+                                value:
+                                  type: string
+                              required:
+                              - listID
+                              - value
+                            ID:
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                              required:
+                              - value
+                          required:
+                          - DocumentTypeCode
+                          - ID
+                      CustomizationID:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                        required:
+                        - value
+                      DocumentType:
+                        type: string
+                      ID:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                        required:
+                        - value
+                      IssueDate:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                        required:
+                        - value
+                      PricingCurrencyCode:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                        required:
+                        - value
+                      ProfileID:
+                        type: object
+                        properties:
+                          schemeAgencyID:
+                            type: string
+                          schemeID:
+                            type: string
+                          schemeVersionID:
+                            type: string
+                          value:
+                            type: string
+                        required:
+                        - schemeAgencyID
+                        - schemeID
+                        - schemeVersionID
+                        - value
+                      QuotedMonetaryTotal:
+                        type: object
+                        properties:
+                          LineExtensionAmount:
+                            type: object
+                            properties:
+                              currencyID:
+                                type: string
+                              value:
+                                type: integer
+                            required:
+                            - currencyID
+                            - value
+                          PayableAmount:
+                            type: object
+                            properties:
+                              currencyID:
+                                type: string
+                              value:
+                                type: integer
+                            required:
+                            - currencyID
+                            - value
+                          TaxExclusiveAmount:
+                            type: object
+                            properties:
+                              currencyID:
+                                type: string
+                              value:
+                                type: integer
+                            required:
+                            - currencyID
+                            - value
+                          TaxInclusiveAmount:
+                            type: object
+                            properties:
+                              currencyID:
+                                type: string
+                              value:
+                                type: integer
+                            required:
+                            - currencyID
+                            - value
+                        required:
+                        - LineExtensionAmount
+                        - PayableAmount
+                        - TaxExclusiveAmount
+                        - TaxInclusiveAmount
+                      SellerSupplierParty:
+                        type: object
+                        properties:
+                          Party:
+                            type: object
+                            properties:
+                              Contact:
+                                type: object
+                                properties:
+                                  ID:
+                                    type: object
+                                    properties:
+                                      value:
+                                        type: string
+                                    required:
+                                    - value
+                                  Name:
+                                    type: object
+                                    properties:
+                                      value:
+                                        type: string
+                                    required:
+                                    - value
+                                required:
+                                - ID
+                                - Name
+                              PartyIdentification:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    ID:
+                                      type: object
+                                      properties:
+                                        schemeID:
+                                          type: string
+                                        value:
+                                          type: string
+                                      required:
+                                      - schemeID
+                                      - value
+                                  required:
+                                  - ID
+                              PartyName:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    Name:
+                                      type: object
+                                      properties:
+                                        value:
+                                          type: string
+                                      required:
+                                      - value
+                                  required:
+                                  - Name
+                              Person:
+                                type: object
+                                properties:
+                                  FamilyName:
+                                    type: object
+                                    properties:
+                                      value:
+                                        type: string
+                                    required:
+                                    - value
+                                  FirstName:
+                                    type: object
+                                    properties:
+                                      value:
+                                        type: string
+                                    required:
+                                    - value
+                                required:
+                                - FamilyName
+                                - FirstName
+                              PostalAddress:
+                                type: object
+                                properties:
+                                  AddressFormatCode:
+                                    type: object
+                                    properties:
+                                      listAgencyID:
+                                        type: string
+                                      listID:
+                                        type: string
+                                      listVersionID:
+                                        type: string
+                                      value:
+                                        type: string
+                                    required:
+                                    - listAgencyID
+                                    - listID
+                                    - listVersionID
+                                    - value
+                                  BuildingNumber:
+                                    type: object
+                                    properties:
+                                      value:
+                                        type: string
+                                    required:
+                                    - value
+                                  CityName:
+                                    type: object
+                                    properties:
+                                      value:
+                                        type: string
+                                    required:
+                                    - value
+                                  Country:
+                                    type: object
+                                    properties:
+                                      IdentificationCode:
+                                        type: object
+                                        properties:
+                                          value:
+                                            type: string
+                                        required:
+                                        - value
+                                    required:
+                                    - IdentificationCode
+                                  CountrySubentity:
+                                    type: object
+                                    properties:
+                                      value:
+                                        type: string
+                                    required:
+                                    - value
+                                  PostalZone:
+                                    type: object
+                                    properties:
+                                      value:
+                                        type: string
+                                    required:
+                                    - value
+                                  StreetName:
+                                    type: object
+                                    properties:
+                                      value:
+                                        type: string
+                                    required:
+                                    - value
+                                required:
+                                - AddressFormatCode
+                                - BuildingNumber
+                                - CityName
+                                - Country
+                                - CountrySubentity
+                                - PostalZone
+                                - StreetName
+                            required:
+                            - Contact
+                            - PartyIdentification
+                            - PartyName
+                            - Person
+                            - PostalAddress
+                        required:
+                        - Party
+                      UBLVersionID:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                        required:
+                        - value
+                    required:
+                    - AdditionalDocumentReference
+                    - CustomizationID
+                    - DocumentType
+                    - ID
+                    - IssueDate
+                    - PricingCurrencyCode
+                    - ProfileID
+                    - QuotedMonetaryTotal
+                    - SellerSupplierParty
+                    - UBLVersionID
+                required:
+                - DocumentProfile
+                - DocumentProfileId
+                - TaxCategories
+                - Ubl
+      description: Get a quote template.
+      operationId: get-rest-external-documents-quotes-template
+      parameters:
+      - name: connectionId
+        in: query
+        description: The receiving connection id. It is used to preset data in template.
+        schema:
+          type: string
+      - name: companyAccountId
+        in: query
+        description: The receiver company id. It is used to preset data in template.
+        schema:
+          type: string
+      - name: quoteId
+        in: query
+        description: The receiver company id. It is used to preset data in template.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-quotes
+      summary: get quote template
+      tags:
+      - dx-category--documents-quotes

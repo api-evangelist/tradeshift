@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Document Validation Validators Delete API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--document-validation-validators_delete",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete validator group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/document-validation/validation/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the validator group to delete"
+              }
+            ]
+          },
+          "docs": "Permanently deletes a validator group definition"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

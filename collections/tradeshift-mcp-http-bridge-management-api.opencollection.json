@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MCP HTTP Bridge & Management API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MCP HTTP Bridge & Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Serve Spa",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:full_path",
+            "params": [
+              {
+                "name": "full_path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Serve Spa"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

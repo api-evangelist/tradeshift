@@ -1,0 +1,57 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Network Document Profiles API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--network-document_profiles
+paths:
+  /rest/external/network/connections/{connectionId}/documentProfiles/{documentType}/inbound:
+    parameters:
+    - name: documentType
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The type of document
+    - name: connectionId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Connection identifier as UUID.
+    get:
+      responses:
+        '200':
+          description: ''
+      description: Get the document profile that would be applied on incoming documents from the account pointed to by a connection.
+      operationId: get-rest-external-network-connections-connectionid-documentprofiles-documenttype-inbound
+      x-annotation-dx-category: network-document_profiles
+      summary: find doc profile inbound
+      tags:
+      - dx-category--network-document_profiles
+  /rest/external/network/connections/{connectionId}/documentProfiles/{documentType}/outbound:
+    parameters:
+    - name: documentType
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The type of document
+    - name: connectionId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Connection identifier as UUID.
+    get:
+      responses:
+        '200':
+          description: ''
+      description: Get the document profile that would be applied on outgoing documents from the account pointed to by a connection.
+      operationId: get-rest-external-network-connections-connectionid-documentprofiles-documenttype-outbound
+      x-annotation-dx-category: network-document_profiles
+      summary: find doc profile outbound
+      tags:
+      - dx-category--network-document_profiles

@@ -1,0 +1,3683 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Documents Document API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--documents-document
+paths:
+  /rest/external/documents:
+    get:
+      responses:
+        '200':
+          description: 'The list of documents found with the same response mime-type as the one
+
+            specified in the Accept header. The returned result is ordered ascending or descending
+
+            (defaults to descending) based on the selected "ordering" parameter (defaults to LastEdit).
+
+            '
+          content:
+            application/json:
+              example:
+                itemsPerPage: 25
+                itemCount: 14
+                indexing: false
+                numPages: 1
+                pageId: 0
+                Document:
+                - DocumentId: 7f8959f0-3372-4a5e-b764-7fb42f1ff494
+                  ID: '5'
+                  URI: https://api.tradeshift.com/rest/external/documents/7f8959f0-3372-4a5e-b764-7fb42f1ff494
+                  DocumentType:
+                    mimeType: text/xml
+                    documentProfileId: nes.p5.order.ubl.2.1.dk
+                    type: order
+                  State: LOCKED
+                  LastEdit: '2017-03-01T15:07:14.421+01:00'
+                  Actor:
+                    Created: '2017-02-27T11:29:19.564+01:00'
+                    FirstName: ''
+                    LastName: ''
+                    Email: steve.armstrong@eltec.test.ts.sv
+                  ReceiverCompanyName: simon.owen@simons-catering.test.ts.sv
+                  Tags:
+                    Tag: []
+                  ItemInfos:
+                  - type: document.description
+                    value: '1'
+                  - type: document.total
+                    value: '1.25'
+                  - type: document.currency
+                    value: DKK
+                  - type: document.issuedate
+                    value: '2017-03-01'
+                  LatestDispatch:
+                    DispatchId: 641a034b-e3fc-4218-9a0b-148ed269db51
+                    ObjectId: 7f8959f0-3372-4a5e-b764-7fb42f1ff494
+                    Created: '2017-03-01T15:16:15.657+01:00'
+                    SenderUserId: 0cb783f9-22c6-455f-84f1-83f8b3b5bdf5
+                    DispatchState: COMPLETED
+                    LastStateChange: '2017-03-01T15:16:15.657+01:00'
+                    ReceiverConnectionId: 7593c621-d8e8-4b6f-b296-01310f71ff4e
+                    DispatchChannel: TRADESHIFT
+                  SentReceivedTimestamp: '2017-03-01T15:15:40.478+01:00'
+                  ProcessState: PENDING
+                  ConversationStates:
+                  - Axis: PROCESS
+                    State: PENDING
+                    Timestamp: '2017-03-01T15:15:23.059+01:00'
+                  - Axis: OTHERPART
+                    State: OTHER_PENDING
+                    Timestamp: '2017-03-01T15:16:18.023+01:00'
+                  - Axis: DELIVERY
+                    State: SENT
+                    Timestamp: '2017-03-01T15:16:17.968+01:00'
+                  UnifiedState: DELIVERED
+                  Deleted: false
+                  Properties:
+                  - scheme: emailBody
+                    value: ''
+                  - scheme: emailSubject
+                    value: ''
+                  ConversationId: 5afdf6e8-862b-40bc-8bf2-86d6364df85c
+                  SettlementIds:
+                  - 641a034b-e3fc-4218-9a0b-148ed269db58
+                  - 641a034b-e3fc-4218-9a0b-148ed269db59
+              schema:
+                type: object
+                properties:
+                  itemsPerPage:
+                    type: integer
+                  itemCount:
+                    type: integer
+                  indexing:
+                    type: boolean
+                  numPages:
+                    type: integer
+                  pageId:
+                    type: integer
+                  Document:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        DocumentId:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        ID:
+                          type: string
+                        URI:
+                          type: string
+                        DocumentType:
+                          type: object
+                          properties:
+                            mimeType:
+                              type: string
+                            documentProfileId:
+                              type: string
+                            type:
+                              type: string
+                          required:
+                          - mimeType
+                          - documentProfileId
+                          - type
+                        State:
+                          enum:
+                          - DELETION_AWAITING_APPROVAL
+                          - DELETION_REQUESTED
+                          - DELETION_IN_PROGRESS
+                          - DELETION_COMPLETE
+                          - DELETION_FAILED
+                          type: string
+                        LastEdit:
+                          pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.\d{3})?(Z|(\+|\-)[0-9]{2}:[0-9]{2})
+                          description: ISO8601 formatted DateTime in UTC timezone, fx 2014-12-09T16:11:53Z with optionally .001 for milliseconds.
+                          type: string
+                        Actor:
+                          type: object
+                          properties:
+                            Created:
+                              pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.\d{3})?(Z|(\+|\-)[0-9]{2}:[0-9]{2})
+                              description: ISO8601 formatted DateTime in UTC timezone, fx 2014-12-09T16:11:53Z with optionally .001 for milliseconds.
+                              type: string
+                            Firstname:
+                              type: string
+                            Lastname:
+                              type: string
+                            Email:
+                              type: string
+                          required:
+                          - Created
+                          - Firstname
+                          - Lastname
+                          - Email
+                        ReceiverCompanyName:
+                          type: string
+                        Tags:
+                          type: object
+                          properties:
+                            Tag:
+                              type: array
+                              items:
+                                type: string
+                          required:
+                          - Tag
+                        ItemInfos:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              ItemInfo:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                  value:
+                                    type: string
+                                required:
+                                - type
+                                - value
+                            required:
+                            - ItemInfo
+                        LatestDispatch:
+                          type: object
+                          properties:
+                            DispatchId:
+                              pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                              description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                              type: string
+                            ObjectId:
+                              pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                              description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                              type: string
+                            Created:
+                              pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.\d{3})?(Z|(\+|\-)[0-9]{2}:[0-9]{2})
+                              description: ISO8601 formatted DateTime in UTC timezone, fx 2014-12-09T16:11:53Z with optionally .001 for milliseconds.
+                              type: string
+                            SenderUserId:
+                              pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                              description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                              type: string
+                            DispatchState:
+                              enum:
+                              - ACCEPTED
+                              - PROCESSING
+                              - COMPLETED
+                              - FAILED_TRANSIENT
+                              - FAILED
+                              type: string
+                            LastStateChange:
+                              pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.\d{3})?(Z|(\+|\-)[0-9]{2}:[0-9]{2})
+                              description: ISO8601 formatted DateTime in UTC timezone, fx 2014-12-09T16:11:53Z with optionally .001 for milliseconds.
+                              type: string
+                            ReceiverConnectionId:
+                              pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                              description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                              type: string
+                            DispatchChannel:
+                              type: string
+                          required:
+                          - DispatchId
+                          - ObjectId
+                          - Created
+                          - SenderUserId
+                          - DispatchState
+                          - LastStateChange
+                          - ReceiverConnectionId
+                          - DispatchChannel
+                        SentReceivedTimestamp:
+                          pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.\d{3})?(Z|(\+|\-)[0-9]{2}:[0-9]{2})
+                          description: ISO8601 formatted DateTime in UTC timezone, fx 2014-12-09T16:11:53Z with optionally .001 for milliseconds.
+                          type: string
+                        ProcessState:
+                          type: string
+                        ConversationStates:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              Axis:
+                                enum:
+                                - PROCESS
+                                - DELIVERY
+                                - PAYMENT
+                                - OTHERPART
+                                - REPLACEMENT
+                                - FINANCING
+                                - GLOBAL
+                                type: string
+                              State:
+                                enum:
+                                - PROCESS_ANY
+                                - PAID
+                                - REJECTED
+                                - OVERDUE
+                                - ACCEPTED
+                                - PENDING
+                                - INVOICED
+                                - DISPUTED
+                                - AWAITING_ASSISTANCE
+                                - ASSISTANCE_PROVIDED
+                                - CANCELED
+                                - ASSISTANCE_CANCELED
+                                - PUNCHOUT_SENT
+                                - PUNCHOUT_EDIT
+                                - DELIVERY_ANY
+                                - FAILED
+                                - SENT
+                                - RECEIVED
+                                - PROCESSING
+                                - PENDING_CONNECTION
+                                - PAYMENT_ANY
+                                - PAYMENT_CREATED
+                                - PAYMENT_PROCESSING
+                                - PAYMENT_PENDING
+                                - PAYMENT_COMPLETED
+                                - PAYMENT_INCOMPLETE
+                                - PAYMENT_REVERSAL_INCOMPLETE
+                                - PAYMENT_EXPIRED
+                                - PAYMENT_ERROR
+                                - OTHER_ANY
+                                - OTHER_REJECTED
+                                - OTHER_CANCELED
+                                - OTHER_PENDING
+                                - OTHER_PAID
+                                - OTHER_ACCEPTED
+                                - OTHER_PAYMENT_COMPLETED
+                                - OTHER_INVOICED
+                                - OTHER_DISPUTED
+                                - OTHER_OVERDUE
+                                - REPLACEMENT_ANY
+                                - ORIGINAL
+                                - REPLACED
+                                - CORRECTED
+                                - FINANCING_ANY
+                                - FINANCING_OFFERED
+                                - FINANCING_OFFER_ACCEPTED_BY_SUPPLIER
+                                - FINANCING_FUNDED
+                                type: string
+                              Timestamp:
+                                type: string
+                            required:
+                            - Axis
+                            - State
+                            - Timestamp
+                        UnifiedState:
+                          enum:
+                          - UNDETERMINED
+                          - IN_TRANSIT
+                          - PENDING_NOT_A_CONTACT
+                          - FAILED_DELIVERY
+                          - SENT
+                          - DELIVERED
+                          - ACCEPTED
+                          - OVERDUE
+                          - PAID_UNCONFIRMED
+                          - PAID_CONFIRMED
+                          - REJECTED_BY_SENDER
+                          - REJECTED_BY_RECEIVER
+                          - DISPUTED_BY_RECEIVER
+                          - REPLACED
+                          - CORRECTED
+                          - AWAITING_ASSISTANCE
+                          - ASSISTANCE_PROVIDED
+                          - CANCELED
+                          - ASSISTANCE_CANCELED
+                          - PUNCHOUT_SENT
+                          - PUNCHOUT_EDIT
+                          type: string
+                        Deleted:
+                          type: boolean
+                        Properties:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              scheme:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - scheme
+                            - value
+                        ConversationId:
+                          type: string
+                        SettlementIds:
+                          type: array
+                          items:
+                            type: string
+                        OrderTypeCode:
+                          type: string
+                      required:
+                      - DocumentId
+                      - ID
+                      - URI
+                      - DocumentType
+                      - State
+                      - LastEdit
+                      - Actor
+                      - ReceiverCompanyName
+                      - Tags
+                      - ItemInfos
+                      - LatestDispatch
+                      - SentReceivedTimestamp
+                      - ProcessState
+                      - ConversationStates
+                      - UnifiedState
+                      - Deleted
+                      - Properties
+                      - ConversationId
+                      - SettlementIds
+                      - OrderTypeCode
+                required:
+                - itemsPerPage
+                - itemCount
+                - indexing
+                - numPages
+                - pageId
+                - Document
+        '400':
+          description: Bad request error
+        '406':
+          description: The request uses Accept headers that the server is unable to fulfill
+      description: Gets a list of documents for the current user in XML or JSON format depending on the request Accept header. If multiple criteria are specified, they act as logical AND, unless specified otherwise. Drafts are not returned by default, unless stag=draft is specified. The return list of documents can be sorted by DueDate, LastEdit, Number, Amount, Date, Type.
+      operationId: get-rest-external-documents
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: Media types which are acceptable for the response. The possible values are text/xml and application/json.
+        schema:
+          enum:
+          - application/xml
+          - application/json
+          type: string
+      - name: tag
+        in: query
+        description: The tag the document must have. Can be used multiple times, which is interpreted as OR unless you set useAndOperatorForTags to true, then it will be AND.
+        schema:
+          type: string
+      - name: useAndOperatorForTags
+        in: query
+        description: It sets the tags based search to meet all criteria within the set of provided filters.
+        schema:
+          default: false
+          type: boolean
+      - name: withouttag
+        in: query
+        description: The tag the document must not have. Can be used multiple times, which is interpreted as AND.
+        schema:
+          type: string
+      - name: propertykey
+        in: query
+        description: Must be specified together with propertyvalue. Each pair of propertykey and propertyvalue will be interpreted as AND by default unless you set useOrOperatorForProperties to true, then it will be OR.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: propertyvalue
+        in: query
+        description: See propertykey.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: useOrOperatorForProperties
+        in: query
+        description: It sets the property based search to meet at least one criteria within the set of provided filters.
+        schema:
+          type: boolean
+      - name: ascending
+        in: query
+        description: Whether the documents are ordered in ascending or descending order (for last edited date), defaults to descending.
+        schema:
+          default: false
+          type: boolean
+      - name: type
+        in: query
+        description: The type of documents to include. Examples of document types 'invoice', 'creditnote'. Can be used multiple times, which is interpreted as OR.
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Result page to return. Each page has 'limit' number of results.
+        schema:
+          default: 0
+          type: integer
+      - name: limit
+        in: query
+        description: Maximum number of results to return. This is also the number of results on each skipped page. Capped to 100. If _onlyIndex is set to true, includesourcedocuments and populatePersonInfo to false value is capped to 10000.
+        schema:
+          default: 25
+          type: integer
+      - name: id
+        in: query
+        description: The documents to get DocumentInformation for (a Tradeshift UUID value)
+        schema:
+          type: string
+      - name: businessId
+        in: query
+        description: Limits documents to those with the given business id (invoice/credit note/purchase order number, e.g. 'ABC-123'). Note that business ids are not guaranteed to be unique for received documents, and may potentially be duplicated for different documents, even sent by the same supplier.
+        schema:
+          type: string
+      - name: sentBy
+        in: query
+        description: Sender company tenant id (a Tradeshift UUID value).
+        schema:
+          type: string
+      - name: sentTo
+        in: query
+        description: Receiver company tenant ids (a Tradeshift UUID value).
+        schema:
+          type: string
+      - name: stag
+        in: query
+        description: The system tag the document must have. Can be used multiple times, which is interpreted as OR. Known system include "inbox", "outbox", "draft", "sales", "purchases", "deleted".
+        schema:
+          type: string
+      - name: minissuedate
+        in: query
+        description: Earliest issue date of documents to match (according to UBL content).
+        schema:
+          type: string
+      - name: maxissuedate
+        in: query
+        description: Latest issue date of documents to match (according to UBL content).
+        schema:
+          type: string
+      - name: since
+        in: query
+        description: Limits documents to those which have changed since the given timestamp, formatted as a XSD-timestamp.
+        schema:
+          type: string
+      - name: createdBefore
+        in: query
+        description: Limits documents to those which were created before the given timestamp, formatted as a XSD-timestamp.
+        schema:
+          type: string
+      - name: createdAfter
+        in: query
+        description: Limits documents to those which were created after the given timestamp, formatted as a XSD-timestamp.
+        schema:
+          type: string
+      - name: processState
+        in: query
+        description: The _user_ state the document must have (see /metadata). Can be used multiple times, which is interpreted as OR. Note that this parameter is misnamed as it searches among all user states, not just process state.
+        schema:
+          type: string
+      - name: withoutProcessState
+        in: query
+        description: The process state the document must not have (see /metadata). Can be used multiple times, which is interpreted as AND. Note that this parameter is misnamed as it searches among all user states, not just process state.
+        schema:
+          type: string
+      - name: branchId
+        in: query
+        description: Document business ids. Can be used multiple times, which is interpreted as OR.
+        schema:
+          type: string
+      - name: totals
+        in: query
+        description: Whether to calculate the documents total amount or not.
+        schema:
+          default: false
+          type: boolean
+      - name: state
+        in: query
+        description: 'Representing the state (e.g. SENT, DELIVERED, ACCEPTED) of the searched documents.
+
+          Can be used multiple times, which is interpreted as OR.
+
+          Accepted values are: UNDETERMINED, IN_TRANSIT, PENDING_NOT_A_CONTACT, FAILED_DELIVERY, SENT, DELIVERED, ACCEPTED, OVERDUE, PAID_UNCONFIRMED, PAID_CONFIRMED, REJECTED_BY_SENDER, REJECTED_BY_RECEIVER, DISPUTED_BY_RECEIVER, CLOSED, REPLACED, CORRECTED, IN_ENRICHMENT, IN_CLEARANCE, COLLECTED, AWAITING_ASSISTANCE, ASSISTANCE_PROVIDED, CANCELED, ASSISTANCE_CANCELED, PUNCHOUT_SENT, PUNCHOUT_EDIT.
+
+          '
+        schema:
+          type: string
+      - name: ordering
+        in: query
+        description: Field that indicates the criteria on which result will be ordered upon returning (e.g. DueDate, Amount, Date).
+        schema:
+          default: LastEdit
+          type: string
+      - name: sales
+        in: query
+        description: This parameter decides whether the transaction type of selected documents should be sale or not.
+        schema:
+          type: boolean
+      - name: query
+        in: query
+        description: 'This parameter defines the specific text to be searched within the documents. It can include a single or
+
+          multiple words or phrases and documents that match the search condition will be returned.
+
+          '
+        schema:
+          type: string
+      - name: copyIndicator
+        in: query
+        description: Whether to search only copies of documents, originals or both.
+        schema:
+          type: boolean
+      - name: onlycopies
+        in: query
+        description: Whether to search only copies of documents.
+        schema:
+          default: false
+          type: boolean
+      - name: onlydrafts
+        in: query
+        description: Whether to search only drafts.
+        schema:
+          default: false
+          type: boolean
+      - name: onlydeleted
+        in: query
+        description: Whether to search only deleted documents.
+        schema:
+          default: false
+          type: boolean
+      - name: includesourcedocuments
+        in: query
+        description: Whether to include the raw UBL document in the result. The UBL documents are stripped of attachments before they are returned.
+        schema:
+          default: false
+          type: boolean
+      - name: waitForIndex
+        in: query
+        description: Whether to wait for pending documents to be indexed.
+        schema:
+          default: true
+          type: boolean
+      - name: _onlyIndex
+        in: query
+        description: This flag allows document listing using exclusively the data from the index.
+        schema:
+          default: false
+          type: boolean
+      - name: conversationId
+        in: query
+        description: The document conversation id used for getting its related documents.
+        schema:
+          type: string
+      - name: totalFrom
+        in: query
+        description: It represents the minimum value of the total range that can be used to filter documents.
+        schema:
+          type: number
+      - name: totalTo
+        in: query
+        description: It represents the maximum value of the total range that can be used to filter documents.
+        schema:
+          type: number
+      - name: currency
+        in: query
+        description: It represents the currency that can be used to filter documents only of that currency.
+        schema:
+          type: string
+      - name: requesterId
+        in: query
+        description: 'This field can be used to filter documents by the given list of requester Ids, only applicable for Purchase Request Documents. The requester is either the creating person or the document or if specified the "on behalf of" person
+
+          '
+        schema:
+          type: string
+      - name: invoiceTypeCode
+        in: query
+        description: 'This field represents the type of invoice for an invoice document. If the field is missing then we will have a normal/commercial invoice filter. For value 325 proforma invoice type will be searched and for value 386 we will have prepayment invoice.
+
+          '
+        schema:
+          type: array
+          items:
+            type: number
+      - name: accountingSystemId
+        in: query
+        description: 'This field represents a custom value assigned by a client to a connection with a supplier.
+
+          '
+        schema:
+          type: string
+      - name: accountingCost
+        in: query
+        description: This field represents a custom value assigned by a client refering to a Cost Center.
+        schema:
+          type: string
+      - name: profileId
+        in: query
+        description: It represents the profile id of a given document.
+        schema:
+          type: string
+      - name: populatePersonInfo
+        in: query
+        description: Populate person info (actor and requester)
+        schema:
+          default: true
+          type: boolean
+      - name: orderTypeCode
+        in: query
+        description: This field represents the type of order for an order document.
+        schema:
+          type: array
+          items:
+            type: number
+      - name: orderChangeTypeCode
+        in: query
+        description: This field represents the type of order for an order change document.
+        schema:
+          type: array
+          items:
+            type: number
+      x-annotation-dx-category: documents-document
+      summary: find documents
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/companies/{owningCompanyId}/{documentId}:
+    parameters:
+    - name: owningCompanyId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: UUID identifier of company account owning the document.
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '307':
+          description: 'Successful response
+
+            '
+          headers:
+            Location:
+              schema:
+                type: string
+        '404':
+          description: 'Document not found or the security check do not pass
+
+            '
+      description: 'Retrieves a document in the context of an owning company. If the supplied authentication context has access to
+
+        see document identified by {documentId}, meaning the sender of the document, then returns a redirect to GET the document with {documentId}.
+
+        If the supplied authentication context does not have access to the document, then checks to see if it has
+
+        access to a document that references the supplied {documentId}, and returns a redirect to GET that referencing document instead.
+
+        This endpoint is used for example when the receiver of a document does not know the id of the document from
+
+        his side, but instead knows the company who sent it and the document id from that company context. The response
+
+        will be a redirect to GET a content of the document accessible by the receiver.
+
+        This only works if a sender tries to access one of its documents, or a receiver tries to find a content based
+
+        on a sender side reference id. It does not work for if a sender tries to access a document content based on the
+
+        reference to a receiver side, because this information is stored only on the receiver side copy of the document.
+
+        '
+      operationId: get-rest-external-documents-companies-owningcompanyid-documentid
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: text/xml, application/json, application/*
+
+          '
+        schema:
+          default: text/xml
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Get company document
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/csv:
+    get:
+      responses:
+        '200':
+          description: The list of documents as text/csv.
+        '400':
+          description: Bad request error
+        '406':
+          description: The request uses Accept headers that the server is unable to fulfill
+      description: Gets a list of documents in CSV format for the current user. If multiple criteria are specified, they act as logical AND, unless specified otherwise. Drafts are not returned by default, unless stag=draft is specified. Could be sorted by DueDate, LastEdit, Number, Amount, Date, Type. The returned mime-type is always text/csv regardless if Accept header is application/csv or text/csv.
+      operationId: get-rest-external-documents-csv
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: Media types which are acceptable for the response. The possible values are application/csv and text/csv.
+        schema:
+          enum:
+          - text/csv
+          - application/csv
+          type: string
+      - name: tag
+        in: query
+        description: The tag the document must have. Can be used multiple times, which is interpreted as OR unless you set useAndOperatorForTags to true, then it will be AND.
+        schema:
+          type: string
+      - name: useAndOperatorForTags
+        in: query
+        description: It sets the tags based search to meet all criteria within the set of provided filters.
+        schema:
+          default: false
+          type: boolean
+      - name: withouttag
+        in: query
+        description: The tag the document must not have. Can be used multiple times, which is interpreted as AND.
+        schema:
+          type: string
+      - name: propertykey
+        in: query
+        description: Must be specified together with propertyvalue. Each pair of propertykey and propertyvalue will be interpreted as AND.
+        schema:
+          type: string
+      - name: propertyvalue
+        in: query
+        description: See propertykey.
+        schema:
+          type: string
+      - name: ascending
+        in: query
+        description: Whether the documents are ordered in ascending or descending order (for last edited date), defaults to descending.
+        schema:
+          default: false
+          type: boolean
+      - name: type
+        in: query
+        description: The type of documents to include. Can be used multiple times, which is interpreted as OR.
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Maximum number of results to return. This is also the number of results on each skipped page.
+        schema:
+          default: 25
+          type: integer
+      - name: stag
+        in: query
+        description: The system tag the document must have. Can be used multiple times, which is interpreted as OR. Known system include "inbox", "outbox", "draft", "sales", "purchases", "deleted".
+        schema:
+          type: string
+      - name: minissuedate
+        in: query
+        description: Earliest issue date of documents to match (according to UBL content).
+        schema:
+          type: string
+      - name: maxissuedate
+        in: query
+        description: Latest issue date of documents to match (according to UBL content).
+        schema:
+          type: string
+      - name: createdBefore
+        in: query
+        description: Limits documents to those which were created before the given timestamp, formatted as a XSD-timestamp.
+        schema:
+          type: string
+      - name: createdAfter
+        in: query
+        description: Limits documents to those which were created after the given timestamp, formatted as a XSD-timestamp.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: 'Represents the state (e.g. SENT, DELIVERED, ACCEPTED) of the searched documents.
+
+          Can be used multiple times, which is interpreted as OR.
+
+          Accepted values are: UNDETERMINED, IN_TRANSIT, PENDING_NOT_A_CONTACT, FAILED_DELIVERY, SENT, DELIVERED, ACCEPTED, OVERDUE, PAID_UNCONFIRMED, PAID_CONFIRMED, REJECTED_BY_SENDER, REJECTED_BY_RECEIVER, DISPUTED_BY_RECEIVER, CLOSED, REPLACED, AWAITING_ASSISTANCE, ASSISTANCE_PROVIDED, CANCELED, ASSISTANCE_CANCELED, PUNCHOUT_SENT, PUNCHOUT_EDIT.
+
+          '
+        schema:
+          type: string
+      - name: ordering
+        in: query
+        description: Result ordering (e.g. DueDate, Amount, Date).
+        schema:
+          default: LastEdit
+          type: string
+      - name: sales
+        in: query
+        description: Whether document is sale or not.
+        schema:
+          type: boolean
+      - name: query
+        in: query
+        description: Text to search.
+        schema:
+          type: string
+      - name: copyIndicator
+        in: query
+        description: Whether to search only copies of documents, originals or both.
+        schema:
+          type: boolean
+      - name: onlycopies
+        in: query
+        description: Whether to search only copies of documents.
+        schema:
+          default: false
+          type: boolean
+      - name: conversationId
+        in: query
+        description: The document conversation id used for getting its related documents.
+        schema:
+          type: string
+      - name: totalFrom
+        in: query
+        description: It represents the minimum value of the total range that can be used to filter documents.
+        schema:
+          type: number
+      - name: totalTo
+        in: query
+        description: It represents the maximum value of the total range that can be used to filter documents.
+        schema:
+          type: number
+      - name: currency
+        in: query
+        description: It represents the currency that can be used to filter documents only of that currency.
+        schema:
+          type: string
+      - name: useOrOperatorForProperties
+        in: query
+        description: It sets the property based search to meet at least one criteria within the set of provided filters.
+        schema:
+          type: boolean
+      - name: page
+        in: query
+        description: Result page to return. Each page has 'limit' number of results.
+        schema:
+          default: 0
+          type: integer
+      - name: id
+        in: query
+        description: The documents to get DocumentInformation for (a Tradeshift UUID value)
+        schema:
+          type: string
+      - name: sentBy
+        in: query
+        description: Sender company tenant id (a Tradeshift UUID value).
+        schema:
+          type: string
+      - name: sentTo
+        in: query
+        description: Receiver company tenant ids (a Tradeshift UUID value).
+        schema:
+          type: string
+      - name: processState
+        in: query
+        description: The _user_ state the document must have (see /metadata). Can be used multiple times, which is interpreted as OR. Note that this parameter is misnamed as it searches among all user states, not just process state.
+        schema:
+          type: string
+      - name: withoutProcessState
+        in: query
+        description: The process state the document must not have (see /metadata). Can be used multiple times, which is interpreted as AND. Note that this parameter is misnamed as it searches among all user states, not just process state.
+        schema:
+          type: string
+      - name: branchId
+        in: query
+        description: Document business ids. Can be used multiple times, which is interpreted as OR.
+        schema:
+          type: string
+      - name: totals
+        in: query
+        description: Whether to calculate the documents total amount or not.
+        schema:
+          default: false
+          type: boolean
+      - name: onlydrafts
+        in: query
+        description: Whether to search only drafts.
+        schema:
+          default: false
+          type: boolean
+      - name: onlydeleted
+        in: query
+        description: Whether to search only deleted documents.
+        schema:
+          default: false
+          type: boolean
+      - name: requesterId
+        in: query
+        description: 'This field can be used to filter documents by the given list of requester Ids, only applicable for Purchase Request Documents. The requester is either the creating person or the document or if specified the "on behalf of" person
+
+          '
+        schema:
+          type: string
+      - name: invoiceTypeCode
+        in: query
+        description: 'This field represents the type of invoice for an invoice document. If the field is missing then we will have a normal/commercial invoice filter. For value 325 proforma invoice type will be searched and for value 386 we will have prepayment invoice.
+
+          '
+        schema:
+          type: array
+          items:
+            type: number
+      - name: profileId
+        in: query
+        description: It represents the profile id of a given document.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: find documents (CSV support)
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/dispatcher:
+    post:
+      responses:
+        '201':
+          description: '201 (Created) Indicates the document was created and dispatched. The Location response header will contain the URI of the dispatch of the new document.
+
+            '
+          content:
+            text/xml:
+              example: "<DocumentDispatchResponse xmlns=\"http://tradeshift.com/api/public/1.0\">\n    <DocumentId>e4f2e813-dfff-4609-8317-912da569238e</DocumentId>\n    <DispatchId>52109541-64b9-4dce-980b-46d972cc8bfd</DispatchId>\n</DocumentDispatchResponse>"
+              schema:
+                type: object
+        '400':
+          description: Bad Request due to invalid input.
+          content:
+            text/xml:
+              example:
+                ErrorCode: BadRequest
+                Message: Could not resolve type nonExistentType
+                ErrorDetail:
+                - Key: message
+                  Value: Could not resolve type nonExistentType
+                - Key: stacktrace
+                  Value: "com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\n\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\n\t"
+                ValidationError: []
+                RequestId: 2c941598-489c-4fac-8543-03cb921feaf7
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+      description: 'Store and dispatch the document - the actual document content must be sent as the entity/body of the POST call.
+
+        '
+      operationId: post-rest-external-documents-dispatcher
+      requestBody:
+        content:
+          text/xml:
+            example: "<ApplicationResponse xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\"\n  xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\" xmlns:ccts=\"urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2\"\n  xmlns:sdt=\"urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2\" xmlns:udt=\"urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2\"\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2 UBL-ApplicationResponse-2.0.xsd\">\n  <cbc:UBLVersionID>2.0</cbc:UBLVersionID>\n  <cbc:CustomizationID>urn:tradeshift.com:ubl-2.0-customizations:2010-06</cbc:CustomizationID>\n  <cbc:ProfileID schemeAgencyID='CEN/ISSS WS/BII' schemeID='CWA 16073:2010' schemeVersionID='1'>urn:www.cenbii.eu:profile:bii04:ver1.0</cbc:ProfileID>\n  <cbc:ID>123456789</cbc:ID>\n  <cbc:IssueDate>2017-11-28</cbc:IssueDate>\n  <cbc:IssueTime>12:00:00</cbc:IssueTime>\n  <cac:SenderParty>\n    <cac:PartyIdentification>\n      <cbc:ID schemeID=\"TS:ID\">4a8fc13e-2dc5-4fc6-a20e-6835484b83c2</cbc:ID>\n    </cac:PartyIdentification>\n    <cac:PartyName>\n      <cbc:Name>Sender Name</cbc:Name>\n    </cac:PartyName>\n    <cac:Contact>\n      <cbc:ElectronicMail>user@email.com</cbc:ElectronicMail>\n    </cac:Contact>\n  </cac:SenderParty>\n  <cac:ReceiverParty>\n    <cac:PartyIdentification>\n      <cbc:ID schemeID=\"TS:ID\">e27b5bdd-fe23-4c82-b069-e89a596b519d</cbc:ID>\n    </cac:PartyIdentification>\n    <cac:PartyName>\n      <cbc:Name>Receiver Name</cbc:Name>\n    </cac:PartyName>\n    <cac:Contact>\n      <cbc:ElectronicMail>user@email.com</cbc:ElectronicMail>\n    </cac:Contact>\n  </cac:ReceiverParty>\n  <cac:DocumentResponse>\n    <cac:Response>\n      <cbc:ReferenceID>1</cbc:ReferenceID>\n      <cbc:ResponseCode listID=\"urn:tradeshift.com:api:1.0:responsecode\">BusinessAccept</cbc:ResponseCode>\n      <cbc:Description>Your invoice is now BusinessAccept</cbc:Description>\n    </cac:Response>\n    <cac:DocumentReference>\n      <cbc:ID>987654321</cbc:ID>\n      <cbc:IssueDate>2017-11-28</cbc:IssueDate>\n      <cbc:DocumentTypeCode listID=\"urn:tradeshift.com:api:1.0:documenttypecode\">Invoice</cbc:DocumentTypeCode>\n    </cac:DocumentReference>\n  </cac:DocumentResponse>\n</ApplicationResponse>\n"
+            schema:
+              type: object
+          application/xml:
+            example: "<ApplicationResponse xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\"\n  xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\" xmlns:ccts=\"urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2\"\n  xmlns:sdt=\"urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2\" xmlns:udt=\"urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2\"\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2 UBL-ApplicationResponse-2.0.xsd\">\n  <cbc:UBLVersionID>2.0</cbc:UBLVersionID>\n  <cbc:CustomizationID>urn:tradeshift.com:ubl-2.0-customizations:2010-06</cbc:CustomizationID>\n  <cbc:ProfileID schemeAgencyID='CEN/ISSS WS/BII' schemeID='CWA 16073:2010' schemeVersionID='1'>urn:www.cenbii.eu:profile:bii04:ver1.0</cbc:ProfileID>\n  <cbc:ID>123456789</cbc:ID>\n  <cbc:IssueDate>2017-11-28</cbc:IssueDate>\n  <cbc:IssueTime>12:00:00</cbc:IssueTime>\n  <cac:SenderParty>\n    <cac:PartyIdentification>\n      <cbc:ID schemeID=\"TS:ID\">4a8fc13e-2dc5-4fc6-a20e-6835484b83c2</cbc:ID>\n    </cac:PartyIdentification>\n    <cac:PartyName>\n      <cbc:Name>Sender Name</cbc:Name>\n    </cac:PartyName>\n    <cac:Contact>\n      <cbc:ElectronicMail>user@email.com</cbc:ElectronicMail>\n    </cac:Contact>\n  </cac:SenderParty>\n  <cac:ReceiverParty>\n    <cac:PartyIdentification>\n      <cbc:ID schemeID=\"TS:ID\">e27b5bdd-fe23-4c82-b069-e89a596b519d</cbc:ID>\n    </cac:PartyIdentification>\n    <cac:PartyName>\n      <cbc:Name>Receiver Name</cbc:Name>\n    </cac:PartyName>\n    <cac:Contact>\n      <cbc:ElectronicMail>user@email.com</cbc:ElectronicMail>\n    </cac:Contact>\n  </cac:ReceiverParty>\n  <cac:DocumentResponse>\n    <cac:Response>\n      <cbc:ReferenceID>1</cbc:ReferenceID>\n      <cbc:ResponseCode listID=\"urn:tradeshift.com:api:1.0:responsecode\">BusinessAccept</cbc:ResponseCode>\n      <cbc:Description>Your invoice is now BusinessAccept</cbc:Description>\n    </cac:Response>\n    <cac:DocumentReference>\n      <cbc:ID>987654321</cbc:ID>\n      <cbc:IssueDate>2017-11-28</cbc:IssueDate>\n      <cbc:DocumentTypeCode listID=\"urn:tradeshift.com:api:1.0:documenttypecode\">Invoice</cbc:DocumentTypeCode>\n    </cac:DocumentReference>\n  </cac:DocumentResponse>\n</ApplicationResponse>\n"
+            schema:
+              type: object
+        required: true
+      parameters:
+      - name: documentId
+        in: query
+        required: true
+        description: 'A client-generated id for the new document to be dispatched
+
+          '
+        schema:
+          type: string
+      - name: documentProfileId
+        in: query
+        required: true
+        description: 'The document profile id that the document adheres to (e.g. \"nes.p5.invoice.ubl.2.1.dk\"), from the ''documentprofiles'' resource
+
+          '
+        schema:
+          type: string
+      - name: documentSource
+        in: query
+        description: Track the document's source - We save the source of the document in a new table called documentsource so that we know where the document was dispatched from.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: send document
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/dispatches:
+    get:
+      responses:
+        '200':
+          description: 'The list the latest dispatch information, if found. If no document is found then an empty list is returned.
+
+            '
+          content:
+            application/json:
+              schema:
+                example:
+                  DispatchId: 2ecdb6ac-b133-4c7c-80aa-650391af98f6
+                  ObjectId: 383eb7da-31dd-5c4e-878c-026443e46067
+                  Created: '2016-09-02T01:07:21.461Z'
+                  SenderUserId: 63ef84c2-83c0-473b-a634-3a57d8109b39
+                  DispatchState: COMPLETED
+                  LastStateChange: '2016-09-02T01:07:21.461Z'
+                  ReceiverConnectionId: 44dc8810-e582-5252-963b-20fd0754765f
+                  DispatchChannel: EMAIL
+      description: 'Get a list of the latest dispatch information by object IDs. The returned data contains information like:
+
+        the creation time of the dispatch, the dispatch sender, the channel through which the document is dispatched,
+
+        the current dispatch state, the ID of the object being dispatched, the connection ID used for dispatching and
+
+        technical information containing the reason why a dispatch failed (returned only for failed dispatches).
+
+        '
+      operationId: get-rest-external-documents-dispatches
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: text/xml, application/json, application/*
+
+          '
+        schema:
+          default: text/xml
+          type: string
+      - name: documentId
+        in: query
+        description: List of document UUID identifiers
+        schema:
+          type: string
+      - name: accept
+        in: query
+        description: Media type for response
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Get Latest Dispatches
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/netAmount:
+    get:
+      responses:
+        '200':
+          description: The list of documents with corresponding net amount.
+        '404':
+          description: Bad request error
+      description: Gets a list of document net amounts for a list of document ids.
+      operationId: get-rest-external-documents-netamount
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: Media types which are acceptable for the response. The possible values are text/xml and application/json.
+        schema:
+          enum:
+          - application/xml
+          - application/json
+          type: string
+      - name: documentIds
+        in: query
+        required: true
+        description: The document uuid. Can be used multiple times.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: get document net amount
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/received/{documentId}:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The new document's id
+    put:
+      responses:
+        '204':
+          description: 'Successful receival of the document
+
+            '
+        '400':
+          description: 'No document supplied in the body
+
+            '
+      description: 'This endpoint saves the content of a document for cases when a company has received a document outside of the
+
+        Tradeshift platform but wants to add it to the document list anyway. It imports a document as if it has been
+
+        received at some point in time. It will be visible in the document list, but replies, such as comments, will
+
+        not be possible. Only the receiver side copy is created and the original sender will not be notified even if
+
+        they are on the platform and they are connected.
+
+        '
+      operationId: put-rest-external-documents-received-documentid
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                file:
+                  description: The content of the document
+                  type: string
+              required:
+              - file
+              type: object
+        required: true
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        description: 'The MIME media type of the request content. Example: */*
+
+          '
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Receive document
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/validate:
+    post:
+      responses:
+        '204':
+          description: The document content was validated successfully and no errors were found.
+        '400':
+          description: The document content was validated and some errors were found.
+          content:
+            text/xml:
+              schema:
+                example: "<ResponseError xmlns=\"http://tradeshift.com/api/1.0\">\n    <ErrorCode>BadRequest</ErrorCode>\n    <Message>An invalid request was made - Unable to find quote by given id: 34a35606-626a-5f13-b920-72b21c189ffa</Message>\n    <ErrorDetail>\n        <Key>message</Key>\n        <Value>Unable to find quote by given id: 34a35606-626a-5f13-b920-72b21c189ffa</Value>\n    </ErrorDetail>\n</ResponseError>\n"
+        '412':
+          description: No active connection exists between the client and the specified company.
+      description: 'This resource validates a given UBL document content by using a combined document profile made of the sender''s default document
+
+        profile using documentProfileId (e.g. "tradeshift.invoice.ubl.1.0") and the document profile set between the sender and the receiver.
+
+        This can be used before dispatching a document in order to verify if it has profile related errors or not. If the "receiverCompanyId"
+
+        parameter is not specified then the validation will be done using only the sender "documentProfileId". If the "receiverCompanyId" parameter
+
+        is specified, then the resource can validate documents only if an active connection exists between the client and that company. If no such
+
+        connectin is found, then a 412 Precondition Failed Exception is returned. If the client has an invalid document then a list of validation
+
+        errors will be provided alongside 400 Bad Request response status code.
+
+        '
+      operationId: post-rest-external-documents-validate
+      requestBody:
+        content:
+          application/json:
+            example:
+              DocumentType: InvoiceType
+              UBLVersionID:
+                value: '2.0'
+              CustomizationID:
+                value: urn:tradeshift.com:ubl-2.0-customizations:2010-06
+              ProfileID:
+                value: urn:www.cenbii.eu:profile:bii04:ver1.0
+                schemeID: CWA 16073:2010
+                schemeAgencyID: CEN/ISSS WS/BII
+                schemeVersionID: '1'
+              ID:
+                value: '1008'
+              IssueDate:
+                value: '2017-12-05'
+              InvoiceTypeCode:
+                value: '380'
+                listID: UN/ECE 1001 Subset
+                listAgencyID: '6'
+                listVersionID: D08B
+              DocumentCurrencyCode:
+                value: USD
+              OrderReference:
+                ID:
+                  value: '1223232324'
+              OriginatorDocumentReference:
+              - ID:
+                  value: 0351a12e-d8dd-11e7-9296-cec278b6b50a
+              AdditionalDocumentReference:
+              - ID:
+                  value: HALF_EVEN
+                DocumentTypeCode:
+                  value: RoundingRule
+                  listID: urn:tradeshift.com:api:1.0:documenttypecode
+              AccountingSupplierParty:
+                Party:
+                  PartyIdentification:
+                  - ID:
+                      value: f8fa779a-8d84-425e-b99f-dd756924b0bd
+                      schemeID: TS:ID
+                  PartyName:
+                  - Name:
+                      value: Supplier UK
+                  PostalAddress:
+                    AddressFormatCode:
+                      value: '5'
+                      listID: UN/ECE 3477
+                      listAgencyID: '6'
+                      listVersionID: D08B
+                    StreetName:
+                      value: Joakimsgade
+                    AdditionalStreetName:
+                      value: Brown locality
+                    BuildingNumber:
+                      value: '2'
+                    CityName:
+                      value: Tradeshiftino
+                    PostalZone:
+                      value: '3344'
+                    Country:
+                      IdentificationCode:
+                        value: GB
+                  Contact:
+                    ID:
+                      value: 0f3a79e2-fa22-4f81-b084-5fedbaaa1982
+                      schemeURI: http://tradeshift.com/api/1.0/userId
+                    Name:
+                      value: Zach Andersson
+                  Person:
+                    FirstName:
+                      value: Zach
+                    FamilyName:
+                      value: Andersson
+              AccountingCustomerParty:
+                Party:
+                  PartyIdentification:
+                  - ID:
+                      value: c0c17d58-9e31-4e79-a204-b3833116bc4d
+                      schemeID: TS:ID
+                  PartyName:
+                  - Name:
+                      value: ChildBranchUS
+                  PostalAddress:
+                    AddressFormatCode:
+                      value: '5'
+                      listID: UN/ECE 3477
+                      listAgencyID: '6'
+                      listVersionID: D08B
+                    StreetName:
+                      value: Andersgade
+                    BuildingNumber:
+                      value: '4'
+                    CityName:
+                      value: Tradeshiftograd
+                    PostalZone:
+                      value: '55667'
+                    CountrySubentity:
+                      value: VW
+                    Country:
+                      IdentificationCode:
+                        value: US
+                  Contact: {}
+              Delivery:
+              - {}
+              TaxTotal:
+              - TaxAmount:
+                  value: 0.84
+                  currencyID: USD
+                TaxSubtotal:
+                - TaxableAmount:
+                    value: 11
+                    currencyID: USD
+                  TaxAmount:
+                    value: 0.84
+                    currencyID: USD
+                  TaxCategory:
+                    ID:
+                      value: S
+                      schemeID: UN/ECE 5305
+                      schemeAgencyID: '6'
+                      schemeVersionID: D08B
+                    Percent:
+                      value: 7.6
+                    TaxScheme:
+                      ID:
+                        value: STT
+                        schemeID: UN/ECE 5153 Subset
+                        schemeAgencyID: '6'
+                        schemeVersionID: D08B
+                      Name:
+                        value: US Tax 7.6%
+                      TaxTypeCode:
+                        value: K99
+                        listAgencyName: DHL
+              LegalMonetaryTotal:
+                LineExtensionAmount:
+                  value: 11
+                  currencyID: USD
+                TaxExclusiveAmount:
+                  value: 0.84
+                  currencyID: USD
+                TaxInclusiveAmount:
+                  value: 11.84
+                  currencyID: USD
+                PayableAmount:
+                  value: 11.84
+                  currencyID: USD
+              InvoiceLine:
+              - ID:
+                  value: '1'
+                InvoicedQuantity:
+                  value: 1
+                  unitCode: EA
+                LineExtensionAmount:
+                  value: 11
+                  currencyID: USD
+                OrderLineReference:
+                - LineID:
+                    value: '1'
+                  OrderReference:
+                    ID:
+                      value: '1223232324'
+                TaxTotal:
+                - TaxAmount:
+                    value: 0.84
+                    currencyID: USD
+                  TaxSubtotal:
+                  - TaxableAmount:
+                      value: 11
+                      currencyID: USD
+                    TaxAmount:
+                      value: 0.84
+                      currencyID: USD
+                    CalculationSequenceNumeric:
+                      value: 1
+                    TaxCategory:
+                      ID:
+                        value: S
+                        schemeID: UN/ECE 5305
+                        schemeAgencyID: '6'
+                        schemeVersionID: D08B
+                      Percent:
+                        value: 7.6
+                      TaxScheme:
+                        ID:
+                          value: STT
+                          schemeID: UN/ECE 5153 Subset
+                          schemeAgencyID: '6'
+                          schemeVersionID: D08B
+                        Name:
+                          value: US Tax 7.6%
+                        TaxTypeCode:
+                          value: K9
+                          listAgencyName: DHL
+                Item:
+                  Description:
+                  - value: A good description...
+                  Name:
+                    value: A good name...
+                  SellersItemIdentification:
+                    ID:
+                      value: '1'
+                      schemeID: GTIN
+                      schemeAgencyID: '9'
+                Price:
+                  PriceAmount:
+                    value: 11
+                    currencyID: USD
+                  BaseQuantity:
+                    value: 1
+                    unitCode: EA
+                  OrderableUnitFactorRate:
+                    value: 1
+            schema:
+              type: string
+        required: true
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: text/plain
+
+          '
+        schema:
+          default: text/plain
+          type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: 'The MIME media type of the request content. Example: text/xml
+
+          '
+        schema:
+          default: text/xml
+          type: string
+      - name: documentProfileId
+        in: query
+        required: true
+        description: Document profile used for validating the document.
+        schema:
+          type: string
+      - name: receiverCompanyId
+        in: query
+        description: The receiver company id whose document profile will be used for validation.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: validate a document
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: The requested document in the desired format.
+          headers:
+            X-Tradeshift-SecurityGroup:
+              schema:
+                type: string
+          content:
+            application/json:
+              example:
+                DocumentType: Requisition
+                UBLVersionID:
+                  value: '2.0'
+                CustomizationID:
+                  value: urn:tradeshift.com:ubl-2.0-customizations:2010-06
+                ProfileID:
+                  value: urn:tradeshift.com:profile:Requisition:ver1.0
+                  schemeAgencyID: http://tradeshift.com
+                ID:
+                  value: '51'
+                CreationDate:
+                  value: '2016-09-08T14:09:33.098+02:00'
+                BuyerCustomerParty:
+                  Party:
+                    PartyIdentification:
+                    - ID:
+                        value: 7d583074-f6e0-446c-896b-0dfa0789d891
+                        schemeID: TS:ID
+                    PartyName:
+                    - Name:
+                        value: Test Buyer
+                    PostalAddress:
+                      StreetName:
+                        value: The Old Warehouse Michael Rd SW6 2AD London Great Britain 2
+                    Contact:
+                      ID:
+                        value: c931be90-9249-47b0-b52b-ae7da808d4cb
+                        schemeURI: http://tradeshift.com/api/1.0/userId
+                      Name:
+                        value: Mark Jenson
+                      ElectronicMail:
+                        value: markjenson@mailinator.com
+                OriginatorCustomerParty:
+                  Party: {}
+                Delivery:
+                - DeliveryAddress:
+                    StreetName:
+                      value: 10 downing street
+                    BuildingName:
+                      value: 390d9663-64bc-4a92-a31d-76a79c8c04dc
+                    CityName:
+                      value: London
+                    PostalZone:
+                      value: '12345'
+                    CountrySubentity:
+                      value: ''
+                    Country:
+                      IdentificationCode:
+                        value: GB
+                AnticipatedMonetaryTotal:
+                  PayableAmount:
+                    value: 0
+                    currencyID: GBP
+              schema:
+                type: object
+                properties:
+                  DocumentType:
+                    type: string
+                  UBLVersionID:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  CustomizationID:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  ProfileID:
+                    required:
+                    - value
+                    - schemeAgencyID
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                      schemeAgencyID:
+                        type: string
+                  ID:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  CreationDate:
+                    required:
+                    - value
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  BuyerCustomerParty:
+                    required:
+                    - Party
+                    type: object
+                    properties:
+                      Party:
+                        required:
+                        - PartyIdentification
+                        - PartyName
+                        - PostalAddress
+                        - Contact
+                        type: object
+                        properties:
+                          PartyIdentification:
+                            type: array
+                            items:
+                              required:
+                              - ID
+                              type: object
+                              properties:
+                                ID:
+                                  required:
+                                  - value
+                                  - schemeID
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                    schemeID:
+                                      type: string
+                          PartyName:
+                            type: array
+                            items:
+                              required:
+                              - Name
+                              type: object
+                              properties:
+                                Name:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                          PostalAddress:
+                            required:
+                            - StreetName
+                            type: object
+                            properties:
+                              StreetName:
+                                required:
+                                - value
+                                type: object
+                                properties:
+                                  value:
+                                    type: string
+                          Contact:
+                            required:
+                            - ID
+                            - Name
+                            - ElectronicMail
+                            type: object
+                            properties:
+                              ID:
+                                required:
+                                - value
+                                - schemeURI
+                                type: object
+                                properties:
+                                  value:
+                                    type: string
+                                  schemeURI:
+                                    type: string
+                              Name:
+                                required:
+                                - value
+                                type: object
+                                properties:
+                                  value:
+                                    type: string
+                              ElectronicMail:
+                                required:
+                                - value
+                                type: object
+                                properties:
+                                  value:
+                                    type: string
+                  OriginatorCustomerParty:
+                    required:
+                    - Party
+                    type: object
+                    properties:
+                      Party:
+                        type: object
+                  Delivery:
+                    type: array
+                    items:
+                      required:
+                      - DeliveryAddress
+                      type: object
+                      properties:
+                        DeliveryAddress:
+                          required:
+                          - StreetName
+                          - BuildingName
+                          - CityName
+                          - PostalZone
+                          - CountrySubentity
+                          - Country
+                          type: object
+                          properties:
+                            StreetName:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            BuildingName:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            CityName:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            PostalZone:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            CountrySubentity:
+                              required:
+                              - value
+                              type: object
+                              properties:
+                                value:
+                                  type: string
+                            Country:
+                              required:
+                              - IdentificationCode
+                              type: object
+                              properties:
+                                IdentificationCode:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                        DeliveryParty:
+                          required:
+                          - PartyName
+                          - PartyTaxScheme
+                          type: object
+                          properties:
+                            PartyIdentification:
+                              required:
+                              - ID
+                              type: object
+                              properties:
+                                ID:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                            PartyName:
+                              required:
+                              - Name
+                              type: object
+                              properties:
+                                Name:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                            PartyTaxScheme:
+                              required:
+                              - Id
+                              type: object
+                              properties:
+                                TaxScheme:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                        Despatch:
+                          type: object
+                          properties:
+                            DespatchAddress:
+                              required:
+                              - StreetName
+                              - BuildingName
+                              - CityName
+                              - PostalZone
+                              - CountrySubentity
+                              - Country
+                              type: object
+                              properties:
+                                StreetName:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                BuildingName:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                CityName:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                PostalZone:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                CountrySubentity:
+                                  required:
+                                  - value
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: string
+                                Country:
+                                  required:
+                                  - IdentificationCode
+                                  type: object
+                                  properties:
+                                    IdentificationCode:
+                                      required:
+                                      - value
+                                      type: object
+                                      properties:
+                                        value:
+                                          type: string
+                            DespatchParty:
+                              required:
+                              - PartyName
+                              - PartyTaxScheme
+                              type: object
+                              properties:
+                                PartyIdentification:
+                                  required:
+                                  - ID
+                                  type: object
+                                  properties:
+                                    ID:
+                                      required:
+                                      - value
+                                      type: object
+                                      properties:
+                                        value:
+                                          type: string
+                                PartyName:
+                                  required:
+                                  - Name
+                                  type: object
+                                  properties:
+                                    Name:
+                                      required:
+                                      - value
+                                      type: object
+                                      properties:
+                                        value:
+                                          type: string
+                                PartyTaxScheme:
+                                  required:
+                                  - Id
+                                  type: object
+                                  properties:
+                                    TaxScheme:
+                                      required:
+                                      - value
+                                      type: object
+                                      properties:
+                                        value:
+                                          type: string
+                  AnticipatedMonetaryTotal:
+                    required:
+                    - PayableAmount
+                    type: object
+                    properties:
+                      PayableAmount:
+                        required:
+                        - value
+                        - currencyID
+                        type: object
+                        properties:
+                          value:
+                            type: integer
+                          currencyID:
+                            type: string
+                required:
+                - DocumentType
+                - Delivery
+        '400':
+          description: Bad Request due to invalid input.
+          content:
+            application/*:
+              example:
+                ErrorCode: BadRequest
+                Message: Could not resolve type nonExistentType
+                ErrorDetail:
+                - Key: message
+                  Value: Could not resolve type nonExistentType
+                - Key: stacktrace
+                  Value: "com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\n\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\n\t"
+                ValidationError: []
+                RequestId: 2c941598-489c-4fac-8543-03cb921feaf7
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+        '401':
+          description: The user was not authorized to perform the operation.
+        '404':
+          description: Document with the specified id was not found or it is deleted.
+      description: 'Returns the document identified by the given UUID, if it exists and is not marked as deleted.
+
+        If you want to retrieve the deleted documents, use [Find Documents](#get-rest-external-documents) along
+
+        with stag=deleted parameter and with the corresponding id.
+
+        The document can be retrieved in a PDF representation or in one of the raw UBL formats
+
+        (XML, JSON or Oasis JSON) depending on the Accept header. The default format is the XML.
+
+        '
+      operationId: get-rest-external-documents-documentid
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: text/xml, application/json,
+
+          application/vnd.oasis.ubl+json, application/*
+
+          '
+        schema:
+          default: text/xml
+          type: string
+      - name: includeDraftAttachments
+        in: query
+        description: Include attachements in the UBL when the document is in DRAFT state
+        schema:
+          default: false
+          type: boolean
+      x-annotation-dx-category: documents-document
+      summary: find document
+      tags:
+      - dx-category--documents-document
+    put:
+      responses:
+        '204':
+          description: The document was uploaded successfully.
+        '400':
+          description: Bad Request due to invalid input.
+          content:
+            application/json:
+              example:
+                ErrorCode: BadRequest
+                Message: Could not resolve type nonExistentType
+                ErrorDetail:
+                - Key: message
+                  Value: Could not resolve type nonExistentType
+                - Key: stacktrace
+                  Value: "com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\n\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\n\t"
+                ValidationError: []
+                RequestId: 2c941598-489c-4fac-8543-03cb921feaf7
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+      description: 'This resource allows to store a document within the Tradeshift platform. The actual document content is sent
+
+        as the entity/body of the API call. The client can decide on the UUID for the new element defined by the
+
+        "documentId" parameter. Saving a document as draft will use the document content as primary source for tradeshift internal
+
+        conversion which will output a new TSUBL content overwriting the initial one. By doing so extra connection checks will occur.
+
+        Otherwise, saving it as a non-draft will not alter the provided UBL document content and will set it as the primary source for the document. In both cases,
+
+        the uploaded document will show up as editable in the UI. If the cliend decides that the document should not be editable, then it''s state can be locked with a PUT request.
+
+        More details about how to lock a draft document can be found in [Lock a Draft Document](#put-rest-external-documents-documentid-lockedstate-state)
+
+        section. If a document contains attachments at /AdditionalDocumentReference/Attachment/EmbeddedDocumentBinaryObject path,
+
+        it will be added to the document. If the document already exists, attachments with already used filename will overwrite previous versions.
+
+        Attachments with new file names will be appended to the list of attachments on the document. More details about how to remove document attachments
+
+        can be found in [Delete Document Attachment](#delete-rest-external-documents-documentid-attachments-name-content) section.
+
+        This is a generic document API endpoint which covers all document types.
+
+        '
+      operationId: put-rest-external-documents-documentid
+      requestBody:
+        content:
+          application/vnd.oasis.ubl+json:
+            example:
+              _B: urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
+              _S: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+              _D: http://tradeshift.com/api/public/1.0
+              Requisition:
+              - ID:
+                - IdentifierContent: bac9a69c-ec35-4a12-a455-9fb57c24dbfb
+                Note:
+                - TextContent: I want to request a purchase
+                OrderDocumentReference:
+                - ID:
+                  - IdentifierContent: order-01
+                - ID:
+                  - IdentifierContent: order-02
+                OriginatorCustomerParty:
+                - Party:
+                  - Contact:
+                    - ID:
+                      - IdentificationSchemeUniformResourceIdentifier: http://tradeshift.com/api/1.0/userId
+                        IdentifierContent: UUID
+                      ElectronicMail:
+                      - TextContent: john@johnsson.se
+                Delivery:
+                - DeliveryLocation:
+                  - Address:
+                    - ID:
+                      - IdentificationSchemeIdentifier: GLN
+                        IdentificationSchemeAgencyIdentifier: '9'
+                        IdentifierContent: '1234567890123'
+                      Postbox:
+                      - TextContent: '123'
+                      StreetName:
+                      - TextContent: Rådhusgatan
+                      AdditionalStreetName:
+                      - TextContent: 2nd floor
+                      BuildingNumber:
+                      - TextContent: '5'
+                      Department:
+                      - TextContent: Purchasing departmen
+                      CityName:
+                      - TextContent: Stockholm
+                      PostalZone:
+                      - TextContent: '11000'
+                      Region:
+                      - TextContent: RegionX
+                      Country:
+                      - IdentificationCode:
+                        - CodeContent: SE
+                AnticipatedMonetaryTotal:
+                - PayableAmount:
+                  - AmountCurrencyIdentifier: USD
+                    AmountContent: 2108
+                RequisitionLine:
+                - RequisitionPurposeCode:
+                  - CodeListIdentifier: urn:tradeshift.com:api:1.0:requisitionlinepurposecode
+                    CodeContent: BLANKET_PURCHASE_ORDER
+                  SupplierSharedPrice:
+                  - PriceAmount:
+                    - AmountCurrencyIdentifier: USD
+                      AmountContent: 100
+                  LineItem:
+                  - ID:
+                    - IdentifierContent: '1'
+                    Note:
+                    - TextContent: Freetext note on line 1
+                    Quantity:
+                    - QuantityUnitCode: EA
+                      QuantityContent: 1
+                    LineExtensionAmount:
+                    - AmountCurrencyIdentifier: USD
+                      AmountContent: 1200
+                    AccountingCostCode:
+                    - CodeContent: ProjectID123
+                    Price:
+                    - PriceAmount:
+                      - AmountCurrencyIdentifier: USD
+                        AmountContent: 1200
+                      BaseQuantity:
+                      - QuantityUnitCode: EA
+                        QuantityContent: 1
+                      ValidityPeriod:
+                      - StartDate:
+                        - DateContent: '1977-05-15'
+                      - EndDate:
+                        - DateContent: '1977-05-15'
+                    Item:
+                    - Description:
+                      - TextContent: I want a brown sofa
+                      SellersItemIdentification:
+                      - IssuerParty:
+                        - PartyIdentification:
+                          - ID:
+                            - IdentifierContent: '444666777'
+                          PartyName:
+                          - Name:
+                            - TextContent: Sofastore
+                      CommodityClassification:
+                      - ItemClassificationCode:
+                        - CodeListIdentifier: UNSPSC
+                          CodeListAgencyIdentifier: '113'
+                          CodeContent: '56101502'
+                  DocumentReference:
+                  - ID:
+                    - IdentifierContent: order-01
+                UBLVersionID:
+                - IdentifierContent: '2.0'
+                CustomizationID:
+                - IdentifierContent: urn:tradeshift.com:ubl-2.0-customizations:2010-06
+                ProfileID:
+                - IdentificationSchemeIdentifier: CWA 16073:2010
+                  IdentificationSchemeAgencyIdentifier: '1'
+                  IdentificationSchemeAgencyNameText: CEN/ISSS WS/BII
+                  IdentifierContent: urn:www.cenbii.eu:profile:bii04:ver1.0
+                CreationDate:
+                - DateContent: '1977-05-15'
+                CreationTime:
+                - TimeContent: '1977-05-15'
+                BuyerCustomerParty:
+                - Party:
+                  - PartyIdentification:
+                    - ID:
+                      - IdentificationSchemeIdentifier: TS:ID
+                        IdentifierContent: 79eec713-cd84-4a4d-86b5-e35527ef3b3b
+                    PartyName:
+                    - Name:
+                      - TextContent: Zurich
+                    Contact:
+                    - ID:
+                      - IdentificationSchemeUniformResourceIdentifier: http://tradeshift.com/api/1.0/userId
+                        IdentifierContent: UUID
+                      ElectronicMail:
+                      - TextContent: pelle@johnsson.se
+            schema:
+              type: string
+          '*/*':
+            schema:
+              type: string
+        required: true
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        description: 'The MIME media type of the request content. Example: text/xml, application/xml, application/json, application/vnd.oasis.ubl+json
+
+          '
+        schema:
+          type: string
+      - name: draft
+        in: query
+        description: 'Parameter that indicates if the document should be created in draft mode or not. Documents such as Order Change, Receipt Advice, Remittance Advice,
+
+          Status Messages, Reminder Messages or Assignments can''t be created as drafts while documents such as Invoice are partially validated when it is saved as draft.
+
+          '
+        schema:
+          default: false
+          type: boolean
+      - name: documentProfileId
+        in: query
+        required: true
+        description: The document profile id of the document which will be created (e.g. "tradeshift.requisition.ubl.1.0"), from the 'documentprofiles' resource.
+        schema:
+          type: string
+      - name: schemaValidate
+        in: query
+        description: 'Parameter that indicates if the document should be validated against the UBL schema. If this parameter is set to TRUE, the API will detect the UBL
+
+          version to validate against from the document content. This validation is triggered only if the document is *not* created as draft and also
+
+          if the Nemhandel validation is enabled for the specified document profile.
+
+          '
+        schema:
+          default: true
+          type: boolean
+      - name: validateDocumentProfile
+        in: query
+        description: 'Parameter that indicates if the document should be validated or not using the selected document profile.
+
+          The validation is triggered only if the document is not created as draft.
+
+          '
+        schema:
+          default: true
+          type: boolean
+      x-annotation-dx-category: documents-document
+      summary: update document
+      tags:
+      - dx-category--documents-document
+    delete:
+      responses:
+        '204':
+          description: The document was deleted successfully.
+        '401':
+          description: The user was not authorized to perform the operation.
+        '404':
+          description: Document with the specified id was not found.
+      description: 'Soft delete of the document. Deleting a document using this API will not delete the document from the
+
+        system, but mark it as deleted. This operation will only affect user''s copy of the document, receiver''s
+
+        (or sender''s) copy will remain intact.
+
+        User can still query deleted documents if they wish to do so. More details about how to retrieve deleted
+
+        document can be found in [Find Documents](#get-rest-external-documents) section.
+
+        It''s not recommended to delete a document using given endpoint.
+
+        '
+      operationId: delete-rest-external-documents-documentid
+      x-annotation-dx-category: documents-document
+      summary: delete document
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/content:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    delete:
+      responses:
+        '204':
+          description: The document was truncated successfully
+        '401':
+          description: User was not authorized to truncate the specified document
+      description: 'Truncate the content for the given document if any exists. This action cannot be revoked or reverted.
+
+        This is to be used if document content must be permanently wiped, for example for privacy reasons. Truncated documents
+
+        will have all content except number and issue date removed. All versions of the document will also be truncated
+
+        including the document attachments. The document will not be visible in the document manager UI.
+
+        '
+      operationId: delete-rest-external-documents-documentid-content
+      x-annotation-dx-category: documents-document
+      summary: remove document content
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/convert:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: The conversion was done successfully and the converted document is returned.
+          content:
+            text/xml:
+              schema:
+                example:
+                  DocumentType: CreditNoteType
+                  UBLVersionID:
+                    value: '2.0'
+                  CustomizationID:
+                    value: urn:tradeshift.com:ubl-2.0-customizations:2010-06
+                  ProfileID:
+                    value: urn:www.cenbii.eu:profile:bii04:ver1.0
+                    schemeID: CWA 16073:2010
+                    schemeAgencyID: CEN/ISSS WS/BII
+                    schemeVersionID: '1'
+                  ID:
+                    value: INV60.3
+                  IssueDate:
+                    value: '2021-05-07'
+                  DocumentCurrencyCode:
+                    value: EUR
+                  AdditionalDocumentReference:
+                  - ID:
+                      value: HALF_UP
+                    DocumentTypeCode:
+                      value: RoundingRule
+                      listID: urn:tradeshift.com:api:1.0:documenttypecode
+                  AccountingSupplierParty:
+                    Party:
+                      PartyIdentification:
+                      - ID:
+                          value: d2252c87-8b38-4c89-9fe8-08f681d030db
+                          schemeID: TS:ID
+                      PartyName:
+                      - Name:
+                          value: SellerC
+                      PostalAddress:
+                        AddressFormatCode:
+                          value: '5'
+                          listID: UN/ECE 3477
+                          listAgencyID: '6'
+                          listVersionID: D08B
+                        StreetName:
+                          value: qwert
+                        BuildingNumber:
+                          value: ''
+                        CityName:
+                          value: Berlin
+                        PostalZone:
+                          value: '11111'
+                        Country:
+                          IdentificationCode:
+                            value: DE
+                      Contact:
+                        ID:
+                          value: e278ce06-af3d-11eb-8529-0242ac130003
+                          schemeURI: http://tradeshift.com/api/1.0/userId
+                        Name:
+                          value: SellerC-NAME1 TradeshiftSellerC-NAME2
+                        ElectronicMail:
+                          value: mail+TradeshiftSellerC@tradeshift.com
+                      Person:
+                        FirstName:
+                          value: SellerC-NAME1
+                        FamilyName:
+                          value: SellerC-NAME2
+                  AccountingCustomerParty:
+                    Party:
+                      PartyIdentification:
+                      - ID:
+                          value: e8400cb4-af3d-11eb-8529-0242ac130003
+                          schemeID: TS:ID
+                      PartyName:
+                      - Name:
+                          value: BuyerC
+                      PostalAddress:
+                        AddressFormatCode:
+                          value: '5'
+                          listID: UN/ECE 3477
+                          listAgencyID: '6'
+                          listVersionID: D08B
+                        StreetName:
+                          value: asd
+                        BuildingNumber:
+                          value: ''
+                        CityName:
+                          value: Berlin
+                        PostalZone:
+                          value: '11111'
+                        Country:
+                          IdentificationCode:
+                            value: DE
+                      Contact: {}
+                  TaxTotal:
+                  - TaxAmount:
+                      value: 0.2
+                      currencyID: EUR
+                    TaxSubtotal:
+                    - TaxableAmount:
+                        value: 1
+                        currencyID: EUR
+                      TaxAmount:
+                        value: 0.2
+                        currencyID: EUR
+                      TaxCategory:
+                        ID:
+                          value: S
+                          schemeID: UN/ECE 5305
+                          schemeAgencyID: '6'
+                          schemeVersionID: D08B
+                        Percent:
+                          value: 20
+                        TaxScheme:
+                          ID:
+                            value: VAT
+                            schemeID: UN/ECE 5153 Subset
+                            schemeAgencyID: '6'
+                            schemeVersionID: D08B
+                          Name:
+                            value: VAT
+                  LegalMonetaryTotal:
+                    LineExtensionAmount:
+                      value: 1
+                      currencyID: EUR
+                    TaxExclusiveAmount:
+                      value: 0.2
+                      currencyID: EUR
+                    TaxInclusiveAmount:
+                      value: 1.2
+                      currencyID: EUR
+                    PayableAmount:
+                      value: 1.2
+                      currencyID: EUR
+                  CreditNoteLine:
+                  - ID:
+                      value: '1'
+                    CreditedQuantity:
+                      value: 1
+                      unitCode: EA
+                    LineExtensionAmount:
+                      value: 1
+                      currencyID: EUR
+                    TaxTotal:
+                    - TaxAmount:
+                        value: 0.2
+                        currencyID: EUR
+                      TaxSubtotal:
+                      - TaxableAmount:
+                          value: 1
+                          currencyID: EUR
+                        TaxAmount:
+                          value: 0.2
+                          currencyID: EUR
+                        CalculationSequenceNumeric:
+                          value: 1
+                        TaxCategory:
+                          ID:
+                            value: S
+                            schemeID: UN/ECE 5305
+                            schemeAgencyID: '6'
+                            schemeVersionID: D08B
+                          Percent:
+                            value: 20
+                          TaxScheme:
+                            ID:
+                              value: VAT
+                              schemeID: UN/ECE 5153 Subset
+                              schemeAgencyID: '6'
+                              schemeVersionID: D08B
+                            Name:
+                              value: VAT
+                    Item:
+                      Description:
+                      - value: '1'
+                      Name:
+                        value: '1'
+                      SellersItemIdentification:
+                        ID:
+                          value: '1'
+                    Price:
+                      PriceAmount:
+                        value: 1
+                        currencyID: EUR
+                      BaseQuantity:
+                        value: 1
+                        unitCode: EA
+                      OrderableUnitFactorRate:
+                        value: 1
+        '401':
+          description: User was not authorized to view the specified document
+        '404':
+          description: The provided document id does not exists
+      description: 'This endpoint allows the conversion of a draft document to another type, keeping the same id. Its primary purpose is
+
+        for when an Invoice or a CreditNote has been created as draft but with the wrong type. The only valid conversions are of
+
+        draft invoices to draft credit notes or vice-versa. The converted document will not be saved or dispatched. If the client requires this action,
+
+        other endpoints can be used. More details about saving or dispatching can be found in
+
+        [Send Document](#post-rest-external-documents-dispatcher), [Update Document](#put-rest-external-documents-documentid) or
+
+        [Dispatch A Saved Document](#put-rest-external-documents-documentid-dispatches-dispatchid).
+
+        '
+      operationId: get-rest-external-documents-documentid-convert
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: text/xml and application/json
+
+          '
+        schema:
+          default: text/xml
+          type: string
+      - name: targetDocumentType
+        in: query
+        required: true
+        description: This parameter represents the document type to convert to. It should be either (case-sensitive) 'invoice' or 'creditnote'.
+        schema:
+          type: string
+      - name: targetDocumentTargetType
+        in: query
+        required: true
+        description: 'This parameter represents the document profile id that the document adheres to
+
+          (e.g. ''tradeshift.invoice.ubl.1.0''), from the ''documentprofiles'' resource.
+
+          '
+        schema:
+          type: string
+      - name: draft
+        in: query
+        description: 'Parameter that indicates if the document should be converted in draft mode or not.
+
+          '
+        schema:
+          default: false
+          type: boolean
+      - name: withAttachments
+        in: query
+        description: Parameter that indicates if the converted document should contain the source document attachements or not.
+        schema:
+          default: true
+          type: boolean
+      x-annotation-dx-category: documents-document
+      summary: convert a document
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/dispatches/first:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: The dispatch of the document exists and is returned successfully.
+          content:
+            application/json:
+              schema:
+                example:
+                  DispatchId: 2ecdb6ac-b133-4c7c-80aa-650391af98f6
+                  ObjectId: 383eb7da-31dd-5c4e-878c-026443e46067
+                  Created: '2016-09-02T01:07:21.461Z'
+                  SenderUserId: 63ef84c2-83c0-473b-a634-3a57d8109b39
+                  DispatchState: COMPLETED
+                  LastStateChange: '2016-09-02T01:07:21.461Z'
+                  ReceiverConnectionId: 44dc8810-e582-5252-963b-20fd0754765f
+                  DispatchChannel: EMAIL
+        '404':
+          description: The provided dispatch id does not exists.
+      description: Get the first dispatch information with regards to a previously dispatched document
+      operationId: get-rest-external-documents-documentid-dispatches-first
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: text/xml, application/json, application/*
+
+          '
+        schema:
+          default: text/xml
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Get First Dispatch
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/dispatches/latest:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: The dispatch of the document exists and is returned successfully.
+          content:
+            application/json:
+              schema:
+                example:
+                  DispatchId: 2ecdb6ac-b133-4c7c-80aa-650391af98f6
+                  ObjectId: 383eb7da-31dd-5c4e-878c-026443e46067
+                  Created: '2016-09-02T01:07:21.461Z'
+                  SenderUserId: 63ef84c2-83c0-473b-a634-3a57d8109b39
+                  DispatchState: COMPLETED
+                  LastStateChange: '2016-09-02T01:07:21.461Z'
+                  ReceiverConnectionId: 44dc8810-e582-5252-963b-20fd0754765f
+                  DispatchChannel: EMAIL
+        '404':
+          description: The provided dispatch id does not exists.
+      description: Get the latest dispatch information with regards to a previously dispatched document
+      operationId: get-rest-external-documents-documentid-dispatches-latest
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: text/xml, application/json, application/*
+
+          '
+        schema:
+          default: text/xml
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Get Latest Dispatch
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/dispatches/{dispatchId}:
+    parameters:
+    - name: dispatchId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The dispatch id used for dispatching the document
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    put:
+      responses:
+        '201':
+          description: The document with provided id was dispatched successfully.
+        '400':
+          description: Bad Request due to invalid input. The document with provided id has validation errors.
+          content:
+            application/json:
+              example:
+                ErrorCode: BadRequest
+                Message: Could not resolve type nonExistentType
+                ErrorDetail:
+                - Key: message
+                  Value: Could not resolve type nonExistentType
+                - Key: stacktrace
+                  Value: "com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\n\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\n\t"
+                ValidationError: []
+                RequestId: 2c941598-489c-4fac-8543-03cb921feaf7
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+        '404':
+          description: The document with provided id was not found.
+        '503':
+          description: 'The error occurs due to the expired custom document profile that is used for validation. The system
+
+            requests a new one, but it is retrieved asynchronously, so 503 ''ObjectNotFound'' error is generated.
+
+            This is a temporary state and a client should handle this error by trying to issue the same request later.
+
+            '
+          content:
+            application/json:
+              example:
+                ErrorCode: ObjectNotFound
+                Message: 'Timed out (12500) waiting for doc profile 78767202-6a13-11eb-9439-0242ac130002 from company: 7c253956-6a13-11eb-9439-0242ac130002'
+                ErrorDetail:
+                - Key: message
+                  Value: 'Timed out (12500) waiting for doc profile 78767202-6a13-11eb-9439-0242ac130002 from company: 7c253956-6a13-11eb-9439-0242ac130002'
+                - Key: stacktrace
+                  Value: 'com.tradeshift.commons.exception.ProcessingException: Timed out (12500) waiting for doc profile 78767202-6a13-11eb-9439-0242ac130002 from company: 7c253956-6a13-11eb-9439-0242ac130002'
+                ValidationError: []
+                RequestId: 68dade8f-2f38-442b-8bdd-91a274b30177
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+      description: "Dispatch a previously saved document. The client can decide on the UUID for the new dispatch. \nIf the receiver has custom validations enabled, the document will be validated using the receivers custom document profile. \nThe body of the PUT is a connection identifier object which is not mandatory. If connectionId is not provided, the connection id will be determined from the document. \nWhen Content-Type header is text/xml, the minimal request body should be in the format `<DispatchRequest xmlns=\"http://tradeshift.com/api/public/1.0\"/>`, even if no connectionId is being provided.\n"
+      operationId: put-rest-external-documents-documentid-dispatches-dispatchid
+      requestBody:
+        content:
+          application/json:
+            example:
+              ConnectionId: 20758da1-c5b8-50f5-92b1-ceaaf25d99b7
+            schema:
+              type: string
+          text/xml:
+            example: '<DispatchRequest xmlns="http://tradeshift.com/api/public/1.0"/>
+
+              '
+            schema:
+              type: object
+        required: true
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        description: 'The MIME media type of the request content. Example: text/xml, application/json
+
+          '
+        schema:
+          default: text/xml
+          type: string
+      - name: documentSource
+        in: query
+        description: Track the document's source - We save the source of the document in a new table called documentsource so that we know where the document was dispatched from.
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Dispatch a saved document
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/dispatches/{dispatchId}/scanIOReject:
+    parameters:
+    - name: dispatchId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The dispatch id used for dispatching the document
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    put:
+      responses:
+        '201':
+          description: The document with provided id was dispatched successfully.
+        '400':
+          description: Bad Request due to invalid input. The document is missing the scanIOReject, scanIORejectMessage and/or fr_cleared properties.
+          content:
+            application/json:
+              example:
+                ErrorCode: BadRequest
+                Message: Could not resolve type nonExistentType
+                ErrorDetail:
+                - Key: message
+                  Value: Could not resolve type nonExistentType
+                - Key: stacktrace
+                  Value: "com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\n\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\n\t"
+                ValidationError: []
+                RequestId: 2c941598-489c-4fac-8543-03cb921feaf7
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+        '404':
+          description: The document with provided id was not found.
+        '503':
+          description: 'The error occurs due to the expired custom document profile that is used for validation. The system
+
+            requests a new one, but it is retrieved asynchronously, so 503 ''ObjectNotFound'' error is generated.
+
+            This is a temporary state and a client should handle this error by trying to issue the same request later.
+
+            '
+          content:
+            application/json:
+              example:
+                ErrorCode: ObjectNotFound
+                Message: 'Timed out (12500) waiting for doc profile 78767202-6a13-11eb-9439-0242ac130002 from company: 7c253956-6a13-11eb-9439-0242ac130002'
+                ErrorDetail:
+                - Key: message
+                  Value: 'Timed out (12500) waiting for doc profile 78767202-6a13-11eb-9439-0242ac130002 from company: 7c253956-6a13-11eb-9439-0242ac130002'
+                - Key: stacktrace
+                  Value: 'com.tradeshift.commons.exception.ProcessingException: Timed out (12500) waiting for doc profile 78767202-6a13-11eb-9439-0242ac130002 from company: 7c253956-6a13-11eb-9439-0242ac130002'
+                ValidationError: []
+                RequestId: 68dade8f-2f38-442b-8bdd-91a274b30177
+              schema:
+                title: Tradeshift Public API 1.0 - TradeshiftException
+                required:
+                - ErrorCode
+                - Message
+                - RequestId
+                type: object
+                additionalProperties: false
+                properties:
+                  ErrorCode:
+                    type: string
+                  Message:
+                    type: string
+                  ErrorDetail:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        Key:
+                          type: string
+                        Value:
+                          type: string
+                      required:
+                      - Key
+                      - Value
+                  ValidationError:
+                    type: array
+                    items:
+                      type: object
+                  RequestId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+      description: 'Dispatch a previously saved document that was rejected by Scan IO validation. The client can decide on the UUID for the new dispatch.
+
+        The document must already have the `scanIOReject`, `scanIORejectMessage` and `fr_cleared` properties set, otherwise a 400 error is returned.
+
+        The documentSource for this dispatch is always set to `scanIO`.
+
+        The body of the PUT is a connection identifier object which is not mandatory. If connectionId is not provided, the connection id will be determined from the document.
+
+        When Content-Type header is text/xml, the minimal request body should be in the format `<DispatchRequest xmlns="http://tradeshift.com/api/public/1.0"/>`, even if no connectionId is being provided.
+
+        '
+      operationId: put-rest-external-documents-documentid-dispatches-dispatchid-scanioreject
+      requestBody:
+        content:
+          application/json:
+            example:
+              ConnectionId: 20758da1-c5b8-50f5-92b1-ceaaf25d99b7
+            schema:
+              type: string
+          text/xml:
+            example: '<DispatchRequest xmlns="http://tradeshift.com/api/public/1.0"/>
+
+              '
+            schema:
+              type: object
+        required: true
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        description: 'The MIME media type of the request content. Example: text/xml, application/json
+
+          '
+        schema:
+          default: text/xml
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Dispatch a saved document rejected by Scan IO validation
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/lockedstate/{state}:
+    parameters:
+    - name: state
+      in: path
+      required: true
+      schema:
+        type: boolean
+      description: This parameter indicates if the document should be marked as sent (locked) or not.
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    put:
+      responses:
+        '204':
+          description: If the document exists, it state will be set to LOCKED.
+      description: 'Mark a draft document as either sale or purchase if any exists. After this operation, the document cannot be modified in any way.
+
+        If the "sent" parameter is set to TRUE then the document will be marked as SALE, otherwise the document will be marked as
+
+        PURCHASE.
+
+        '
+      operationId: put-rest-external-documents-documentid-lockedstate-state
+      x-annotation-dx-category: documents-document
+      summary: lock a draft document
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/metadata:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            text/xml:
+              example: "<DocumentMetadata xmlns=\"http://tradeshift.com/api/public/1.0\">\n    <DocumentId>1592a9a0-02b9-11e7-93ae-92361f002671</DocumentId>\n    <DocumentType mimeType=\"text/xml\" documentProfileId=\"tradeshift.invoice.ubl.1.0\" type=\"invoice\"/>\n    <ConversationId>7dfe1744-fa85-43cd-bd93-9995445316d1</ConversationId>\n    <State>DRAFT</State>\n    <Created>2017-03-06T23:08:12.535+01:00</Created>\n    <LastEdit>2017-03-06T23:08:12.535+01:00</LastEdit>\n    <ConnectionId>8ce36265-fafd-4801-83a0-4992631219db</ConnectionId>\n    <Tags/>\n    <PropertyList/>\n    <DispatchState>FAILED</DispatchState>\n    <Received>false</Received>\n    <ProcessState>PENDING</ProcessState>\n    <DeliveryState>FAILED</DeliveryState>\n    <UnifiedState>FAILED_DELIVERY</UnifiedState>\n    <AllowedActions>\n        <AllowedAction>\n            <Action>use:template</Action>\n        </AllowedAction>\n    </AllowedActions>\n    <AuthorUserId>259dabc7-6603-4b4b-ad69-aca032c4329e</AuthorUserId>\n    <OwnerCompanyAccountId>70dcbb97-c3bf-41cb-a5df-1fc542cb8989</OwnerCompanyAccountId>\n</DocumentMetadata>\n"
+              schema:
+                type: object
+      description: Get metadata for a document. Metadata cannot be edited.
+      operationId: get-rest-external-documents-documentid-metadata
+      x-annotation-dx-category: documents-document
+      summary: find document metadata
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/original:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: 'The original content is returned as attachment
+
+            '
+          headers:
+            Content-Disposition:
+              description: Sets filename according to RFC 6266
+              schema:
+                type: string
+        '400':
+          description: 'No document found for the supplied id
+
+            '
+      description: 'The Tradeshift platform dispatches documents in ubl format, but it allows the storing of different other formats as well.
+
+        These are automatically converted to ubl during the dispatch. The original content is stored and can be retrieved using this endpoint.
+
+        '
+      operationId: get-rest-external-documents-documentid-original
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: */*
+
+          '
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Get original content of existing documents within platform
+      tags:
+      - dx-category--documents-document
+    post:
+      responses:
+        '202':
+          description: 'The submission command for storing the document has been saved. In order to check the actual status
+
+            of uploading, the url returned as **Location** in header should be accessed.
+
+            '
+          headers:
+            Location:
+              description: 'The url for checking the status of importing the document.
+
+                '
+              schema:
+                type: string
+        '400':
+          description: 'No document provided in request body
+
+            '
+      description: 'It supports storing different document formats apart from ubl. In case of a non-ubl document format an automatic conversion to ubl is performed.
+
+        The document is saved as it was submitted and could be retrieved in its original format.
+
+        **NOTE: When importing a PDF,only invoices and credit notes are supported, and some discrepancies can be expected between the uploaded
+
+        PDF and resulting ubl draft. This sometimes happens due to bad quality of the uploaded PDF.**
+
+        '
+      operationId: post-rest-external-documents-documentid-original
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              properties:
+                file:
+                  description: 'Actual content of the document to be imported
+
+                    '
+                  type: string
+              required:
+              - file
+              type: object
+        required: true
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        description: 'The MIME media type of the request content. Example: */*
+
+          '
+        schema:
+          type: string
+      - name: filename
+        in: query
+        required: true
+        description: 'The filename of the original file
+
+          '
+        schema:
+          type: string
+      - name: schemaValidateUbl
+        in: query
+        required: true
+        description: 'Whether to validate the created document against the UBL schema definition
+
+          '
+        schema:
+          default: true
+          type: boolean
+      - name: validateDocumentProfile
+        in: query
+        required: true
+        description: 'Whether to validate the created document against the document profile
+
+          '
+        schema:
+          default: false
+          type: boolean
+      x-annotation-dx-category: documents-document
+      summary: Asynchronously import a document as a DRAFT
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/original/responses/{responseId}:
+    parameters:
+    - name: responseId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The dispatch id used for dispatching the document
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '201':
+          description: The document import request finished successfully with the 'Location' header pointing to the created draft document.
+        '202':
+          description: The document import request is still processing.
+        '400':
+          description: The document import request has failed due to an invalid input. A list of ValidationErrors is provided.
+        '401':
+          description: User is not authorized to access the provided responseId.
+        '404':
+          description: The provided dispatch ID does not exist.
+        '500':
+          description: The document import request has failed due to internal errors.
+      description: 'This resource allows the client to verify the response to an asynchronous import request. The API provides additional information
+
+        regarding the latest import request of a document. The returned data can either contain a list of document validation errors which prevented the
+
+        import to run successfully or an import failed message if there were any import failures. If there are no errors returned then the
+
+        import has completed successfully and the client will receive HTTP 201 Created. If the document import is still in progress then
+
+        HTTP 202 Accepted is returned. The client can decide wheather to inspect the document import status later or not.
+
+        '
+      operationId: get-rest-external-documents-documentid-original-responses-responseid
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: */*
+
+          '
+        schema:
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: get document import request response
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/properties:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                example:
+                  user-property-1: user-value-1
+                  user-property-2: user-value-2
+        '401':
+          description: User was not authorized to view the specified document.
+      description: Get all user properties for the specified document, excluding tags.
+      operationId: get-rest-external-documents-documentid-properties
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: application/json
+
+          '
+        schema:
+          default: application/json
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Get document properties
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/properties/{property_key}:
+    parameters:
+    - name: property_key
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The key of the property which is being read, added or deleted
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: Value of the given property key
+          content:
+            text/plain:
+              schema:
+                example: propertyValue
+        '204':
+          description: Property not found
+        '401':
+          description: User was not authorized to view the specified document.
+      description: Get document property value if found, otherwise return empty response.
+      operationId: get-rest-external-documents-documentid-properties-property_key
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: text/plain
+
+          '
+        schema:
+          default: text/plain
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Get document property
+      tags:
+      - dx-category--documents-document
+    put:
+      responses:
+        '201':
+          description: Property was added/updated successfully
+        '401':
+          description: User was not authorized to view the specified document.
+      description: 'Add or update document property (key & value).
+
+        Adding properties can help cross references between Tradeshift and the interfacing system.
+
+        For example, adding an ERP posting number as a property to the document after posting, can help cross
+
+        referencing and reconciliation. The property can then be called e.g. "ERPCode" with a value like "12345".
+
+        While supported it''s not recommended to add properties before the document has been created, as neither
+
+        reading nor writing pre created properties will be supported in future versions of the API.
+
+        '
+      operationId: put-rest-external-documents-documentid-properties-property_key
+      requestBody:
+        content:
+          text/plain:
+            example: propertyValue
+            schema:
+              type: string
+        required: true
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        description: 'The MIME media type of the request content. Example: text/plain
+
+          '
+        schema:
+          default: text/plain
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Add document property
+      tags:
+      - dx-category--documents-document
+    delete:
+      responses:
+        '200':
+          description: Property was deleted succesfully
+        '401':
+          description: User was not authorized to view the specified document.
+      description: Delete document property.
+      operationId: delete-rest-external-documents-documentid-properties-property_key
+      x-annotation-dx-category: documents-document
+      summary: Delete document property
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/receivercompany:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: property "receiverCompanyId" found and value returned
+          content:
+            text/plain:
+              schema:
+                example: a74cd946-6a08-11eb-9439-0242ac130002
+                type: string
+        '204':
+          description: property "receiverCompanyId" not found and no value returned
+        '404':
+          description: document not found
+      description: 'This endpoint allows the retrieval of the “receiverCompanyId” tag, using a document id.
+
+        During the dispatch, the receiver side copy of the document is tagged with additional information.
+
+        One of the tags included is the “receiverCompanyId” which represents the company that receives the document.
+
+        Because this tag is only computed during the dispatch, it is only available on the receiver side copy of the
+
+        document and it will most likely be the company itself, but in case of forwarding it will be the original receiver.
+
+        This is useful when an account has multiple child branches, and a user in the primary account wants to do a
+
+        filtered search for documents received by one of the branches.
+
+        '
+      operationId: get-rest-external-documents-documentid-receivercompany
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: media type of the response content it is expecting
+        schema:
+          default: text/plain
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Get document's receiver company
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/senderReferenceId:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: property "reference" found and value returned
+          content:
+            text/plain:
+              schema:
+                example: a74cd946-6a08-11eb-9439-0242ac130002
+                type: string
+        '404':
+          description: document or property not found
+      description: 'This endpoint returns the referenced document''s id for a given document.
+
+        During the dispatch, fx. sending a document to another account, a copy is created on the receiver side so that
+
+        each side of the transaction has it''s own copy of the document.
+
+        The receiver side copy of the document is tagged with additional information and one of the tags that are added
+
+        is the “reference” tag, which represents the document id of the sender side copy.
+
+        Because this tag is only computed during the dispatch, it is only available on the receiver side copy and it
+
+        is not availble on the sender side.
+
+        This tag is useful to link the two copies of the document together, and can be used by API integrations to
+
+        easily retrieve the sender side copy.
+
+        '
+      operationId: get-rest-external-documents-documentid-senderreferenceid
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: media type of the response content it is expecting
+        schema:
+          default: text/plain
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Get document's referenced id
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/sendercompany:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: property "senderCompanyId" found and value returned
+          content:
+            text/plain:
+              schema:
+                example: a74cd946-6a08-11eb-9439-0242ac130002
+                type: string
+        '204':
+          description: property "senderCompanyId" not found and no value returned
+        '404':
+          description: document not found
+      description: 'This endpoint allows the retrieval of the “senderCompanyId” tag, using a document id.
+
+        During the dispatch, fx. sending a document to another account, a copy is created on the receiver side so
+
+        that each side of the transaction has it''s own copy of the document. The receiver side copy is tagged with
+
+        additional information and one of the tags that are added is the “senderCompanyId” tag, which represents the
+
+        id of the sender account.
+
+        Because this tag is only computed during the dispatch, it is only available on the receiver side copy and it
+
+        is not available on the sender side.
+
+        Use this API to uniquely identify the company in Tradeshift that initiated the dispatch.
+
+        '
+      operationId: get-rest-external-documents-documentid-sendercompany
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: media type of the response content it is expecting
+        schema:
+          default: text/plain
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: Get document's sender company
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/statechange:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    put:
+      responses:
+        '204':
+          description: The state change was applied successfully.
+        '400':
+          description: Bad Request. The request body is empty or contains invalid XML content.
+        '401':
+          description: Unauthorized. The user does not have the UPDATE_DOCUMENT operation.
+      description: 'Creates an ApplicationResponse to change the state of a document (e.g. accept, reject, dispute).
+
+        This endpoint calls a method secured with the UPDATE_DOCUMENT operation, allowing users with roles such as
+
+        Accounts Payable Handler to change document state without requiring the CREATE_EDIT_DOCUMENT operation.
+
+        Only ApplicationResponse documents (tradeshift.status.1.0 profile) are supported.
+
+        The document profile is fixed and does not need to be specified by the caller.
+
+        '
+      operationId: put-rest-external-documents-documentid-statechange
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              type: string
+          application/xml:
+            schema:
+              type: string
+        required: true
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        description: 'The MIME media type of the request content. Must be text/xml or application/xml.
+
+          '
+        schema:
+          default: text/xml
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: change document state
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/tags:
+    parameters:
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    get:
+      responses:
+        '200':
+          description: The list of tags for the provided document id, if found
+          content:
+            application/json:
+              example:
+                Tag:
+                - document-tag-1
+                - document-tag-2
+                - document-tag-3
+              schema:
+                type: object
+                properties:
+                  Tag:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - Tag
+      description: 'Get all tags for the specified document. This is a generic document API endpoint which covers all document types.
+
+        '
+      operationId: get-rest-external-documents-documentid-tags
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: 'The MIME media type of the response content. Example: text/xml, application/json
+
+          '
+        schema:
+          default: text/xml
+          type: string
+      x-annotation-dx-category: documents-document
+      summary: get document tags
+      tags:
+      - dx-category--documents-document
+  /rest/external/documents/{documentId}/tags/{tag}:
+    parameters:
+    - name: tag
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The tag value that will be added or removed.
+    - name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Document UUID identifier
+    put:
+      responses:
+        '201':
+          description: The tag value was updated successfully.
+      description: 'Add or replace a tag on a document. Tags might be visible in the TS user interface, and are shared between
+
+        API accessors. This is a generic document API endpoint which covers all document types. To avoid pulling the
+
+        same document again and again, tag the invoice, and then poll for only documents without this tag in #1.
+
+        A tag is just a string, and a document can have multiple tags. It can be used to keep track of sub steps in
+
+        the integration, for instance Pulled, Transformed and Posted, which would be three tags suitable for
+
+        debugging and integration.
+
+        '
+      operationId: put-rest-external-documents-documentid-tags-tag
+      x-annotation-dx-category: documents-document
+      summary: add document tag
+      tags:
+      - dx-category--documents-document
+    delete:
+      responses:
+        '200':
+          description: The tag was deleted successfully.
+      description: 'Removes a tag from a document. This will also be removed from the TS user interface. This is a generic
+
+        document API endpoint which covers all document types.
+
+        '
+      operationId: delete-rest-external-documents-documentid-tags-tag
+      x-annotation-dx-category: documents-document
+      summary: delete document tag
+      tags:
+      - dx-category--documents-document
+  /rest/external/status-change-reasons:
+    get:
+      responses:
+        '200':
+          description: An object containing lists of rejection reasons and dispute reasons.
+          content:
+            application/json:
+              schema:
+                example:
+                  rejectionReasons:
+                  - code: TX_TVA_ERR
+                    label: Taux de TVA erroné
+                  disputeReasons:
+                  - code: AUTRE
+                    label: Autre
+      description: 'Returns the list of available rejection reasons and dispute reasons
+
+        that can be used when changing the status of a document.
+
+        '
+      operationId: get-rest-external-status-change-reasons
+      x-annotation-dx-category: documents-document
+      summary: get status change reasons
+      tags:
+      - dx-category--documents-document

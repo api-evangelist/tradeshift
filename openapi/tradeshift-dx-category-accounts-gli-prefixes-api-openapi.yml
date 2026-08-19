@@ -1,0 +1,109 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Accounts Gli Prefixes API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--accounts-gli_prefixes
+paths:
+  /rest/external/gliprefixes/{companyId}:
+    parameters:
+    - name: companyId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Company (tenant) UUID identifier of company to administer TSGLI prefixes for.
+    get:
+      responses:
+        '200':
+          description: List of TSGLI prefixes
+          content:
+            application/json:
+              example:
+              - Prefix: hq.london
+                Label: Headquarters London prefix
+              - Prefix: de.berlin
+                Label: Berlin office prefix
+              schema:
+                title: Tradeshift Public API 1.0 - GLI List
+                type: array
+                additionalProperties: false
+                items:
+                  required:
+                  - Label
+                  - Prefix
+                  type: object
+                  properties:
+                    Prefix:
+                      type: string
+                    Label:
+                      type: string
+      description: Get all TSGLI prefixes for a company
+      operationId: get-rest-external-gliprefixes-companyid
+      x-annotation-dx-category: accounts-gli_prefixes
+      summary: find gli prefixes
+      tags:
+      - dx-category--accounts-gli_prefixes
+    post:
+      responses:
+        '201':
+          description: The TSGLI prefix was successfully created.
+        '400':
+          description: Bad request error. Any message as text/plain message.
+      description: Create new TSGLI prefix for a company
+      operationId: post-rest-external-gliprefixes-companyid
+      requestBody:
+        content:
+          application/json:
+            example:
+              Prefix: hqprefix
+              Label: Headquarters prefix
+            schema:
+              title: Tradeshift Public API 1.0 - GLI
+              required:
+              - Prefix
+              - Label
+              type: object
+              additionalProperties: false
+              properties:
+                Prefix:
+                  type: string
+                Label:
+                  type: string
+          application/xml:
+            example: "<GLI xmlns=\"http://tradeshift.com/api/1.0\">\n    <Prefix>hqprefix</Prefix>\n    <Label>Headquarters prefix</Label>\n</GLI>\n"
+            schema:
+              type: object
+        required: true
+      x-annotation-dx-category: accounts-gli_prefixes
+      summary: update gli prefixes
+      tags:
+      - dx-category--accounts-gli_prefixes
+  /rest/external/gliprefixes/{companyId}/{prefix}:
+    parameters:
+    - name: companyId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Company (tenant) UUID identifier of company to administer TSGLI prefixes for.
+    - name: prefix
+      in: path
+      required: true
+      schema:
+        type: string
+      description: TSGLI prefix
+    delete:
+      responses:
+        '204':
+          description: The TSGLI prefix was successfully deleted.
+        '400':
+          description: Bad request error. Any message as text/plain message.
+      description: Delete TSGLI prefix
+      operationId: delete-rest-external-gliprefixes-companyid-prefix
+      x-annotation-dx-category: accounts-gli_prefixes
+      summary: remove gli prefixes
+      tags:
+      - dx-category--accounts-gli_prefixes

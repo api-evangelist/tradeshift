@@ -1,0 +1,966 @@
+{
+  "item": [
+    {
+      "id": "22b10158-7007-401b-8f52-38af17589575",
+      "name": "dx-category--assignments-update",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "97771e06-a71f-4ee1-85c2-5ac249753b60",
+          "name": "update assignment",
+          "request": {
+            "name": "update assignment",
+            "description": {
+              "content": "Updates an assignment with assignees, tags, comment, outcome. The new assignees will be added to the existing ones and the duplicates will be removed. The new tags will be added to the existing ones and the duplicates will be removed. The comment will replace the existing one. The outcome will replace the existing one.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "assignments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) An UUID representing the assignment id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"addAssigneeIds\": [\n    \"<string>\"\n  ],\n  \"addTags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updateComment\": \"<string>\",\n  \"updateOutcome\": \"<string>\",\n  \"context\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "73f9d8aa-bc87-4fb1-a80f-d071ea99e503",
+              "name": "&nbsp; The assignment was successfully updated are new assignment is returned <br>\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addAssigneeIds\": [\n    \"e6aaeb31-b33d-40a1-bd05-a4d5bc1410ea\",\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n  ],\n  \"addTags\": [\n    \"tag1\",\n    \"tag2\"\n  ],\n  \"updateComment\": \"comment\",\n  \"updateOutcome\": \"outcome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a60b2008-8872-4620-8ed2-410ce5640fb9\",\n  \"externalId\": \"External-Id\",\n  \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n  \"app\": \"APVerification\",\n  \"createdBy\": \"260b2008-8872-4620-8ed2-410ce5640fb3\",\n  \"assigneeIds\": [\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n  ],\n  \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n  \"tags\": [\n    \"A tag\",\n    \"Another tag\"\n  ],\n  \"type\": \"A type\",\n  \"createdAt\": \"2018-10-25T16:40:31.795+03:00\",\n  \"modifiedAt\": \"2018-10-25T16:40:31.795+03:00\",\n  \"outcome\": \"An outcome\",\n  \"status\": \"CLOSED\",\n  \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n  \"comment\": \"A comment\",\n  \"context\": {\n    \"format\": \"App.Tradeshift\",\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f953306-11a6-4433-a28d-9c61c1d05dd6",
+              "name": "Invalid input. The response will contain a list of one or more validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addAssigneeIds\": [\n    \"e6aaeb31-b33d-40a1-bd05-a4d5bc1410ea\",\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n  ],\n  \"addTags\": [\n    \"tag1\",\n    \"tag2\"\n  ],\n  \"updateComment\": \"comment\",\n  \"updateOutcome\": \"outcome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f2c84a4-7602-4fc1-9fc3-1209d26a4998",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addAssigneeIds\": [\n    \"e6aaeb31-b33d-40a1-bd05-a4d5bc1410ea\",\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n  ],\n  \"addTags\": [\n    \"tag1\",\n    \"tag2\"\n  ],\n  \"updateComment\": \"comment\",\n  \"updateOutcome\": \"outcome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c0e6201-b87e-448a-a39b-e8b08a461c0a",
+              "name": "Current user does not have access to assignment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addAssigneeIds\": [\n    \"e6aaeb31-b33d-40a1-bd05-a4d5bc1410ea\",\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n  ],\n  \"addTags\": [\n    \"tag1\",\n    \"tag2\"\n  ],\n  \"updateComment\": \"comment\",\n  \"updateOutcome\": \"outcome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2f34341-62b8-4151-a666-018c29c90b36",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addAssigneeIds\": [\n    \"e6aaeb31-b33d-40a1-bd05-a4d5bc1410ea\",\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n  ],\n  \"addTags\": [\n    \"tag1\",\n    \"tag2\"\n  ],\n  \"updateComment\": \"comment\",\n  \"updateOutcome\": \"outcome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "245bea29-6e53-406f-8a6a-fd398086a871",
+              "name": "&nbsp; The service failed unexpectedly while updating the assignment.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addAssigneeIds\": [\n    \"e6aaeb31-b33d-40a1-bd05-a4d5bc1410ea\",\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n  ],\n  \"addTags\": [\n    \"tag1\",\n    \"tag2\"\n  ],\n  \"updateComment\": \"comment\",\n  \"updateOutcome\": \"outcome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": \"AbsentDefaultAssignee\",\n  \"Message\": \"Default assignee is absent. - Default assignee is absent.\",\n  \"ErrorDetail\": [],\n  \"ValidationError\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "735ca8e7-f015-4223-9762-a5a43966c1df",
+          "name": "update assignment status to CLOSED",
+          "request": {
+            "name": "update assignment status to CLOSED",
+            "description": {
+              "content": "Update the status of the assignment to CLOSED. <br> The assignment can be closed if it is in OPEN state.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "assignments",
+                ":id",
+                "close"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) An UUID representing the assignment id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39480a95-b6d5-4b0f-86dc-398b544ce05c",
+              "name": "The assignment is successfully closed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4c04af1-3fbf-4fcf-b177-12fb51b37238",
+              "name": "The assignment cannot be found or closed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": \"BadRequest\",\n  \"Message\": \"Could not resolve type nonExistentType\",\n  \"ErrorDetail\": [\n    {\n      \"Key\": \"message\",\n      \"Value\": \"Could not resolve type nonExistentType\"\n    },\n    {\n      \"Key\": \"stacktrace\",\n      \"Value\": \"com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\\n\\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\\n\\t\"\n    }\n  ],\n  \"ValidationError\": [],\n  \"RequestId\": \"2c941598-489c-4fac-8543-03cb921feaf7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d09763a-d8b5-4f44-8411-ca5ec9f35818",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "835f8643-9608-4354-b5ce-8687c685f673",
+              "name": "Current user does not have access to assignment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7b93fd5-6cce-4fca-80ab-49cc8d47a18b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1e76e80-b597-4844-bbcc-8ca9e5df678b",
+          "name": "update assignment comment",
+          "request": {
+            "name": "update assignment comment",
+            "description": {
+              "content": "Update the comment of the assignment. <br> You should put the new comment of the assignment in the request body as plain text.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "assignments",
+                ":id",
+                "comment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) An UUID representing the assignment id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "35046d9f-4fad-410a-8648-3acf34d715c0",
+              "name": "The comment is successfully updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "A comment"
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dcc8dca4-130c-48d1-92c8-592410d9de09",
+              "name": "The assignment cannot be found or updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "A comment"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": \"BadRequest\",\n  \"Message\": \"Could not resolve type nonExistentType\",\n  \"ErrorDetail\": [\n    {\n      \"Key\": \"message\",\n      \"Value\": \"Could not resolve type nonExistentType\"\n    },\n    {\n      \"Key\": \"stacktrace\",\n      \"Value\": \"com.tradeshift.commons.exception.BadRequestException: Could not resolve type nonExistentType\\n\\tat com.tradeshift.coding.rest.CodingResource.getCodingLists(CodingResource.java:85)\\n\\t\"\n    }\n  ],\n  \"ValidationError\": [],\n  \"RequestId\": \"2c941598-489c-4fac-8543-03cb921feaf7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c416750-58f7-436a-a67e-d2111fdd7988",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "A comment"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "670281f8-ca40-41ba-9ac1-686845326a90",
+              "name": "Current user does not have access to assignment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "A comment"
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "755b76b3-019a-446e-add5-e82a305947e2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "A comment"
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1fb4eef0-728d-40d5-9691-0cfedf46838c",
+    "name": "Tradeshift External Dx Category Assignments Update API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

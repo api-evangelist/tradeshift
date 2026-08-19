@@ -1,0 +1,540 @@
+{
+  "item": [
+    {
+      "id": "a2e83f12-3916-4e26-ad3c-e7ad2177d360",
+      "name": "dx-category--assignments-logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a811501c-7bb1-4c97-9f94-f7b55e0d0d31",
+          "name": "get assignment logs",
+          "request": {
+            "name": "get assignment logs",
+            "description": {
+              "content": "Get an assignment by id with all its logs. The assignment will be visible if: <ul>\n  <li>the current user is regular and the assignment is assigned to him or his teams </li>\n  <li>the current user is queue manager and and the assignment has an assignee in the current branch or child branches</li>\n</ul>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "assignments",
+                ":id",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) An UUID representing the assignment id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f77528db-c20c-4dac-b232-2feebc7b2721",
+              "name": "Successfully returns the assignment by id and all its assignmentLogs. <br> ModifiedBy field shows the last user that has changed the status of an assignment. The user id is taken from the request context.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a60b2008-8872-4620-8ed2-410ce5640fb9\",\n  \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n  \"app\": \"APVerification\",\n  \"createdBy\": \"260b2008-8872-4620-8ed2-410ce5640fb3\",\n  \"assigneeIds\": [\n    \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n  ],\n  \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n  \"tags\": [\n    \"A tag\",\n    \"Another tag\"\n  ],\n  \"type\": \"A type\",\n  \"createdAt\": \"2018-10-25T16:40:31.795+03:00\",\n  \"modifiedAt\": \"2018-10-25T16:40:31.795+03:00\",\n  \"outcome\": \"An outcome\",\n  \"status\": \"CLOSED\",\n  \"externalId\": \"External-Id\",\n  \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n  \"comment\": \"A comment\",\n  \"assignmentLogs\": [\n    {\n      \"id\": 9,\n      \"outcome\": \"An outcome\",\n      \"status\": \"CLOSED\",\n      \"comment\": \"A comment\",\n      \"externalId\": \"External-Id\",\n      \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n      \"assigneeIds\": [\n        \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n      ],\n      \"tags\": [\n        \"A tag\",\n        \"Another tag\"\n      ],\n      \"createdAt\": \"2018-10-25T16:40:57.497+03:00\"\n    },\n    {\n      \"id\": 8,\n      \"outcome\": \"An outcome\",\n      \"status\": \"OPEN\",\n      \"comment\": \"A comment\",\n      \"externalId\": \"External-Id\",\n      \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n      \"assigneeIds\": [\n        \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n      ],\n      \"createdAt\": \"2018-10-25T16:40:48.898+03:00\"\n    }\n  ],\n  \"context\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "debb4c5c-8732-424b-94b8-83f1e472db07",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0159e784-6079-4785-95bf-cad5ef895eeb",
+              "name": "Current user does not have access to assignment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "202f821f-5964-4606-90f1-310074d8f0d8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    ":id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) An UUID representing the assignment id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "409017fd-554e-4722-92d0-9f471fc8cc5c",
+          "name": "get assignments by subjectid",
+          "request": {
+            "name": "get assignments by subjectid",
+            "description": {
+              "content": "Get a paged list of assignments with all their logs, filtered by subject id which usually is a document id. <br> The assignments will be visible if: <ul>\n  <li>the current user is regular and the assignments are assigned to him or his teams </li>\n  <li>the current user is queue manager and and the assignments have an assignee in the current branch or child branches</li>\n</ul>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "external",
+                "assignments",
+                "subjects",
+                ":subjectId",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Number representing the page to be return from the paginated result-set."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "The number of assignments displayed per page."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subjectId",
+                  "description": "(Required) A string representing a subject id ( usually a document UUID )."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ff1b5e3-db05-42c6-8a27-e3d2a8aef80c",
+              "name": "Successfully returns the assignments with all their logs. <br> ModifiedBy field shows the last user that has changed the status of an assignment. The user id is taken from the request context.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    "subjects",
+                    ":subjectId",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subjectId",
+                      "description": "(Required) A string representing a subject id ( usually a document UUID )."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 1,\n  \"items\": [\n    {\n      \"id\": \"a60b2008-8872-4620-8ed2-410ce5640fb9\",\n      \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n      \"app\": \"APVerification\",\n      \"createdBy\": \"260b2008-8872-4620-8ed2-410ce5640fb3\",\n      \"assigneeIds\": [\n        \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n      ],\n      \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n      \"tags\": [\n        \"A tag\",\n        \"Another tag\"\n      ],\n      \"type\": \"A type\",\n      \"createdAt\": \"2018-10-25T16:40:31.795+03:00\",\n      \"modifiedAt\": \"2018-10-25T16:40:31.795+03:00\",\n      \"externalId\": \"External-Id\",\n      \"outcome\": \"An outcome\",\n      \"status\": \"CLOSED\",\n      \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n      \"comment\": \"A comment\",\n      \"assignmentLogs\": [\n        {\n          \"id\": 9,\n          \"outcome\": \"An outcome\",\n          \"status\": \"CLOSED\",\n          \"externalId\": \"External-Id\",\n          \"comment\": \"A comment\",\n          \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n          \"assigneeIds\": [\n            \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n          ],\n          \"tags\": [\n            \"A tag\",\n            \"Another tag\"\n          ],\n          \"createdAt\": \"2018-10-25T16:40:57.497+03:00\"\n        },\n        {\n          \"id\": 8,\n          \"outcome\": \"An outcome\",\n          \"status\": \"OPEN\",\n          \"comment\": \"A comment\",\n          \"externalId\": \"External-Id\",\n          \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n          \"assigneeIds\": [\n            \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n          ],\n          \"createdAt\": \"2018-10-25T16:40:48.898+03:00\"\n        }\n      ],\n      \"context\": {}\n    }\n  ],\n  \"empty\": false,\n  \"firstItem\": {\n    \"id\": \"a60b2008-8872-4620-8ed2-410ce5640fb9\",\n    \"subjectId\": \"360b2008-8872-4620-8ed2-410ce5640fb0\",\n    \"app\": \"APVerification\",\n    \"createdBy\": \"260b2008-8872-4620-8ed2-410ce5640fb3\",\n    \"assigneeIds\": [\n      \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n    ],\n    \"companyId\": \"3fba6061-b51e-49bb-8c08-6cf6d28a304a\",\n    \"tags\": [\n      \"A tag\",\n      \"Another tag\"\n    ],\n    \"type\": \"A type\",\n    \"createdAt\": \"2018-10-25T16:40:31.795+03:00\",\n    \"modifiedAt\": \"2018-10-25T16:40:31.795+03:00\",\n    \"outcome\": \"An outcome\",\n    \"status\": \"CLOSED\",\n    \"externalId\": \"External-Id\",\n    \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n    \"comment\": \"A comment\",\n    \"assignmentLogs\": [\n      {\n        \"id\": 9,\n        \"outcome\": \"An outcome\",\n        \"status\": \"CLOSED\",\n        \"comment\": \"A comment\",\n        \"externalId\": \"External-Id\",\n        \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n        \"assigneeIds\": [\n          \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n        ],\n        \"createdAt\": \"2018-10-25T16:40:57.497+03:00\"\n      },\n      {\n        \"id\": 8,\n        \"outcome\": \"An outcome\",\n        \"status\": \"OPEN\",\n        \"comment\": \"A comment\",\n        \"externalId\": \"External-Id\",\n        \"modifiedBy\": \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\",\n        \"assigneeIds\": [\n          \"12067d82-1308-4fd1-9d0b-12eafe99c4cd\"\n        ],\n        \"createdAt\": \"2018-10-25T16:40:48.898+03:00\"\n      }\n    ],\n    \"context\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf9a6c28-404e-401d-87f3-44b2148a0e2e",
+              "name": "The page number is negative.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    "subjects",
+                    ":subjectId",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subjectId",
+                      "description": "(Required) A string representing a subject id ( usually a document UUID )."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ErrorCode\": \"BadRequest\",\n  \"Message\": \"An invalid request was made - Parameter 'page' cannot be negative\",\n  \"ErrorDetail\": [\n    {\n      \"Key\": \"message\",\n      \"Value\": \"Parameter 'page' cannot be negative.\"\n    }\n  ],\n  \"ValidationError\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "650e2bfc-acfa-4348-9e94-ced70da3e9b7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    "subjects",
+                    ":subjectId",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subjectId",
+                      "description": "(Required) A string representing a subject id ( usually a document UUID )."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8878d9e-512e-42e1-b606-1c9df1f053f0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "external",
+                    "assignments",
+                    "subjects",
+                    ":subjectId",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subjectId",
+                      "description": "(Required) A string representing a subject id ( usually a document UUID )."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradeshift.com/tradeshift",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e6a8be43-9aa3-472a-ad21-b9f19b73b017",
+    "name": "Tradeshift External Dx Category Assignments Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

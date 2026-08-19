@@ -1,0 +1,225 @@
+openapi: 3.2.0
+info:
+  title: Tradeshift External Dx Category Assignments Create API
+  version: 1.0.0
+servers:
+- url: https://api.tradeshift.com/tradeshift
+tags:
+- name: dx-category--assignments-create
+paths:
+  /rest/external/assignments:
+    post:
+      responses:
+        '201':
+          description: '&nbsp; The assignment was successfully saved. <br> &nbsp; The companyId for the new assignment is X-Tradeshift-TenantId header. <br> &nbsp; The createdBy property is the user in X-Tradeshift-ActorId header. <br> &nbsp; If the assignee list has some invalid assignees or some that are not members of the current branch, those will be ignored and only the valid users (active or inactive) will be saved. <br> &nbsp; Furthermore, if there is any auto-assignment available for the provided assignees, these will be added as delegates or assignees. <br/>
+
+            '
+          content:
+            application/json:
+              example:
+                id: a60b2008-8872-4620-8ed2-410ce5640fb9
+                externalId: External-Id
+                subjectId: 360b2008-8872-4620-8ed2-410ce5640fb0
+                app: APVerification
+                createdBy: 260b2008-8872-4620-8ed2-410ce5640fb3
+                assigneeIds:
+                - 12067d82-1308-4fd1-9d0b-12eafe99c4cd
+                companyId: 3fba6061-b51e-49bb-8c08-6cf6d28a304a
+                tags:
+                - A tag
+                - Another tag
+                type: A type
+                createdAt: '2018-10-25T16:40:31.795+03:00'
+                modifiedAt: '2018-10-25T16:40:31.795+03:00'
+                outcome: An outcome
+                status: CLOSED
+                modifiedBy: 12067d82-1308-4fd1-9d0b-12eafe99c4cd
+                comment: A comment
+                context:
+                  format: App.Tradeshift
+                  context: {}
+              schema:
+                title: Tradeshift Public API 1.0 - Assignment
+                required:
+                - id
+                - subjectId
+                - type
+                type: object
+                additionalProperties: false
+                properties:
+                  id:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+                  subjectId:
+                    pattern: ^.{1,255}$
+                    type: string
+                  app:
+                    pattern: ^.{1,255}$
+                    type: string
+                  createdBy:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+                  assigneeIds:
+                    uniqueItems: true
+                    type: array
+                    additionalProperties: false
+                    items:
+                      pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                      description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                      type: string
+                  companyId:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+                  tags:
+                    minItems: 0
+                    uniqueItems: true
+                    type: array
+                    additionalProperties: false
+                    items:
+                      type: string
+                  type:
+                    pattern: ^.{1,255}$
+                    type: string
+                  comment:
+                    type: string
+                  outcome:
+                    type: string
+                  status:
+                    type: string
+                  externalId:
+                    pattern: ^.{1,255}$
+                    type: string
+                  modifiedBy:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+                  createdAt:
+                    pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.\d{3})?(Z|(\+|\-)[0-9]{2}:[0-9]{2})
+                    description: ISO8601 formatted DateTime in UTC timezone, fx 2014-12-09T16:11:53Z with optionally .001 for milliseconds.
+                    type: string
+                  modifiedAt:
+                    pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.\d{3})?(Z|(\+|\-)[0-9]{2}:[0-9]{2})
+                    description: ISO8601 formatted DateTime in UTC timezone, fx 2014-12-09T16:11:53Z with optionally .001 for milliseconds.
+                    type: string
+                  context:
+                    type: object
+                  delegations:
+                    uniqueItems: true
+                    type: array
+                    items:
+                      required:
+                      - delegator
+                      - delegatee
+                      type: object
+                      properties:
+                        delegator:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        delegatee:
+                          pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                          description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                          type: string
+                        delegatorType:
+                          type: string
+        '400':
+          description: Invalid input. The response will contain a list of one or more validation errors.
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: ''
+        '404':
+          description: ''
+          content:
+            text/xml:
+              schema:
+                example: "<ns6:ResponseError xmlns:cec=\"urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2\"\n                   xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\"\n                   xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\"\n                   xmlns:ns6=\"http://tradeshift.com/api/1.0\"\n                   xmlns:ns20=\"urn:oasis:names:specification:ubl:schema:xsd:OrderResponseSimple-2\"\n                   xmlns:ns8=\"urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2\"\n                   xmlns:ns7=\"http://tradeshift.com/api/2.0\"\n                   xmlns:ns13=\"urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2\"\n                   xmlns:ns9=\"urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2\"\n                   xmlns:ns12=\"urn:oasis:names:specification:ubl:schema:xsd:Quotation-2\"\n                   xmlns:ns11=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\"\n                   xmlns:ns22=\"urn:oasis:names:specification:ubl:schema:xsd:RequestForQuotation-2\"\n                   xmlns:ns10=\"urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2\"\n                   xmlns:ns21=\"urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2\"\n                   xmlns:ns17=\"urn:oasis:names:specification:ubl:schema:xsd:RemittanceAdvice-2\"\n                   xmlns:ns16=\"urn:oasis:names:specification:ubl:schema:xsd:Reminder-2\"\n                   xmlns:ns15=\"urn:oasis:names:specification:ubl:schema:xsd:OrderChange-2\"\n                   xmlns:ns14=\"urn:oasis:names:specification:ubl:schema:xsd:Order-2\"\n                   xmlns:ns19=\"urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2\"\n                   xmlns:ts=\"http://tradeshift.com/api/public/1.0\"\n                   xmlns:ns18=\"urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2\">\n    <ns6:ErrorCode>ResourceNotFound</ns6:ErrorCode>\n    <ns6:Message>Error&amp;#x3a; ResourceNotFound&amp;#x3a; The object did not exist</ns6:Message>\n    <ns6:RequestId>fff29544-8039-499f-91c5-b3c9e4e3d8b1</ns6:RequestId>\n</ns6:ResponseError>\n"
+        '500':
+          description: '&nbsp; A default assignee is absent, invalid or inactive or problems have occurred while saving in the DB.<br> &nbsp; When it indicates problems regarding default assignee, it returns a response body with the ErrorCode "AbsentDefaultAssignee" or "InvalidDefaultAssignee" when the default assignee is invalid or inactive. This error occurs only when no assignee is provided or none of the provided assignees one are valid and members of the current branch.
+
+            '
+          content:
+            application/json:
+              example:
+                ErrorCode: AbsentDefaultAssignee
+                Message: Default assignee is absent. - Default assignee is absent.
+                ErrorDetail: []
+                ValidationError: []
+              schema:
+                type: string
+      description: 'Creates a new assignment. <br> It must have the following mandatory JSON nodes in the request body: <ul> <li>type</li> <li>subjectId</li> </ul> The list of assigneeIds, if provided, must contain at least one valid user or user group. <br/> If no assignees are provided or all provided are missing/invalid/are not members of the current branch, the API will return an error(no default assignee logic is used).The assignees can be users or teams.<br> Also, for the provided assignees, auto-assignees and delegations will be added to the assignment, if any. <br/>
+
+        '
+      operationId: post-rest-external-assignments
+      requestBody:
+        content:
+          application/json:
+            example:
+              type: DOCUMENT
+              subjectId: 360b2008-8872-4620-8ed2-410ce5640fb0
+              externalId: External-Id
+              assigneeIds:
+              - 12067d82-1308-4fd1-9d0b-12eafe99c4cd
+              - ef9725fc-bc4e-4b6c-aa87-26d3a0f334e4
+              app: APVerification
+              assignerId: 6b380d88-050a-4274-a8a4-de815e36c3cf
+              tags:
+              - A tag
+              - Another tag
+              context:
+                format: App.Tradeshift
+                context: {}
+            schema:
+              title: Tradeshift Public API 1.0 - Assignment
+              required:
+              - type
+              - subjectId
+              type: object
+              additionalProperties: false
+              properties:
+                type:
+                  pattern: ^.{1,255}$
+                  type: string
+                subjectId:
+                  pattern: ^.{1,255}$
+                  type: string
+                assigneeIds:
+                  uniqueItems: true
+                  type: array
+                  additionalProperties: false
+                  items:
+                    pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                    description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                    type: string
+                externalId:
+                  pattern: ^.{1,255}$
+                  type: string
+                app:
+                  pattern: ^.{1,255}$
+                  type: string
+                comment:
+                  type: string
+                assignerId:
+                  pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+                  description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
+                  type: string
+                tags:
+                  minItems: 0
+                  uniqueItems: true
+                  type: array
+                  additionalProperties: false
+                  items:
+                    type: string
+                context:
+                  type: object
+        required: true
+      parameters: []
+      x-annotation-dx-category: assignments-create
+      summary: create assignment
+      tags:
+      - dx-category--assignments-create

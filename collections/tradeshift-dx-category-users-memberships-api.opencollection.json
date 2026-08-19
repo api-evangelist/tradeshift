@@ -1,0 +1,225 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tradeshift External Dx Category Users Memberships API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dx-category--users-memberships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "remove user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/members/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of user account."
+              }
+            ]
+          },
+          "docs": "Remove a member from the current company account. Users who belong to the account (have the account's CompanyAccountId) cannot be removed."
+        },
+        {
+          "info": {
+            "name": "replace roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/users/:userId/role",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of user account."
+              }
+            ]
+          },
+          "docs": "Create a membership for the given user, group and role deleting all the existing group's memberships."
+        },
+        {
+          "info": {
+            "name": "set user state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/account/users/:userId/state",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of user account."
+              }
+            ]
+          },
+          "docs": "Set the state of a user."
+        },
+        {
+          "info": {
+            "name": "Find user groups by query string",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/usergroups",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of user groups to fetch per call."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number from which to start fetching the user groups."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state of the user groups."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "User group name query string."
+              },
+              {
+                "name": "member",
+                "value": "",
+                "type": "query",
+                "description": "Returned user groups must have the supplied user is as a member."
+              }
+            ]
+          },
+          "docs": "Gets list of all user groups that the user has access to. Groups are fetched without members\nbut each user group entry will have the number of members it has.\n"
+        },
+        {
+          "info": {
+            "name": "List of current company branches where the specified user is a member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/users/:userId/branches",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User account UUID."
+              }
+            ]
+          },
+          "docs": "Returns a list of branches for the specified user inside organisation hierarchy of his current company.\n"
+        },
+        {
+          "info": {
+            "name": "List of current company branches starting from current branch where the specified user is a member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/users/:userId/current/branches",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User account UUID."
+              }
+            ]
+          },
+          "docs": "Returns a list of branches for the specified user inside organisation hierarchy of his current company.\n"
+        },
+        {
+          "info": {
+            "name": "remove user membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/users/:userId/memberships/:groupId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of user account."
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of the security group"
+              }
+            ]
+          },
+          "docs": "Remove user's membership to a group."
+        },
+        {
+          "info": {
+            "name": "Change home branch for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/users/:userId/overridingcompanyaccountid",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User account UUID."
+              }
+            ]
+          },
+          "docs": "Change home company environment which is displayed after the user logs in.\nThe requester must be a company admin and the requester's company must be a parent to the user's company and\noverriding company, otherwise 401 returns.\n"
+        },
+        {
+          "info": {
+            "name": "Change current primary group and remove old primary group membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tradeshift.com/tradeshift/rest/external/users/:userId/primarybranch/:newGroupId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User account UUID."
+              },
+              {
+                "name": "newGroupId",
+                "value": "",
+                "type": "path",
+                "description": "UUID identifier of the security group"
+              }
+            ]
+          },
+          "docs": "Change current primary group and remove old primary group membership. The user must be a member of new group.\nThe requester must be a company admin and requester's company must be a parent to user's primary company,\notherwise 401 returns.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
