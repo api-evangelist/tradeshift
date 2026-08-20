@@ -20,6 +20,22 @@ specificationVersion: '0.23'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
+  - E-Invoicing
+  - Accounts Payable
+  - AP Automation
+  - Procure-to-Pay
+  - Supply Chain
+  - B2B Commerce
+  - Invoicing
+  - ubl
+  - PEPPOL
+  - e-invoicing-compliance
+  - Supplier Network
+  - business-documents
+  - Fintech
+  - MCP
+  - agent-native
+tags_raw:
   - e-invoicing
   - accounts-payable
   - ap-automation
