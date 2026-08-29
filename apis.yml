@@ -12,6 +12,18 @@ description: >-
   X-Tradeshift-TenantId header, and apps can subscribe to platform webhooks for document, network, and user events.
   Tradeshift also runs a production MCP server exposing platform capability to AI agents under the same
   authentication, RBAC, and audit model as human sessions.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://tradeshift.com/wp-content/uploads/2021/01/Logo-symbol-white-on-blue-bg-@10x.png
 url: https://raw.githubusercontent.com/api-evangelist/tradeshift/refs/heads/main/apis.yml
 x-type: company
@@ -1494,6 +1506,9 @@ apis:
     url: >-
       https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
 common:
+  - type: CapabilityMap
+    url: capabilities/tradeshift-capability-edges.yml
+    name: Tradeshift Business Capability Map
   - type: TrustCenter
     url: security/tradeshift-trust-center.yml
   - type: VulnerabilityDisclosure
