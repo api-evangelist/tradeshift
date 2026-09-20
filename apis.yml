@@ -1521,6 +1521,8 @@ apis:
     url: >-
       https://tradeshift.com/resources/ai/tradeshift-mcp-server-amazon-quick-agentic-ai-accounts-payable/
 common:
+  - type: Plans
+    url: plans/tradeshift-plans-pricing.yml
   - type: CapabilityMap
     url: capabilities/tradeshift-capability-edges.yml
     name: Tradeshift Business Capability Map

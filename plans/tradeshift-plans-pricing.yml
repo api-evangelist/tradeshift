@@ -1,0 +1,55 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://tradeshift.com/seller-pricing/
+sources:
+- https://tradeshift.com/seller-pricing/
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: usage-other
+published: true
+note: Seller pricing charged per quarter based on actual volumes of invoices and credit notes sent through
+  the platform, billed quarterly in arrears; tiered per-transaction rates.
+plan_count: 6
+currency: USD
+plans:
+- name: Tier 1 – FREE (0 to 30 transactions in a quarter)
+  price_text: Free
+  period: none
+  unit: per transaction
+  included_quota: 0 to 30 transactions in a quarter
+- name: Tier 2 (31 to 300 transactions in a quarter)
+  price_text: $0.80
+  price: 0.8
+  currency: USD
+  period: per-use
+  unit: per transaction
+  included_quota: first 30 invoices are not charged, in any quarter
+- name: Tier 3 (301 to 3,000 transactions in a quarter)
+  price_text: $0.60
+  price: 0.6
+  currency: USD
+  period: per-use
+  unit: per transaction
+  included_quota: first 30 invoices are not charged, in any quarter
+- name: Tier 4 (3,001 to 15,000 transactions in a quarter)
+  price_text: $0.30
+  price: 0.3
+  currency: USD
+  period: per-use
+  unit: per transaction
+  included_quota: first 30 invoices are not charged, in any quarter
+- name: Tier 5 (More than 15,001 transactions in a quarter)
+  price_text: Custom
+  period: per-use
+  unit: per transaction
+- name: Integration updates and maintenance
+  price_text: $149 per quarter
+  price: 149
+  currency: USD
+  period: none
+  unit: per quarter
+  included_quota: Maintenance of your ERP integration, at a discounted rate
