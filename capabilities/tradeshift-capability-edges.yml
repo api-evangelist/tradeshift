@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 2
+edge_count: 3
 edges:
 - tag: dx-category--documents-requisitions
   spec_file: tradeshift-dx-category-documents-requisitions-api-openapi.yml
@@ -32,3 +32,15 @@ edges:
   evidence: replace roles / set user state / remove user membership / Find user groups by query string
   reason: Role assignment, user state, group membership and branch membership management are identity
     and access management operations.
+- tag: Admin
+  spec_file: tradeshift-admin-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.7
+  evidence: POST /api/admin/keys  create_key_api_admin_keys_post  Create Key; POST /api/admin/oauth-clients  create_oauth_client_api_admin_oauth_clients_post  Create
+    Oauth Client
+  reason: Operations issue, update and deactivate API keys and OAuth clients (schemas ApiKeyCreate, OAuthClientCreate,
+    TenantCredentialRotate) for consumers of the platform's API — developer credential stewardship. Some
+    admin log endpoints are adjacent plumbing, so confidence is capped.
+  recovered_from: sweep-20260829T005356Z-edges.json
