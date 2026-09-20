@@ -1,0 +1,34 @@
+slug: tradeshift
+provider: Tradeshift
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: dx-category--documents-requisitions
+  spec_file: tradeshift-dx-category-documents-requisitions-api-openapi.yml
+  capability_id: BC-500.40
+  capability_id_l1: BC-500
+  capability_name: Procure-to-Pay Operations Management
+  confidence: 0.85
+  evidence: create requisition, create requisition from quote, create requisition line, update requisition
+    state
+  reason: Full lifecycle of purchase requisitions and requisition lines, which is core procure-to-pay
+    requisitioning on this AP/P2P platform.
+- tag: dx-category--users-memberships
+  spec_file: tradeshift-dx-category-users-memberships-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: replace roles / set user state / remove user membership / Find user groups by query string
+  reason: Role assignment, user state, group membership and branch membership management are identity
+    and access management operations.
