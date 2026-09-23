@@ -24,9 +24,7 @@ paths:
               example: "<TradeshiftConnection xmlns=\"http://tradeshift.com/api/public/1.0\">\n  <ConnectionId>4b7e8e41-9c8f-474b-b71b-2bcca615b441</ConnectionId>\n  <CreatedDate>2016-09-08T14:09:33.098+02:00</CreatedDate>\n  <CompanyAccountId>e4e91b4b-0737-40a8-be7b-3f651ffef6a9</CompanyAccountId>\n  <State>REQUESTED</State>\n</TradeshiftConnection>\n"
               schema:
                 type: object
-      description: 'Retrieves an existing tradeshift or external connection. The returned structure depends on the kind of connection.
-
-        '
+      description: Retrieves an existing tradeshift or external connection. The returned structure depends on the kind of connection.
       operationId: get-rest-external-network-connections-connectionid
       x-annotation-dx-category: network-connections
       summary: find network connection
@@ -38,9 +36,7 @@ paths:
           description: 'Returns the URL of the created connection. The location can in some cases contain another connectionId - this happens when creating a new connection to another Tradeshift user, which already exists.
 
             '
-      description: 'Create a new connection or update an existing one. The connection is either an internal Tradeshift connection or an external connection.
-
-        '
+      description: Create a new connection or update an existing one. The connection is either an internal Tradeshift connection or an external connection.
       operationId: put-rest-external-network-connections-connectionid
       requestBody:
         content:
@@ -106,9 +102,7 @@ paths:
       responses:
         '204':
           description: The connection was deleted
-      description: 'Rejects an existing connection, deleting it and makes it as not accepted with the applicable reverse connection.
-
-        '
+      description: Rejects an existing connection, deleting it and makes it as not accepted with the applicable reverse connection.
       operationId: delete-rest-external-network-connections-connectionid
       x-annotation-dx-category: network-connections
       summary: delete network connection
@@ -128,9 +122,7 @@ paths:
           description: ''
         '404':
           description: ''
-      description: 'Get the details for a connection. Contains the full information on the connection, including names, identifiers, etc. The same structure is returned for both tradeshift and external connections. However, only fields relevant to the connection kind are filled.
-
-        '
+      description: Get the details for a connection. Contains the full information on the connection, including names, identifiers, etc. The same structure is returned for both tradeshift and external connections. However, only fields relevant to the connection kind are filled.
       operationId: get-rest-external-network-connections-connectionid-detail
       x-annotation-dx-category: network-connections
       summary: get connection detail
@@ -148,9 +140,7 @@ paths:
       responses:
         '200':
           description: ''
-      description: 'Approves an "unverified" connection created by another party. "Unverified" connections are created in order to interact with companies that may not be active on Tradeshift.
-
-        '
+      description: Approves an "unverified" connection created by another party. "Unverified" connections are created in order to interact with companies that may not be active on Tradeshift.
       operationId: post-rest-external-network-connections-connectionid-verify
       x-annotation-dx-category: network-connections
       summary: verify connection

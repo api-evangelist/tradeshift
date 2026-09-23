@@ -24,9 +24,7 @@ paths:
               description: Path to retrieve data regarding the newly created connection.
               schema:
                 type: string
-      description: 'Creates a networkRequest to the specified company. If the company is in the same zone as the current company then a TradeshiftCompanyConnection is created. If the company is not in the same zone a RemoteCompanyConnection is created.
-
-        '
+      description: Creates a networkRequest to the specified company. If the company is in the same zone as the current company then a TradeshiftCompanyConnection is created. If the company is not in the same zone a RemoteCompanyConnection is created.
       operationId: post-rest-external-network-connect-companyid
       x-annotation-dx-category: network-requests
       summary: add network connection

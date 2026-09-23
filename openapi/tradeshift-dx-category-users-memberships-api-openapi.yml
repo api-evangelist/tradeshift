@@ -85,9 +85,7 @@ paths:
           description: If one or more of the query parameters are invalid.
       description: 'Gets list of all user groups that the user has access to. Groups are fetched without members
 
-        but each user group entry will have the number of members it has.
-
-        '
+        but each user group entry will have the number of members it has.'
       operationId: get-rest-external-usergroups
       parameters:
       - name: limit
@@ -169,9 +167,7 @@ paths:
           description: Company hierarchy is corrupted, unable to get root branch. Contact support team.
         '404':
           description: User not found or out of company hierarchy
-      description: 'Returns a list of branches for the specified user inside organisation hierarchy of his current company.
-
-        '
+      description: Returns a list of branches for the specified user inside organisation hierarchy of his current company.
       operationId: get-rest-external-users-userid-branches
       x-annotation-dx-category: users-memberships
       summary: List of current company branches where the specified user is a member
@@ -191,12 +187,10 @@ paths:
           description: List of branches
         '404':
           description: User not found or out of company hierarchy
-      description: 'Returns a list of branches for the specified user inside organisation hierarchy of his current company.
-
-        '
+      description: Returns a list of branches for the specified user inside organisation hierarchy of his current company.
       operationId: get-rest-external-users-userid-current-branches
       x-annotation-dx-category: users-memberships
-      summary: List of current company branches starting from current branch where the specified user is a member
+      summary: List of current company branches starting from current branch where the…
       tags:
       - dx-category--users-memberships
   /rest/external/users/{userId}/memberships/{groupId}:
@@ -433,9 +427,7 @@ paths:
 
         The requester must be a company admin and the requester''s company must be a parent to the user''s company and
 
-        overriding company, otherwise 401 returns.
-
-        '
+        overriding company, otherwise 401 returns.'
       operationId: put-rest-external-users-userid-overridingcompanyaccountid
       requestBody:
         content:
@@ -476,9 +468,7 @@ paths:
 
         The requester must be a company admin and requester''s company must be a parent to user''s primary company,
 
-        otherwise 401 returns.
-
-        '
+        otherwise 401 returns.'
       operationId: put-rest-external-users-userid-primarybranch-newgroupid
       x-annotation-dx-category: users-memberships
       summary: Change current primary group and remove old primary group membership

@@ -21,7 +21,9 @@ paths:
           description: The legal entity is created and there are no validation errors
         '204':
           description: An existing legal entity was updated.
-      description: Create or update a legal entity. If a legal entity with the same id already exists, the existing legal entity will be updated, otherwise the legal entity will be created. While updating the legal entity, only the name, description, legal note and alternate id are updated. During the creation or the updating process, a check is done to see if the alternate id is unique within the same company. The operation is allowed only if the id is unique per company. The body of the PUT is an object that specifies all the values to be saved as part of the legal entity. The legal entity id in this object MUST be absent or as same as the legal entity id in the path parameter. LegalNote may contain plain text or a restricted HTML subset (<b>, <u>, <br/> only); any other markup is stripped server-side. Its visible text, once that formatting is applied, is limited to ~5000 characters - not the raw payload length.
+      description: 'Create or update a legal entity. If a legal entity with the same id already exists, the existing legal entity will be updated, otherwise the legal entity will be created. While updating the legal entity, only the name, description, legal note and alternate id are updated. During the creation or the updating process, a check is done to see if the alternate id is unique within the same company. The operation is allowed only if the id is unique per company. The body of the PUT is an object that specifies all the values to be saved as part of the legal entity. The legal entity id in this object MUST be absent or as same as the legal entity id in the path parameter. LegalNote may contain plain text or a restricted HTML subset (, ,
+
+        only); any other markup is stripped server-side. Its visible text, once that formatting is applied, is limited to ~5000 characters - not the raw payload length.'
       operationId: put-rest-external-legalentities-id
       requestBody:
         content:

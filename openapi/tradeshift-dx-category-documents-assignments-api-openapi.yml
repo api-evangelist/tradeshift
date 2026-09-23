@@ -436,9 +436,7 @@ paths:
                     type: boolean
         '401':
           description: Requesting user is not a member of the specified security group
-      description: 'Endpoint used to fetch the auto-assignee for a specific user and a specific group id. The requesting user has to be a member of the inquired security group id.
-
-        '
+      description: Endpoint used to fetch the auto-assignee for a specific user and a specific group id. The requesting user has to be a member of the inquired security group id.
       operationId: get-rest-external-documents-assignments-groups-groupid-users-userid-autoassign
       x-annotation-dx-category: documents-assignments
       summary: get user auto-assignment in specific group

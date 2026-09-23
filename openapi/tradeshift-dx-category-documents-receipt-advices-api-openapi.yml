@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Tradeshift External Dx Category Documents Receipt Advices API
+  title: Tradeshift External Dx Category Documents Receipt Advices…
   version: 1.0.0
 servers:
 - url: https://api.tradeshift.com/tradeshift

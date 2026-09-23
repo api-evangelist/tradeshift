@@ -339,9 +339,7 @@ paths:
                     pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
                     description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
                     type: string
-      description: 'Search for existing or potential connections by AccountingSystemId
-
-        '
+      description: Search for existing or potential connections by AccountingSystemId
       operationId: get-rest-external-network-connections-accountingsystemid-accountingsystemid
       parameters:
       - name: limit
@@ -397,9 +395,7 @@ paths:
                 type: string
         '404':
           description: ''
-      description: 'Get a connection to a specific account. If the current user is connected to the account, the connection will be returned, otherwise 404 will be returned
-
-        '
+      description: Get a connection to a specific account. If the current user is connected to the account, the connection will be returned, otherwise 404 will be returned
       operationId: get-rest-external-network-connections-companies-companyid
       x-annotation-dx-category: network-search
       summary: get connection for company
@@ -530,9 +526,7 @@ paths:
                 type: object
         '400':
           description: Bad Request due to invalid input. More details in body.
-      description: 'Search for existing or potential connections based on criteria. One of the following parameter combinations needs to be provided - country and companyName, identifierScheme and identifierValue, propertyKey and propertyValue, or email. All criteria are matched using exact, case-insensitive match unless exactMatch is set as false.
-
-        '
+      description: Search for existing or potential connections based on criteria. One of the following parameter combinations needs to be provided - country and companyName, identifierScheme and identifierValue, propertyKey and propertyValue, or email. All criteria are matched using exact, case-insensitive match unless exactMatch is set as false.
       operationId: get-rest-external-network-suggest
       parameters:
       - name: companyName

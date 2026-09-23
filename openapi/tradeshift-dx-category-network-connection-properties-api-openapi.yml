@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Tradeshift External Dx Category Network Connection Properties API
+  title: Tradeshift External Dx Category Network Connection…
   version: 1.0.0
 servers:
 - url: https://api.tradeshift.com/tradeshift
@@ -50,9 +50,7 @@ paths:
                 type: object
         '204':
           description: There are no properties on the connection
-      description: 'Retrieves all properties for a connection. Note that one property key can have a list of values.
-
-        '
+      description: Retrieves all properties for a connection. Note that one property key can have a list of values.
       operationId: get-rest-external-network-connections-connectionid-properties
       x-annotation-dx-category: network-connection_properties
       summary: find properties

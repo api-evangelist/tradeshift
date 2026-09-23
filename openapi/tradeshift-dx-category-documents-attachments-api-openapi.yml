@@ -94,9 +94,7 @@ paths:
           description: The document attachment was not found.
       description: 'Removes an existing attachment having the provided parameter name from the document.
 
-        This can be used when the document attachment is either outdated or not applicable any more.
-
-        '
+        This can be used when the document attachment is either outdated or not applicable any more.'
       operationId: delete-rest-external-documents-documentid-attachments-name-content
       x-annotation-dx-category: documents-attachments
       summary: delete document attachment

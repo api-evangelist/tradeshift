@@ -36,9 +36,7 @@ paths:
           description: 'The tenant identifier proposed does already exist on the platform and no tenant nor user was created.
 
             '
-      description: 'Creates a company account as the child of the current account using the provided data in the body of the PUT call. The branch will automatically be activated and no activation email will be sent to any branch users attached to the create request. The identifier(s) must not already exist.
-
-        '
+      description: Creates a company account as the child of the current account using the provided data in the body of the PUT call. The branch will automatically be activated and no activation email will be sent to any branch users attached to the create request. The identifier(s) must not already exist.
       operationId: put-rest-external-account-branches-new
       requestBody:
         content:

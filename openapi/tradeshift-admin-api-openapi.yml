@@ -437,8 +437,7 @@ paths:
   /api/admin/session:
     post:
       summary: Create Session
-      description: Create a UI session. Validates an Okta token (or dev-mode flag) and sets a session
-        cookie.
+      description: Create a UI session. Validates an Okta token (or dev-mode flag) and sets a session cookie.
       operationId: create_session_api_admin_session_post
       requestBody:
         content:
@@ -474,21 +473,6 @@ paths:
       - Admin
 components:
   schemas:
-    SessionCreate:
-      properties:
-        token:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Token
-        dev_mode:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: Dev Mode
-          default: false
-      type: object
-      title: SessionCreate
     ValidationError:
       properties:
         loc:
@@ -515,22 +499,15 @@ components:
       - msg
       - type
       title: ValidationError
-    OAuthClientUpdate:
+    HTTPValidationError:
       properties:
-        allowed_domains:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Allowed Domains
-        token_lifetime:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Token Lifetime
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
       type: object
-      title: OAuthClientUpdate
+      title: HTTPValidationError
     OAuthClientCreate:
       properties:
         name:
@@ -582,16 +559,22 @@ components:
       - name
       - allowed_domains
       title: OAuthClientCreate
-    HTTPValidationError:
+    SessionCreate:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
+        token:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Token
+        dev_mode:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Dev Mode
+          default: false
       type: object
-      title: HTTPValidationError
-    ApiKeyUpdate:
+      title: SessionCreate
+    OAuthClientUpdate:
       properties:
         allowed_domains:
           anyOf:
@@ -600,8 +583,13 @@ components:
             type: array
           - type: 'null'
           title: Allowed Domains
+        token_lifetime:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Token Lifetime
       type: object
-      title: ApiKeyUpdate
+      title: OAuthClientUpdate
     ApiKeyCreate:
       properties:
         name:
@@ -652,6 +640,38 @@ components:
       - agent_name
       - allowed_domains
       title: ApiKeyCreate
+    TenantCredentialRotate:
+      properties:
+        ts_consumer_key:
+          type: string
+          title: Ts Consumer Key
+        ts_consumer_secret:
+          type: string
+          title: Ts Consumer Secret
+        ts_access_token:
+          type: string
+          title: Ts Access Token
+        ts_token_secret:
+          type: string
+          title: Ts Token Secret
+      type: object
+      required:
+      - ts_consumer_key
+      - ts_consumer_secret
+      - ts_access_token
+      - ts_token_secret
+      title: TenantCredentialRotate
+    ApiKeyUpdate:
+      properties:
+        allowed_domains:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Allowed Domains
+      type: object
+      title: ApiKeyUpdate
     TenantCredentialValidate:
       properties:
         tenant_id:
@@ -677,27 +697,6 @@ components:
       - access_token
       - token_secret
       title: TenantCredentialValidate
-    TenantCredentialRotate:
-      properties:
-        ts_consumer_key:
-          type: string
-          title: Ts Consumer Key
-        ts_consumer_secret:
-          type: string
-          title: Ts Consumer Secret
-        ts_access_token:
-          type: string
-          title: Ts Access Token
-        ts_token_secret:
-          type: string
-          title: Ts Token Secret
-      type: object
-      required:
-      - ts_consumer_key
-      - ts_consumer_secret
-      - ts_access_token
-      - ts_token_secret
-      title: TenantCredentialRotate
   securitySchemes:
     APIKeyHeader:
       type: apiKey

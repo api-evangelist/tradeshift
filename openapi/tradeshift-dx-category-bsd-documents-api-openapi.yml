@@ -131,9 +131,7 @@ paths:
 
         total number of rows matching the filter parameters is large, the total count
 
-        in the result is an estimate and may deviate significantly from the actual value.
-
-        '
+        in the result is an estimate and may deviate significantly from the actual value.'
       operationId: get-rest-external-suppliermanagement-documents
       parameters:
       - name: accountingSystemId
@@ -496,9 +494,7 @@ paths:
                 - sourceRef
         '404':
           description: Document does not exist.
-      description: 'Get one document''s metadata
-
-        '
+      description: Get one document's metadata
       operationId: get-rest-external-suppliermanagement-documents-externaldocumentid
       x-annotation-dx-category: bsd-documents
       summary: Get Document Metadata
@@ -569,9 +565,7 @@ paths:
                 - validationError
       description: 'Stage a new historical document for being loaded into a suppliers history, when they onboard.
 
-        Already existing invoice or credit note with the same externalDocumentId and state IMPORTED will be archived.
-
-        '
+        Already existing invoice or credit note with the same externalDocumentId and state IMPORTED will be archived.'
       operationId: put-rest-external-suppliermanagement-documents-externaldocumentid
       requestBody:
         content:
@@ -667,9 +661,7 @@ paths:
           description: Document was permanently archived.
         '400':
           description: Document was not successfully archived.
-      description: 'Permanently archives the document.
-
-        '
+      description: Permanently archives the document.
       operationId: delete-rest-external-suppliermanagement-documents-externaldocumentid
       x-annotation-dx-category: bsd-documents
       summary: Archive Document
@@ -695,9 +687,7 @@ paths:
           description: Document is either not in state FAILED or does not exist
       description: 'Retry the dispatch of a failed document by setting its state to IMPORTED.
 
-        The document will the asynchronously be picked up for dispatch again.
-
-        '
+        The document will the asynchronously be picked up for dispatch again.'
       operationId: post-rest-external-suppliermanagement-documents-externaldocumentid-redispatch
       x-annotation-dx-category: bsd-documents
       summary: Redispatch Document
@@ -721,9 +711,7 @@ paths:
           description: Document content successfully retrieved.
         '400':
           description: Document does not exist.
-      description: 'Retrieve document content.
-
-        '
+      description: Retrieve document content.
       operationId: get-rest-external-suppliermanagement-documents-externaldocumentid-content
       x-annotation-dx-category: bsd-documents
       summary: Get Document Content
@@ -829,9 +817,7 @@ paths:
                 - items
         '400':
           description: Document does not exist.
-      description: 'Retrieve information about document states changes.
-
-        '
+      description: Retrieve information about document states changes.
       operationId: get-rest-external-suppliermanagement-documents-externaldocumentid-states
       x-annotation-dx-category: bsd-documents
       summary: Get Document State Changes
@@ -855,9 +841,7 @@ paths:
           description: Document References successfully retrieved.
         '404':
           description: Document does not exist.
-      description: 'Retrieve List Of Document References
-
-        '
+      description: Retrieve List Of Document References
       operationId: get-rest-external-suppliermanagement-documents-externaldocumentid-references
       x-annotation-dx-category: bsd-documents
       summary: Get Document References

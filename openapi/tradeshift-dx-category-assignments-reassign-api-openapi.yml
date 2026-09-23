@@ -177,9 +177,7 @@ paths:
                 ValidationError: []
               schema:
                 type: string
-      description: 'Reassign the assignment with the given id to the new assignee.
-
-        '
+      description: Reassign the assignment with the given id to the new assignee.
       operationId: post-rest-external-assignments-id-reassign-assigneeid
       parameters: []
       x-annotation-dx-category: assignments-reassign
@@ -553,7 +551,20 @@ paths:
                 ValidationError: []
               schema:
                 type: string
-      description: "Reassign the assignments of the first assignee id to the assignee with the second id. <br> The assignees can be users or teams. <br> The assignments will be updated if: <ul>\n  <li>the current user is regular and the assignments are assigned to him or his teams </li>\n  <li>the current user is queue manager and and the assignments have an assignee in the current branch or child branches</li>\n  <li>the current user is in the same branch as the reassignee</li>\n</ul>\n"
+      description: 'Reassign the assignments of the first assignee id to the assignee with the second id.
+
+        The assignees can be users or teams.
+
+        The assignments will be updated if:
+
+
+        the current user is regular and the assignments are assigned to him or his teams
+
+
+        the current user is queue manager and and the assignments have an assignee in the current branch or child branches
+
+
+        the current user is in the same branch as the reassignee'
       operationId: put-rest-external-assignments-assignees-from_assigneeid-reassignees-to_assigneeid
       parameters: []
       x-annotation-dx-category: assignments-reassign

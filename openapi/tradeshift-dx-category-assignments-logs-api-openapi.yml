@@ -204,7 +204,13 @@ paths:
             text/xml:
               schema:
                 example: "<ns6:ResponseError xmlns:cec=\"urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2\"\n                   xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\"\n                   xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\"\n                   xmlns:ns6=\"http://tradeshift.com/api/1.0\"\n                   xmlns:ns20=\"urn:oasis:names:specification:ubl:schema:xsd:OrderResponseSimple-2\"\n                   xmlns:ns8=\"urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2\"\n                   xmlns:ns7=\"http://tradeshift.com/api/2.0\"\n                   xmlns:ns13=\"urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2\"\n                   xmlns:ns9=\"urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2\"\n                   xmlns:ns12=\"urn:oasis:names:specification:ubl:schema:xsd:Quotation-2\"\n                   xmlns:ns11=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\"\n                   xmlns:ns22=\"urn:oasis:names:specification:ubl:schema:xsd:RequestForQuotation-2\"\n                   xmlns:ns10=\"urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2\"\n                   xmlns:ns21=\"urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2\"\n                   xmlns:ns17=\"urn:oasis:names:specification:ubl:schema:xsd:RemittanceAdvice-2\"\n                   xmlns:ns16=\"urn:oasis:names:specification:ubl:schema:xsd:Reminder-2\"\n                   xmlns:ns15=\"urn:oasis:names:specification:ubl:schema:xsd:OrderChange-2\"\n                   xmlns:ns14=\"urn:oasis:names:specification:ubl:schema:xsd:Order-2\"\n                   xmlns:ns19=\"urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2\"\n                   xmlns:ts=\"http://tradeshift.com/api/public/1.0\"\n                   xmlns:ns18=\"urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2\">\n    <ns6:ErrorCode>ResourceNotFound</ns6:ErrorCode>\n    <ns6:Message>Error&amp;#x3a; ResourceNotFound&amp;#x3a; The object did not exist</ns6:Message>\n    <ns6:RequestId>fff29544-8039-499f-91c5-b3c9e4e3d8b1</ns6:RequestId>\n</ns6:ResponseError>\n"
-      description: "Get an assignment by id with all its logs. The assignment will be visible if: <ul>\n  <li>the current user is regular and the assignment is assigned to him or his teams </li>\n  <li>the current user is queue manager and and the assignment has an assignee in the current branch or child branches</li>\n</ul>\n"
+      description: 'Get an assignment by id with all its logs. The assignment will be visible if:
+
+
+        the current user is regular and the assignment is assigned to him or his teams
+
+
+        the current user is queue manager and and the assignment has an assignee in the current branch or child branches'
       operationId: get-rest-external-assignments-id-logs
       parameters: []
       x-annotation-dx-category: assignments-logs
@@ -586,7 +592,15 @@ paths:
             text/xml:
               schema:
                 example: "<ns6:ResponseError xmlns:cec=\"urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2\"\n                   xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\"\n                   xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\"\n                   xmlns:ns6=\"http://tradeshift.com/api/1.0\"\n                   xmlns:ns20=\"urn:oasis:names:specification:ubl:schema:xsd:OrderResponseSimple-2\"\n                   xmlns:ns8=\"urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2\"\n                   xmlns:ns7=\"http://tradeshift.com/api/2.0\"\n                   xmlns:ns13=\"urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2\"\n                   xmlns:ns9=\"urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2\"\n                   xmlns:ns12=\"urn:oasis:names:specification:ubl:schema:xsd:Quotation-2\"\n                   xmlns:ns11=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\"\n                   xmlns:ns22=\"urn:oasis:names:specification:ubl:schema:xsd:RequestForQuotation-2\"\n                   xmlns:ns10=\"urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2\"\n                   xmlns:ns21=\"urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2\"\n                   xmlns:ns17=\"urn:oasis:names:specification:ubl:schema:xsd:RemittanceAdvice-2\"\n                   xmlns:ns16=\"urn:oasis:names:specification:ubl:schema:xsd:Reminder-2\"\n                   xmlns:ns15=\"urn:oasis:names:specification:ubl:schema:xsd:OrderChange-2\"\n                   xmlns:ns14=\"urn:oasis:names:specification:ubl:schema:xsd:Order-2\"\n                   xmlns:ns19=\"urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2\"\n                   xmlns:ts=\"http://tradeshift.com/api/public/1.0\"\n                   xmlns:ns18=\"urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2\">\n    <ns6:ErrorCode>ResourceNotFound</ns6:ErrorCode>\n    <ns6:Message>Error&amp;#x3a; ResourceNotFound&amp;#x3a; The object did not exist</ns6:Message>\n    <ns6:RequestId>fff29544-8039-499f-91c5-b3c9e4e3d8b1</ns6:RequestId>\n</ns6:ResponseError>\n"
-      description: "Get a paged list of assignments with all their logs, filtered by subject id which usually is a document id. <br> The assignments will be visible if: <ul>\n  <li>the current user is regular and the assignments are assigned to him or his teams </li>\n  <li>the current user is queue manager and and the assignments have an assignee in the current branch or child branches</li>\n</ul>\n"
+      description: 'Get a paged list of assignments with all their logs, filtered by subject id which usually is a document id.
+
+        The assignments will be visible if:
+
+
+        the current user is regular and the assignments are assigned to him or his teams
+
+
+        the current user is queue manager and and the assignments have an assignee in the current branch or child branches'
       operationId: get-rest-external-assignments-subjects-subjectid-logs
       parameters:
       - name: page

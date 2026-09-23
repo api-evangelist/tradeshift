@@ -89,9 +89,7 @@ paths:
 
         The operation provided should exist through the list of allowed operations for the role assigned to the user.
 
-        The result takes into consideration also the DocumentAccess settings, if the app is enabled.
-
-        '
+        The result takes into consideration also the DocumentAccess settings, if the app is enabled.'
       operationId: get-rest-external-accesslist-operation-operationid-type-typeid-object-objectid
       parameters: []
       x-annotation-dx-category: accounts-company

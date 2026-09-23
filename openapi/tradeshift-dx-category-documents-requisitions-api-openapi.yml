@@ -1101,9 +1101,7 @@ paths:
                             IdentifierContent: UUID
                           ElectronicMail:
                           - TextContent: pelle@johnsson.se
-      description: 'Create a new Requisition from the requisition template containing the provided line and using the provided id
-
-        '
+      description: Create a new Requisition from the requisition template containing the provided line and using the provided id
       operationId: post-rest-external-documents-requisitions-documentid-requisitionline
       requestBody:
         content:

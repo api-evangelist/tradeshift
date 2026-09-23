@@ -719,9 +719,7 @@ paths:
 
         on a sender side reference id. It does not work for if a sender tries to access a document content based on the
 
-        reference to a receiver side, because this information is stored only on the receiver side copy of the document.
-
-        '
+        reference to a receiver side, because this information is stored only on the receiver side copy of the document.'
       operationId: get-rest-external-documents-companies-owningcompanyid-documentid
       parameters:
       - name: Accept
@@ -1028,9 +1026,7 @@ paths:
                     pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
                     description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
                     type: string
-      description: 'Store and dispatch the document - the actual document content must be sent as the entity/body of the POST call.
-
-        '
+      description: Store and dispatch the document - the actual document content must be sent as the entity/body of the POST call.
       operationId: post-rest-external-documents-dispatcher
       requestBody:
         content:
@@ -1094,9 +1090,7 @@ paths:
 
         the current dispatch state, the ID of the object being dispatched, the connection ID used for dispatching and
 
-        technical information containing the reason why a dispatch failed (returned only for failed dispatches).
-
-        '
+        technical information containing the reason why a dispatch failed (returned only for failed dispatches).'
       operationId: get-rest-external-documents-dispatches
       parameters:
       - name: Accept
@@ -1177,9 +1171,7 @@ paths:
 
         not be possible. Only the receiver side copy is created and the original sender will not be notified even if
 
-        they are on the platform and they are connected.
-
-        '
+        they are on the platform and they are connected.'
       operationId: put-rest-external-documents-received-documentid
       requestBody:
         content:
@@ -1231,9 +1223,7 @@ paths:
 
         connectin is found, then a 412 Precondition Failed Exception is returned. If the client has an invalid document then a list of validation
 
-        errors will be provided alongside 400 Bad Request response status code.
-
-        '
+        errors will be provided alongside 400 Bad Request response status code.'
       operationId: post-rest-external-documents-validate
       requestBody:
         content:
@@ -1977,15 +1967,13 @@ paths:
           description: Document with the specified id was not found or it is deleted.
       description: 'Returns the document identified by the given UUID, if it exists and is not marked as deleted.
 
-        If you want to retrieve the deleted documents, use [Find Documents](#get-rest-external-documents) along
+        If you want to retrieve the deleted documents, use Find Documents along
 
         with stag=deleted parameter and with the corresponding id.
 
         The document can be retrieved in a PDF representation or in one of the raw UBL formats
 
-        (XML, JSON or Oasis JSON) depending on the Accept header. The default format is the XML.
-
-        '
+        (XML, JSON or Oasis JSON) depending on the Accept header. The default format is the XML.'
       operationId: get-rest-external-documents-documentid
       parameters:
       - name: Accept
@@ -2073,7 +2061,7 @@ paths:
 
         the uploaded document will show up as editable in the UI. If the cliend decides that the document should not be editable, then it''s state can be locked with a PUT request.
 
-        More details about how to lock a draft document can be found in [Lock a Draft Document](#put-rest-external-documents-documentid-lockedstate-state)
+        More details about how to lock a draft document can be found in Lock a Draft Document
 
         section. If a document contains attachments at /AdditionalDocumentReference/Attachment/EmbeddedDocumentBinaryObject path,
 
@@ -2081,11 +2069,9 @@ paths:
 
         Attachments with new file names will be appended to the list of attachments on the document. More details about how to remove document attachments
 
-        can be found in [Delete Document Attachment](#delete-rest-external-documents-documentid-attachments-name-content) section.
+        can be found in Delete Document Attachment section.
 
-        This is a generic document API endpoint which covers all document types.
-
-        '
+        This is a generic document API endpoint which covers all document types.'
       operationId: put-rest-external-documents-documentid
       requestBody:
         content:
@@ -2295,11 +2281,9 @@ paths:
 
         User can still query deleted documents if they wish to do so. More details about how to retrieve deleted
 
-        document can be found in [Find Documents](#get-rest-external-documents) section.
+        document can be found in Find Documents section.
 
-        It''s not recommended to delete a document using given endpoint.
-
-        '
+        It''s not recommended to delete a document using given endpoint.'
       operationId: delete-rest-external-documents-documentid
       x-annotation-dx-category: documents-document
       summary: delete document
@@ -2325,9 +2309,7 @@ paths:
 
         will have all content except number and issue date removed. All versions of the document will also be truncated
 
-        including the document attachments. The document will not be visible in the document manager UI.
-
-        '
+        including the document attachments. The document will not be visible in the document manager UI.'
       operationId: delete-rest-external-documents-documentid-content
       x-annotation-dx-category: documents-document
       summary: remove document content
@@ -2544,11 +2526,9 @@ paths:
 
         other endpoints can be used. More details about saving or dispatching can be found in
 
-        [Send Document](#post-rest-external-documents-dispatcher), [Update Document](#put-rest-external-documents-documentid) or
+        Send Document, Update Document or
 
-        [Dispatch A Saved Document](#put-rest-external-documents-documentid-dispatches-dispatchid).
-
-        '
+        Dispatch A Saved Document.'
       operationId: get-rest-external-documents-documentid-convert
       parameters:
       - name: Accept
@@ -2800,7 +2780,13 @@ paths:
                     pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
                     description: String representation of an Universally unique identifier (UUID), version 5. See RFC 4122
                     type: string
-      description: "Dispatch a previously saved document. The client can decide on the UUID for the new dispatch. \nIf the receiver has custom validations enabled, the document will be validated using the receivers custom document profile. \nThe body of the PUT is a connection identifier object which is not mandatory. If connectionId is not provided, the connection id will be determined from the document. \nWhen Content-Type header is text/xml, the minimal request body should be in the format `<DispatchRequest xmlns=\"http://tradeshift.com/api/public/1.0\"/>`, even if no connectionId is being provided.\n"
+      description: 'Dispatch a previously saved document. The client can decide on the UUID for the new dispatch.
+
+        If the receiver has custom validations enabled, the document will be validated using the receivers custom document profile.
+
+        The body of the PUT is a connection identifier object which is not mandatory. If connectionId is not provided, the connection id will be determined from the document.
+
+        When Content-Type header is text/xml, the minimal request body should be in the format ``, even if no connectionId is being provided.'
       operationId: put-rest-external-documents-documentid-dispatches-dispatchid
       requestBody:
         content:
@@ -2965,9 +2951,7 @@ paths:
 
         The body of the PUT is a connection identifier object which is not mandatory. If connectionId is not provided, the connection id will be determined from the document.
 
-        When Content-Type header is text/xml, the minimal request body should be in the format `<DispatchRequest xmlns="http://tradeshift.com/api/public/1.0"/>`, even if no connectionId is being provided.
-
-        '
+        When Content-Type header is text/xml, the minimal request body should be in the format ``, even if no connectionId is being provided.'
       operationId: put-rest-external-documents-documentid-dispatches-dispatchid-scanioreject
       requestBody:
         content:
@@ -3019,9 +3003,7 @@ paths:
 
         If the "sent" parameter is set to TRUE then the document will be marked as SALE, otherwise the document will be marked as
 
-        PURCHASE.
-
-        '
+        PURCHASE.'
       operationId: put-rest-external-documents-documentid-lockedstate-state
       x-annotation-dx-category: documents-document
       summary: lock a draft document
@@ -3075,9 +3057,7 @@ paths:
             '
       description: 'The Tradeshift platform dispatches documents in ubl format, but it allows the storing of different other formats as well.
 
-        These are automatically converted to ubl during the dispatch. The original content is stored and can be retrieved using this endpoint.
-
-        '
+        These are automatically converted to ubl during the dispatch. The original content is stored and can be retrieved using this endpoint.'
       operationId: get-rest-external-documents-documentid-original
       parameters:
       - name: Accept
@@ -3117,9 +3097,7 @@ paths:
 
         **NOTE: When importing a PDF,only invoices and credit notes are supported, and some discrepancies can be expected between the uploaded
 
-        PDF and resulting ubl draft. This sometimes happens due to bad quality of the uploaded PDF.**
-
-        '
+        PDF and resulting ubl draft. This sometimes happens due to bad quality of the uploaded PDF.**'
       operationId: post-rest-external-documents-documentid-original
       requestBody:
         content:
@@ -3210,9 +3188,7 @@ paths:
 
         import has completed successfully and the client will receive HTTP 201 Created. If the document import is still in progress then
 
-        HTTP 202 Accepted is returned. The client can decide wheather to inspect the document import status later or not.
-
-        '
+        HTTP 202 Accepted is returned. The client can decide wheather to inspect the document import status later or not.'
       operationId: get-rest-external-documents-documentid-original-responses-responseid
       parameters:
       - name: Accept
@@ -3321,9 +3297,7 @@ paths:
 
         While supported it''s not recommended to add properties before the document has been created, as neither
 
-        reading nor writing pre created properties will be supported in future versions of the API.
-
-        '
+        reading nor writing pre created properties will be supported in future versions of the API.'
       operationId: put-rest-external-documents-documentid-properties-property_key
       requestBody:
         content:
@@ -3391,9 +3365,7 @@ paths:
 
         This is useful when an account has multiple child branches, and a user in the primary account wants to do a
 
-        filtered search for documents received by one of the branches.
-
-        '
+        filtered search for documents received by one of the branches.'
       operationId: get-rest-external-documents-documentid-receivercompany
       parameters:
       - name: Accept
@@ -3442,9 +3414,7 @@ paths:
 
         This tag is useful to link the two copies of the document together, and can be used by API integrations to
 
-        easily retrieve the sender side copy.
-
-        '
+        easily retrieve the sender side copy.'
       operationId: get-rest-external-documents-documentid-senderreferenceid
       parameters:
       - name: Accept
@@ -3493,9 +3463,7 @@ paths:
 
         is not available on the sender side.
 
-        Use this API to uniquely identify the company in Tradeshift that initiated the dispatch.
-
-        '
+        Use this API to uniquely identify the company in Tradeshift that initiated the dispatch.'
       operationId: get-rest-external-documents-documentid-sendercompany
       parameters:
       - name: Accept
@@ -3533,9 +3501,7 @@ paths:
 
         Only ApplicationResponse documents (tradeshift.status.1.0 profile) are supported.
 
-        The document profile is fixed and does not need to be specified by the caller.
-
-        '
+        The document profile is fixed and does not need to be specified by the caller.'
       operationId: put-rest-external-documents-documentid-statechange
       requestBody:
         content:
@@ -3588,9 +3554,7 @@ paths:
                       type: string
                 required:
                 - Tag
-      description: 'Get all tags for the specified document. This is a generic document API endpoint which covers all document types.
-
-        '
+      description: Get all tags for the specified document. This is a generic document API endpoint which covers all document types.
       operationId: get-rest-external-documents-documentid-tags
       parameters:
       - name: Accept
@@ -3634,9 +3598,7 @@ paths:
 
         the integration, for instance Pulled, Transformed and Posted, which would be three tags suitable for
 
-        debugging and integration.
-
-        '
+        debugging and integration.'
       operationId: put-rest-external-documents-documentid-tags-tag
       x-annotation-dx-category: documents-document
       summary: add document tag
@@ -3648,9 +3610,7 @@ paths:
           description: The tag was deleted successfully.
       description: 'Removes a tag from a document. This will also be removed from the TS user interface. This is a generic
 
-        document API endpoint which covers all document types.
-
-        '
+        document API endpoint which covers all document types.'
       operationId: delete-rest-external-documents-documentid-tags-tag
       x-annotation-dx-category: documents-document
       summary: delete document tag
@@ -3673,9 +3633,7 @@ paths:
                     label: Autre
       description: 'Returns the list of available rejection reasons and dispute reasons
 
-        that can be used when changing the status of a document.
-
-        '
+        that can be used when changing the status of a document.'
       operationId: get-rest-external-status-change-reasons
       x-annotation-dx-category: documents-document
       summary: get status change reasons
