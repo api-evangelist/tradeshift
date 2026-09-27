@@ -61,7 +61,8 @@ tags:
   - business-documents
   - Fintech
   - MCP
-  - agent-native
+  - Agent-Native
+  - Procurement
 tags_raw:
   - e-invoicing
   - accounts-payable
@@ -78,6 +79,7 @@ tags_raw:
   - fintech
   - mcp
   - agent-native
+  - Procurement
 apis:
 - aid: tradeshift:tradeshift-admin-api
   name: Tradeshift Admin API
