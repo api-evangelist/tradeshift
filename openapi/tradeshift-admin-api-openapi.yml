@@ -473,22 +473,6 @@ paths:
       - Admin
 components:
   schemas:
-    OAuthClientUpdate:
-      properties:
-        allowed_domains:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Allowed Domains
-        token_lifetime:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Token Lifetime
-      type: object
-      title: OAuthClientUpdate
     ValidationError:
       properties:
         loc:
@@ -515,6 +499,113 @@ components:
       - msg
       - type
       title: ValidationError
+    ApiKeyCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+        agent_name:
+          type: string
+          title: Agent Name
+        allowed_domains:
+          items:
+            type: string
+          type: array
+          title: Allowed Domains
+        rate_limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Rate Limit
+          default: 100
+        tenant_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Tenant Id
+        ts_consumer_key:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Ts Consumer Key
+        ts_consumer_secret:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Ts Consumer Secret
+        ts_access_token:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Ts Access Token
+        ts_token_secret:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Ts Token Secret
+      type: object
+      required:
+      - name
+      - agent_name
+      - allowed_domains
+      title: ApiKeyCreate
+    OAuthClientUpdate:
+      properties:
+        allowed_domains:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Allowed Domains
+        token_lifetime:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Token Lifetime
+      type: object
+      title: OAuthClientUpdate
+    ApiKeyUpdate:
+      properties:
+        allowed_domains:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Allowed Domains
+      type: object
+      title: ApiKeyUpdate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    TenantCredentialRotate:
+      properties:
+        ts_consumer_key:
+          type: string
+          title: Ts Consumer Key
+        ts_consumer_secret:
+          type: string
+          title: Ts Consumer Secret
+        ts_access_token:
+          type: string
+          title: Ts Access Token
+        ts_token_secret:
+          type: string
+          title: Ts Token Secret
+      type: object
+      required:
+      - ts_consumer_key
+      - ts_consumer_secret
+      - ts_access_token
+      - ts_token_secret
+      title: TenantCredentialRotate
     TenantCredentialValidate:
       properties:
         tenant_id:
@@ -540,17 +631,21 @@ components:
       - access_token
       - token_secret
       title: TenantCredentialValidate
-    ApiKeyUpdate:
+    SessionCreate:
       properties:
-        allowed_domains:
+        token:
           anyOf:
-          - items:
-              type: string
-            type: array
+          - type: string
           - type: 'null'
-          title: Allowed Domains
+          title: Token
+        dev_mode:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Dev Mode
+          default: false
       type: object
-      title: ApiKeyUpdate
+      title: SessionCreate
     OAuthClientCreate:
       properties:
         name:
@@ -602,101 +697,6 @@ components:
       - name
       - allowed_domains
       title: OAuthClientCreate
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    SessionCreate:
-      properties:
-        token:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Token
-        dev_mode:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: Dev Mode
-          default: false
-      type: object
-      title: SessionCreate
-    ApiKeyCreate:
-      properties:
-        name:
-          type: string
-          title: Name
-        agent_name:
-          type: string
-          title: Agent Name
-        allowed_domains:
-          items:
-            type: string
-          type: array
-          title: Allowed Domains
-        rate_limit:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Rate Limit
-          default: 100
-        tenant_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Tenant Id
-        ts_consumer_key:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Ts Consumer Key
-        ts_consumer_secret:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Ts Consumer Secret
-        ts_access_token:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Ts Access Token
-        ts_token_secret:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Ts Token Secret
-      type: object
-      required:
-      - name
-      - agent_name
-      - allowed_domains
-      title: ApiKeyCreate
-    TenantCredentialRotate:
-      properties:
-        ts_consumer_key:
-          type: string
-          title: Ts Consumer Key
-        ts_consumer_secret:
-          type: string
-          title: Ts Consumer Secret
-        ts_access_token:
-          type: string
-          title: Ts Access Token
-        ts_token_secret:
-          type: string
-          title: Ts Token Secret
-      type: object
-      required:
-      - ts_consumer_key
-      - ts_consumer_secret
-      - ts_access_token
-      - ts_token_secret
-      title: TenantCredentialRotate
   securitySchemes:
     APIKeyHeader:
       type: apiKey

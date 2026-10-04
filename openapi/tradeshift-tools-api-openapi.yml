@@ -82,15 +82,20 @@ paths:
       - Tools
 components:
   schemas:
-    HTTPValidationError:
+    ToolExecutionRequest:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
+        tool:
+          type: string
+          title: Tool
+        parameters:
+          additionalProperties: true
+          type: object
+          title: Parameters
       type: object
-      title: HTTPValidationError
+      required:
+      - tool
+      - parameters
+      title: ToolExecutionRequest
     ValidationError:
       properties:
         loc:
@@ -117,20 +122,15 @@ components:
       - msg
       - type
       title: ValidationError
-    ToolExecutionRequest:
+    HTTPValidationError:
       properties:
-        tool:
-          type: string
-          title: Tool
-        parameters:
-          additionalProperties: true
-          type: object
-          title: Parameters
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
       type: object
-      required:
-      - tool
-      - parameters
-      title: ToolExecutionRequest
+      title: HTTPValidationError
   securitySchemes:
     APIKeyHeader:
       type: apiKey
