@@ -57,3 +57,61 @@ plans:
   period: none
   unit: per quarter
   included_quota: Maintenance of your ERP integration, at a discounted rate
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  - subscription
+  units:
+  - transaction
+  plans:
+  - name: Tier 1 – FREE (0 to 30 transactions in a quarter)
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - transaction
+    periods:
+    - none
+  - name: Tier 2 (31 to 300 transactions in a quarter)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - transaction
+    periods:
+    - other
+  - name: Tier 3 (301 to 3,000 transactions in a quarter)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - transaction
+    periods:
+    - other
+  - name: Tier 4 (3,001 to 15,000 transactions in a quarter)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - transaction
+    periods:
+    - other
+  - name: Tier 5 (More than 15,001 transactions in a quarter)
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - transaction
+    periods:
+    - other
+  - name: Integration updates and maintenance
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - none
