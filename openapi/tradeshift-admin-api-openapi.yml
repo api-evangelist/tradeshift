@@ -473,32 +473,6 @@ paths:
       - Admin
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     ApiKeyCreate:
       properties:
         name:
@@ -549,42 +523,32 @@ components:
       - agent_name
       - allowed_domains
       title: ApiKeyCreate
-    OAuthClientUpdate:
+    ValidationError:
       properties:
-        allowed_domains:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Allowed Domains
-        token_lifetime:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Token Lifetime
-      type: object
-      title: OAuthClientUpdate
-    ApiKeyUpdate:
-      properties:
-        allowed_domains:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Allowed Domains
-      type: object
-      title: ApiKeyUpdate
-    HTTPValidationError:
-      properties:
-        detail:
+        loc:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
           type: array
-          title: Detail
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
       type: object
-      title: HTTPValidationError
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     TenantCredentialRotate:
       properties:
         ts_consumer_key:
@@ -606,6 +570,17 @@ components:
       - ts_access_token
       - ts_token_secret
       title: TenantCredentialRotate
+    ApiKeyUpdate:
+      properties:
+        allowed_domains:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Allowed Domains
+      type: object
+      title: ApiKeyUpdate
     TenantCredentialValidate:
       properties:
         tenant_id:
@@ -631,21 +606,6 @@ components:
       - access_token
       - token_secret
       title: TenantCredentialValidate
-    SessionCreate:
-      properties:
-        token:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Token
-        dev_mode:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: Dev Mode
-          default: false
-      type: object
-      title: SessionCreate
     OAuthClientCreate:
       properties:
         name:
@@ -697,6 +657,46 @@ components:
       - name
       - allowed_domains
       title: OAuthClientCreate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    OAuthClientUpdate:
+      properties:
+        allowed_domains:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Allowed Domains
+        token_lifetime:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Token Lifetime
+      type: object
+      title: OAuthClientUpdate
+    SessionCreate:
+      properties:
+        token:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Token
+        dev_mode:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Dev Mode
+          default: false
+      type: object
+      title: SessionCreate
   securitySchemes:
     APIKeyHeader:
       type: apiKey
