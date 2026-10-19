@@ -1,7 +1,14 @@
 generated: '2026-10-14'
 method: searched
 checked:
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
 - https://peppol.org/members/peppol-certified-service-providers/
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 - https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees
 - https://www.streamlinedsalestax.org/certified-service-providers/certified-service-providers-list
 - okta/integrations/okta-integration-edges.yml
@@ -115,3 +122,108 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-einvoicing-tax.py
   first_seen: '2026-10-15'
+- partner_name: Maven Central
+  partner: maven-central
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (Java/JVM)
+  evidence: https://central.sonatype.com/artifact/com.tradeshift.sdk/tradeshift-sdk
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Maven Central (public registry JSON)
+    spec_file: null
+    language: Java/JVM
+    packages:
+    - name: com.tradeshift.sdk:tradeshift-sdk
+      version: 0.2.0
+      released: '2018-11-30'
+      released_field: lastUpdated
+      lapsed: true
+      page: https://central.sonatype.com/artifact/com.tradeshift.sdk/tradeshift-sdk
+      repo_leg: domain:tradeshift.com
+      publisher_leg: groupId:tradeshift.com
+      matched_by: domain
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/@tradeshift/elements
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@tradeshift/elements'
+      version: 0.41.0
+      released: '2026-08-19'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@tradeshift/elements
+      repo_leg: github-org:tradeshift
+      publisher_leg: email:tradeshift.com
+      matched_by: domain
+    - name: '@tradeshift/g11n-langneg'
+      version: 1.3.2
+      released: '2024-10-31'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@tradeshift/g11n-langneg
+      repo_leg: github-org:tradeshift
+      publisher_leg: email:tradeshift.com
+      matched_by: domain
+    - name: '@tradeshift/io'
+      version: 4.0.0
+      released: '2022-05-10'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/@tradeshift/io
+      repo_leg: github-org:tradeshift
+      publisher_leg: email:tradeshift.com
+      matched_by: domain
+    - name: '@tradeshift/tradeshift-ui'
+      version: 12.9.1
+      released: '2023-08-29'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/@tradeshift/tradeshift-ui
+      repo_leg: domain:tradeshift.com
+      publisher_leg: email:tradeshift.com
+      matched_by: domain
+    - name: '@tradeshift/tradeshift-ui-types'
+      version: 3.6.2
+      released: '2023-02-10'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/@tradeshift/tradeshift-ui-types
+      repo_leg: github-org:tradeshift
+      publisher_leg: email:tradeshift.com
+      matched_by: domain
+    - name: react-tradeshift-ui
+      version: 3.3.5
+      released: '2023-11-22'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/react-tradeshift-ui
+      repo_leg: github-org:tradeshift
+      publisher_leg: email:tradeshift.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
