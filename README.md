@@ -64,33 +64,215 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Tradeshift is a cloud-based business commerce network for accounts payable automation, e-invoicing compliance,
-procure-to-pay, supplier management, and B2B marketplace commerce, connecting buyers and sellers across more than
-190 countries.
+Tradeshift is a cloud-based business commerce network for accounts payable automation, e-invoicing compliance, procure-to-pay, supplier management, and B2B marketplace commerce, connecting buyers and sellers across more than 190 countries. The Tradeshift External API is a REST/JSON+XML interface over the same platform its own apps use, covering company accounts and branches, legal entities and tax identifiers, network connections and connection properties, business documents (invoices, orders, credit notes, quotes, requisitions, receipt advices) in the OASIS UBL / TSUBL format, document files and attachments, users and memberships, assignments and workflow, and document validation and clearance for country e-invoicing mandates. Authentication is OAuth (OAuth 1.0a two-legged for account-scoped integrations, OAuth 2.0 three-legged for apps acting on behalf of users), every call carries an X-Tradeshift-TenantId header, and apps can subscribe to platform webhooks for document, network, and user events. Tradeshift also runs a production MCP server exposing platform capability to AI agents under the same authentication, RBAC, and audit model as human sessions.
 
-- Website — https://tradeshift.com/
-- Developer Center — https://developers.tradeshift.com/
-- API reference — https://developers.tradeshift.com/docs/api
-- Status — https://status.tradeshift.com/
-- GitHub — https://github.com/Tradeshift
+**Areas:** E-Invoicing · Accounts Payable · AP Automation · Procure-to-Pay · Supply Chain · B2B Commerce · Invoicing · UBL · PEPPOL · e-invoicing-compliance · Supplier Network · business-documents
 
-## APIs
+## Tradeshift on APIs.io
 
-| API | Base URL | Contract |
-|---|---|---|
-| Tradeshift External API | `https://api.tradeshift.com/tradeshift` | OpenAPI 3.0.0, 137 paths / 172 operations |
-| Tradeshift MCP Server | `https://mcp.tradeshift.com/mcp` | MCP (auth-gated) + OpenAPI 3.1.0 HTTP bridge |
+Everything profiled for Tradeshift is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/tradeshift/](https://apis.io/providers/tradeshift/)** — or go straight to one of the APIs or properties below.
 
-## Artifacts
+### APIs (38)
 
-- `openapi/` — the harvested Tradeshift External API spec and the MCP HTTP bridge spec (originals in `_original/`)
-- `json-schema/` — Tradeshift's published OASIS UBL JSON Schemas for the document types the API exchanges
-- `mcp/` — MCP server manifest and the domain-level tool crosswalk
-- `scopes/`, `authentication/`, `well-known/` — the OAuth surface, including the RFC 8414 / RFC 9728 metadata
-- `conventions/`, `errors/`, `data-model/`, `lifecycle/`, `conformance/` — derived runtime semantics
-- `asyncapi/tradeshift-webhooks.yml` — the 12-event platform webhook catalog
-- `skills/` — packaged agent operating instructions grounded in verified operationIds
-- `packages/`, `components/`, `sandbox/`, `changelog/`, `security/`, `overlays/`, `llms/`
+- [Tradeshift Admin API](https://apis.io/apis/tradeshift/tradeshift-admin-api/) — The Admin API from Tradeshift — 11 operation(s) for admin.
+- [Tradeshift Document Validation API](https://apis.io/apis/tradeshift/tradeshift-document-validation-api/) — Manages document validators
+- [Tradeshift Dx Category Accounts Branches API](https://apis.io/apis/tradeshift/tradeshift-dx-category-accounts-branches-api/) — The dx-category--accounts-branches API from Tradeshift — 4 operation(s) for dx-category--accounts-branches.
+- [Tradeshift Dx Category Accounts Company API](https://apis.io/apis/tradeshift/tradeshift-dx-category-accounts-company-api/) — The dx-category--accounts-company API from Tradeshift — 5 operation(s) for dx-category--accounts-company.
+- [Tradeshift Dx Category Accounts Gli Prefixes API](https://apis.io/apis/tradeshift/tradeshift-dx-category-accounts-gli-prefixes-api/) — The dx-category--accounts-gli_prefixes API from Tradeshift — 2 operation(s) for dx-category--accounts-gli_prefixes.
+- [Tradeshift Dx Category Accounts Legal Entities API](https://apis.io/apis/tradeshift/tradeshift-dx-category-accounts-legal-entities-api/) — The dx-category--accounts-legal_entities API from Tradeshift — 4 operation(s) for dx-category--accounts-legal_entities.
+- [Tradeshift Dx Category Accounts Taxes API](https://apis.io/apis/tradeshift/tradeshift-dx-category-accounts-taxes-api/) — The dx-category--accounts-taxes API from Tradeshift — 1 operation(s) for dx-category--accounts-taxes.
+- [Tradeshift Dx Category Accounts Validations API](https://apis.io/apis/tradeshift/tradeshift-dx-category-accounts-validations-api/) — The dx-category--accounts-validations API from Tradeshift — 8 operation(s) for dx-category--accounts-validations.
+- [Tradeshift Dx Category Assignments Create API](https://apis.io/apis/tradeshift/tradeshift-dx-category-assignments-create-api/) — The dx-category--assignments-create API from Tradeshift — 1 operation(s) for dx-category--assignments-create.
+- [Tradeshift Dx Category Assignments Find API](https://apis.io/apis/tradeshift/tradeshift-dx-category-assignments-find-api/) — The dx-category--assignments-find API from Tradeshift — 2 operation(s) for dx-category--assignments-find.
+- [Tradeshift Dx Category Assignments Logs API](https://apis.io/apis/tradeshift/tradeshift-dx-category-assignments-logs-api/) — The dx-category--assignments-logs API from Tradeshift — 2 operation(s) for dx-category--assignments-logs.
+- [Tradeshift Dx Category Assignments Reassign API](https://apis.io/apis/tradeshift/tradeshift-dx-category-assignments-reassign-api/) — The dx-category--assignments-reassign API from Tradeshift — 2 operation(s) for dx-category--assignments-reassign.
+- [Tradeshift Dx Category Assignments Update API](https://apis.io/apis/tradeshift/tradeshift-dx-category-assignments-update-api/) — The dx-category--assignments-update API from Tradeshift — 3 operation(s) for dx-category--assignments-update.
+- [Tradeshift Dx Category Bsd Documents API](https://apis.io/apis/tradeshift/tradeshift-dx-category-bsd-documents-api/) — The dx-category--bsd-documents API from Tradeshift — 6 operation(s) for dx-category--bsd-documents.
+- [Tradeshift Dx Category Document Validation Validate Document API](https://apis.io/apis/tradeshift/tradeshift-dx-category-document-validation-validate-document-api/) — The dx-category--document-validation-validate_document API from Tradeshift — 1 operation(s) for dx-category--document-validation-validate_document.
+- [Tradeshift Dx Category Document Validation Validators Delete API](https://apis.io/apis/tradeshift/tradeshift-dx-category-document-validation-validators-delete-api/) — The dx-category--document-validation-validators_delete API from Tradeshift — 1 operation(s) for dx-category--document-validation-validators_delete.
+- [Tradeshift Dx Category Document Validation Validators Find All API](https://apis.io/apis/tradeshift/tradeshift-dx-category-document-validation-validators-find-all-api/) — The dx-category--document-validation-validators_find_all API from Tradeshift — 1 operation(s) for dx-category--document-validation-validators_find_all.
+- [Tradeshift Dx Category Document Validation Validators Find API](https://apis.io/apis/tradeshift/tradeshift-dx-category-document-validation-validators-find-api/) — The dx-category--document-validation-validators_find API from Tradeshift — 1 operation(s) for dx-category--document-validation-validators_find.
+- [Tradeshift Dx Category Document Validation Validators History API](https://apis.io/apis/tradeshift/tradeshift-dx-category-document-validation-validators-history-api/) — The dx-category--document-validation-validators_history API from Tradeshift — 1 operation(s) for dx-category--document-validation-validators_history.
+- [Tradeshift Dx Category Document Validation Validators Save API](https://apis.io/apis/tradeshift/tradeshift-dx-category-document-validation-validators-save-api/) — The dx-category--document-validation-validators_save API from Tradeshift — 1 operation(s) for dx-category--document-validation-validators_save.
+- [Tradeshift Dx Category Documents Assignments API](https://apis.io/apis/tradeshift/tradeshift-dx-category-documents-assignments-api/) — The dx-category--documents-assignments API from Tradeshift — 9 operation(s) for dx-category--documents-assignments.
+- [Tradeshift Dx Category Documents Attachments API](https://apis.io/apis/tradeshift/tradeshift-dx-category-documents-attachments-api/) — The dx-category--documents-attachments API from Tradeshift — 2 operation(s) for dx-category--documents-attachments.
+- [Tradeshift Dx Category Documents Document API](https://apis.io/apis/tradeshift/tradeshift-dx-category-documents-document-api/) — The dx-category--documents-document API from Tradeshift — 28 operation(s) for dx-category--documents-document.
+- [Tradeshift Dx Category Documents Document Files API](https://apis.io/apis/tradeshift/tradeshift-dx-category-documents-document-files-api/) — The dx-category--documents-document_files API from Tradeshift — 8 operation(s) for dx-category--documents-document_files.
+- [Tradeshift Dx Category Documents Quotes API](https://apis.io/apis/tradeshift/tradeshift-dx-category-documents-quotes-api/) — The dx-category--documents-quotes API from Tradeshift — 1 operation(s) for dx-category--documents-quotes.
+- [Tradeshift Dx Category Documents Receipt Advices API](https://apis.io/apis/tradeshift/tradeshift-dx-category-documents-receipt-advices-api/) — The dx-category--documents-receipt_advices API from Tradeshift — 2 operation(s) for dx-category--documents-receipt_advices.
+- [Tradeshift Dx Category Documents Requisitions API](https://apis.io/apis/tradeshift/tradeshift-dx-category-documents-requisitions-api/) — The dx-category--documents-requisitions API from Tradeshift — 9 operation(s) for dx-category--documents-requisitions.
+- [Tradeshift Dx Category Network Connection Properties API](https://apis.io/apis/tradeshift/tradeshift-dx-category-network-connection-properties-api/) — The dx-category--network-connection_properties API from Tradeshift — 3 operation(s) for dx-category--network-connection_properties.
+- [Tradeshift Dx Category Network Connections API](https://apis.io/apis/tradeshift/tradeshift-dx-category-network-connections-api/) — The dx-category--network-connections API from Tradeshift — 4 operation(s) for dx-category--network-connections.
+- [Tradeshift Dx Category Network Document Profiles API](https://apis.io/apis/tradeshift/tradeshift-dx-category-network-document-profiles-api/) — The dx-category--network-document_profiles API from Tradeshift — 2 operation(s) for dx-category--network-document_profiles.
+- [Tradeshift Dx Category Network Requests API](https://apis.io/apis/tradeshift/tradeshift-dx-category-network-requests-api/) — The dx-category--network-requests API from Tradeshift — 4 operation(s) for dx-category--network-requests.
+- [Tradeshift Dx Category Network Search API](https://apis.io/apis/tradeshift/tradeshift-dx-category-network-search-api/) — The dx-category--network-search API from Tradeshift — 7 operation(s) for dx-category--network-search.
+- [Tradeshift Dx Category Users Accounts API](https://apis.io/apis/tradeshift/tradeshift-dx-category-users-accounts-api/) — The dx-category--users-accounts API from Tradeshift — 6 operation(s) for dx-category--users-accounts.
+- [Tradeshift Dx Category Users Memberships API](https://apis.io/apis/tradeshift/tradeshift-dx-category-users-memberships-api/) — The dx-category--users-memberships API from Tradeshift — 9 operation(s) for dx-category--users-memberships.
+- [Tradeshift Dx Category Users Profile Images API](https://apis.io/apis/tradeshift/tradeshift-dx-category-users-profile-images-api/) — The dx-category--users-profile_images API from Tradeshift — 1 operation(s) for dx-category--users-profile_images.
+- [Tradeshift Health API](https://apis.io/apis/tradeshift/tradeshift-health-api/) — The Health API from Tradeshift — 2 operation(s) for health.
+- [Tradeshift MCP HTTP Bridge & Management API](https://apis.io/apis/tradeshift/tradeshift-mcp-http-bridge-management-api/) — The MCP HTTP Bridge & Management API from Tradeshift — 1 operation(s) for mcp http bridge & management.
+- [Tradeshift Tools API](https://apis.io/apis/tradeshift/tradeshift-tools-api/) — The Tools API from Tradeshift — 3 operation(s) for tools.
 
-Everything here was searched, probed or derived from Tradeshift's own public surface. Provenance is recorded in each
-artifact's frontmatter (`method`, `source`, `x-evidence`).
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Tradeshift Webhooks](https://apis.io/asyncapis/tradeshift/tradeshift-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [tradeshift](https://apis.io/servers/tradeshift/tradeshift/)
+
+#### JSON Schema (9)
+
+The data models the API reads and writes.
+
+- [json-schema/maindoc/UBL-ApplicationResponse-2.1.json](https://apis.io/schemas/tradeshift/tradeshift-ubl-applicationresponse-2.1/)
+- [json-schema/maindoc/UBL-CreditNote-2.1.json](https://apis.io/schemas/tradeshift/tradeshift-ubl-creditnote-2.1/)
+- [json-schema/maindoc/UBL-DespatchAdvice-2.1.json](https://apis.io/schemas/tradeshift/tradeshift-ubl-despatchadvice-2.1/)
+- [json-schema/maindoc/UBL-Invoice-2.1.json](https://apis.io/schemas/tradeshift/tradeshift-ubl-invoice-2.1/)
+- [json-schema/maindoc/UBL-Order-2.1.json](https://apis.io/schemas/tradeshift/tradeshift-ubl-order-2.1/)
+- [json-schema/maindoc/UBL-OrderResponse-2.1.json](https://apis.io/schemas/tradeshift/tradeshift-ubl-orderresponse-2.1/)
+- [json-schema/maindoc/UBL-Quotation-2.1.json](https://apis.io/schemas/tradeshift/tradeshift-ubl-quotation-2.1/)
+- [json-schema/maindoc/UBL-ReceiptAdvice-2.1.json](https://apis.io/schemas/tradeshift/tradeshift-ubl-receiptadvice-2.1/)
+- [json-schema/maindoc/UBL-RequestForQuotation-2.1.json](https://apis.io/schemas/tradeshift/tradeshift-ubl-requestforquotation-2.1/)
+
+#### Collections (40)
+
+Postman and Open Collection request collections.
+
+- [MCP HTTP Bridge & Management Admin API](https://apis.io/collections/tradeshift/open-tradeshift-admin-api/)
+- [Tradeshift External Document Validation API](https://apis.io/collections/tradeshift/open-tradeshift-document-validation-api/)
+- [Tradeshift External Dx Category Accounts Branches API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-accounts-branches-api/)
+- [Tradeshift External Dx Category Accounts Company API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-accounts-company-api/)
+- [Tradeshift External Dx Category Accounts Gli Prefixes API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-accounts-gli-prefixes-api/)
+- [Tradeshift External Dx Category Accounts Legal Entities API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-accounts-legal-entities-api/)
+- [Tradeshift External Dx Category Accounts Taxes API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-accounts-taxes-api/)
+- [Tradeshift External Dx Category Accounts Validations API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-accounts-validations-api/)
+- [Tradeshift External Dx Category Assignments Create API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-assignments-create-api/)
+- [Tradeshift External Dx Category Assignments Find API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-assignments-find-api/)
+- [Tradeshift External Dx Category Assignments Logs API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-assignments-logs-api/)
+- [Tradeshift External Dx Category Assignments Reassign API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-assignments-reassign-api/)
+- [Tradeshift External Dx Category Assignments Update API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-assignments-update-api/)
+- [Tradeshift External Dx Category Bsd Documents API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-bsd-documents-api/)
+- [Tradeshift External Dx Category Document Validation Validate Document API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-document-validation-validate-document-api/)
+- [Tradeshift External Dx Category Document Validation Validators Delete API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-document-validation-validators-delete-api/)
+- [Tradeshift External Dx Category Document Validation Validators Find All API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-document-validation-validators-find-all-api/)
+- [Tradeshift External Dx Category Document Validation Validators Find API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-document-validation-validators-find-api/)
+- [Tradeshift External Dx Category Document Validation Validators History API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-document-validation-validators-history-api/)
+- [Tradeshift External Dx Category Document Validation Validators Save API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-document-validation-validators-save-api/)
+- [Tradeshift External Dx Category Documents Assignments API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-documents-assignments-api/)
+- [Tradeshift External Dx Category Documents Attachments API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-documents-attachments-api/)
+- [Tradeshift External Dx Category Documents Document API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-documents-document-api/)
+- [Tradeshift External Dx Category Documents Document Files API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-documents-document-files-api/)
+- [Tradeshift External Dx Category Documents Quotes API](https://apis.io/collections/tradeshift/open-tradeshift-dx-category-documents-quotes-api/)
+- …and 15 more published on APIs.io
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Tradeshift External Api Overlay](https://apis.io/overlays/tradeshift/tradeshift-external-api-overlay/)
+- [Tradeshift Mcp Bridge Overlay](https://apis.io/overlays/tradeshift/tradeshift-mcp-bridge-overlay/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Tradeshift Authentication](https://apis.io/security/tradeshift/tradeshift-authentication/)
+- [Tradeshift Domain Security](https://apis.io/security/tradeshift/tradeshift-domain-security/)
+- [Tradeshift Trust Center](https://apis.io/security/tradeshift/tradeshift-trust-center/)
+- [Tradeshift Vulnerability Disclosure](https://apis.io/security/tradeshift/tradeshift-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Tradeshift Scopes](https://apis.io/scopes/tradeshift/tradeshift-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Tradeshift Plans Pricing](https://apis.io/plans/tradeshift/tradeshift-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://tradeshift.com/)
+- [Documentation](https://developers.tradeshift.com/docs/api)
+- [Getting started](https://developers.tradeshift.com/docs/guides/get-started)
+- [API reference](https://developers.tradeshift.com/docs/api)
+- [Pricing](https://tradeshift.com/seller-pricing/)
+- [Sign up](https://go.tradeshift.com/register)
+- [Support](https://support.tradeshift.com/)
+- [Changelog](https://developers.tradeshift.com/announcements/)
+- [Blog](https://tradeshift.com/resources/)
+- [Security](https://tradeshift.com/security/)
+- [Compliance](https://tradeshift.com/security/)
+- [Terms of service](https://tradeshift.com/terms-of-service/)
+- [Privacy policy](https://tradeshift.com/privacy-policy/)
+- [GitHub](https://github.com/Tradeshift)
+- [Status](https://status.tradeshift.com/)
+
+## API Evangelist rating
+
+**Kin Score 64.8** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 60.5 |
+| Contract governance | 18.2 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 35.1 |
+| Access clarity | 92.1 |
+
+**Agent readiness 49.1** — agent-native
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | mostly (partial credit) |
+
+**Regulatory alignment 45.1** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/tradeshift/](https://apis.io/providers/tradeshift/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Tradeshift: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/tradeshift/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
